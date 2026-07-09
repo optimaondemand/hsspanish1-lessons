@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 1.04</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
+    .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 1</div>
+        <div style="font-size: 12px; color: #666;">El tiempo y los planes</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.04 &middot; Day 4 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Aplicaci&oacute;n: ir a + infinitivo</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Weather &amp; Plans</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.04</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Aplicaci&oacute;n &mdash; Writing &amp; Dictation</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Yesterday you learned the formula. Today you <em>use</em> it &mdash; in writing and by ear.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your <strong>second encounter</strong> with <em>ir a</em> + infinitive, landing a day after the first on purpose &mdash; spacing is how a structure becomes automatic. There's <strong>no new grammar</strong> today. You'll make the future yourself in a short guided writing, then train your ear with a five-sentence dictation. It's all ungraded: mistakes here are exactly how the habit gets built.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> complete sentences with the right form of <em>ir a</em> + a verb and explain the choice.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> listen to a spoken plan and write down exactly what I hear.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The formula, in one breath</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before you write, say the formula out loud: <strong>a form of <em>ir</em> (voy/vas/va/vamos/van) + <em>a</em> + an unchanged verb.</strong> The form of <em>ir</em> matches the subject; the second verb stays in its "to&hellip;" shape. Hold that in mind &mdash; you're about to build it yourself.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">How comfortable is <em>ir a</em> + verb feeling after yesterday?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Perfecto! Today's writing will lock it in. Push yourself to explain each choice, not just guess.">Pretty solid</button>
+                <button data-response="Normal for day two &mdash; that's exactly why we practice again today instead of testing. It'll feel natural by the end.">Still shaky</button>
+                <button data-response="That's honest and fine. Lean on the formula box for every item; the structure gets automatic with reps.">Kind of lost</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Guided writing -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 2 &middot; ESCRITURA GUIADA <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">You build the future</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">On paper or in a document, copy each sentence and fill the blank with the correct form of <strong>ir a</strong> (<em>voy a, vas a, va a, vamos a, van a</em>). The verb after it is already in place &mdash; don't change it. Say <em>why</em> to yourself as you write. Commit to all six before you reveal the key.</p>
+
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 14px;text-align:center;">
+            <span style="font-size:17px;color:#0e1c42;"><span class="pron">voy a &middot; vas a &middot; va a &middot; vamos a &middot; van a</span> &nbsp;+&nbsp; <em>infinitive</em></span>
+        </div>
+
+        <ol style="font-size:17px;color:#1a2340;line-height:1.9;margin:0 0 4px 1.2em;">
+            <li>Yo ______ estudiar esta noche.</li>
+            <li>Nosotros ______ viajar en verano.</li>
+            <li>Mi hermana ______ ir a la playa ma&ntilde;ana.</li>
+            <li>&iquest;T&uacute; ______ practicar espa&ntilde;ol hoy?</li>
+            <li>Ellos ______ comer en un restaurante luego.</li>
+            <li>Cuando llueve, yo ______ leer en casa.</li>
+        </ol>
+
+        <div style="margin-top:14px;">
+            <button class="reveal-btn">Reveal the answer key</button>
+            <div class="reveal-body">
+                <strong>1. voy a</strong> &mdash; "yo" &rarr; <em>voy</em>. (Yo <strong>voy a</strong> estudiar esta noche.)<br>
+                <strong>2. vamos a</strong> &mdash; "nosotros" &rarr; <em>vamos</em>. (Nosotros <strong>vamos a</strong> viajar en verano.)<br>
+                <strong>3. va a</strong> &mdash; "mi hermana" (ella) &rarr; <em>va</em>. (Mi hermana <strong>va a</strong> ir a la playa.)<br>
+                <strong>4. vas a</strong> &mdash; "t&uacute;" &rarr; <em>vas</em>. (&iquest;T&uacute; <strong>vas a</strong> practicar espa&ntilde;ol hoy?)<br>
+                <strong>5. van a</strong> &mdash; "ellos" &rarr; <em>van</em>. (Ellos <strong>van a</strong> comer en un restaurante luego.)<br>
+                <strong>6. voy a</strong> &mdash; "yo" &rarr; <em>voy</em>. (Cuando llueve, yo <strong>voy a</strong> leer en casa.)
+            </div>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Write two more sentences of your own about your real weekend &mdash; each with a weather word and a plan: <em>Si hace sol, voy a&hellip; / Si hace fr&iacute;o, voy a&hellip;</em> Read them aloud.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Dictation -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127911; PART 3 &middot; DICTADO <span class="pill-time">13 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen and write &mdash; five plans</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">These are the same <em>ir a</em> sentences you met on Day 3 &mdash; now the training wheels are off. For each: click <strong>&#128266;</strong> (play it as many times as you need), write down exactly what you hear, mind the little <em>a</em> and the accent marks, then reveal to check. Don't reveal until you've written your best guess.</p>
+
+        <div class="dictrow">
+            <div class="num">1</div>
+            <button class="say" data-audio="grammar/s2m1-voy.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Voy a estudiar ma&ntilde;ana.</strong> (I'm going to study tomorrow.) &mdash; <em>voy a</em> + the infinitive <em>estudiar</em>.</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">2</div>
+            <button class="say" data-audio="grammar/s2m1-vas.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>&iquest;Vas a ir a la playa?</strong> (Are you going to go to the beach?) &mdash; note the opening <em>&iquest;</em> and that <em>ir</em> itself is the infinitive here.</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">3</div>
+            <button class="say" data-audio="grammar/s2m1-va.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Ella va a comer con su familia.</strong> (She's going to eat with her family.) &mdash; <em>va a</em> + <em>comer</em>.</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">4</div>
+            <button class="say" data-audio="grammar/s2m1-vamos.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Vamos a practicar espa&ntilde;ol.</strong> (We're going to practice Spanish.) &mdash; <em>vamos a</em> + <em>practicar</em>; mind the &ntilde; in <em>espa&ntilde;ol</em>.</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">5</div>
+            <button class="say" data-audio="grammar/s2m1-van.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Ellos van a viajar en verano.</strong> (They're going to travel in summer.) &mdash; <em>van a</em> + <em>viajar</em>.</div>
+        </div>
+
+        <p style="font-size:14px;color:#6b7a99;margin:10px 0 0;">Notice every sentence used the same skeleton: a form of <em>ir</em> + <em>a</em> + an unchanged verb. That's the pattern your ear is learning to expect.</p>
+    </div>
+
+    <!-- PART 4 · Contrast checks -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 4 &middot; DOS M&Aacute;S <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Two to finish on</h3>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 4px;">Same question every time: does the form of <em>ir</em> match the subject, and did the second verb stay an infinitive?</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; complete the plan</div>
+            <div class="widget-question">"Mis amigos y yo ______ nadar cuando hace calor." (My friends and I are going to swim when it's hot.)</div>
+            <div class="widget-options">
+                <button data-correct="false">van a</button>
+                <button data-correct="true">vamos a</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; spot the correct build</div>
+            <div class="widget-question">Which is correct?</div>
+            <div class="widget-options">
+                <button data-correct="true">Ella va a viajar.</button>
+                <button data-correct="false">Ella va viajar.</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">One to build yourself: how would you say <em>"I'm going to read at home"</em>? Say it out loud first, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Voy a leer en casa.</strong> "I" &rarr; <em>voy a</em>; then the infinitive <em>leer</em>; <em>en casa</em> = at home.</div>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">5</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 1.05</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow you meet Valentina in a short reading set in Argentina, plus a culture spotlight on Buenos Aires &mdash; your third encounter with <em>ir a</em>, this time inside a real story. Graded work begins on Day 7.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, without looking, write one true sentence about tomorrow with <em>ir a</em> + a verb &mdash; and check that <em>ir</em> matches you and the second verb stayed an infinitive.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BIEN HECHO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You didn't just read the formula today &mdash; you built it, in writing and by ear. Every choice was a rep. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.04 &middot; Aplicaci&oacute;n: ir a + infinitivo</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — ir matches the subject and the verb stayed an infinitive.'
+        : 'Not quite — check the form of ir, keep the little "a," and leave the second verb unchanged.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

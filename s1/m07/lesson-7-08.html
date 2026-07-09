@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 7.08</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; M&oacute;dulo 7</div>
+        <div style="font-size: 12px; color: #666;">&iquest;C&oacute;mo es? (descripciones)</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.08 &middot; Day 8 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Fon&eacute;tica + Tarea oral</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Describing People</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.08</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Fon&eacute;tica &mdash; The Sounds Inside Describing Words</div>
+        <div style="font-size: 16px; color: #666;">Lesson + graded oral task &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've written the adjectives all week. Today you <em>say</em> them &mdash; and you record a real description.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a <strong>pronunciation clinic</strong> tuned to the describing words themselves. Three sounds trip up English speakers here: the throaty <strong>j</strong> (and <strong>g</strong> before <em>e/i</em>) in <em>joven, generoso</em>; the <strong>hard g</strong> in <em>delgado, largo</em>; and the light, tapped <strong>r</strong> in <em>moreno, serio</em>. We'll rehearse each with words you already know, then you record your first graded <strong>Tarea oral</strong> &mdash; a description of a real person.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> pronounce the Spanish <em>j / g(e,i)</em>, the hard <em>g</em>, and the tapped <em>r</em> in describing words.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> record a spoken description of a real person, with correct adjective agreement.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Spelling tells you the sound</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Spanish is wonderfully regular: once you know a few rules, you can read a new describing word aloud and be right. Today we lock in the three that matter most for this module &mdash; and then you use them on the record.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Which describing word have you felt least sure how to <em>say</em>?</div>
+            <div class="widget-options">
+                <button data-response="Very common &mdash; the j in joven is a soft throaty H, not an English J. Part 2 drills it until it feels natural.">joven / generoso</button>
+                <button data-response="Good ear &mdash; the g changes sound depending on the next letter. Part 3 sorts the hard g (delgado) from the soft one.">delgado / largo</button>
+                <button data-response="The Spanish r is a light tap, not the English roar. Part 4 shows you exactly where the tongue goes in moreno and serio.">moreno / serio</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · j and g(e,i) -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LA J Y LA G (E,I) <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The throaty sound</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">The Spanish <strong>j</strong> &mdash; and <strong>g</strong> when it comes before <em>e</em> or <em>i</em> &mdash; is a soft, breathy sound made at the back of the throat, close to the <em>h</em> in English &ldquo;<em>h</em>at&rdquo; but with a little more friction. It is <strong>not</strong> the English &ldquo;j&rdquo; of &ldquo;jam.&rdquo; Click <strong>&#128266;</strong>, then echo each word, letting the air brush the back of your mouth.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/joven.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">joven</span><span class="v-en">young &mdash; <em>j</em> = throaty h (&ldquo;HO-ven&rdquo;)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/generoso.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">generoso</span><span class="v-en"><em>ge</em> = same throaty sound (&ldquo;he-ne-RO-so&rdquo;)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/inteligente.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">inteligente</span><span class="v-en"><em>ge</em> before <em>e</em> &rarr; throaty (&ldquo;-li-HEN-te&rdquo;)</span></li>
+        </ul>
+        <p style="font-size:14px;color:#6b7a99;margin:6px 0 0;">Rule of thumb: <em>g</em> is throaty only before <em>e</em> and <em>i</em>. Before <em>a, o, u</em> it's a hard g &mdash; which is Part 3.</p>
+    </div>
+
+    <!-- PART 3 · hard g -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; LA G FUERTE <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The hard g</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Before <em>a, o, u</em> &mdash; or before another consonant &mdash; <strong>g</strong> is the hard g of English &ldquo;go.&rdquo; (And <em>gu</em> before <em>e/i</em>, as in <em>guapo</em>&hellip; well, <em>guapo</em> is <em>gu+a</em>, simply hard g + &ldquo;wa.&rdquo;) Click <strong>&#128266;</strong> and echo:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/delgado.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">delgado</span><span class="v-en">hard <em>g</em> before <em>a</em> (&ldquo;del-GA-do&rdquo;)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/largo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">largo</span><span class="v-en">hard <em>g</em> before <em>o</em> (&ldquo;LAR-go&rdquo;)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/guapo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">guapo</span><span class="v-en">hard <em>g</em> + &ldquo;wa&rdquo; (&ldquo;GWA-po&rdquo;)</span></li>
+        </ul>
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Test yourself: is the <em>g</em> in <em>gracioso</em> hard or throaty? Say it, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Hard.</strong> The <em>g</em> is followed by <em>r</em> (a consonant), so it's the hard g of &ldquo;go&rdquo;: <em>gra-CIO-so</em>. Throaty only happens before <em>e</em> or <em>i</em>.</div>
+        </div>
+    </div>
+
+    <!-- PART 4 · tapped r -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128264; PART 4 &middot; LA R SUAVE <span class="pill-time">7 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The single, tapped r</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">A single <strong>r</strong> in the middle of a word isn't rolled &mdash; it's a quick <em>tap</em> of the tongue against the ridge behind your top teeth, very close to the soft &ldquo;d&rdquo; sound English speakers make in &ldquo;wa<strong>t</strong>er&rdquo; or &ldquo;la<strong>dd</strong>er.&rdquo; Try these describing words:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/moreno.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">moreno</span><span class="v-en">one quick tap: &ldquo;mo-<strong>r</strong>e-no&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/serio.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">serio</span><span class="v-en">light tap: &ldquo;SE-<strong>r</strong>io&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/rubio.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">rubio</span><span class="v-en">an <em>r</em> at the <em>start</em> is a bit stronger &mdash; a small trill</span></li>
+        </ul>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Say this chain slowly, three times, keeping each sound clean: <em>joven &middot; generoso &middot; delgado &middot; largo &middot; moreno &middot; serio</em>. Record yourself on your phone and play it back &mdash; the fastest way to hear whether your <em>j</em> is throaty and your <em>r</em> is a light tap.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; ACENTOS DEL MUNDO HISPANO</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;">One language, many voices</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">These sounds shift a little from place to place. The throaty <em>j</em> is soft and gentle in the Caribbean, stronger and raspier in Spain. A single <em>r</em> is a crisp tap almost everywhere. None of these is &ldquo;correct&rdquo; and the others &ldquo;wrong&rdquo; &mdash; they're regional voices of one shared language. Aim to be clear and understandable, and your accent will be welcome anywhere.</p>
+    </div>
+
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#9733; LA VIRTUD &middot; SELF-GOVERNMENT</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Recording yourself takes composure &mdash; the calm, self-directed control that is <strong>self-government</strong>. Everyone's first takes feel awkward; the disciplined move is to rehearse, breathe, and press record anyway, then listen back and improve. That steady mastery of yourself is the very habit that made Jos&eacute; de San Mart&iacute;n a great leader. <em>&iexcl;T&uacute; puedes!</em></p>
+    </div>
+
+    <!-- PART 5 · Tarea oral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127908; PART 5 &middot; TAREA ORAL <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your graded recording (15 points)</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Record yourself <strong>describing a real person</strong> &mdash; a family member, a friend, or someone you admire. Give at least <strong>four adjectives</strong>: some about how they <em>look</em> (physical) and some about what they're <em>like</em> (personality). Use <strong>ser</strong>, and make every adjective <strong>agree</strong> with the person. Aim for 25&ndash;45 seconds.</p>
+
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px 0;">
+            <div style="font-size:13px;color:#1B6A94;letter-spacing:.3px;margin-bottom:8px;">&#128221; A MODEL (yours must be about a real person)</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.7;margin:0;">
+            &laquo;Mi hermana se llama Luc&iacute;a. Ella <strong>es</strong> alta y <strong>delgada</strong>, con el pelo largo y <strong>moreno</strong>. <strong>Es</strong> muy <strong>graciosa</strong>, <strong>generosa</strong> y un poco <strong>t&iacute;mida</strong>. &iexcl;<strong>Es</strong> una hermana <strong>trabajadora</strong>!&raquo;<br>
+            <span style="font-size:14px;color:#6b7a99;">(Physical: alta, delgada, pelo largo/moreno. Personality: graciosa, generosa, t&iacute;mida, trabajadora &mdash; every ending agreeing with a female.)</span></p>
+        </div>
+
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Need to hear the target one more time before you record? Replay this model:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/m07-descrip.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Ella es&hellip;</span><span class="v-en">&laquo;Ella es una chica trabajadora y graciosa.&raquo;</span></li>
+        </ul>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ONE LAST CHECK &middot; before you record</div>
+            <div class="widget-question">You're describing your mother as hard-working. You should say&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">Ella es trabajador</button>
+                <button data-correct="true">Ella es trabajadora</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="background:#FBF6EA;border:1px solid #E3D3A8;border-left:5px solid #C7922C;border-radius:8px;padding:14px 18px;margin:14px 0 12px 0;">
+            <div style="font-size:13px;color:#8a6a12;letter-spacing:.3px;margin-bottom:8px;">&#128161; CONSEJO &middot; plan before you record</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">If it helps you, <strong>write out your sentences first</strong> and read them aloud a couple of times before you record. Many students sound calmer and clearer once they&rsquo;ve drafted a quick script &mdash; reading from your notes is completely fine. Just aim to sound <em>natural</em>, not rushed.</p>
+        </div>
+        <div style="text-align:center;margin:18px 0 8px;">
+            <a href="#CANVAS_ORAL_URL" style="display:inline-block;background:#0E1C42;color:#fff;text-decoration:none;border-radius:8px;padding:14px 28px;font-size:17px;font-weight:600;border-bottom:3px solid #55C8E8;">&#127908; Open the Tarea oral assignment &rarr;</a>
+            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Record directly in Canvas (or upload an audio/video file). 15 points.</div>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 20px 0 8px 0;">How it's scored &mdash; the rubric</h3>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Three criteria, 5 points each, 15 total. Read it <em>before</em> you record so you know what earns full marks.</p>
+        <table class="gtable">
+            <thead><tr><th>Criterion</th><th>What earns 5 / 5</th><th>Pts</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Task Completion</strong></td><td>A real person is described with at least four adjectives &mdash; a mix of physical and personality.</td><td>5</td></tr>
+                <tr><td><strong>Language Accuracy</strong></td><td>Every adjective <em>agrees</em> in gender and number; <em>ser</em> used correctly; adjectives after the noun where relevant.</td><td>5</td></tr>
+                <tr><td><strong>Pronunciation &amp; Fluency</strong></td><td>Clean vowels; throaty <em>j/g(e,i)</em>, hard <em>g</em>, and tapped <em>r</em> where they belong; steady pace, understandable throughout.</td><td>5</td></tr>
+            </tbody>
+        </table>
+
+        <div style="background:#EAF6EE;border:1px solid #2A9D5C;border-left:5px solid #2A9D5C;border-radius:8px;padding:14px 18px;margin:14px 0 0;">
+            <div style="font-size:11px;color:#1A6B3D;letter-spacing:.4px;margin-bottom:8px;">&#9989; SELF-REVIEW &middot; check these before you submit</div>
+            <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 0 1.2rem;">
+                <li>Did I use <strong>at least four</strong> adjectives &mdash; some physical, some personality?</li>
+                <li>Does <strong>every ending agree</strong> with the person (a female &rarr; <em>-a</em>, a group &rarr; plural)?</li>
+                <li>Did I use <strong>ser</strong> (es), not estar, for these lasting traits?</li>
+                <li>Are my adjectives <strong>after</strong> the noun in any noun phrases (<em>el pelo largo</em>)?</li>
+                <li>Did I land the <strong>throaty j</strong> (joven), <strong>hard g</strong> (delgado), and <strong>tapped r</strong> (moreno)?</li>
+                <li>Did I <strong>play it back once</strong> and re-record if needed before submitting?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">9</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 7.09</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A lighter day: <em>El Per&uacute; y Sudam&eacute;rica</em> on the interactive map, and your first look at the semester VR scenario <em>En el mercado</em> (both ungraded). Then Day 10 is the Grammar Quiz that closes the module.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the Tarea oral</strong> &mdash; the page being marked done and the recording being turned in are two separate steps.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;LO LOGRASTE&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just described a real person on the record &mdash; throaty <em>j</em>, tapped <em>r</em>, and every ending agreeing. That's a bigger step than it feels like. <em>&iexcl;Buen trabajo, y hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 2 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.08 &middot; Fon&eacute;tica + Tarea oral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — try the other option and think about the English meaning.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

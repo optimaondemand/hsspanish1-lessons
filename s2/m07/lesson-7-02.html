@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 7.02</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q4 &middot; M&oacute;dulo 7</div>
+        <div style="font-size: 12px; color: #666;">De viaje</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.02 &middot; Day 2 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Experiencias + fui/fue</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Travel &amp; Past Experiences</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.02</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Experiencias &mdash; y el pret&eacute;rito de <em>ir</em></div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A few experience words &mdash; and the single most useful past-tense verb you'll learn all module.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">First, Set B: the words for what you <em>do</em> and <em>bring back</em> from a trip. Then we meet your first <strong>irregular preterite</strong>: the verb <strong>ir</strong> (to go) &mdash; <em>fui, fuiste, fue&hellip;</em> Here's the two-for-one surprise: <strong>ser</strong> (to be) has the <em>exact same</em> preterite forms. So <em>fui</em> can mean &ldquo;I went&rdquo; or &ldquo;I was,&rdquo; and context makes it clear. Learn one set of forms, get two verbs. We'll do the other irregulars tomorrow &mdash; today, just this one.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> use travel-experience words: <em>la foto, el recuerdo, la excursi&oacute;n, explorar, quedarse, la aventura.</em></div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> say where I went in the past with the preterite of <em>ir</em> (<em>fui, fuiste, fue, fuimos, fueron</em>).</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A quick look back</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In M&oacute;dulo 6 you learned to say what you did with <strong>regular</strong> verbs: <em>Ayer <strong>viaj&eacute;</strong></em> (yesterday I traveled), <em><strong>visit&eacute;</strong> el museo</em> (I visited the museum). Today's verb is different &mdash; it doesn't follow the pattern. It's worth memorizing on its own because you'll use it constantly.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Think of the last place you went &mdash; even just yesterday. Where was it?</div>
+            <div class="widget-options">
+                <button data-response="Wherever it was, in Spanish you'd start with fui: Fui a la escuela, fui al trabajo, fui a casa. That word is today's whole lesson.">Somewhere close by</button>
+                <button data-response="A trip! In Spanish: Fui a&hellip; Say your destination after fui and you've already made a past-tense sentence.">On a trip somewhere</button>
+                <button data-response="Nowhere much? That's fine &mdash; you can still say No fui a ningún lugar. Fui is the key either way.">Honestly, nowhere</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Vocab Set B -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; EXPERIENCIAS (SET B) <span class="pill-time">11 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen, then repeat</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Six words for the <em>experience</em> of travel &mdash; four nouns and two verbs. Click the <strong>&#128266;</strong> and say each back.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-foto.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la foto</span><span class="v-en">the photo</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-recuerdo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el recuerdo</span><span class="v-en">the souvenir / memory</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-excursion.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la excursi&oacute;n</span><span class="v-en">the excursion / day trip</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-explorar.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">explorar</span><span class="v-en">to explore</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-quedarse.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">quedarse</span><span class="v-en">to stay</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-aventura.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la aventura</span><span class="v-en">the adventure</span></li>
+        </ul>
+        <p style="font-size:14px;color:#6b7a99;margin:8px 0 0;">Cognate bonus: <em>la foto, la excursi&oacute;n, explorar,</em> and <em>la aventura</em> all look like their English cousins &mdash; a gift the Spanish language gives you often.</p>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Pair each Set B word with a Set A word from yesterday: <em>una foto de la monta&ntilde;a</em>, <em>una excursi&oacute;n a las ruinas</em>, <em>un recuerdo del pueblo</em>. Say three of your own aloud.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Grammar: ir preterite -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; EL PRET&Eacute;RITO DE <em>IR</em> (= <em>SER</em>) <span class="pill-time">12 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">One verb, learned by heart</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The preterite of <strong>ir</strong> (to go) doesn't follow the regular <em>-ar / -er / -ir</em> endings you learned in M&oacute;dulo 6 &mdash; you just memorize it. The reward: these same forms are <em>also</em> the preterite of <strong>ser</strong> (to be). Listen and repeat each one:</p>
+        <table class="gtable">
+            <thead><tr><th>Subject</th><th>ir / ser (preterite)</th><th>Example &middot; listen</th></tr></thead>
+            <tbody>
+                <tr><td>yo</td><td><span class="pron">fui</span></td><td>Ayer fui a Machu Picchu. <button class="say" data-audio="grammar/s2m7-fui.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
+                <tr><td>t&uacute;</td><td><span class="pron">fuiste</span></td><td>&iquest;Ad&oacute;nde fuiste de vacaciones? <button class="say" data-audio="grammar/s2m7-fuiste.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
+                <tr><td>usted / &eacute;l / ella</td><td><span class="pron">fue</span></td><td>El viaje fue incre&iacute;ble. <button class="say" data-audio="grammar/s2m7-fue.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
+                <tr><td>nosotros/as</td><td><span class="pron">fuimos</span></td><td>Fuimos al aeropuerto.</td></tr>
+                <tr><td>ustedes / ellos / ellas</td><td><span class="pron">fueron</span></td><td>Ellos fueron al pueblo.</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0 0;"><strong>Two things to notice.</strong> (1) There are <strong>no accent marks</strong> anywhere &mdash; not on <em>fui</em>, not on <em>fue</em>. (2) <em>Fue</em> is both &ldquo;he/she went&rdquo; <em>and</em> &ldquo;it was.&rdquo; <em>El viaje <strong>fue</strong> incre&iacute;ble</em> = &ldquo;The trip <strong>was</strong> amazing&rdquo; (that's <em>ser</em>). <em>Ella <strong>fue</strong> a Per&uacute;</em> = &ldquo;She <strong>went</strong> to Peru&rdquo; (that's <em>ir</em>). Context tells you which.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; choose the form</div>
+            <div class="widget-question">"Yo ___ al aeropuerto ayer." (I ___ to the airport yesterday.)</div>
+            <div class="widget-options">
+                <button data-correct="false">fue</button>
+                <button data-correct="true">fui</button>
+                <button data-correct="false">fuiste</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; choose the form</div>
+            <div class="widget-question">"&iquest;Ad&oacute;nde ___ (t&uacute;) el verano pasado?" (Where did you go last summer?)</div>
+            <div class="widget-options">
+                <button data-correct="true">fuiste</button>
+                <button data-correct="false">fui</button>
+                <button data-correct="false">fueron</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Your turn: how would you say <em>"We went to the mountain"</em>? Say it out loud first, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Fuimos a la monta&ntilde;a.</strong> "We" &rarr; <em>fuimos</em>; and <em>a la</em> for &ldquo;to the.&rdquo; No accent mark needed.</div>
+        </div>
+    </div>
+
+    <!-- PART 4 · Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 7.03</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow the rest of the crew arrives: <strong>hacer</strong> (<em>hice</em>), <strong>tener</strong> (<em>tuve</em>), and <strong>estar</strong> (<em>estuve</em>) &mdash; the other high-frequency irregular preterites. You'll see they all share one pattern. Graded work begins Day 7.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say two true sentences out loud: one starting <em>Ayer fui a&hellip;</em> and one starting <em>El fin de semana fui a&hellip;</em></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BIEN HECHO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">One verb, two meanings, zero accents &mdash; and now you can say where you went. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 4 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.02 &middot; Experiencias + fui/fue</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the right preterite form.'
+        : 'Not quite — match the form to who did the action, and remember there are no accents.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

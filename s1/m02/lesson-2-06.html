@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 2.06</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 2</div>
+        <div style="font-size: 12px; color: #666;">En la escuela</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.06 &middot; Day 6 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Repaso y espiral</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">School &amp; Daily Life</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.06 &middot; Week 2 begins</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Repaso y espiral &mdash; Retrieval Before the Quiz</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>pulling it back out of your head</em>, which is where real learning happens.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your fourth meeting with the <strong>-ar</strong> verbs, and the first day of Week 2. Instead of new material, today you <em>retrieve</em>: an ear-quiz on the school words, a short production prompt, and a <strong>spiral</strong> that puts two verbs side by side &mdash; <strong>ser</strong> (from M&oacute;dulo 1, who someone <em>is</em>) and the regular <strong>-ar verbs</strong> (this module, what someone <em>does</em>). Telling those two apart is exactly what the Day-10 quiz will ask of you.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> recognize spoken school words and match them to meaning.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> choose between <em>ser</em> and an <em>-ar</em> verb depending on the job the sentence is doing.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Warm up your ear</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the ear-quiz, remind your brain what these words sound like. Click each <strong>&#128266;</strong>, say it back, and picture its meaning &mdash; no reading the English until after you've guessed.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/la-tarea.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la tarea</span><span class="v-en">homework</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/estudiar.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">estudiar</span><span class="v-en">to study</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/el-maestro.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el maestro</span><span class="v-en">teacher</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/trabajar.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">trabajar</span><span class="v-en">to work</span></li>
+        </ul>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Honestly &mdash; which one still feels the shakiest for you right now?</div>
+            <div class="widget-options">
+                <button data-response="Good to know. The school nouns come with articles (el, la) &mdash; give them extra attention in Part 2's ear-quiz.">The school nouns</button>
+                <button data-response="Makes sense. The -ar endings (-o, -as, -a, -amos, -an) are today's spiral. Watch how they change in Part 3.">The -ar verb endings</button>
+                <button data-response="That's the big one, and it's exactly what today's spiral is for. Part 3 lines up ser and the -ar verbs side by side.">Choosing ser vs. an -ar verb</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Ear-quiz -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127911; PART 2 &middot; PRUEBA DE O&Iacute;DO <span class="pill-time">12 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Ear-quiz: what did you hear?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Press <strong>&#128266;</strong> to hear a word (replay as often as you like), then pick its meaning in English. This is the interpretive-listening skill the Day-10 quiz will test &mdash; train it now.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/escuchar.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this verb mean?</div>
+            <div class="widget-options">
+                <button data-correct="true">to listen</button>
+                <button data-correct="false">to speak</button>
+                <button data-correct="false">to study</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/la-mochila.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What school thing did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="false">book</button>
+                <button data-correct="false">schedule</button>
+                <button data-correct="true">backpack</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/el-examen.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What school thing did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="false">grade</button>
+                <button data-correct="true">exam / test</button>
+                <button data-correct="false">homework</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/ensenar.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this verb mean?</div>
+            <div class="widget-options">
+                <button data-correct="false">to need</button>
+                <button data-correct="false">to arrive</button>
+                <button data-correct="true">to teach</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/el-horario.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What school thing did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="true">schedule</button>
+                <button data-correct="false">class</button>
+                <button data-correct="false">grade</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Replay each clip once more, but this time say a full sentence out loud: <em>Yo escucho en la clase</em>, <em>Uso la mochila</em>, <em>Tomo el examen</em>. Hearing the word and immediately producing a sentence is the strongest kind of practice.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Spiral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; ESPIRAL &middot; SER vs. -AR <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Two verbs, two jobs</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">You now know two ways to talk about people. They are <em>not</em> interchangeable &mdash; each one does a different job. Listen and read across the row:</p>
+        <table class="gtable">
+            <thead><tr><th>Verb (from)</th><th>Its job</th><th>Example &middot; listen</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>ser</strong> (M&oacute;dulo 1)</td>
+                    <td>who someone is &middot; role &middot; origin</td>
+                    <td>Yo <span class="pron">soy</span> estudiante. <button class="say" data-audio="grammar/m01-soy.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td><strong>-ar verb</strong> (M&oacute;dulo 2)</td>
+                    <td>an action someone does</td>
+                    <td>Yo <span class="pron">estudio</span> espa&ntilde;ol. <button class="say" data-audio="grammar/m02-estudio.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0 2px;">Hear both in one breath: <em>Yo <strong>soy</strong> estudiante y <strong>estudio</strong> espa&ntilde;ol.</em> One <em>ser</em> (who I am) and one <em>-ar</em> verb (what I do) &mdash; side by side, never glued together. That's the whole spiral.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; ser or an -ar verb?</div>
+            <div class="widget-question">"Nosotros ___ de Puerto Rico." (We ___ from Puerto Rico.) &mdash; it's <em>origin</em>.</div>
+            <div class="widget-options">
+                <button data-correct="true">somos</button>
+                <button data-correct="false">estudiamos</button>
+                <button data-correct="false">trabajamos</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; ser or an -ar verb?</div>
+            <div class="widget-question">"Ella ___ ingl&eacute;s en la clase." (She ___ English in class.) &mdash; it's an <em>action</em>.</div>
+            <div class="widget-options">
+                <button data-correct="false">es</button>
+                <button data-correct="true">habla</button>
+                <button data-correct="false">son</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; ser or an -ar verb?</div>
+            <div class="widget-question">"Mi maestra ___ muy amable." (My teacher ___ very kind.) &mdash; it's <em>identity / a trait</em>.</div>
+            <div class="widget-options">
+                <button data-correct="false">ense&ntilde;a</button>
+                <button data-correct="false">trabaja</button>
+                <button data-correct="true">es</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 4 · Production + reveal -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 4 &middot; A PRODUCIR <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Build it yourself, then check</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; commit before you peek. Then reveal to check your verb choice and spelling. This is a self-test, so being honest with yourself is where the value is.</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;I am a student and I study Spanish every day.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Soy estudiante y estudio espa&ntilde;ol todos los d&iacute;as.</strong> Identity &rarr; <em>soy</em> (ser); an action &rarr; <em>estudio</em> (-ar verb). Two jobs, two verbs &mdash; not &ldquo;soy estudio.&rdquo;</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;My mom works and speaks two languages.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Mi mam&aacute; trabaja y habla dos idiomas.</strong> Two actions &rarr; two <em>-ar</em> verbs; &ldquo;she&rdquo; &rarr; the <em>-a</em> ending on both (<em>trabaja, habla</em>).</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;We arrive at school and we listen to the teacher.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Nosotros llegamos a la escuela y escuchamos a la maestra.</strong> Two actions &rarr; the <em>-amos</em> ending for &ldquo;we&rdquo; on both (<em>llegamos, escuchamos</em>).</div>
+        </div>
+    </div>
+
+    <!-- PART 5 · Reading recycle -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 5 &middot; A LEER OTRA VEZ <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Carla returns &mdash; listen and read</h3>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 8px 0;">You met this passage on Day 5. Press play, follow along, and this time notice how <em>ser</em> and the <em>-ar</em> verbs take turns doing their jobs.</p>
+        <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/m02-carla.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Play the reading</span></p>
+        <p style="font-size:17px;color:#1a2340;line-height:1.7;">
+        &laquo;Hola, me llamo Carla. <strong>Soy</strong> de San Juan, Puerto Rico. Todos los d&iacute;as <strong>llego</strong> a la escuela a las ocho. <strong>Estudio</strong> mucho y <strong>hablo</strong> espa&ntilde;ol e ingl&eacute;s. En la clase de ciencias, la maestra <strong>ense&ntilde;a</strong> y nosotros <strong>escuchamos</strong>. <strong>Practico</strong> el piano y <strong>uso</strong> mi computadora para la tarea. Mi mam&aacute; <strong>trabaja</strong> en un hospital. &iexcl;Me gusta mi escuela!&raquo;</p>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; COMPRUEBA &middot; optional</div>
+            <div style="font-size:16px;color:#1a2340;line-height:1.6;">Point to each verb and say its job out loud: <em>soy</em> (who she is), <em>estudio / hablo / practico / uso</em> (what she does), <em>ense&ntilde;a</em> (what the teacher does), <em>escuchamos</em> (what they do together). Only one is <em>ser</em> &mdash; the rest are all <em>-ar</em> actions.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; EL ESPA&Ntilde;OL Y EL INGL&Eacute;S</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Una isla biling&uuml;e</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">In Puerto Rico, students like Carla move between Spanish and English all day &mdash; <em>estudian</em> in one language, <em>hablan</em> the other with friends, and often mix both. It's a real-world reminder that <em>ser</em> (who you are, <em>puertorrique&ntilde;o/a</em>) stays constant, while what you <em>do</em> &mdash; the <em>-ar</em> verbs &mdash; fills the day in two languages at once.</p>
+    </div>
+
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#9733; LA VIRTUD &middot; SERVICE</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Retrieval practice feels harder than re-reading &mdash; and that difficulty is <em>the point</em>. Every time you pull <em>ser</em> or an <em>-ar</em> verb out of your memory instead of copying it, you make the pathway stronger. Think of <strong>Roberto Clemente</strong>, who trained relentlessly and then gave his skill away in service to others. Doing the harder, more useful practice today <em>is</em> a small act of service to your future self. <em>T&uacute; <strong>trabajas</strong> hoy para el examen de ma&ntilde;ana.</em></p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">7</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 2.07</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and the <strong>Lengua en acci&oacute;n (20 pts)</strong> launch page. Everything on today's page &mdash; the school words and the ser-vs-<em>-ar</em> spiral &mdash; is exactly what those items draw on. You've done the retrieval; now you're ready.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say two sentences about your day right now &mdash; one with <em>ser</em> (who you are) and one with an <em>-ar</em> verb (what you do).</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN REPASO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You heard it, you built it, and you told <em>ser</em> from the <em>-ar</em> verbs. That's the retrieval that makes the quiz feel easy &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.06 &middot; Repaso y espiral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' is right — who someone is → ser; what someone does → the -ar verb.'
+        : 'Not quite. Ask: is this who someone is (ser), or what someone does (an -ar verb)?';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

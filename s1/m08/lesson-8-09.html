@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 8.09</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; M&oacute;dulo 8</div>
+        <div style="font-size: 12px; color: #666;">&iquest;C&oacute;mo somos?</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 8.09 &middot; Day 9 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Proyecto VR + Mapa</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Capstone &amp; Gate</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 8.09</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Proyecto VR &laquo;En el mercado&raquo; &mdash; y un repaso del mapa</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes &middot; the VR project is performed today</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Today you actually step into the market. This is where the semester's VR project happens &mdash; prepare, perform, reflect.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">All semester you've been building toward <strong><em>En el mercado</em></strong> in <strong>ENGAGE</strong> &mdash; a Latin-American market and caf&eacute;. Today you <strong>perform</strong> it: greet a vendor with the right register, ask prices, order, and describe what you see using all four systems. First a quick prep, then the VR session itself, then a short reflection. You'll also take a farewell tour of the whole Spanish-speaking world on the interactive map. This page is <strong>not graded</strong> &mdash; it's your guide into the project and the map.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> greet, ask prices, order, and describe in the <em>En el mercado</em> VR scenario using ser/estar/tener/gustar.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> locate the major Spanish-speaking regions across the whole map.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 · Prep -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PREPARACI&Oacute;N <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Rehearse your lines before you put on the headset</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In the <em>mercado</em> you'll greet an older vendor, so choose the courteous <strong>usted</strong> register. Listen, then rehearse each move aloud.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/m01-usted.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">usted (respeto)</span><span class="v-en">the polite &ldquo;you&rdquo; &mdash; use with an older vendor</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/m03-estas.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">&iquest;C&oacute;mo est&aacute;s? / est&aacute; usted?</span><span class="v-en">greeting &mdash; t&uacute; vs. usted form of estar</span></li>
+        </ul>
+        <table class="gtable">
+            <thead><tr><th>Move</th><th>What you say</th></tr></thead>
+            <tbody>
+                <tr><td>1 &middot; Saludar (greet, usted)</td><td>Buenos d&iacute;as, &iquest;c&oacute;mo est&aacute; usted?</td></tr>
+                <tr><td>2 &middot; Preguntar el precio</td><td>&iquest;Cu&aacute;nto cuesta? / &iquest;Cu&aacute;nto cuestan?</td></tr>
+                <tr><td>3 &middot; Pedir (order)</td><td>Quiero&hellip; / Me gustar&iacute;a&hellip;</td></tr>
+                <tr><td>4 &middot; Describir (all four systems)</td><td>El caf&eacute; es bueno y est&aacute; caliente. Tengo hambre. Me gusta&hellip;</td></tr>
+            </tbody>
+        </table>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; REHEARSE &middot; no wrong answer &mdash; think it through</div>
+            <div class="widget-question">You approach an older vendor. How do you greet him?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Perfecto! With an older stranger, usted shows respect: &laquo;Buenos d&iacute;as, &iquest;c&oacute;mo est&aacute; usted?&raquo; Note está &mdash; the usted form of estar.">&laquo;&iquest;C&oacute;mo est&aacute; usted?&raquo;</button>
+                <button data-response="That's the t&uacute; form &mdash; friendly, but usually for someone your own age. With an older vendor, usted is the courteous choice.">&laquo;&iquest;C&oacute;mo est&aacute;s?&raquo;</button>
+                <button data-response="&laquo;&iexcl;Hola!&raquo; works anywhere, but add the polite version: &laquo;Buenos d&iacute;as, &iquest;c&oacute;mo est&aacute; usted?&raquo;">Just &laquo;&iexcl;Hola!&raquo;</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <p style="font-size:14px;color:#6b7a99;margin:4px 0 0;">(In Latin America, <em>ustedes</em> is &ldquo;you all&rdquo; for any group. <em>Vosotros</em> &mdash; Spain's informal &ldquo;you all&rdquo; &mdash; is labeled as European.)</p>
+    </div>
+
+    <!-- PART 2 · The VR performance -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129406; PART 2 &middot; EN LA VR &middot; ENGAGE <span class="pill-time">16 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Perform the project &mdash; the semester capstone in VR</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Put on your headset and enter the <strong>ENGAGE</strong> location <em>En el mercado</em>. Move through the four moves you just rehearsed, at your own pace. This is the semester's <strong>VR project (100 points)</strong>, and it has three parts:</p>
+        <div style="background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:16px 20px; margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:10px;">&#127891; THE PROJECT &middot; THREE PARTS</div>
+            <ol style="margin:0 0 0 18px; padding:0; font-size:16px; color:#1a2340; line-height:1.7;">
+                <li><strong>Prep</strong> &mdash; write your market script (greeting, price question, order, two descriptions using ser/estar/tener/gustar) and rehearse aloud. You just did this in Part&nbsp;1.</li>
+                <li><strong>Performance</strong> &mdash; in ENGAGE, greet the vendor with <em>usted</em>, ask a price, order, and describe two items. Capture it with a <strong>spatial recording</strong> so your teacher can review it later.</li>
+                <li><strong>Reflection</strong> &mdash; afterward, answer three short questions (Part&nbsp;3 below): what went well, what you'd change, and one new phrase you used.</li>
+            </ol>
+        </div>
+        <div style="text-align:center; margin: 16px 0;">
+            <a href="#CANVAS_VR_URL" style="display:inline-block; background:#0E1C42; color:#fff; text-decoration:none; border-radius:8px; padding:14px 26px; font-size:17px; border-bottom:3px solid #55C8E8;">&#129406; Open the VR project details in Canvas &rarr;</a>
+            <div style="font-size:13px; color:#6b7a99; margin-top:8px;">Enter ENGAGE &middot; location: <em>En el mercado</em> &middot; capture a spatial recording</div>
+        </div>
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; IN THE MARKET &middot; describe an item</div>
+            <div class="widget-question">You pick up a hot coffee. Which sentence uses <em>ser</em> then <em>estar</em> correctly?</div>
+            <div class="widget-options">
+                <button data-correct="false">El caf&eacute; est&aacute; bueno y es caliente.</button>
+                <button data-correct="true">El caf&eacute; es bueno y est&aacute; caliente.</button>
+                <button data-correct="false">El caf&eacute; tiene bueno y est&aacute; caliente.</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 3 · Reflection -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 3 &middot; REFLEXI&Oacute;N <span class="pill-time">6 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Reflect on your market visit</h3>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; REFLECT &middot; no wrong answer</div>
+            <div class="widget-question">Coming out of the market, what felt strongest?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Qu&eacute; bien! Greeting with courtesy sets the whole exchange. That warm usted opener is exactly what vendors expect.">Greeting politely with usted</button>
+                <button data-response="Great &mdash; describing on the spot (es / est&aacute; / tiene / me gusta) is the capstone skill. You spoke a whole person's worth of language in a market stall.">Describing items with the four verbs</button>
+                <button data-response="Asking and ordering (&iquest;Cu&aacute;nto cuesta? Quiero&hellip;) is real, usable Spanish &mdash; the kind you'd use on a trip tomorrow.">Asking prices &amp; ordering</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:12px 0 6px;">In your Canvas reflection, answer three questions: (1) What went well? (2) What would you change next time? (3) Name one new phrase you actually used. Keep it short and honest.</p>
+    </div>
+
+    <!-- PART 4 · Map review -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128506;&#65039; PART 4 &middot; REPASO DEL MAPA <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A farewell tour of the whole Spanish-speaking world</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">You've visited many corners this semester &mdash; Mexico, the Caribbean, the Andes, the Southern Cone. Open the interactive map one more time and travel the <em>entire</em> Spanish-speaking world in <strong>Explorador</strong> mode, then try the built-in quiz. Ungraded &mdash; go as many rounds as you like.</p>
+        <div style="text-align:center; margin: 16px 0;">
+            <a href="../../mapa-del-mundo-hispano.html" target="_blank" rel="noopener" style="display:inline-block; background:#0E1C42; color:#fff; text-decoration:none; border-radius:8px; padding:14px 26px; font-size:17px; border-bottom:3px solid #55C8E8;">&#128506;&#65039; Abrir el mapa del mundo hispano &rarr;</a>
+            <div style="font-size:13px; color:#6b7a99; margin-top:8px;">Opens in a new tab &middot; use <em>Explorador</em> mode, then the <em>quiz</em></div>
+        </div>
+        <div style="margin-top:10px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Quick recall: which country's capital is <strong>Buenos Aires</strong> &mdash; home of the self-government figure Jos&eacute; de San Mart&iacute;n? Say it, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Argentina.</strong> <em>Buenos Aires <strong>es</strong> la capital de Argentina y <strong>est&aacute;</strong> en el R&iacute;o de la Plata</em> &mdash; ser and estar, one last time.</div>
+        </div>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">On the map, find the home country of one of the seven virtue-figures (Venezuela, Puerto Rico, M&eacute;xico, Guatemala, Per&uacute;, Argentina). Say one sentence about the figure using <em>es</em> and <em>tiene</em>.</div>
+        </div>
+    </div>
+
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#9733; LA VIRTUD &middot; COURTESY</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Greeting the vendor before you ask a price isn't just grammar &mdash; it's <strong>courtesy</strong>, the virtue of <strong>San Mart&iacute;n de Porres</strong>, the humble Peruvian friar who treated everyone with kindness. In Spanish-speaking markets a warm <em>&laquo;Buenos d&iacute;as&raquo;</em> comes first; rushing to business can seem cold. Courtesy travels in any language &mdash; and in any world, real or virtual.</p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">10</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 8.10 &mdash; the gate</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow is the last day of Semester&nbsp;1: a listening warm-up, then the cumulative <strong>Grammar Quiz (30 pts, 2 attempts)</strong> that serves as the <strong>gate to Semester&nbsp;2</strong> &mdash; and an &ldquo;I can&hellip;&rdquo; close.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then make sure your VR <strong>spatial recording</strong> and short <strong>reflection</strong> are submitted per the project instructions &mdash; those are the graded pieces, not this page.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;CASI LO LOGRAS&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just held a real conversation in a Spanish market &mdash; greeting, prices, orders, descriptions &mdash; and toured the whole Spanish-speaking world. One gate stands between you and Semester&nbsp;2. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 2 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 8.09 &middot; Proyecto VR + Mapa</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — es bueno (lasting quality) + está caliente (right-now condition).'
+        : 'Not quite — a lasting quality uses ser (es bueno); a right-now condition uses estar (está caliente).';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

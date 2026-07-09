@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 0.02</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 0</div>
+        <div style="font-size: 12px; color: #666;">&iexcl;Bienvenidos!</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 0.02 &middot; Day 2 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">El alfabeto (the alphabet)</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Welcome &amp; Phonics</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 0.02</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El alfabeto &mdash; Spell Your Name in Spanish</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Yesterday: five vowels. Today: all 27 letters &mdash; including one that doesn't exist in English.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">The Spanish alphabet (<em>el abecedario</em>) has the same 26 letters as English <strong>plus the &ntilde;</strong>. Most letters sound close to what you'd expect; a handful have their own names you'll want to hear. By the end you'll be able to do something genuinely useful from day one: <strong>spell your own name out loud in Spanish</strong> &mdash; exactly what you'd do to sign up for anything in a Spanish-speaking country.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> name the letters of the Spanish alphabet, including the special <em>&ntilde;</em> (<em>e&ntilde;e</em>).</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> spell my own name aloud, letter by letter, in Spanish.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Warm up your vowels</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the full alphabet, run yesterday's five vowels once more &mdash; they're the sounds hiding inside every letter name. Say them out loud: <em>a, e, i, o, u</em>.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">How did the five vowels feel after a night's rest?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Excelente! When the vowels feel automatic, the whole alphabet falls into place &mdash; because every letter name is built from them.">They felt easy</button>
+                <button data-response="Totally normal. Replay Lesson 0.01's vowel clips once, then come back &mdash; five short, steady sounds, no rush.">Still a little shaky</button>
+                <button data-response="Good instinct to notice. Keep them short and clipped as you hear the letter names today &mdash; that's the accent giveaway.">I keep adding an English glide</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · The alphabet -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; EL ABECEDARIO <span class="pill-time">15 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">All 27 letters &mdash; listen and echo</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Click each <strong>&#128266;</strong> to hear the letter's <em>name</em> and say it back. Don't memorize all 27 at once &mdash; just get the shape of them, and spend extra time on the ones that surprise you.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/a.mp3" aria-label="Escuchar a">&#128266;</button><span class="v-es">A a</span><span class="v-en">&ldquo;a&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/b.mp3" aria-label="Escuchar be">&#128266;</button><span class="v-es">B b</span><span class="v-en">&ldquo;be&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/c.mp3" aria-label="Escuchar ce">&#128266;</button><span class="v-es">C c</span><span class="v-en">&ldquo;ce&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/d.mp3" aria-label="Escuchar de">&#128266;</button><span class="v-es">D d</span><span class="v-en">&ldquo;de&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/e.mp3" aria-label="Escuchar e">&#128266;</button><span class="v-es">E e</span><span class="v-en">&ldquo;e&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/f.mp3" aria-label="Escuchar efe">&#128266;</button><span class="v-es">F f</span><span class="v-en">&ldquo;efe&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/g.mp3" aria-label="Escuchar ge">&#128266;</button><span class="v-es">G g</span><span class="v-en">&ldquo;ge&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/h.mp3" aria-label="Escuchar hache">&#128266;</button><span class="v-es">H h</span><span class="v-en">&ldquo;hache&rdquo; &mdash; always silent!</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/i.mp3" aria-label="Escuchar i">&#128266;</button><span class="v-es">I i</span><span class="v-en">&ldquo;i&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/j.mp3" aria-label="Escuchar jota">&#128266;</button><span class="v-es">J j</span><span class="v-en">&ldquo;jota&rdquo; &mdash; a breathy <em>h</em> sound</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/k.mp3" aria-label="Escuchar ka">&#128266;</button><span class="v-es">K k</span><span class="v-en">&ldquo;ka&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/l.mp3" aria-label="Escuchar ele">&#128266;</button><span class="v-es">L l</span><span class="v-en">&ldquo;ele&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/m.mp3" aria-label="Escuchar eme">&#128266;</button><span class="v-es">M m</span><span class="v-en">&ldquo;eme&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/n.mp3" aria-label="Escuchar ene">&#128266;</button><span class="v-es">N n</span><span class="v-en">&ldquo;ene&rdquo;</span></li>
+            <li class="vocab-item" style="border:1px solid #C7922C;background:#FDF7E9;"><button class="say" data-audio="alfabeto/enye.mp3" aria-label="Escuchar e&ntilde;e">&#128266;</button><span class="v-es">&Ntilde; &ntilde;</span><span class="v-en"><strong>&ldquo;e&ntilde;e&rdquo;</strong> &mdash; the letter English doesn't have (the <em>ny</em> in "canyon")</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/o.mp3" aria-label="Escuchar o">&#128266;</button><span class="v-es">O o</span><span class="v-en">&ldquo;o&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/p.mp3" aria-label="Escuchar pe">&#128266;</button><span class="v-es">P p</span><span class="v-en">&ldquo;pe&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/q.mp3" aria-label="Escuchar cu">&#128266;</button><span class="v-es">Q q</span><span class="v-en">&ldquo;cu&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/r.mp3" aria-label="Escuchar erre">&#128266;</button><span class="v-es">R r</span><span class="v-en">&ldquo;erre&rdquo; &mdash; the rolled one</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/s.mp3" aria-label="Escuchar ese">&#128266;</button><span class="v-es">S s</span><span class="v-en">&ldquo;ese&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/t.mp3" aria-label="Escuchar te">&#128266;</button><span class="v-es">T t</span><span class="v-en">&ldquo;te&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/u.mp3" aria-label="Escuchar u">&#128266;</button><span class="v-es">U u</span><span class="v-en">&ldquo;u&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/v.mp3" aria-label="Escuchar uve">&#128266;</button><span class="v-es">V v</span><span class="v-en">&ldquo;uve&rdquo; / &ldquo;ve&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/w.mp3" aria-label="Escuchar doble ve">&#128266;</button><span class="v-es">W w</span><span class="v-en">&ldquo;doble ve&rdquo; &mdash; rare, in borrowed words</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/x.mp3" aria-label="Escuchar equis">&#128266;</button><span class="v-es">X x</span><span class="v-en">&ldquo;equis&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/y.mp3" aria-label="Escuchar ye">&#128266;</button><span class="v-es">Y y</span><span class="v-en">&ldquo;ye&rdquo; / &ldquo;i griega&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="alfabeto/z.mp3" aria-label="Escuchar zeta">&#128266;</button><span class="v-es">Z z</span><span class="v-en">&ldquo;zeta&rdquo;</span></li>
+        </ul>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Three letters trip up English speakers the most: <em>h</em> (<em>hache</em>) is <strong>always silent</strong>, <em>j</em> (<em>jota</em>) sounds like a breathy English <em>h</em>, and <em>&ntilde;</em> (<em>e&ntilde;e</em>) is its own letter with the "ny" sound. Replay just those three &#128266; and say each letter name five times.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Spell your name -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 3 &middot; DELETREA TU NOMBRE <span class="pill-time">12 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Spell your own name aloud</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In Spanish, when someone asks <em>&laquo;&iquest;C&oacute;mo se escribe?&raquo;</em> (How is it spelled?), you answer letter by letter using the names you just learned. Write your first name on paper, then say each letter's Spanish name out loud. For example, <strong>ANA</strong> is <em>a &mdash; ene &mdash; a</em>, and <strong>LUIS</strong> is <em>ele &mdash; u &mdash; i &mdash; ese</em>. Replay any letter's &#128266; above if you get stuck.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; which letter is it?</div>
+            <div class="widget-question">You need to spell a name with the letter <strong>J</strong>. Its Spanish name is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">ge</button>
+                <button data-correct="true">jota</button>
+                <button data-correct="false">ye</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; the special letter</div>
+            <div class="widget-question">Which letter is unique to Spanish &mdash; it isn't in the English alphabet?</div>
+            <div class="widget-options">
+                <button data-correct="true">&ntilde;</button>
+                <button data-correct="false">h</button>
+                <button data-correct="false">z</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Spell the name <strong>SOFÍA</strong> out loud in Spanish. Say each letter, then reveal to check.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>ese &mdash; o &mdash; efe &mdash; i &mdash; a.</strong> (The accent on <em>&iacute;</em> tells you which syllable to stress: so-F&Iacute;-a &mdash; you'll learn accents and stress later this module.)</div>
+        </div>
+    </div>
+
+    <!-- Culture -->
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; LA &Ntilde;</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>La letra que es puro espa&ntilde;ol</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">The <strong>&ntilde;</strong> was born from thrifty medieval scribes: to save parchment, they wrote a small <em>n</em> above another <em>n</em>, and that little wave (<em>la tilde</em>) became a letter of its own. Today the &ntilde; is a proud emblem of the Spanish language &mdash; it's even in the word <em>espa&ntilde;ol</em> itself. Around the world, more than <strong>500 million people</strong> use this alphabet every day.</p>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then spell your <strong>full name</strong> out loud in Spanish, letter by letter &mdash; and don't forget: <em>h</em> is silent, and the <em>&ntilde;</em> is <em>e&ntilde;e</em>.</div>
+    </div>
+
+    <!-- What's next -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 0.03</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow we slow down on the <em>tricky sounds</em> &mdash; the rolled <em>rr</em>, the <em>g</em> and <em>j</em>, the silent <em>h</em>, the <em>&ntilde;</em>, the <em>ll</em>, and <em>qu</em> &mdash; using real Spanish words. These are the sounds that make you sound like a speaker, not a tourist.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;MUY BIEN&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You can now spell your own name in a brand-new language &mdash; that's real, usable Spanish on day two. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 0.02 &middot; El alfabeto</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — replay the letter names above and listen again.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

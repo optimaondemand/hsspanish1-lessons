@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 0.05</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 0</div>
+        <div style="font-size: 12px; color: #666;">&iexcl;Bienvenidos!</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 0.05 &middot; Day 5 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">El g&eacute;nero y los art&iacute;culos</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Welcome &amp; Phonics</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 0.05</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El g&eacute;nero y los art&iacute;culos &mdash; The Word for &ldquo;The&rdquo;</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes &middot; closes Week 1</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">One idea today unlocks the whole course: in Spanish, every noun has a <em>gender</em>, and the word for &ldquo;the&rdquo; changes to match.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is the foundation everything is built on. Spanish nouns are either <strong style="color:#0E1C42;">masculine</strong> or <strong style="color:#AA1E2D;">feminine</strong> &mdash; not because objects have a gender, but simply as a grammar category. The word for "the" comes in four flavors: <strong style="color:#0E1C42;">el</strong>, <strong style="color:#AA1E2D;">la</strong>, <strong style="color:#0E1C42;">los</strong>, <strong style="color:#AA1E2D;">las</strong>. The golden rule: <strong>learn every noun glued to its article</strong>. You'll also collect free vocabulary (cognates) and take a first look at the whole Spanish-speaking world.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> choose <em>el, la, los,</em> or <em>las</em> for a noun and explain why.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> recognize cognates and use the chunks <em>soy de&hellip;</em> and <em>tengo&hellip; a&ntilde;os</em>.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A new idea for English speakers</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In English, "the" never changes &mdash; the dog, the house, the cats. Spanish is different, and that surprises everyone at first. There's nothing to be afraid of; it's just a new habit.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">How does "nouns have a gender" strike you right now?</div>
+            <div class="widget-options">
+                <button data-response="That's the honest first reaction for most English speakers! The trick that makes it painless: always learn the noun with its article attached. You'll see how today.">A little strange, honestly</button>
+                <button data-response="Nice &mdash; if you've seen French, German, or Italian, this idea is familiar. Spanish gender is refreshingly regular by comparison.">I've seen this in another language</button>
+                <button data-response="Great attitude. It really is just a pattern to notice, and Spanish gives you helpful endings (-o, -a) that make guessing easy most of the time.">Makes sense &mdash; bring it on</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Gender & articles -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; EL / LA / LOS / LAS <span class="pill-time">15 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Four words for &ldquo;the&rdquo;</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Which one you use depends on two things: is the noun <strong style="color:#0E1C42;">masculine</strong> or <strong style="color:#AA1E2D;">feminine</strong>, and is it <strong>singular</strong> (one) or <strong>plural</strong> (more than one)?</p>
+        <table class="gtable">
+            <thead><tr><th></th><th style="color:#fff;">Masculine</th><th style="color:#fff;">Feminine</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Singular (one)</strong></td><td><span style="color:#0E1C42;font-weight:700;">el</span> gato <span style="color:#6b7a99;">(the cat)</span></td><td><span style="color:#AA1E2D;font-weight:700;">la</span> casa <span style="color:#6b7a99;">(the house)</span></td></tr>
+                <tr><td><strong>Plural (more)</strong></td><td><span style="color:#0E1C42;font-weight:700;">los</span> gatos <span style="color:#6b7a99;">(the cats)</span></td><td><span style="color:#AA1E2D;font-weight:700;">las</span> casas <span style="color:#6b7a99;">(the houses)</span></td></tr>
+            </tbody>
+        </table>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 8px 0 0;">A very handy hint: nouns ending in <strong style="color:#0E1C42;">-o</strong> are usually masculine (<span style="color:#0E1C42;">el</span> libr<strong>o</strong>), and nouns ending in <strong style="color:#AA1E2D;">-a</strong> are usually feminine (<span style="color:#AA1E2D;">la</span> mes<strong>a</strong>). It's not a perfect rule &mdash; <em>el d&iacute;a</em> (the day) and <em>la mano</em> (the hand) break it &mdash; which is exactly why you <strong>learn each noun with its article</strong>.</p>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Look around the room. For five objects you can name in English, guess the Spanish gender from the &ldquo;-o = <span style="color:#0E1C42;">el</span>, -a = <span style="color:#AA1E2D;">la</span>&rdquo; hint. You won't know all the words yet &mdash; that's fine. The point is to start <em>thinking</em> in the two-color system: is it an <span style="color:#0E1C42;">el</span> or a <span style="color:#AA1E2D;">la</span>?</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Cognates + chunks -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127873; PART 3 &middot; COGNADOS Y FRASES &Uacute;TILES <span class="pill-time">13 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Free words you already know</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">A <strong>cognate</strong> (<em>cognado</em>) is a word that looks and means nearly the same in both languages &mdash; free vocabulary! Notice each still takes a gendered article:</p>
+        <ul style="font-size:16px;color:#1a2340;line-height:1.8;margin:0 0 6px 1.2rem;">
+            <li><span style="color:#AA1E2D;font-weight:700;">la</span> familia &middot; <span style="color:#0E1C42;font-weight:700;">el</span> animal &middot; <span style="color:#AA1E2D;font-weight:700;">la</span> m&uacute;sica &middot; <span style="color:#0E1C42;font-weight:700;">el</span> hospital &middot; <span style="color:#AA1E2D;font-weight:700;">la</span> universidad</li>
+        </ul>
+        <p style="font-size:14px;color:#6b7a99;margin:0 0 10px;">Careful with &ldquo;false friends&rdquo;: <em>ropa</em> means <em>clothes</em> (not rope), and <em>librer&iacute;a</em> is a <em>bookstore</em> (not library). Most cognates are your friends, though &mdash; use them.</p>
+
+        <h4 style="font-size:14px;color:#1B6A94;margin:12px 0 4px;">FRASES &Uacute;TILES &middot; two chunks for talking about yourself</h4>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="frases/soy-de.mp3" aria-label="Escuchar soy de">&#128266;</button><span class="v-es">soy de&hellip;</span><span class="v-en">I'm from&hellip; (soy de los Estados Unidos)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="frases/tengo-anos.mp3" aria-label="Escuchar tengo a&ntilde;os">&#128266;</button><span class="v-es">tengo&hellip; a&ntilde;os</span><span class="v-en">I'm&hellip; years old (lit. "I have&hellip; years")</span></li>
+        </ul>
+        <p style="font-size:14px;color:#6b7a99;margin:6px 0 0;">Notice: in Spanish you don't <em>are</em> a certain age &mdash; you <em>have</em> years. <em>Tengo quince a&ntilde;os</em> = "I have fifteen years" = I'm 15. (You'll learn all your numbers next week.)</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; which article?</div>
+            <div class="widget-question">The word <em>libro</em> (book) ends in <em>-o</em>. The article is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="true"><span style="color:#0E1C42;">el</span> libro</button>
+                <button data-correct="false"><span style="color:#AA1E2D;">la</span> libro</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; singular to plural</div>
+            <div class="widget-question">If one is <em><span style="color:#AA1E2D;">la</span> casa</em>, then two or more houses are&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false"><span style="color:#0E1C42;">los</span> casas</button>
+                <button data-correct="true"><span style="color:#AA1E2D;">las</span> casas</button>
+                <button data-correct="false"><span style="color:#AA1E2D;">la</span> casas</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Say two true things about yourself out loud using today's chunks: where you're from, and (roughly) your age. Then reveal a model.</p>
+            <button class="reveal-btn">Reveal a model</button>
+            <div class="reveal-body"><strong>&laquo;Soy de los Estados Unidos. Tengo quince a&ntilde;os.&raquo;</strong> ("I'm from the United States. I'm fifteen.") Swap in your own country and age &mdash; you'll nail the exact number after next week's numbers lesson.</div>
+        </div>
+    </div>
+
+    <!-- FEATURED CULTURE: El mundo hispano -->
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA DESTACADA &middot; EL MUNDO HISPANO</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Welcome to a world of Spanish</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0 0 10px 0;">Spanish isn't the language of one country &mdash; it's the everyday language of <strong>more than 20 nations</strong> and over <strong>500 million people</strong>, making it one of the most spoken languages on Earth. It's official across most of <strong>Latin America</strong> &mdash; from <strong>Mexico</strong> (the country with the most Spanish speakers of all) south through <strong>Central America</strong>, the <strong>Caribbean</strong> (Cuba, the Dominican Republic, Puerto Rico), and nearly all of <strong>South America</strong> (Colombia, Peru, Argentina, Chile, and more) &mdash; and it's also the language of <strong>Spain</strong>, where it began.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">That reach is why this course takes a <strong>Latin-American-first, pan-Hispanic</strong> view: you'll hear a clear, neutral accent understood everywhere, and meet food, music, and traditions from across the whole Spanish-speaking world. On Day 9 you'll explore all of it on an interactive map. For now, just take in how far your new language can carry you.</p>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then name three nouns out loud <em>with their article</em> &mdash; e.g. <em><span style="color:#0E1C42;">el</span> gato</em>, <em><span style="color:#AA1E2D;">la</span> casa</em>, <em><span style="color:#AA1E2D;">la</span> familia</em> &mdash; and say one sentence with <em>soy de&hellip;</em></div>
+    </div>
+
+    <!-- What's next -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT &middot; WEEK 2 BEGINS</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 0.06 &mdash; Week 2</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">That's the end of Week 1 &mdash; sounds, letters, greetings, and the gender system, all in place. Next week starts with the practical stuff: <strong>numbers 0&ndash;31, the days of the week, and the months</strong>, so you can say dates. Graded work in this module begins on Day 7; this week was for building your ear, and you did.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;FIN DE LA SEMANA 1&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've built the foundation: five vowels, a whole alphabet, the tricky sounds, real greetings, and the gender system. That's a strong first week in any language. <em>&iexcl;Hasta la pr&oacute;xima semana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 0.05 &middot; El g&eacute;nero y los art&iacute;culos</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! Remember: masculine → el/los, feminine → la/las.'
+        : 'Not quite — check the gender (el/la) and whether it is one or many.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

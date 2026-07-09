@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 5.06</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 5</div>
+        <div style="font-size: 12px; color: #666;">La comida</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 5.06 &middot; Day 6 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Repaso y espiral</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Food &amp; Shopping</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 5.06 &middot; Week 2 begins</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Repaso y espiral &mdash; Retrieval Before the Quiz</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>pulling it back out of your head</em>, which is where real learning happens.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">First day of Week&nbsp;2. Instead of new material, today you <em>retrieve</em>: an ear-quiz on the food words, a short production task, and a <strong>spiral</strong> back to Semester&nbsp;1 &mdash; the verb <strong>gustar</strong> (to like) and the food you already knew (<em>el arroz, el pollo, la fruta, las verduras</em>). You'll say what you like, then answer questions about food using this module's <strong>lo/la/los/las</strong> pronouns. Combining old and new is exactly what the Day-10 quiz asks of you.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> recognize spoken food words and match them to meaning.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> say what food I like with <em>gustar</em> and answer food questions with a pronoun.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Warm up your ear</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the ear-quiz, remind your brain what these food words sound like. Click each <strong>&#128266;</strong>, say it back, and picture its meaning &mdash; don't read the English until after you've guessed.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-carne.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la carne</span><span class="v-en">meat</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-tomate.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el tomate</span><span class="v-en">tomato</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-postre.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el postre</span><span class="v-en">dessert</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-caro.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">caro/a</span><span class="v-en">expensive</span></li>
+        </ul>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Honestly &mdash; which one still feels the shakiest for you right now?</div>
+            <div class="widget-options">
+                <button data-response="Good to know. Give the food nouns extra attention in the ear-quiz below &mdash; they're the heart of the Vocabulary Check.">The food words</button>
+                <button data-response="Makes sense. The pronoun spiral in Part 3 is exactly the fix &mdash; you'll answer real food questions with lo/la/los/las.">The lo/la/los/las pronouns</button>
+                <button data-response="That's the big one, and today's spiral is built for it: gustar (from Semester 1) and the pronouns side by side.">Saber vs. conocer</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Ear-quiz -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127911; PART 2 &middot; PRUEBA DE O&Iacute;DO <span class="pill-time">12 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Ear-quiz: what did you hear?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Press <strong>&#128266;</strong> to hear a word (replay as often as you like), then pick its meaning. This is the interpretive-listening skill the Day-10 quiz will test &mdash; train it now.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-el-pescado.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What food is this?</div>
+            <div class="widget-options">
+                <button data-correct="true">fish</button>
+                <button data-correct="false">meat</button>
+                <button data-correct="false">cheese</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-los-huevos.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="false">apples</button>
+                <button data-correct="true">eggs</button>
+                <button data-correct="false">tomatoes</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-el-queso.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What food is this?</div>
+            <div class="widget-options">
+                <button data-correct="false">dessert</button>
+                <button data-correct="false">fish</button>
+                <button data-correct="true">cheese</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-la-manzana.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="true">apple</button>
+                <button data-correct="false">tomato</button>
+                <button data-correct="false">meat</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-rico.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this word mean?</div>
+            <div class="widget-options">
+                <button data-correct="false">expensive</button>
+                <button data-correct="true">tasty / delicious</button>
+                <button data-correct="false">cheap</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Replay each clip once more, but this time say a full sentence out loud: <em>Me gusta el queso. El pescado es rico. Las manzanas son caras.</em> Hearing the word and immediately producing a sentence is the strongest kind of practice.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Spiral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; ESPIRAL &middot; GUSTAR + LA COMIDA <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Bring back <em>gustar</em> from Semester 1</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Remember <strong>gustar</strong>? It works &ldquo;backwards&rdquo;: use <em>gusta</em> for one thing and <em>gustan</em> for more than one. Pair it with the food you know &mdash; old and new:</p>
+        <table class="gtable">
+            <thead><tr><th>To say&hellip;</th><th>Use&hellip;</th><th>Example &middot; listen</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>I like <em>one</em> food</td>
+                    <td><span class="pron">Me gusta</span> + singular</td>
+                    <td>Me gusta el <span class="pron">pescado</span>. <button class="say" data-audio="vocab/s2-el-pescado.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td>I like <em>plural</em> foods</td>
+                    <td><span class="pron">Me gustan</span> + plural</td>
+                    <td>Me gustan las <span class="pron">verduras</span>. <button class="say" data-audio="vocab/las-verduras.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td>the verb itself</td>
+                    <td>gustar (to be pleasing)</td>
+                    <td>gustar <button class="say" data-audio="vocab/gustar.mp3" aria-label="Escuchar">&#128266;</button> &middot; comer <button class="say" data-audio="vocab/comer.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0 8px;">Now combine both worlds: someone asks about a food, and you answer with a <strong>pronoun</strong> instead of repeating it.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; gusta or gustan?</div>
+            <div class="widget-question">"Me ___ el arroz y el pollo." (I like rice and chicken.)</div>
+            <div class="widget-options">
+                <button data-correct="false">gusta</button>
+                <button data-correct="true">gustan</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; which pronoun?</div>
+            <div class="widget-question">"&iquest;Comes fruta?" &rarr; "S&iacute;, ___ como todos los d&iacute;as." (the fruit &rarr; a pronoun)</div>
+            <div class="widget-options">
+                <button data-correct="true">la</button>
+                <button data-correct="false">lo</button>
+                <button data-correct="false">los</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; which pronoun?</div>
+            <div class="widget-question">"&iquest;Preparas el pollo?" &rarr; "S&iacute;, ___ preparo con arroz." (the chicken &rarr; a pronoun)</div>
+            <div class="widget-options">
+                <button data-correct="false">la</button>
+                <button data-correct="true">lo</button>
+                <button data-correct="false">las</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 4 · Production -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 4 &middot; A PRODUCIR <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Build it yourself, then check</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; commit before you peek. This is a self-test, so being honest with yourself is where the value is.</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;I like fish, and I know how to cook it.&rdquo;</em> (use <em>gustar</em>, <em>saber</em>, and a pronoun)</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Me gusta el pescado, y s&eacute; cocinarlo.</strong> (Or <em>&hellip;y lo s&eacute; cocinar.</em>) <em>Gusta</em> for one thing; <em>s&eacute;</em> + infinitive for a skill; <em>lo</em> replaces <em>el pescado</em>.</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;I know a good supermarket; I buy vegetables there.&rdquo;</em> (use <em>conocer</em> + a pronoun)</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Conozco un buen supermercado; all&iacute; las compro.</strong> A place &rarr; <em>conocer</em>; <em>las</em> replaces <em>las verduras</em>.</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;I like desserts, but they are expensive.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Me gustan los postres, pero son caros.</strong> Plural &rarr; <em>gustan</em>; the adjective <em>caros</em> agrees with <em>los postres</em>.</div>
+        </div>
+    </div>
+
+    <!-- PART 5 · Reading recycle -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 5 &middot; A LEER OTRA VEZ <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Marta returns &mdash; listen and read</h3>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 8px 0;">You met this on Day 5. Press play, follow along, and this time notice how <em>conocer</em>, <em>saber</em>, and the pronoun <em>la</em> take turns doing their jobs.</p>
+        <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/s2m5-espana.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Play the reading</span></p>
+        <p style="font-size:17px;color:#1a2340;line-height:1.75;">
+        &laquo;Me llamo Marta y vivo en Sevilla, Espa&ntilde;a. <strong>Conozco</strong> un mercado muy bueno cerca de mi casa. All&iacute; compro fruta, pescado y queso. <strong>S&eacute;</strong> preparar una tortilla espa&ntilde;ola deliciosa. &iquest;<strong>La</strong> quieres probar? <strong>La</strong> hago los domingos para mi familia.&raquo;</p>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; ESPA&Ntilde;A</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>&iquest;Qu&eacute; te gusta comer?</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Ask a Spaniard what they like and you'll hear the same foods on your list: <em>Me gusta el jam&oacute;n, me gustan las aceitunas</em> (olives), <em>me gusta el queso manchego</em>. Spain's cooking is regional &mdash; seafood on the coasts, hearty stews inland &mdash; but everywhere it's built from simple, fresh ingredients bought that morning.</p>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#128077; CULTURA A FONDO &middot; ESPA&Ntilde;A</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El horario de las comidas</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 8px;">Spain eats on a famously late clock. <strong>El desayuno</strong> (breakfast) is light &mdash; coffee and toast. <strong>La comida</strong>, the main meal, comes around 2&ndash;3&nbsp;p.m. And <strong>la cena</strong> (dinner) is often as late as 9 or 10&nbsp;p.m. Between them, many people stop for <em>tapas</em> or a <em>merienda</em> (afternoon snack).</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">This late rhythm surprises many visitors, but it fits the Spanish day: shops may close midday, and evenings run long. When you order in the VR <em>mercado</em> later this semester, that easy, unhurried pace is part of what you'll step into.</p>
+    </div>
+
+    <!-- Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">7</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 5.07</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and <strong>Lengua en acci&oacute;n (20 pts)</strong>. Everything on today's page &mdash; the food words, <em>gustar</em>, and the pronouns &mdash; is exactly what those items draw on. You've done the retrieval; now you're ready.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say three sentences about food you like &mdash; one with <em>me gusta</em>, one with <em>me gustan</em>, and one that answers a question with <em>lo/la/los/las</em>.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN REPASO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You heard it, you built it, and you tied Semester&nbsp;1's <em>gustar</em> to this module's pronouns. That's the retrieval that makes the quiz feel easy &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 5.06 &middot; Repaso y espiral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s right.'
+        : 'Not quite — think it through and try again.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Vocabulario M&oacute;dulo 0</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    /* --- flip-card study widget --- */
+    .flip-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin:16px 0 4px; }
+    .flip-card { perspective:1000px; cursor:pointer; outline:none; }
+    .flip-card:focus-visible .flip-front { box-shadow:0 0 0 3px #55C8E8; }
+    .flip-inner { position:relative; width:100%; min-height:130px; transition:transform .5s; transform-style:preserve-3d; }
+    .flip-card.flipped .flip-inner { transform:rotateY(180deg); }
+    .flip-face { position:absolute; inset:0; -webkit-backface-visibility:hidden; backface-visibility:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-radius:10px; padding:16px; text-align:center; }
+    .flip-front { background:linear-gradient(135deg,#E8F6FB 0%,#F4F9FC 100%); border:1px solid #C5DCE5; border-top:3px solid #2196D0; }
+    .flip-back { background:#0E1C42; border:1px solid #0E1C42; transform:rotateY(180deg); }
+    .flip-es { font-size:21px; font-weight:600; color:#0E1C42; line-height:1.25; }
+    .flip-en { font-size:20px; font-weight:600; color:#ffffff; line-height:1.3; }
+    .flip-hint { font-size:11px; letter-spacing:.3px; }
+    .flip-front .flip-hint { color:#6b7a99; }
+    .flip-back .flip-hint { color:#9fb3d1; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 0</div>
+        <div style="font-size: 12px; color: #666;">&iexcl;Bienvenidos!</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Study companion</div>
+        <div style="font-size: 17px; color: #0e1c42;">Vocabulario &middot; Repaso</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Sonidos, saludos y n&uacute;meros</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Welcome &amp; Phonics</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">M&oacute;dulo 0 &middot; Vocabulario</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Vocabulario &middot; M&oacute;dulo 0</div>
+        <div style="font-size: 16px; color: #666;">Study cards &middot; tap a card to flip, tap &#128266; to hear it</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; HOW TO USE THIS PAGE</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">These are the key sets of M&oacute;dulo 0 &mdash; the same material you'll meet on the listening-based <em>Vocabulary Check</em> (Day 7) and the <em>Pronunciation &amp; Sound Quiz</em> (Day 10). Each card shows the Spanish; <strong>tap the card</strong> to flip it and check the English. But your real goal is to know these <em>by ear</em>: tap the <strong>&#128266;</strong> button and say each one back out loud <em>before</em> you flip. If you can hear it and know it without reading, you're ready.</div>
+        <p style="font-size: 14px; color: #6b7a99; margin: 12px 0 0;">Tip: tapping the <strong>&#128266;</strong> plays the audio and does <em>not</em> flip the card &mdash; so you can listen as many times as you like before checking the answer.</p>
+    </div>
+
+    <!-- SECTION A · Vowels -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#128264; SECCI&Oacute;N A &middot; LAS VOCALES <span class="pill-time">the 5 vowels</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Las vocales &mdash; one clean sound each</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">Short and steady, no glide.</p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: a, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/a.mp3" aria-label="Escuchar a">&#128266;</button><span class="flip-es">a</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"ah"<br>like <em>father</em></span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: e, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/e.mp3" aria-label="Escuchar e">&#128266;</button><span class="flip-es">e</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"eh"<br>like <em>bet</em></span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: i, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/i.mp3" aria-label="Escuchar i">&#128266;</button><span class="flip-es">i</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"ee"<br>like <em>see</em></span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: o, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/o.mp3" aria-label="Escuchar o">&#128266;</button><span class="flip-es">o</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"oh"<br>like <em>for</em></span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: u, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/u.mp3" aria-label="Escuchar u">&#128266;</button><span class="flip-es">u</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"oo"<br>like <em>food</em></span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION B · A few letters -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#128209; SECCI&Oacute;N B &middot; LETRAS CLAVE <span class="pill-time">tricky letters</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Letras clave &mdash; the letter names to know by ear</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">The ones that surprise English speakers, plus the special <em>&ntilde;</em>.</p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: e&ntilde;e, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/enye.mp3" aria-label="Escuchar e&ntilde;e">&#128266;</button><span class="flip-es">&ntilde;</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"e&ntilde;e"<br>the "ny" letter</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: hache, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/h.mp3" aria-label="Escuchar hache">&#128266;</button><span class="flip-es">h</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"hache"<br>silent in words</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: jota, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/j.mp3" aria-label="Escuchar jota">&#128266;</button><span class="flip-es">j</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"jota"<br>breathy "h"</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: erre, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="alfabeto/r.mp3" aria-label="Escuchar erre">&#128266;</button><span class="flip-es">r</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">"erre"<br>the rolled one</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION C · Greetings & courtesy -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#128522; SECCI&Oacute;N C &middot; SALUDOS Y CORTES&Iacute;A <span class="pill-time">greetings &amp; courtesy</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Saludos y cortes&iacute;a &mdash; the social words</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">Learn each as a whole sound-chunk.</p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: hola, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="saludos/hola.mp3" aria-label="Escuchar hola">&#128266;</button><span class="flip-es">hola</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">hi / hello</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: buenos d&iacute;as, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="saludos/buenos-dias.mp3" aria-label="Escuchar buenos d&iacute;as">&#128266;</button><span class="flip-es">buenos d&iacute;as</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">good morning</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: &iquest;c&oacute;mo est&aacute;s?, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="saludos/como-estas.mp3" aria-label="Escuchar &iquest;c&oacute;mo est&aacute;s?">&#128266;</button><span class="flip-es">&iquest;c&oacute;mo est&aacute;s?</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">how are you?</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: adi&oacute;s, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="saludos/adios.mp3" aria-label="Escuchar adi&oacute;s">&#128266;</button><span class="flip-es">adi&oacute;s</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">goodbye</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: hasta ma&ntilde;ana, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="saludos/hasta-manana.mp3" aria-label="Escuchar hasta ma&ntilde;ana">&#128266;</button><span class="flip-es">hasta ma&ntilde;ana</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">see you tomorrow</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: por favor, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="cortesia/por-favor.mp3" aria-label="Escuchar por favor">&#128266;</button><span class="flip-es">por favor</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">please</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: gracias, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="cortesia/gracias.mp3" aria-label="Escuchar gracias">&#128266;</button><span class="flip-es">gracias</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">thank you</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: de nada, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="cortesia/de-nada.mp3" aria-label="Escuchar de nada">&#128266;</button><span class="flip-es">de nada</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">you're welcome</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION D · Numbers 0-10 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#128290; SECCI&Oacute;N D &middot; N&Uacute;MEROS 0&ndash;10 <span class="pill-time">numbers</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">N&uacute;meros 0&ndash;10 &mdash; count by ear</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">Know these cold, then push on to 31 (Lesson 0.06).</p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: cero, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n0.mp3" aria-label="Escuchar cero">&#128266;</button><span class="flip-es">cero</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">0</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: uno, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n1.mp3" aria-label="Escuchar uno">&#128266;</button><span class="flip-es">uno</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">1</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: dos, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n2.mp3" aria-label="Escuchar dos">&#128266;</button><span class="flip-es">dos</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">2</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: tres, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n3.mp3" aria-label="Escuchar tres">&#128266;</button><span class="flip-es">tres</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">3</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: cuatro, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n4.mp3" aria-label="Escuchar cuatro">&#128266;</button><span class="flip-es">cuatro</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">4</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: cinco, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n5.mp3" aria-label="Escuchar cinco">&#128266;</button><span class="flip-es">cinco</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">5</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: seis, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n6.mp3" aria-label="Escuchar seis">&#128266;</button><span class="flip-es">seis</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">6</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: siete, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n7.mp3" aria-label="Escuchar siete">&#128266;</button><span class="flip-es">siete</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">7</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: ocho, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n8.mp3" aria-label="Escuchar ocho">&#128266;</button><span class="flip-es">ocho</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">8</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: nueve, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n9.mp3" aria-label="Escuchar nueve">&#128266;</button><span class="flip-es">nueve</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">9</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: diez, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="numeros/n10.mp3" aria-label="Escuchar diez">&#128266;</button><span class="flip-es">diez</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">10</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION E · Days -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#128197; SECCI&Oacute;N E &middot; LOS D&Iacute;AS <span class="pill-time">days of the week</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Los d&iacute;as &mdash; starting Monday</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">No capital letters; the week begins with <em>lunes</em>.</p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: lunes, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="dias/lunes.mp3" aria-label="Escuchar lunes">&#128266;</button><span class="flip-es">lunes</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">Monday</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: martes, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="dias/martes.mp3" aria-label="Escuchar martes">&#128266;</button><span class="flip-es">martes</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">Tuesday</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: mi&eacute;rcoles, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="dias/miercoles.mp3" aria-label="Escuchar mi&eacute;rcoles">&#128266;</button><span class="flip-es">mi&eacute;rcoles</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">Wednesday</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: jueves, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="dias/jueves.mp3" aria-label="Escuchar jueves">&#128266;</button><span class="flip-es">jueves</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">Thursday</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: viernes, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="dias/viernes.mp3" aria-label="Escuchar viernes">&#128266;</button><span class="flip-es">viernes</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">Friday</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: s&aacute;bado, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="dias/sabado.mp3" aria-label="Escuchar s&aacute;bado">&#128266;</button><span class="flip-es">s&aacute;bado</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">Saturday</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: domingo, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="dias/domingo.mp3" aria-label="Escuchar domingo">&#128266;</button><span class="flip-es">domingo</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">Sunday</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Cover the English. Play the &#128266; on ten cards in random order and say each meaning out loud <em>before</em> you flip &mdash; that's exactly what the listening checks ask. Then build a tiny sentence per card: <em>&laquo;Hoy es lunes&raquo;</em>, <em>&laquo;Tengo cinco&hellip;&raquo;</em>, <em>&laquo;&iexcl;Hola, buenos d&iacute;as!&raquo;</em></div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, with the English covered, play five &#128266; buttons and say each meaning out loud before flipping &mdash; if you got them by ear, you're ready for the Vocabulary Check and the Pronunciation &amp; Sound Quiz.</div>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Study Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Vocabulario &middot; M&oacute;dulo 0 &middot; &iexcl;Bienvenidos!</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — play the clip again and listen closely.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  // Flip-card runtime: tap a card to flip; clicks on the audio button are ignored so the sound plays without flipping.
+  function toggle(card) { if (card) card.classList.toggle('flipped'); }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-audio]')) return; // let the audio runtime handle the speaker button
+    toggle(e.target.closest('.flip-card'));
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+    var card = e.target.closest('.flip-card');
+    if (!card) return;
+    e.preventDefault();
+    toggle(card);
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

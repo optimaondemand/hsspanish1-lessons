@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 3.08</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
+    .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 3</div>
+        <div style="font-size: 12px; color: #666;">La ciudad</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.08 &middot; Day 8 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Fon&eacute;tica + Tarea oral</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">City &amp; Directions</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.08</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Fon&eacute;tica &mdash; The Spanish R, and Your Voice on the Record</div>
+        <div style="font-size: 16px; color: #666;">Lesson + graded oral task &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've written these words all week. Today you <em>say</em> them &mdash; and you record it.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a <strong>pronunciation clinic</strong> built around the sounds that fill a set of directions: the Spanish <strong>r</strong> (a soft tap, and a strong trill), and the <strong>c / z / qu</strong> family. You'll rehearse each with words you already know &mdash; <em>derecha, cerca, esquina, izquierda</em> &mdash; then record your first graded <strong>Tarea oral</strong>: give directions to a place in your town, and say what you do downtown.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> pronounce the Spanish tapped and trilled <em>r</em> and the <em>c / z / qu</em> sounds.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> record directions to a place in my town and describe what I do downtown.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Why sound matters for directions</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Directions only work if the listener understands them. The difference between <em>pero</em> and <em>perro</em>, or a clear <em>derecha</em>, can send someone the right way &mdash; or the wrong one. Today we lock in the sounds, then you use them on air.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">When you say Spanish out loud, what feels hardest so far?</div>
+            <div class="widget-options">
+                <button data-response="Totally normal. The r-drill in Part 2 is exactly for this &mdash; start with the soft tap before the trill.">The rolled r</button>
+                <button data-response="Good to name it. The c / z / qu sounds are Part 3 &mdash; conozco and esquina will feel clean by the end.">The c / z / qu sounds</button>
+                <button data-response="Recording yourself feels strange for everyone at first. You'll rehearse aloud through the whole lesson before the mic ever turns on.">Speaking with no one there</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · The R -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LA R &mdash; TOQUE Y VIBRACI&Oacute;N <span class="pill-time">11 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">One letter, two jobs</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Spanish <strong>r</strong> has two sounds. A <strong>single r</strong> between vowels is a quick <em>tap</em> &mdash; the tongue flicks the roof of the mouth once, like the <em>tt</em> in American English &ldquo;butter.&rdquo; A <strong>double rr</strong>, or an <strong>r</strong> at the start of a word, is a <em>trill</em> &mdash; several taps in a row.</p>
+        <table class="gtable">
+            <thead><tr><th>Sound</th><th>How</th><th>Words from this module</th></tr></thead>
+            <tbody>
+                <tr><td><span class="pron">r</span> (tap)</td><td>one quick flick</td><td>de<span class="pron">r</span>echa &middot; ce<span class="pron">r</span>ca &middot; me<span class="pron">r</span>cado &middot; cuad<span class="pron">r</span>a</td></tr>
+                <tr><td><span class="pron">rr / r-</span> (trill)</td><td>several taps</td><td><span class="pron">r</span>estaurante &middot; de<span class="pron">r</span>echo (strong first r) &middot; iz-quie<span class="pron">r</span>-da</td></tr>
+            </tbody>
+        </table>
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 16px 0 8px 0;">Listen, then echo</h3>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 6px 0;">Click <strong>&#128266;</strong> and say each word back, feeling the tongue tap. These are all direction words you'll use in the Tarea oral.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-a-la-derecha.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">a la derecha</span><span class="v-en">tap the <em>r</em> in de-<strong>r</strong>e-cha</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-derecho.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">derecho</span><span class="v-en">same tap &mdash; but a different meaning (straight)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-cerca.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">cerca</span><span class="v-en">quick tap: <strong>cer</strong>-ca</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-semaforo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el sem&aacute;foro</span><span class="v-en">soft tap: se-m&aacute;-fo-<strong>ro</strong></span></li>
+        </ul>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Say the tongue-twister slowly, then faster: <em>&ldquo;El perro corre por la carretera.&rdquo;</em> Feel the trill in <em>perro</em> and <em>carretera</em> versus the single tap in <em>pero</em>. Recording yourself and playing it back is the fastest way to hear your own r.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · C/Z/QU -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; LA C, LA Z Y LA QU <span class="pill-time">9 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The /k/ and /s/ sounds</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In Latin American Spanish:</p>
+        <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 10px 1.2rem;">
+            <li><strong>c</strong> before <em>a, o, u</em> &rarr; a hard /k/: <em><span class="pron">c</span>asa, <span class="pron">c</span>uadra, <span class="pron">c</span>onozco</em>.</li>
+            <li><strong>c</strong> before <em>e, i</em> &rarr; an /s/: <em><span class="pron">c</span>entro, <span class="pron">c</span>erca</em>.</li>
+            <li><strong>z</strong> &rarr; also /s/ in Latin America: <em>pla<span class="pron">z</span>a, izquierda</em>.</li>
+            <li><strong>qu</strong> &rarr; a /k/ with a silent <em>u</em>: <em>es<span class="pron">qu</span>ina, iz<span class="pron">qu</span>ierda</em>.</li>
+        </ul>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-esquina.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la esquina</span><span class="v-en">es-<strong>ki</strong>-na (silent u)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-a-la-izquierda.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">a la izquierda</span><span class="v-en">iz-<strong>kier</strong>-da; the z is /s/</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-plaza.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la plaza</span><span class="v-en"><strong>pla</strong>-sa in Latin America</span></li>
+        </ul>
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">The word <em>conozco</em> has both a /s/ and a /k/ in it. Say it slowly, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>co-<span class="pron">nos</span>-co</strong> &mdash; the <em>z</em> is /s/ and the final <em>c</em> is /k/: <em>co-nos-ko</em>. That's the special <em>yo</em> form of <em>conocer</em>.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; EL ACENTO MEXICANO</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>C&oacute;mo suena la CDMX</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Mexican Spanish is famous for being clear and even-paced &mdash; one reason so many films and TV shows are dubbed in M&eacute;xico for all of Latin America. Vowels stay crisp, the <em>r</em> is tapped cleanly, and the <em>z</em> and soft <em>c</em> are pronounced as /s/ (never the &ldquo;th&rdquo; of central Spain). When you keep your vowels short and tap your <em>r</em>, you're already sounding closer to a <em>chilango</em>.</p>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127474;&#127485; M&Eacute;XICO A FONDO &middot; PALABRAS N&Aacute;HUATL</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El espa&ntilde;ol mexicano y el n&aacute;huatl</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">M&eacute;xico's Spanish carries thousands of words from <strong>N&aacute;huatl</strong>, the language of the Aztecs &mdash; and many have traveled into English too: <em>chocolate</em>, <em>tomate</em> (tomato), <em>aguacate</em> (avocado), <em>chile</em>, <em>coyote</em>. In the CDMX you'll walk through neighborhoods with N&aacute;huatl names like <em>Chapultepec</em> (&ldquo;hill of the grasshopper&rdquo;). Speaking Mexican Spanish means speaking a living blend of two great traditions &mdash; something to carry with pride into your recording.</p>
+    </div>
+
+    <!-- PART 5 · Tarea oral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127908; PART 4 &middot; TAREA ORAL <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your first graded recording (15 points)</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Record yourself doing <strong>two things</strong>: (1) <strong>give directions</strong> to a real place in your town &mdash; from your home or school, using <em>derecho, a la derecha / izquierda, la esquina, el sem&aacute;foro,</em> and <em>cuadras</em>; and (2) <strong>say what you do downtown</strong> in at least <strong>two sentences using irregular-<em>yo</em> verbs</strong> (<em>salgo, hago, veo, doy, pongo&hellip;</em>). Aim for 30&ndash;45 seconds total.</p>
+
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px 0;">
+            <div style="font-size:13px;color:#1B6A94;letter-spacing:.3px;margin-bottom:8px;">&#128221; A MODEL (yours must be about your own town)</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.7;margin:0;">
+            &laquo;Para llegar al mercado, sigues <strong>derecho</strong> dos <strong>cuadras</strong> y <strong>doblas a la derecha</strong> en el <strong>sem&aacute;foro</strong>. En el centro, yo <strong>salgo</strong> temprano, <strong>veo</strong> los museos y <strong>doy</strong> un paseo por la plaza.&raquo;<br>
+            <span style="font-size:14px;color:#6b7a99;">(That's directions to a place, plus three irregular-<em>yo</em> verbs about what I do downtown.)</span></p>
+        </div>
+
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Need to hear the target verbs one more time before you record? Replay these:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-salgo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo salgo&hellip;</span><span class="v-en"><em>salir</em> &mdash; I leave / go out</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-veo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo veo&hellip;</span><span class="v-en"><em>ver</em> &mdash; I see</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-doy.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo doy&hellip;</span><span class="v-en"><em>dar</em> &mdash; I give / take (a stroll)</span></li>
+        </ul>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ONE LAST CHECK &middot; before you record</div>
+            <div class="widget-question">To say &ldquo;I take a stroll downtown,&rdquo; you'd use&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">da un paseo</button>
+                <button data-correct="true">doy un paseo</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="background:#FBF6EA;border:1px solid #E3D3A8;border-left:5px solid #C7922C;border-radius:8px;padding:14px 18px;margin:14px 0 12px 0;">
+            <div style="font-size:13px;color:#8a6a12;letter-spacing:.3px;margin-bottom:8px;">&#128161; CONSEJO &middot; plan before you record</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">If it helps you, <strong>write out your sentences first</strong> and read them aloud a couple of times before you record. Many students sound calmer and clearer once they&rsquo;ve drafted a quick script &mdash; reading from your notes is completely fine. Just aim to sound <em>natural</em>, not rushed.</p>
+        </div>
+        <div style="text-align:center;margin:18px 0 8px;">
+            <a href="#CANVAS_ORAL_URL" style="display:inline-block;background:#0E1C42;color:#fff;text-decoration:none;border-radius:8px;padding:14px 28px;font-size:17px;font-weight:600;border-bottom:3px solid #55C8E8;">&#127908; Open the Tarea oral assignment &rarr;</a>
+            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Record directly in Canvas (or upload an audio/video file). 15 points.</div>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 20px 0 8px 0;">How it's scored &mdash; the rubric</h3>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Three criteria, 5 points each, 15 total. Read it <em>before</em> you record so you know what earns full marks.</p>
+        <table class="gtable">
+            <thead><tr><th>Criterion</th><th>What earns 5 / 5</th><th>Pts</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Task Completion</strong></td><td>Clear directions to a place (with turn + landmark) <em>and</em> at least two sentences about what you do downtown using irregular-<em>yo</em> verbs.</td><td>5</td></tr>
+                <tr><td><strong>Language Accuracy</strong></td><td>Correct <em>yo</em> forms (<em>salgo, veo, doy&hellip;</em>), correct direction words, and understandable word order.</td><td>5</td></tr>
+                <tr><td><strong>Pronunciation &amp; Fluency</strong></td><td>Clean tapped <em>r</em>, clear <em>c / z / qu</em> sounds, short vowels, steady pace, understandable throughout.</td><td>5</td></tr>
+            </tbody>
+        </table>
+
+        <div style="background:#EAF6EE;border:1px solid #2A9D5C;border-left:5px solid #2A9D5C;border-radius:8px;padding:14px 18px;margin:14px 0 0;">
+            <div style="font-size:11px;color:#1A6B3D;letter-spacing:.4px;margin-bottom:8px;">&#9989; SELF-REVIEW &middot; check these before you submit</div>
+            <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 0 1.2rem;">
+                <li>Did I give directions with a <strong>turn</strong> (<em>doblar a la derecha/izquierda</em> or <em>derecho</em>) and a <strong>landmark</strong> (<em>la esquina, el sem&aacute;foro</em>)?</li>
+                <li>Did I use <strong>at least two</strong> irregular-<em>yo</em> verbs about what I do downtown?</li>
+                <li>Are my <em>yo</em> forms correct (<em>salgo</em>, not <em>salo</em>; <em>doy</em>, not <em>do</em>)?</li>
+                <li>Did I <strong>tap my r</strong> and keep the <em>c / z / qu</em> sounds clean?</li>
+                <li>Did I <strong>play my recording back once</strong> and re-record if needed before submitting?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">9</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 3.09</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">A lighter day: <em>El mapa del mundo hispano</em> (focus: M&eacute;xico) and a preview of the semester VR project, <em>Un viaje por el mundo hispano</em> &mdash; both ungraded. Then Day 10 is the Grammar Quiz that closes the module.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the Tarea oral</strong> &mdash; the page being marked done and the recording being turned in are two separate steps.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;LO LOGRASTE&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just gave directions in Spanish on the record &mdash; a tapped <em>r</em>, clean sounds, and real <em>yo</em> verbs. That's a bigger step than it feels like. <em>&iexcl;Buen trabajo, y hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.08 &middot; Fon&eacute;tica + Tarea oral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — remember the subject is yo, so use the special form.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

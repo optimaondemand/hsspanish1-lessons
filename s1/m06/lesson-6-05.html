@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 6.05</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; M&oacute;dulo 6</div>
+        <div style="font-size: 12px; color: #666;">El tiempo libre</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 6.05 &middot; Day 5 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">A leer: Valentina / Colombia</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Free Time &amp; Hobbies</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 6.05</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> A leer &mdash; Valentina y Colombia</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>reading</em>. You'll meet Valentina and hear the <em>-er / -ir</em> verbs at work in a real little story.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your <strong>third encounter</strong> with these verbs &mdash; and the most relaxed. Instead of conjugating in a drill, you'll simply <em>notice</em> the verbs at work inside meaningful input: a short paragraph about a teenager in Medell&iacute;n and what she does for fun. Read it, listen to it, and let the pattern settle. Then we'll take a cultural detour to Colombia, where Valentina lives.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> read and understand a short paragraph full of <em>-er / -ir</em> verbs.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> locate Colombia and name one thing it is known for.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; ANTES DE LEER <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Before you read</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Good readers guess before they read. Valentina is a teenager who lives in <em>Medell&iacute;n</em>, Colombia. As you go into the paragraph, keep one question in mind: which verbs tell you what she <em>does</em> for fun &mdash; and which of them are <em>-er</em> and which are <em>-ir</em>?</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Which free-time activity sounds most like <em>your</em> weekend?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Como Valentina! She corre en el parque. That's an -er verb: correr &rarr; corre. Watch for it in the reading.">Running or a sport outside</button>
+                <button data-response="Nice &mdash; Valentina leo/lee libros too (leer, -er) and escribe en su diario (escribir, -ir). Two families in one hobby.">Reading or writing</button>
+                <button data-response="Time with people is at the heart of the reading: comparte y asiste a las fiestas. Watch compartir and asistir (-ir).">Being with friends and family</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · The reading -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LA LECTURA &middot; VALENTINA <span class="pill-time">16 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen first, then read</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Click <strong>&#128266;</strong> to hear the whole paragraph read aloud by a native speaker. Listen once with your eyes closed, then read along a second time. Don't worry about every word &mdash; you already know the important ones.</p>
+
+        <div style="display:flex; align-items:center; gap:12px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:12px 16px; margin-bottom:14px;">
+            <button class="say" data-audio="passage/m06-valentina.mp3" aria-label="Escuchar la lectura">&#128266;</button>
+            <span style="font-size:15px; color:#1B6A94;">Escuchar la lectura completa &mdash; <em>Valentina</em></span>
+        </div>
+
+        <p style="font-size:18px;color:#1a2340;line-height:1.85; background:#FBFCFE; border:1px solid #E4EAF2; border-radius:8px; padding:18px 22px; margin:0;">
+        &laquo;Hola, me llamo Valentina. <strong>Vivo</strong> en Medell&iacute;n, Colombia. En mi tiempo libre, <strong>corro</strong> en el parque y <strong>leo</strong> muchos libros. Los fines de semana, mi familia y yo <strong>comemos</strong> juntos. Por la tarde, <strong>escribo</strong> en mi diario y <strong>aprendo</strong> a bailar salsa. <strong>Comparto</strong> mi tiempo con mis amigos, y siempre <strong>asistimos</strong> a las fiestas del barrio.&raquo;</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Not sure of a word? Reveal a mini-glossary &mdash; but try to read without it first.</p>
+            <button class="reveal-btn">Reveal glossary</button>
+            <div class="reveal-body">
+                <em>me llamo</em> = my name is &middot; <em>vivo</em> = I live &middot; <em>tiempo libre</em> = free time &middot; <em>corro</em> = I run &middot; <em>leo</em> = I read &middot; <em>muchos libros</em> = many books &middot; <em>fines de semana</em> = weekends &middot; <em>comemos</em> = we eat &middot; <em>juntos</em> = together &middot; <em>por la tarde</em> = in the afternoon &middot; <em>escribo</em> = I write &middot; <em>mi diario</em> = my diary &middot; <em>aprendo a bailar</em> = I'm learning to dance &middot; <em>comparto</em> = I share &middot; <em>siempre</em> = always &middot; <em>asistimos a</em> = we attend &middot; <em>las fiestas del barrio</em> = the neighborhood parties
+            </div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Comprehension -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 3 &middot; &iquest;COMPRENDISTE&#63; <span class="pill-time">16 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Check your understanding</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Answer from the paragraph. These are <em>reading</em> questions &mdash; you're showing you understood.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;D&oacute;nde <strong>vive</strong> Valentina? (Where does Valentina live?)</div>
+            <div class="widget-options">
+                <button data-correct="false">En Bogot&aacute;</button>
+                <button data-correct="true">En Medell&iacute;n, Colombia</button>
+                <button data-correct="false">En Lima, Per&uacute;</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;Qu&eacute; hace Valentina en el parque? (What does she do at the park?)</div>
+            <div class="widget-options">
+                <button data-correct="true">Corre</button>
+                <button data-correct="false">Come</button>
+                <button data-correct="false">Escribe</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;Qu&eacute; <strong>aprende</strong> Valentina? (What is she learning?)</div>
+            <div class="widget-options">
+                <button data-correct="false">A cocinar</button>
+                <button data-correct="false">A cantar</button>
+                <button data-correct="true">A bailar salsa</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Detective question: the paragraph has two <em>nosotros</em> verbs &mdash; <em>comemos</em> and <em>asistimos</em>. Why does one end in <em>-emos</em> and the other in <em>-imos</em>? Say it out loud, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>comemos</strong> is from <em>comer</em> (an <em>-er</em> verb) &rarr; <em>-emos</em>. <strong>asistimos</strong> is from <em>asistir</em> (an <em>-ir</em> verb) &rarr; <em>-imos</em>. Same subject, two families &mdash; the one difference, live in a real sentence.</div>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Go back and be a detective. Find <strong>every</strong> verb and label its family: <em>vivo, escribo, comparto, asistimos</em> are <strong>-ir</strong>; <em>corro, leo, comemos, aprendo</em> are <strong>-er</strong>. For each, whisper the subject and ending. This is the same skill the Day 10 quiz will ask for &mdash; but here it's just noticing.</div>
+        </div>
+    </div>
+
+    <!-- Culture spotlight -->
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; COLOMBIA</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Medell&iacute;n y la vida al aire libre</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0 0 10px 0;">Valentina is from <strong>Medell&iacute;n</strong>, Colombia's second-largest city, nicknamed <em>&laquo;la ciudad de la eterna primavera&raquo;</em> (the city of eternal spring) for its year-round mild weather. Its capital is <strong>Bogot&aacute;</strong>, and Colombia sits at the northern tip of South America, touching both the Caribbean and the Pacific.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">Colombians are famous for how they <em>vivir</em> their free time together &mdash; <strong>salsa</strong> and <strong>cumbia</strong> fill weekend fiestas, and on Sundays the <em>Ciclov&iacute;a</em> turns city streets into open space for running and cycling. The country is also the birthplace of writer <strong>Gabriel Garc&iacute;a M&aacute;rquez</strong>, a Nobel laureate whose books people around the world <em>leen</em> to this day.</p>
+    </div>
+
+    <!-- Virtue -->
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#9733; LA VIRTUD &middot; HONESTY</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;"><strong>Bartolom&eacute; de las Casas</strong> (1484&ndash;1566) was a Spanish friar who, after witnessing the abuse of Indigenous peoples in the Americas, spent his life telling that hard truth &mdash; writing and arguing before kings that these communities deserved dignity and protection. Speaking an uncomfortable truth to the powerful is <strong>honesty</strong> at its bravest. <em>&Eacute;l <strong>escribe</strong> la verdad y <strong>comparte</strong> su voz</em> &mdash; two of this module's own verbs, doing the work of an honest life.</p>
+    </div>
+
+    <!-- What's next -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 6.06 &mdash; Week 2 begins</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">That's the end of Week 1. Next week starts with an ear-quiz and production practice that spirals back to M2 <em>-ar</em> verbs and M5 <em>gustar</em> alongside your new <em>-er / -ir</em> verbs. Graded work begins on Day 7 &mdash; this week was for building the habit, and you did.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, like Valentina, say two true sentences about your free time: one with an <em>-er</em> verb (<em>corro, leo, como</em>&hellip;) and one with an <em>-ir</em> verb (<em>vivo, escribo, comparto</em>&hellip;).</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BIEN LE&Iacute;DO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just read real Spanish and understood it &mdash; <em>-er</em>, <em>-ir</em>, and all. That's what a whole week of practice buys you. <em>&iexcl;Hasta la pr&oacute;xima semana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 2 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 6.05 &middot; A leer: Valentina / Colombia</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — right from the paragraph.'
+        : 'Not quite — read the paragraph again and find the detail.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

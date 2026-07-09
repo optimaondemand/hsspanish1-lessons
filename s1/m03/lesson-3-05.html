@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 3.05</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 3</div>
+        <div style="font-size: 12px; color: #666;">Lugares y sentimientos</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.05 &middot; Day 5 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">A leer: Sof&iacute;a / El Caribe</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Places &amp; Feelings</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.05</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> A leer &mdash; Sof&iacute;a y el Caribe</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>reading</em>. You'll meet Sof&iacute;a again and hear <em>ser</em> and <em>estar</em> working together in a real little story.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your <strong>third encounter</strong> with the ser/estar contrast &mdash; and the most relaxed. Instead of choosing verbs in a drill, you'll simply <em>notice</em> them at work inside meaningful input: a short paragraph about a girl from Cuba now living in Miami. Read it, listen to it, and let the pattern settle. Then we'll take a quick cultural detour to the Caribbean, where Sof&iacute;a is from.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> read and understand a short paragraph that uses <em>ser</em> and <em>estar</em> together.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> locate Cuba and the Dominican Republic and name one thing each is known for.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; ANTES DE LEER <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Before you read</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Good readers guess before they read. Sof&iacute;a is a teenager who moved from <em>La Habana</em> (Havana), Cuba, to Miami with her family. As you go into the paragraph, keep one question in mind: which details are about <em>who she is</em> (identity &rarr; <em>ser</em>), and which are about <em>where she is</em> or <em>how she feels today</em> (&rarr; <em>estar</em>)?</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Think of a place your family is <em>from</em> and a place you <em>are</em> right now. Which pair sounds most like you?</div>
+            <div class="widget-options">
+                <button data-response="Same place your whole life? Then: eres de aqu&iacute; y est&aacute;s aqu&iacute;. Notice: ser for origin, estar for right now &mdash; even when the place is the same.">Both the same place</button>
+                <button data-response="&iexcl;Como Sof&iacute;a! Your family is de un lugar (ser) but ahora est&aacute;s en otro (estar). That's exactly the story you're about to read.">From one place, living in another</button>
+                <button data-response="Lots of moving? Then you already feel this in your bones: de d&oacute;nde eres (ser) never changes, but d&oacute;nde est&aacute;s (estar) changes all the time.">We've moved a few times</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · The reading -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LA LECTURA &middot; SOF&Iacute;A <span class="pill-time">16 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen first, then read</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Click <strong>&#128266;</strong> to hear the whole paragraph read aloud by a native speaker. Listen once with your eyes closed, then read along a second time. Don't worry about every word &mdash; you already know the important ones.</p>
+
+        <div style="display:flex; align-items:center; gap:12px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:12px 16px; margin-bottom:14px;">
+            <button class="say" data-audio="passage/m03-sofia.mp3" aria-label="Escuchar la lectura">&#128266;</button>
+            <span style="font-size:15px; color:#1B6A94;">Escuchar la lectura completa &mdash; <em>Sof&iacute;a</em></span>
+        </div>
+
+        <p style="font-size:18px;color:#1a2340;line-height:1.85; background:#FBFCFE; border:1px solid #E4EAF2; border-radius:8px; padding:18px 22px; margin:0;">
+        &laquo;Hola, me llamo Sof&iacute;a. <strong>Soy</strong> de La Habana, Cuba. Ahora <strong>estoy</strong> en Miami con mi familia. Hoy <strong>estoy</strong> muy contenta porque no hay clases. Mi hermano <strong>est&aacute;</strong> cansado, pero mi madre <strong>est&aacute;</strong> ocupada en casa. Nosotros <strong>somos</strong> cubanos, y siempre <strong>estamos</strong> juntos.&raquo;</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Not sure of a word? Reveal a mini-glossary &mdash; but try to read without it first.</p>
+            <button class="reveal-btn">Reveal glossary</button>
+            <div class="reveal-body">
+                <em>me llamo</em> = my name is &middot; <em>ahora</em> = now &middot; <em>hoy</em> = today &middot; <em>muy</em> = very &middot; <em>porque</em> = because &middot; <em>no hay clases</em> = there's no school &middot; <em>mi hermano</em> = my brother &middot; <em>mi madre</em> = my mother &middot; <em>en casa</em> = at home &middot; <em>cubanos</em> = Cuban &middot; <em>siempre</em> = always &middot; <em>juntos</em> = together
+            </div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Comprehension -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 3 &middot; &iquest;COMPRENDISTE&#63; <span class="pill-time">16 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Check your understanding</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Answer from the paragraph. These are <em>reading</em> questions &mdash; you're showing you understood, not choosing a verb.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;De d&oacute;nde <strong>es</strong> Sof&iacute;a? (Where is Sof&iacute;a from?)</div>
+            <div class="widget-options">
+                <button data-correct="false">De Miami</button>
+                <button data-correct="true">De La Habana, Cuba</button>
+                <button data-correct="false">De la Rep&uacute;blica Dominicana</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;C&oacute;mo <strong>est&aacute;</strong> Sof&iacute;a hoy? (How does Sof&iacute;a feel today?)</div>
+            <div class="widget-options">
+                <button data-correct="true">Contenta</button>
+                <button data-correct="false">Cansada</button>
+                <button data-correct="false">Enojada</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;Qui&eacute;n <strong>est&aacute;</strong> cansado? (Who is tired?)</div>
+            <div class="widget-options">
+                <button data-correct="false">Su madre</button>
+                <button data-correct="true">Su hermano</button>
+                <button data-correct="false">Sof&iacute;a</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">In your own words: why does Sof&iacute;a say <em>somos cubanos</em> but <em>estamos juntos</em>? Say it out loud, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Somos cubanos</strong> is <em>who they are</em> &mdash; a lasting identity, so <em>ser</em>. <strong>Estamos juntos</strong> is <em>their situation right now</em> &mdash; together today, so <em>estar</em>. Same family, two different kinds of "to be."</div>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Go back to the paragraph and be a detective. Find <strong>every</strong> form of <em>ser</em> (there are two: <em>soy</em>, <em>somos</em>) and <strong>every</strong> form of <em>estar</em> (there are five: <em>estoy</em>, <em>estoy</em>, <em>est&aacute;</em>, <em>est&aacute;</em>, <em>estamos</em>). For each one, whisper why: identity/origin &rarr; ser, or location/feeling &rarr; estar? This is the same skill the Day 10 quiz will ask for &mdash; but here it's just noticing.</div>
+        </div>
+    </div>
+
+    <!-- Culture spotlight -->
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; EL CARIBE</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Cuba y la Rep&uacute;blica Dominicana</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0 0 10px 0;">Sof&iacute;a is from the Caribbean &mdash; a region of warm islands where Spanish is spoken with its own bright, fast music. <strong>La Habana es la capital</strong> de Cuba <strong>y est&aacute; en la costa</strong> (on the coast) &mdash; one more perfect ser/estar pair: <em>es</em> tells you what Havana <em>is</em>, <em>est&aacute;</em> tells you <em>where</em> it is.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">Cuba gave the world <strong><em>son</em></strong> &mdash; the guitar-and-percussion sound that later grew into salsa. Next door, the <strong>Dominican Republic</strong> (whose capital is Santo Domingo) gave us <strong><em>bachata</em></strong>, romantic guitar music now heard everywhere. On both islands, Spanish blends with African and Ta&iacute;no roots &mdash; you can hear that history in every song.</p>
+    </div>
+
+    <!-- Virtue -->
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#9733; LA VIRTUD &middot; RESPONSIBILITY</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Notice how Sof&iacute;a's family shares the load: her mother <em>est&aacute; ocupada en casa</em>, and the family <em>siempre est&aacute; juntos</em>. Taking care of a home together &mdash; each person carrying part of the day's work &mdash; is quiet, everyday <strong>responsibility</strong>. A family, like a sentence, holds together when each part does its job.</p>
+    </div>
+
+    <!-- What's next -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 3.06 &mdash; Week 2 begins</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">That's the end of Week 1. Next week starts with an ear-quiz and production practice that spirals back to M1 <em>ser</em> and M2 <em>-ar</em> verbs alongside <em>estar</em>. Graded work in this module begins on Day 7 (Vocabulary Check + Lengua en acci&oacute;n) &mdash; this week was for building the habit, and you did.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, like Sof&iacute;a, say two true sentences about yourself: one with <em>soy</em> (who you are or where you're from) and one with <em>estoy</em> (where you are or how you feel today).</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BIEN LE&Iacute;DO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just read real Spanish and understood it &mdash; ser and estar and all. That's what a whole week of practice buys you. <em>&iexcl;Hasta la pr&oacute;xima semana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.05 &middot; A leer: Sof&iacute;a / El Caribe</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' is right — remember: location or feeling → estar; identity or origin → ser.'
+        : 'Not quite. Ask: is this who/what they are (ser), or where/how they are (estar)?';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

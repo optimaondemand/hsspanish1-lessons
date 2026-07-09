@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 4.05</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 4</div>
+        <div style="font-size: 12px; color: #666;">La familia</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 4.05 &middot; Day 5 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">A leer: Ana / Guatemala</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Family &amp; Ages</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 4.05</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> A leer &mdash; Ana y su familia en Guatemala</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>reading</em>. You'll meet Ana and hear <em>tener</em>, ages, and possessives working together in a real little story.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your <strong>third encounter</strong> with <em>tener</em> &mdash; and the most relaxed. Instead of choosing forms in a drill, you'll simply <em>notice</em> them at work inside meaningful input: a short paragraph about a girl and her family in Guatemala. Read it, listen to it, and let the pattern settle. Then we'll take a cultural detour to Guatemala, where Ana is from.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> read and understand a short paragraph that uses <em>tener</em>, ages, and possessives.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> locate Guatemala and name one thing it is known for.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; ANTES DE LEER <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Before you read</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Good readers guess before they read. Ana is a teenager in Guatemala with a big household &mdash; parents, siblings, and a grandmother who lives with them. As you go into the paragraph, keep one question in mind: how many people are in her family, and how old is each one?</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">In your home, does anyone besides your parents live with you &mdash; a grandparent, a cousin, an aunt or uncle?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Como Ana! Multi-generation homes are common across Latin America. You'll read exactly this: su abuela vive con la familia.">Yes &mdash; a grandparent or relative</button>
+                <button data-response="That's common too. Whatever the shape, you can describe it: en mi familia somos ___. Ana's family is just one example.">No &mdash; just my immediate family</button>
+                <button data-response="Family looks different for everyone, and all of it counts. Read Ana's story as one version, then think about how you'd tell yours.">It's complicated</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · The reading -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LA LECTURA &middot; ANA <span class="pill-time">16 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen first, then read</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Click <strong>&#128266;</strong> to hear the whole paragraph read aloud by a native speaker. Listen once with your eyes closed, then read along a second time. Don't worry about every word &mdash; you already know the important ones.</p>
+
+        <div style="display:flex; align-items:center; gap:12px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:12px 16px; margin-bottom:14px;">
+            <button class="say" data-audio="passage/m04-ana.mp3" aria-label="Escuchar la lectura">&#128266;</button>
+            <span style="font-size:15px; color:#1B6A94;">Escuchar la lectura completa &mdash; <em>Ana</em></span>
+        </div>
+
+        <p style="font-size:18px;color:#1a2340;line-height:1.85; background:#FBFCFE; border:1px solid #E4EAF2; border-radius:8px; padding:18px 22px; margin:0;">
+        &laquo;&iexcl;Hola! Me llamo Ana y <strong>soy</strong> de Guatemala. Mi familia <strong>es</strong> grande. <strong>Tengo</strong> dos hermanos y una hermana. Mi hermano mayor <strong>tiene</strong> dieciocho a&ntilde;os y mi hermana menor <strong>tiene</strong> ocho a&ntilde;os. Mi abuela vive con nosotros; ella <strong>tiene</strong> setenta a&ntilde;os. Tambi&eacute;n <strong>tenemos</strong> un primo en la ciudad de Antigua. Hoy <strong>tengo</strong> hambre porque es la hora del almuerzo. &iexcl;Mi familia y yo <strong>estamos</strong> muy contentos!&raquo;</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Not sure of a word? Reveal a mini-glossary &mdash; but try to read without it first.</p>
+            <button class="reveal-btn">Reveal glossary</button>
+            <div class="reveal-body">
+                <em>me llamo</em> = my name is &middot; <em>grande</em> = big &middot; <em>mayor</em> = older &middot; <em>menor</em> = younger &middot; <em>vive con nosotros</em> = lives with us &middot; <em>tambi&eacute;n</em> = also &middot; <em>la hora del almuerzo</em> = lunchtime &middot; <em>porque</em> = because &middot; <em>hambre</em> = hunger &middot; <em>contentos</em> = happy
+            </div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Comprehension -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 3 &middot; &iquest;COMPRENDISTE&#63; <span class="pill-time">16 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Check your understanding</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Answer from the paragraph. These are <em>reading</em> questions &mdash; you're showing you understood.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;De d&oacute;nde <strong>es</strong> Ana? (Where is Ana from?)</div>
+            <div class="widget-options">
+                <button data-correct="false">De M&eacute;xico</button>
+                <button data-correct="true">De Guatemala</button>
+                <button data-correct="false">De Cuba</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;Cu&aacute;ntos a&ntilde;os <strong>tiene</strong> el hermano mayor de Ana? (How old is Ana's older brother?)</div>
+            <div class="widget-options">
+                <button data-correct="false">Ocho a&ntilde;os</button>
+                <button data-correct="true">Dieciocho a&ntilde;os</button>
+                <button data-correct="false">Setenta a&ntilde;os</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; from the reading</div>
+            <div class="widget-question">&iquest;Qui&eacute;n vive con la familia de Ana? (Who lives with Ana's family?)</div>
+            <div class="widget-options">
+                <button data-correct="true">Su abuela</button>
+                <button data-correct="false">Su primo</button>
+                <button data-correct="false">Su maestro</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">In your own words: why does Ana say <em>tengo hambre</em> and not <em>estoy hambre</em> or <em>soy hambre</em>? Say it out loud, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body">Because Spanish treats hunger as something you <em>have</em>, not something you <em>are</em>. <strong>Tener hambre</strong> = to be hungry. It's the same &ldquo;have,&rdquo;-not-&ldquo;be&rdquo; pattern as age (<em>tengo ocho a&ntilde;os</em>). Never <em>estoy</em> or <em>soy</em> for hunger.</div>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Go back to the paragraph and be a detective. Find <strong>every</strong> form of <em>tener</em> (there are five: <em>tengo, tiene, tiene, tenemos, tengo</em>) and every possessive (<em>mi</em>). Ana also uses <em>soy</em>, <em>es</em>, and <em>estamos</em> &mdash; can you say why each one? (Origin/identity &rarr; ser; feeling now &rarr; estar; having/age &rarr; tener.) This mix of three verbs is exactly what Day 10 will ask for.</div>
+        </div>
+    </div>
+
+    <!-- Culture spotlight -->
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; GUATEMALA</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Un pa&iacute;s de colores y volcanes</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0 0 10px 0;">Ana is from <strong>Guatemala</strong>, a country in Central America just south of Mexico. Its capital is <strong>la Ciudad de Guatemala</strong>, and its old colonial capital, <strong>Antigua</strong> &mdash; where Ana's cousin lives &mdash; sits among green volcanoes and cobblestone streets.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">Guatemala is the heart of the living <strong>Maya</strong> world: more than twenty Maya languages are spoken there, and families are famous for their brilliantly colored, hand-woven <em>huipiles</em> (traditional blouses), each pattern tied to a specific town. The <strong>marimba</strong>, a wooden xylophone, is the national instrument &mdash; you'll hear it at family celebrations across the country.</p>
+    </div>
+
+    <!-- Virtue -->
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#9733; LA VIRTUD &middot; RESPONSIBILITY</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Notice how Ana's household shares life across three generations &mdash; her grandmother <em>vive con nosotros</em>, and everyone looks after everyone. In many Guatemalan families, caring for <em>los abuelos</em> at home is a quiet, daily <strong>responsibility</strong> that children learn young. A family, like a woven <em>huipil</em>, holds together when every thread does its part.</p>
+    </div>
+
+    <!-- What's next -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 4.06 &mdash; Week 2 begins</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">That's the end of Week 1. Next week starts with an ear-quiz and production practice that spirals back to M&oacute;dulo 1 adjectives (to describe your family) and M&oacute;dulo 3 <em>estar</em> (to say how they feel). Graded work begins on Day 7 &mdash; this week was for building the habit, and you did.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, like Ana, say two true sentences about your family: one with <em>tengo</em> (how many siblings) and one giving someone's age (<em>Mi ___ tiene ___ a&ntilde;os</em>).</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BIEN LE&Iacute;DO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just read real Spanish and understood it &mdash; <em>tener</em>, ages, possessives, and all. That's what a whole week of practice buys you. <em>&iexcl;Hasta la pr&oacute;xima semana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 4.05 &middot; A leer: Ana / Guatemala</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — try the other option and check the paragraph again.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

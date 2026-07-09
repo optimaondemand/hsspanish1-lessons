@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 0.09</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 0</div>
+        <div style="font-size: 12px; color: #666;">&iexcl;Bienvenidos!</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 0.09 &middot; Day 9 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Mapa + VR (ENGAGE)</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Welcome &amp; Phonics</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 0.09</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El mundo hispano en el mapa &mdash; y tu campus en VR</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes &middot; nothing graded today</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A breather between two big days &mdash; explore, don't cram.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Yesterday you recorded (Tarea oral); tomorrow is the Pronunciation &amp; Sound Quiz. Today sits between them on purpose. <strong>Nothing here is graded.</strong> First you'll explore the whole <strong>Spanish-speaking world</strong> on the interactive map you first heard about in Lesson&nbsp;0.05. Then you'll get your first look at our <strong>VR platform, ENGAGE</strong> &mdash; a campus orientation where you'll practice greeting and introducing yourself in a shared virtual space. Today is preview and prep, so you walk in already knowing what to say.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> locate several Spanish-speaking countries on the map and name a few capitals.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain what I'll do in the VR campus orientation &mdash; greet, introduce myself, and be courteous in Spanish.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">6 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Where in the world is Spanish spoken?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In Lesson 0.05 you learned Spanish is the everyday language of more than 20 countries and 500+ million people. Today you'll see all of it laid out on a map. Warm up by playing a greeting &mdash; the same one you'd use to meet a new classmate in VR.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer <button class="say" data-audio="saludos/hola.mp3" aria-label="Escuchar hola" style="margin-left:6px;">&#128266;</button></div>
+            <div class="widget-question">Which Spanish-speaking country are you most curious to explore first?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Buena elecci&oacute;n! Mexico has more Spanish speakers than any other country &mdash; find it on the map and read its country card.">Mexico</button>
+                <button data-response="Great &mdash; South America is huge and varied, from Colombia's coasts to Argentina's mountains. Click a few countries and compare their capitals.">Somewhere in South America</button>
+                <button data-response="Wonderful &mdash; Spain is where the language began. On the map, notice how far the language traveled from there across the Atlantic.">Spain</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Map -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128506;&#65039; PART 2 &middot; EL MAPA DEL MUNDO HISPANO <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Explore the whole Spanish-speaking world</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Open the interactive map in a new tab. Switch it to <strong>Explorador</strong> mode and click around: start with <strong>Mexico</strong>, then travel through Central America, the Caribbean, and South America, and finish in <strong>Spain</strong>. Read each country card &mdash; note the capital &mdash; then try the map's built-in <strong>quiz</strong> to see how many capitals you can place. It's ungraded; go as many rounds as you like.</p>
+        <div style="text-align:center; margin: 16px 0;">
+            <a href="../../mapa-del-mundo-hispano.html" target="_blank" rel="noopener" style="display:inline-block; background:#0E1C42; color:#fff; text-decoration:none; border-radius:8px; padding:14px 26px; font-size:17px; border-bottom:3px solid #55C8E8;">&#128506;&#65039; Abrir el mapa del mundo hispano &rarr;</a>
+            <div style="font-size:13px; color:#6b7a99; margin-top:8px;">Opens in a new tab &middot; use <em>Explorador</em> mode, then the <em>quiz</em></div>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; which country?</div>
+            <div class="widget-question">Which country has the <strong>most</strong> Spanish speakers in the world?</div>
+            <div class="widget-options">
+                <button data-correct="false">Spain</button>
+                <button data-correct="true">Mexico</button>
+                <button data-correct="false">Argentina</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; match the capital</div>
+            <div class="widget-question">The capital of <strong>Spain</strong> is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">Barcelona</button>
+                <button data-correct="true">Madrid</button>
+                <button data-correct="false">Lima</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Before you check the map: on which <em>continent</em> would you find most Spanish-speaking countries? Say it, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>The Americas.</strong> Most Spanish-speaking countries are in <em>Latin America</em> &mdash; North, Central, and South America plus the Caribbean &mdash; which is exactly why this course takes a Latin-American-first view. Spain, in Europe, is where the language started.</div>
+        </div>
+    </div>
+
+    <!-- Culture -->
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; UN IDIOMA, MUCHOS PA&Iacute;SES</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>One language, a whole world of cultures</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">The Spanish-speaking world spans four continents and countless traditions &mdash; <em>tacos</em> in Mexico, <em>tango</em> in Argentina, <em>flamenco</em> in Spain, <em>salsa</em> in the Caribbean, ancient Maya and Inca heritage in Guatemala and Peru. Learning Spanish doesn't open one door; it opens dozens. As you explore the map, you're previewing the places you'll visit &mdash; through food, music, stories, and even VR &mdash; all year long.</p>
+    </div>
+
+    <!-- PART 3 · VR preview -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129406; PART 3 &middot; VISTA PREVIA DE LA VR &middot; ENGAGE <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your VR campus orientation &mdash; <em>&iexcl;Bienvenidos!</em></h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This semester you'll put on a headset and step into <strong>ENGAGE</strong>, our VR platform, for a friendly <strong>campus orientation</strong>: you'll explore the virtual Spanish classroom, walk up to other avatars, and practice the very first thing you learned &mdash; <strong>greeting people and introducing yourself in Spanish</strong>. <strong>You're not performing today.</strong> This is your preview, so that when the session comes you already know the moves.</p>
+
+        <div style="background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:16px 20px; margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:10px;">&#127891; WHAT YOU'LL DO IN THE ORIENTATION</div>
+            <ol style="margin:0 0 0 18px; padding:0; font-size:16px; color:#1a2340; line-height:1.7;">
+                <li><strong>Saludar &mdash; greet someone.</strong> Walk up to another avatar and say <em>&laquo;&iexcl;Hola! Buenos d&iacute;as.&raquo;</em></li>
+                <li><strong>Presentarte &mdash; introduce yourself.</strong> <em>&laquo;Me llamo ___. Soy de ___.&raquo;</em></li>
+                <li><strong>Preguntar &mdash; ask a name.</strong> <em>&laquo;&iquest;C&oacute;mo te llamas?&raquo;</em> and reply <em>&laquo;Mucho gusto.&raquo;</em></li>
+                <li><strong>Ser cort&eacute;s &mdash; be courteous.</strong> Use <em>por favor</em>, <em>gracias</em>, and say goodbye with <em>&laquo;&iexcl;Hasta luego!&raquo;</em></li>
+            </ol>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 18px 0 8px 0;">Rehearse your first VR line</h3>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; REHEARSE &middot; no wrong answer &mdash; say it aloud <button class="say" data-audio="frases/mucho-gusto.mp3" aria-label="Escuchar mucho gusto" style="margin-left:6px;">&#128266;</button></div>
+            <div class="widget-question">You meet a new classmate's avatar. Which opening feels most like you?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Perfecto! A warm greeting first is exactly right &mdash; and expected in Spanish-speaking cultures. Then add your name.">&laquo;&iexcl;Hola! Buenos d&iacute;as.&raquo;</button>
+                <button data-response="Great &mdash; leading with your name works too. Just remember to greet first: &laquo;&iexcl;Hola! Me llamo ___.&raquo;">&laquo;Me llamo ___.&raquo;</button>
+                <button data-response="Nice &mdash; asking their name invites conversation. Pair it with mucho gusto when they answer: &laquo;&iquest;C&oacute;mo te llamas? &iexcl;Mucho gusto!&raquo;">&laquo;&iquest;C&oacute;mo te llamas?&raquo;</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Rehearse a full introduction out loud, as if you were already in VR: greet, give your name, say where you're from, and sign off politely. Say it, then reveal a model.</p>
+            <button class="reveal-btn">Reveal a model</button>
+            <div class="reveal-body"><strong>&laquo;&iexcl;Hola! Buenos d&iacute;as. Me llamo ___. Soy de ___. Mucho gusto. &iexcl;Hasta luego!&raquo;</strong> That's a complete, courteous VR introduction &mdash; and it's all Module 0 vocabulary. Say it once more so it's ready.</div>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Write yourself a short "orientation script": one greeting, your name, where you're from, one question, and a goodbye. Keep it &mdash; you'll walk into the VR session with your lines ready. Courtesy travels in any language: greet first, always.</div>
+        </div>
+    </div>
+
+    <!-- PART 4 · Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT <span class="pill-time">6 min</span></div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">10</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 0.10</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow is the last day of M&oacute;dulo 0: a short listening warm-up, then the <strong>Pronunciation &amp; Sound Quiz (30 pts, 2 attempts)</strong> &mdash; heavy on listening: letters, sounds, and numbers by ear &mdash; and an "I can&hellip;" close before M&oacute;dulo 1. Spend a few minutes now replaying the trickiest sounds from Day 3.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say your VR introduction out loud one more time &mdash; greet, name, where you're from, and <em>&laquo;&iexcl;hasta luego!&raquo;</em> &mdash; and name one country you found on the map.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;CASI LO LOGRAS&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've seen the whole world your new language lives in &mdash; and where you'll take it next, into a VR classroom full of people to greet. One quiz stands between you and M&oacute;dulo 1. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 0.09 &middot; Mapa + VR (ENGAGE)</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — check it against the map to be sure.'
+        : 'Not quite — open the map, click the country, and read its card.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

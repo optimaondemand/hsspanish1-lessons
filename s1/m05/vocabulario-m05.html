@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Vocabulario M&oacute;dulo 5</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    /* --- flip-card study widget (M5 vocabulario) --- */
+    .flip-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:14px; margin:16px 0 4px; }
+    .flip-card { perspective:1000px; cursor:pointer; outline:none; }
+    .flip-card:focus-visible .flip-front { box-shadow:0 0 0 3px #55C8E8; }
+    .flip-inner { position:relative; width:100%; min-height:130px; transition:transform .5s; transform-style:preserve-3d; }
+    .flip-card.flipped .flip-inner { transform:rotateY(180deg); }
+    .flip-face { position:absolute; inset:0; -webkit-backface-visibility:hidden; backface-visibility:hidden; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; border-radius:10px; padding:16px; text-align:center; }
+    .flip-front { background:linear-gradient(135deg,#E8F6FB 0%,#F4F9FC 100%); border:1px solid #C5DCE5; border-top:3px solid #2196D0; }
+    .flip-back { background:#0E1C42; border:1px solid #0E1C42; transform:rotateY(180deg); }
+    .flip-es { font-size:21px; font-weight:600; color:#0E1C42; line-height:1.25; }
+    .flip-en { font-size:20px; font-weight:600; color:#ffffff; line-height:1.3; }
+    .flip-hint { font-size:11px; letter-spacing:.3px; }
+    .flip-front .flip-hint { color:#6b7a99; }
+    .flip-back .flip-hint { color:#9fb3d1; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; M&oacute;dulo 5</div>
+        <div style="font-size: 12px; color: #666;">La comida y los gustos</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Study companion</div>
+        <div style="font-size: 17px; color: #0e1c42;">Vocabulario &middot; Repaso</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">18 palabras &middot; por el o&iacute;do</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Food &amp; Preferences</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">M&oacute;dulo 5 &middot; Vocabulario</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Vocabulario &middot; M&oacute;dulo 5</div>
+        <div style="font-size: 16px; color: #666;">Study cards &middot; tap a card to flip, tap &#128266; to hear it</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; HOW TO USE THIS PAGE</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">These are the <strong>18 words</strong> of M&oacute;dulo 5 &mdash; the same words you'll meet on the listening-based <em>Vocabulary Check</em> (Day 7). Each card shows the Spanish; <strong>tap the card</strong> to flip it and check the English. But your real goal is to know these <em>by ear</em>: tap the <strong>&#128266;</strong> button and say each word back out loud <em>before</em> you flip. If you can hear the word and picture its meaning without reading, you're ready.</div>
+        <p style="font-size: 14px; color: #6b7a99; margin: 12px 0 0;">Tip: nouns are shown with their article (<em>la, el, los, las</em>) &mdash; learn each one glued to its article. And <em>favorito/a</em> agrees with the noun: <em>mi comida favorit<strong>a</strong></em>, <em>mi jugo favorit<strong>o</strong></em>.</p>
+    </div>
+
+    <!-- SECTION A -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#127859; SECCI&Oacute;N A &middot; LA COMIDA <span class="pill-time">meals &amp; food</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">La comida &mdash; meals and what's on the plate</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">The three meals plus the foods you'll say <em>me gusta</em> about.</p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la comida, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/la-comida.mp3" aria-label="Escuchar la comida">&#128266;</button><span class="flip-es">la comida</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">food / meal</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el desayuno, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-desayuno.mp3" aria-label="Escuchar el desayuno">&#128266;</button><span class="flip-es">el desayuno</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">breakfast</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el almuerzo, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-almuerzo.mp3" aria-label="Escuchar el almuerzo">&#128266;</button><span class="flip-es">el almuerzo</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">lunch</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la cena, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/la-cena.mp3" aria-label="Escuchar la cena">&#128266;</button><span class="flip-es">la cena</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">dinner</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el arroz, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-arroz.mp3" aria-label="Escuchar el arroz">&#128266;</button><span class="flip-es">el arroz</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">rice</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: los frijoles, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/los-frijoles.mp3" aria-label="Escuchar los frijoles">&#128266;</button><span class="flip-es">los frijoles</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">beans</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el pollo, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-pollo.mp3" aria-label="Escuchar el pollo">&#128266;</button><span class="flip-es">el pollo</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">chicken</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la fruta, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/la-fruta.mp3" aria-label="Escuchar la fruta">&#128266;</button><span class="flip-es">la fruta</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">fruit</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: las verduras, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/las-verduras.mp3" aria-label="Escuchar las verduras">&#128266;</button><span class="flip-es">las verduras</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">vegetables</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el pan, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-pan.mp3" aria-label="Escuchar el pan">&#128266;</button><span class="flip-es">el pan</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">bread</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION B -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#129380; SECCI&Oacute;N B &middot; LAS BEBIDAS <span class="pill-time">drinks</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Las bebidas &mdash; what's in the glass</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">Four drinks &mdash; perfect for <em>&iquest;Qu&eacute; te gusta beber?</em></p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el agua, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-agua.mp3" aria-label="Escuchar el agua">&#128266;</button><span class="flip-es">el agua</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">water</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el jugo, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-jugo.mp3" aria-label="Escuchar el jugo">&#128266;</button><span class="flip-es">el jugo</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">juice</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la leche, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/la-leche.mp3" aria-label="Escuchar la leche">&#128266;</button><span class="flip-es">la leche</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">milk</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el cafe, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/el-cafe.mp3" aria-label="Escuchar el caf&eacute;">&#128266;</button><span class="flip-es">el caf&eacute;</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">coffee</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION C -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#129504; SECCI&Oacute;N C &middot; LOS GUSTOS <span class="pill-time">the preference words</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Los gustos &mdash; how you talk about liking</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0;">The verbs and word that power the whole module.</p>
+        <div class="flip-grid">
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: gustar, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/gustar.mp3" aria-label="Escuchar gustar">&#128266;</button><span class="flip-es">gustar</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">to like<br>(&ldquo;to be pleasing&rdquo;)</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: encantar, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/encantar.mp3" aria-label="Escuchar encantar">&#128266;</button><span class="flip-es">encantar</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">to love / really like</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: cocinar, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/cocinar.mp3" aria-label="Escuchar cocinar">&#128266;</button><span class="flip-es">cocinar</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">to cook</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+            <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: favorito, tap to flip">
+                <div class="flip-inner">
+                    <div class="flip-face flip-front"><button class="say" data-audio="vocab/favorito.mp3" aria-label="Escuchar favorito">&#128266;</button><span class="flip-es">favorito/a</span><span class="flip-hint">tap to flip</span></div>
+                    <div class="flip-face flip-back"><span class="flip-en">favorite</span><span class="flip-hint">tap to flip back</span></div>
+                </div>
+            </div>
+        </div>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Cover the English. Play the &#128266; on ten cards in random order and say each meaning out loud <em>before</em> you flip &mdash; that's exactly what the listening Vocabulary Check asks. Then build one full sentence per card: <em>Me gusta el pan</em>, <em>Me gustan las verduras</em>, <em>Me encanta el caf&eacute;</em>, <em>Nos gusta cocinar</em>.</div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, with the English covered, play five &#128266; buttons and say each meaning out loud before flipping &mdash; if you got them by ear, you're ready for the Vocabulary Check.</div>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 2 &middot; Student Study Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Vocabulario &middot; M&oacute;dulo 5 &middot; La comida y los gustos</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — try the other option and think about the English meaning.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  // Flip-card runtime: tap a card to flip; clicks on the audio button are ignored so the sound plays without flipping.
+  function toggle(card) { if (card) card.classList.toggle('flipped'); }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-audio]')) return; // let the audio runtime handle the speaker button
+    toggle(e.target.closest('.flip-card'));
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Enter' && e.key !== ' ' && e.key !== 'Spacebar') return;
+    var card = e.target.closest('.flip-card');
+    if (!card) return;
+    e.preventDefault();
+    toggle(card);
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

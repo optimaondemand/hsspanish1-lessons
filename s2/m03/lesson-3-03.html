@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 3.03</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
+    .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 3</div>
+        <div style="font-size: 12px; color: #666;">La ciudad</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.03 &middot; Day 3 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Verbos con <em>yo</em> irregular</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">City &amp; Directions</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.03</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Verbos con <em>yo</em> irregular &mdash; Only One Form to Watch</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">The good news arrives today: these verbs are irregular in <em>one</em> form and regular everywhere else.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Yesterday you met the odd <em>yo</em> forms. Today you see the whole picture &mdash; and it's friendlier than it looked. For <em>hacer, poner, salir, traer, conocer, ver,</em> and <em>dar</em>, the <em>t&uacute;, &eacute;l/ella, nosotros,</em> and <em>ellos</em> forms are <strong>completely regular</strong>. Learn the one strange <em>yo</em> form, and the rest follows the ordinary <em>-er / -ir</em> patterns you already know. These are the verbs you need to talk about getting around a city &mdash; <em>I go out, I bring a map, I see the museum, I give a tour.</em></div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> conjugate these verbs in every person, using the special <em>yo</em> form only for <em>yo</em>.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> talk about what I do around the city using <em>hago, salgo, veo, doy&hellip;</em></div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">6 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A quick look back at <em>yo</em></h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Say the seven <em>yo</em> forms from yesterday out loud before we build the rest: <em>hago, pongo, salgo, traigo, conozco, veo, doy</em>. Those are the only forms you have to memorize as special &mdash; today you'll see why.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Hearing that only the <em>yo</em> form is irregular, how does that land?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Perfecto! That relief is well earned &mdash; it really is one form per verb. Today confirms it.">A relief &mdash; less to memorize</button>
+                <button data-response="Fair. It's a new pattern, so it takes reps. By the end of Part 2 the &laquo;only yo&raquo; idea will feel obvious.">Still a little confusing</button>
+                <button data-response="Good honesty. Lean on the tables today; you'll produce your own sentences before the lesson ends.">I'll believe it when I see it</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Full conjugation -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 2 &middot; LA CONJUGACI&Oacute;N COMPLETA <span class="pill-time">11 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Three verbs, fully &mdash; watch the <em>yo</em> row</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">In each table, only the <strong>gold <em>yo</em> row</strong> is irregular. Everything below it is a plain regular ending.</p>
+        <table class="gtable">
+            <thead><tr><th>Subject</th><th>hacer</th><th>salir</th><th>conocer</th></tr></thead>
+            <tbody>
+                <tr><td>yo</td><td><span class="pron">hago</span></td><td><span class="pron">salgo</span></td><td><span class="pron">conozco</span></td></tr>
+                <tr><td>t&uacute;</td><td>haces</td><td>sales</td><td>conoces</td></tr>
+                <tr><td>usted / &eacute;l / ella</td><td>hace</td><td>sale</td><td>conoce</td></tr>
+                <tr><td>nosotros/as</td><td>hacemos</td><td>salimos</td><td>conocemos</td></tr>
+                <tr><td>ustedes / ellos / ellas</td><td>hacen</td><td>salen</td><td>conocen</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:14px;color:#6b7a99;margin:2px 0 10px;">See it? Cover the top row and every verb is just a normal <em>-er / -ir</em> verb.</p>
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 14px 0 6px 0;">The other four &mdash; same idea, special <em>yo</em> only</h3>
+        <table class="gtable">
+            <thead><tr><th>Verb</th><th><em>yo</em> (irregular)</th><th>the rest (regular)</th></tr></thead>
+            <tbody>
+                <tr><td>poner (to put)</td><td><span class="pron">pongo</span></td><td>pones &middot; pone &middot; ponemos &middot; ponen</td></tr>
+                <tr><td>traer (to bring)</td><td><span class="pron">traigo</span></td><td>traes &middot; trae &middot; traemos &middot; traen</td></tr>
+                <tr><td>ver (to see)</td><td><span class="pron">veo</span></td><td>ves &middot; ve &middot; vemos &middot; ven</td></tr>
+                <tr><td>dar (to give)</td><td><span class="pron">doy</span></td><td>das &middot; da &middot; damos &middot; dan</td></tr>
+            </tbody>
+        </table>
+        <p style="font-size:14px;color:#6b7a99;margin:4px 0 0;">(In Latin America, <em>ustedes</em> covers &ldquo;you all&rdquo; in every setting. <em>Vosotros</em> &mdash; Spain's informal &ldquo;you all&rdquo; &mdash; you'll meet later, labeled as European.)</p>
+    </div>
+
+    <!-- PART 3 · The rule -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; LA REGLA <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">One row special, the rest ordinary</h3>
+        <div class="contrast">
+            <div class="col ser">
+                <h4>YO &mdash; the odd one out</h4>
+                <div style="font-size:15px;line-height:1.6;color:#1a2340;">Memorize these seven &mdash; nothing else is irregular.<br><br>
+                <em>hago &middot; pongo &middot; salgo &middot; traigo</em><br>
+                <em>conozco &middot; veo &middot; doy</em></div>
+            </div>
+            <div class="col estar">
+                <h4>TODO LO DEM&Aacute;S &mdash; regular</h4>
+                <div style="font-size:15px;line-height:1.6;color:#1a2340;">Just the normal <em>-er / -ir</em> endings you know.<br><br>
+                <em>-es &middot; -e &middot; -emos / -imos &middot; -en</em><br>
+                <em>haces, hace, hacemos, hacen&hellip;</em></div>
+            </div>
+        </div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;"><strong>The shortcut:</strong> if the subject is <em>yo</em>, use the special form. For anybody else, conjugate it like a regular verb.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; choose the right form</div>
+            <div class="widget-question">&ldquo;Nosotros ______ las compras en el mercado.&rdquo; (from <em>hacer</em>)</div>
+            <div class="widget-options">
+                <button data-correct="false">hago</button>
+                <button data-correct="true">hacemos</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; choose the right form</div>
+            <div class="widget-question">&ldquo;Yo ______ el dinero en el banco.&rdquo; (from <em>poner</em>)</div>
+            <div class="widget-options">
+                <button data-correct="true">pongo</button>
+                <button data-correct="false">pone</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; choose the right form</div>
+            <div class="widget-question">&ldquo;Ella ______ el museo desde la plaza.&rdquo; (from <em>ver</em>)</div>
+            <div class="widget-options">
+                <button data-correct="false">veo</button>
+                <button data-correct="false">vemos</button>
+                <button data-correct="true">ve</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Your turn: how would you say <em>"We go out at eight"</em> (from <em>salir</em>)? Say it out loud, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Nosotros salimos a las ocho.</strong> Not <em>yo</em> &rarr; regular <em>-ir</em> ending: <em>sal-imos</em>. The special <em>salgo</em> is only for <em>yo</em>.</div>
+        </div>
+    </div>
+
+    <!-- PART 4 · Mini reading -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 4 &middot; A LEER <span class="pill-time">6 min</span></div>
+        <p style="font-size:17px;color:#1a2340;line-height:1.7;">
+        &laquo;Cada d&iacute;a yo <strong>salgo</strong> de casa y <strong>voy</strong> al centro. <strong>Hago</strong> muchas cosas: <strong>pongo</strong> dinero en el banco, <strong>veo</strong> a mis amigos en la plaza y a veces <strong>doy</strong> un paseo por el mercado. Siempre <strong>traigo</strong> un mapa porque la ciudad es enorme.&raquo;</p>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; COMPRUEBA &middot; optional</div>
+            <div style="font-size:16px;color:#1a2340;line-height:1.6;">Find all six irregular <em>yo</em> forms in the passage (<em>salgo, hago, pongo, veo, doy, traigo</em>). Now retell it about a friend, changing every <em>yo</em> to <em>&eacute;l</em>: <em>&laquo;Cada d&iacute;a &eacute;l <strong>sale</strong> de casa&hellip;&raquo;</em> Notice how the special forms vanish the moment the subject isn't <em>yo</em>.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; LA PLAZA</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El coraz&oacute;n de la ciudad</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">In almost every Latin-American city, life centers on <em>la plaza</em>. In M&eacute;xico it's often called <em>el Z&oacute;calo</em> &mdash; and the one in la Ciudad de M&eacute;xico is among the largest public squares in the world. People <em>dan un paseo</em> (take a stroll), meet friends, and watch the city go by. When you say <em>&laquo;doy un paseo por la plaza,&raquo;</em> you're describing a real daily rhythm.</p>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127474;&#127485; M&Eacute;XICO A FONDO &middot; UNA MEGACIUDAD</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>La Ciudad de M&eacute;xico (CDMX)</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Our featured country this module is <strong>M&eacute;xico</strong>. Its capital, <strong>la Ciudad de M&eacute;xico</strong>, is one of the biggest cities on the planet &mdash; home to more than 21 million people in its metropolitan area, sitting at over 2,200 meters (7,300 feet) of altitude in a mountain valley. It's built on the ruins of <em>Tenochtitlan</em>, the great Aztec capital. Getting around it is a real skill: locals rely on <em>el metro</em>, buses, and knowing exactly when to <em>doblar a la derecha</em>. That's why this module's Spanish matters &mdash; it's the language of a city on the move.</p>
+    </div>
+
+    <!-- Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">4</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 3.04</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow you'll <em>apply</em> these verbs in a short guided writing and an audio dictation using today's clips. Graded work begins Day 7; this week is for building the habit.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say two true sentences about your day &mdash; one starting with <em>Yo</em> (use a special form) and one starting with <em>Mi amigo/a</em> (watch it turn regular).</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;LO LOGRASTE&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Seven special <em>yo</em> forms, and everything else you already knew. That's the whole rule &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.03 &middot; Verbos con yo irregular</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — ask: is the subject yo (special form) or someone else (regular)?';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

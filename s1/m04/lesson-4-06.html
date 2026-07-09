@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 4.06</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 4</div>
+        <div style="font-size: 12px; color: #666;">La familia</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 4.06 &middot; Day 6 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Repaso y espiral</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Family &amp; Ages</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 4.06 &middot; Week 2 begins</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Repaso y espiral &mdash; Describe Your Family</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>pulling it back out of your head</em>, which is where real learning happens.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your fourth meeting with <strong>tener</strong>, and the first day of Week 2. Instead of new material, today you <em>retrieve</em>: an ear-quiz on family words, a short production prompt, and a <strong>spiral</strong> that puts three verbs side by side to describe a family &mdash; <strong>ser</strong> + adjectives from M&oacute;dulo 1 (<em>mi hermano es alto</em>), <strong>estar</strong> + feelings from M&oacute;dulo 3 (<em>mi hermana est&aacute; cansada</em>), and <strong>tener</strong> from this module (<em>tengo dos hermanos</em>). Bringing all three together is exactly what the Day-10 quiz will ask of you.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> recognize spoken family words and match them to meaning.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe a family member using <em>ser</em> + adjective, <em>estar</em> + feeling, and <em>tener</em>.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Warm up your ear</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the ear-quiz, remind your brain what these family words sound like. Click each <strong>&#128266;</strong>, say it back, and picture the person &mdash; no reading the English until after you've guessed.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/la-madre.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la madre</span><span class="v-en">mother</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/el-abuelo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el abuelo</span><span class="v-en">grandfather</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/la-hija.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la hija</span><span class="v-en">daughter</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/menor.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">menor</span><span class="v-en">younger</span></li>
+        </ul>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Honestly &mdash; which one still feels the shakiest for you right now?</div>
+            <div class="widget-options">
+                <button data-response="Good to know. Run the Vocabulario flip-cards before Day 7's check &mdash; the family words are the whole first half.">The family words</button>
+                <button data-response="Makes sense. The tener forms follow a stem change (tengo, tienes&hellip;). Watch for them in today's spiral in Part 3.">The forms of tener</button>
+                <button data-response="That's the big one, and it's exactly what today's spiral is for. Part 3 lines up ser, estar, and tener side by side.">Choosing ser / estar / tener</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Ear-quiz -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127911; PART 2 &middot; PRUEBA DE O&Iacute;DO <span class="pill-time">12 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Ear-quiz: what did you hear?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Press <strong>&#128266;</strong> to hear a word (replay as often as you like), then pick its meaning in English. This is the interpretive-listening skill the Day-10 quiz will test &mdash; train it now.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/la-abuela.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;Which family member did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="true">grandmother</button>
+                <button data-correct="false">mother</button>
+                <button data-correct="false">sister</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/el-hermano.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;Which family member did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="false">father</button>
+                <button data-correct="true">brother</button>
+                <button data-correct="false">cousin</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/mayor.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this word mean?</div>
+            <div class="widget-options">
+                <button data-correct="false">younger</button>
+                <button data-correct="true">older</button>
+                <button data-correct="false">bigger</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/el-primo.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;Which family member did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="false">son</button>
+                <button data-correct="false">grandfather</button>
+                <button data-correct="true">cousin</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/tener.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What is this verb?</div>
+            <div class="widget-options">
+                <button data-correct="true">to have</button>
+                <button data-correct="false">to be</button>
+                <button data-correct="false">to study</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Replay each clip once more, but this time say a full sentence out loud: <em>Mi abuela tiene setenta a&ntilde;os</em>, <em>Tengo un primo</em>, <em>Mi hermano mayor&hellip;</em> Hearing the word and immediately producing a sentence is the strongest kind of practice.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Spiral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; ESPIRAL &middot; TRES VERBOS <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Three verbs to describe a family</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">To really talk about your family, you need three verbs working together &mdash; each does a different job. Listen and read across the row:</p>
+        <table class="gtable">
+            <thead><tr><th>Verb (from)</th><th>Its job</th><th>Example &middot; listen</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>ser</strong> (M&oacute;dulo 1)</td>
+                    <td>what someone is like &middot; description</td>
+                    <td>Mi hermano <span class="pron">es</span> alto. <button class="say" data-audio="grammar/m01-serdesc.mp3" aria-label="Escuchar">&#128266;</button> <span style="color:#6b7a99;font-size:13px;">(alto)</span></td>
+                </tr>
+                <tr>
+                    <td><strong>estar</strong> (M&oacute;dulo 3)</td>
+                    <td>how someone feels right now</td>
+                    <td>Mi hermana <span class="pron">est&aacute;</span> cansada. <button class="say" data-audio="grammar/m03-esta.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td><strong>tener</strong> (M&oacute;dulo 4)</td>
+                    <td>what someone has &middot; age</td>
+                    <td>Yo <span class="pron">tengo</span> dos hermanos. <button class="say" data-audio="grammar/m04-tengo.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0 2px;">Remember from M&oacute;dulo 1: adjectives <em>agree</em> with the person. <em>Mi hermano es alt<strong>o</strong></em>, but <em>mi hermana es alt<strong>a</strong></em>. Same with feelings: <em>cansad<strong>o</strong></em> / <em>cansad<strong>a</strong></em>.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; ser, estar, or tener?</div>
+            <div class="widget-question">&ldquo;Mi hermano ___ alto y simp&aacute;tico.&rdquo; (My brother ___ tall and nice.) &mdash; it's a <em>description</em>.</div>
+            <div class="widget-options">
+                <button data-correct="true">es</button>
+                <button data-correct="false">est&aacute;</button>
+                <button data-correct="false">tiene</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; ser, estar, or tener?</div>
+            <div class="widget-question">&ldquo;Mi hermana ___ cansada hoy.&rdquo; (My sister ___ tired today.) &mdash; it's a <em>right-now feeling</em>.</div>
+            <div class="widget-options">
+                <button data-correct="false">es</button>
+                <button data-correct="true">est&aacute;</button>
+                <button data-correct="false">tiene</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; ser, estar, or tener?</div>
+            <div class="widget-question">&ldquo;Mi abuela ___ setenta a&ntilde;os.&rdquo; (My grandma ___ seventy years old.) &mdash; it's an <em>age</em>.</div>
+            <div class="widget-options">
+                <button data-correct="false">es</button>
+                <button data-correct="false">est&aacute;</button>
+                <button data-correct="true">tiene</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 4 · Production -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 4 &middot; A PRODUCIR <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Build it yourself, then check</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; commit before you peek. Then reveal to check your verb choice, agreement, and spelling. This is a self-test, so honesty is where the value is.</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;My sister is tall and she has fifteen years (is 15).&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Mi hermana es alta y tiene quince a&ntilde;os.</strong> Description &rarr; <em>es</em> (ser) with <em>alt<strong>a</strong></em> to agree; age &rarr; <em>tiene</em> (tener).</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;My parents are nice, but today they are tired.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Mis padres son simp&aacute;ticos, pero hoy est&aacute;n cansados.</strong> A lasting trait &rarr; <em>son</em> (ser); a right-now feeling &rarr; <em>est&aacute;n</em> (estar). Note the plural possessive <em>mis</em> and the plural agreement.</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;We have a big family and we are happy.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Tenemos una familia grande y estamos contentos/as.</strong> Having &rarr; <em>tenemos</em> (tener); a feeling &rarr; <em>estamos</em> (estar). All three module verbs, one short paragraph.</div>
+        </div>
+    </div>
+
+    <!-- PART 5 · Reading recycle -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 5 &middot; A LEER OTRA VEZ <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Ana returns &mdash; listen and read</h3>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 8px 0;">You met this passage on Day 5. Press play, follow along, and this time notice how <em>ser</em>, <em>estar</em>, and <em>tener</em> take turns doing their jobs.</p>
+        <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/m04-ana.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Play the reading</span></p>
+        <p style="font-size:17px;color:#1a2340;line-height:1.7;">
+        &laquo;¡Hola! Me llamo Ana y soy de Guatemala. Mi familia es grande. Tengo dos hermanos y una hermana. Mi hermano mayor tiene dieciocho años y mi hermana menor tiene ocho años. Mi abuela vive con nosotros; ella tiene setenta años. También tenemos un primo en la ciudad de Antigua. Hoy tengo hambre porque es la hora del almuerzo. ¡Mi familia y yo estamos muy contentos!&raquo;</p>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; COMPRUEBA &middot; optional</div>
+            <div style="font-size:16px;color:#1a2340;line-height:1.6;">Point to each verb and say its job out loud: <em>soy</em> (who she is), <em>es grande</em> (description), <em>tengo / tiene</em> (has / age), <em>estamos contentos</em> (feeling now). Could you add one sentence describing a family member with an adjective? (Hint: <em>Mi hermano es alto.</em>)</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; LA MARIMBA</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>La m&uacute;sica que une a la familia</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">In Guatemala, the <strong>marimba</strong> &mdash; a large wooden xylophone played by several people at once &mdash; is the sound of family gatherings, birthdays, and town festivals. It's the national instrument, and playing it is often a family affair passed from <em>los abuelos</em> to <em>los hijos</em>. When a whole family plays together, each person <em>tiene</em> a part, and the music only works if everyone keeps their place.</p>
+    </div>
+
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#9733; LA VIRTUD &middot; RESPONSIBILITY</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Retrieval practice feels harder than re-reading &mdash; and that difficulty is <em>the point</em>. Every time you pull <em>ser</em>, <em>estar</em>, or <em>tener</em> out of your memory instead of copying it, you make the pathway stronger. Taking responsibility for your own review &mdash; doing the harder, more useful practice today &mdash; is exactly what makes Thursday's quiz feel easy. <em>&iexcl;T&uacute; eres capaz!</em></p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">7</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 4.07</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and the <strong>Lengua en acci&oacute;n (20 pts)</strong> launch page. Everything on today's page &mdash; the family words, ages, and the three-verb spiral &mdash; is exactly what those items draw on. You've done the retrieval; now you're ready.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say three sentences about one family member &mdash; one with <em>ser</em> + an adjective, one with <em>estar</em> + a feeling, and one with <em>tener</em> (an age or how many).</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN REPASO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You heard it, you built it, and you told three verbs apart. That's the retrieval that makes the quiz feel easy &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 4.06 &middot; Repaso y espiral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — think about the job: description (ser), feeling now (estar), or having/age (tener)?';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

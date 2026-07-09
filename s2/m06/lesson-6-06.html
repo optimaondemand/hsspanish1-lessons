@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 6.06</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
+    .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q4 &middot; M&oacute;dulo 6</div>
+        <div style="font-size: 12px; color: #666;">&iquest;Qu&eacute; hiciste?</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 6.06 &middot; Day 6 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Repaso y espiral</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">The Recent Past</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 6.06 &middot; Week 2 begins</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Repaso y espiral &mdash; Present vs. Past</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar &mdash; today you <em>pull it back out of your head</em>, and put present against past.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your fourth meeting with the regular preterite and the first day of Week 2. Instead of new material, today you <em>retrieve</em>: an ear-quiz on the verbs, a short production prompt, and a <strong>spiral</strong> that contrasts the tense you've known all year &mdash; the <strong>present</strong> (<em>hablo, como</em>) &mdash; with the tense you just learned &mdash; the <strong>preterite</strong> (<em>habl&eacute;, com&iacute;</em>). Hearing the two side by side is exactly what Friday's Grammar Quiz will ask of you.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> recognize spoken module verbs and match them to meaning.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> tell the <em>present</em> apart from the <em>preterite</em> of the same verb (<em>hablo</em> vs. <em>habl&eacute;</em>).</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Warm up your ear</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the ear-quiz, remind your brain what these verbs sound like. Click each <strong>&#128266;</strong>, say it back, and picture the action &mdash; no reading the English until after you've guessed.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-viajar.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">viajar</span><span class="v-en">to travel</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-bailar.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">bailar</span><span class="v-en">to dance</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-ganar.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">ganar</span><span class="v-en">to win / to earn</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-semana-pasada.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la semana pasada</span><span class="v-en">last week</span></li>
+        </ul>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Honestly &mdash; which still feels shakiest for you right now?</div>
+            <div class="widget-options">
+                <button data-response="Good to know. The verb meanings are in Part 2's ear-quiz &mdash; give them extra reps there.">The verb meanings</button>
+                <button data-response="Makes sense. The endings are exactly what today's spiral drills &mdash; present vs. preterite, side by side, in Part 3.">The past-tense endings</button>
+                <button data-response="That's the big one, and it's what today is for: hearing &laquo;hablo&raquo; vs. &laquo;habl&eacute;&raquo; until the difference is obvious.">Hearing present vs. past</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Ear-quiz -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127911; PART 2 &middot; PRUEBA DE O&Iacute;DO <span class="pill-time">12 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Ear-quiz: what did you hear?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Press <strong>&#128266;</strong> to hear a word (replay as often as you like), then pick its meaning in English. This is the interpretive-listening skill Friday's quiz will test.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-nadar.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this verb mean?</div>
+            <div class="widget-options">
+                <button data-correct="true">to swim</button>
+                <button data-correct="false">to sing</button>
+                <button data-correct="false">to walk</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-cantar.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this verb mean?</div>
+            <div class="widget-options">
+                <button data-correct="false">to prepare</button>
+                <button data-correct="true">to sing</button>
+                <button data-correct="false">to finish</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-el-boleto.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What travel word did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="false">the suitcase</button>
+                <button data-correct="false">the trip</button>
+                <button data-correct="true">the ticket</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-terminar.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this verb mean?</div>
+            <div class="widget-options">
+                <button data-correct="false">to win</button>
+                <button data-correct="true">to finish</button>
+                <button data-correct="false">to spend (time)</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
+            <div class="widget-question"><button class="say" data-audio="vocab/s2-anoche.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What time word did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="true">last night</button>
+                <button data-correct="false">last year</button>
+                <button data-correct="false">yesterday</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Replay each clip once more, but this time say a full past sentence out loud: <em>Anoche nad&eacute;</em>, <em>Ayer cant&eacute;</em>, <em>Compr&eacute; el boleto</em>. Hearing the word and immediately producing a past sentence is the strongest practice there is.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Spiral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; ESPIRAL &middot; PRESENTE vs. PRET&Eacute;RITO <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Same verb, two times</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">You've used the present all year. Now line it up against the preterite. The stem stays; the ending (and the stress) move. Read across each row and listen to the past form:</p>
+        <table class="gtable">
+            <thead><tr><th>Verb</th><th>Present (habitual / now)</th><th>Preterite (finished, past) &middot; listen</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>hablar</strong></td>
+                    <td>yo <span class="pron">hablo</span> &mdash; I speak / I'm speaking</td>
+                    <td>yo <span class="pron">habl&eacute;</span> &mdash; I spoke <button class="say" data-audio="grammar/s2m6-hable.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td><strong>comer</strong></td>
+                    <td>ella <span class="pron">come</span> &mdash; she eats</td>
+                    <td>ella <span class="pron">comi&oacute;</span> &mdash; she ate <button class="say" data-audio="grammar/s2m6-comio.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td><strong>visitar</strong></td>
+                    <td>nosotros <span class="pron">visitamos</span> &mdash; we visit</td>
+                    <td>nosotros <span class="pron">visitamos</span> &mdash; we visited <button class="say" data-audio="grammar/s2m6-visitamos.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0 2px;"><strong>The ear trick:</strong> for <em>yo</em> and <em>&eacute;l/ella</em>, the past pushes the stress to the <em>end</em> &mdash; <em>HA-blo</em> (present) becomes <em>ha-BL&Eacute;</em> (past); <em>CO-me</em> becomes <em>co-MI&Oacute;</em>. And remember the <em>nosotros</em> trap: <em>visitamos</em> looks the same in both &mdash; only the time word tells you which.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; present or preterite?</div>
+            <div class="widget-question">&laquo;Ayer yo ___ con mi abuela.&raquo; (Yesterday I ___ with my grandma.) &mdash; the time word is <em>ayer</em>.</div>
+            <div class="widget-options">
+                <button data-correct="false">hablo</button>
+                <button data-correct="true">habl&eacute;</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; present or preterite?</div>
+            <div class="widget-question">&laquo;Todos los d&iacute;as ella ___ frutas.&raquo; (Every day she ___ fruit.) &mdash; a habit.</div>
+            <div class="widget-options">
+                <button data-correct="true">come</button>
+                <button data-correct="false">comi&oacute;</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; present or preterite?</div>
+            <div class="widget-question">&laquo;Anoche ellos ___ en la fiesta.&raquo; (Last night they ___ at the party.) &mdash; <em>bailar</em>, past.</div>
+            <div class="widget-options">
+                <button data-correct="false">bailan</button>
+                <button data-correct="true">bailaron</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 4 · Production -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 4 &middot; A PRODUCIR <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Build it yourself, then check</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; commit before you peek. Then reveal to check your verb form and spelling.</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;Yesterday I traveled to Madrid and visited a museum.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Ayer viaj&eacute; a Madrid y visit&eacute; un museo.</strong> Both <em>-ar</em>, <em>yo</em> &rarr; <em>-&eacute;</em>. <em>Ayer</em> sets the past.</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;Last weekend we danced and sang.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>El fin de semana pasado bailamos y cantamos.</strong> Both <em>-ar</em>, <em>nosotros</em> &rarr; <em>-amos</em> (the time word makes it past).</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;Last night she ate fish and I ate a Spanish omelette.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Anoche ella comi&oacute; pescado y yo com&iacute; una tortilla espa&ntilde;ola.</strong> <em>-er</em>: ella &rarr; <em>-i&oacute;</em>, yo &rarr; <em>-&iacute;</em>.</div>
+        </div>
+    </div>
+
+    <!-- PART 5 · Reading recycle -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 5 &middot; A LEER OTRA VEZ <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The Madrid trip returns &mdash; listen and read</h3>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 8px 0;">You met this on Day 5. Press play, follow along, and this time count how many preterite verbs you can spot.</p>
+        <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/s2m6-espana.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Play the reading</span></p>
+        <p style="font-size:17px;color:#1a2340;line-height:1.7;">
+        &laquo;Hola. La semana pasada viajé a España con mi familia. Llegamos a Madrid, la capital, y pasamos tres días allí. El primer día caminamos por el centro y visitamos el Museo del Prado. Miré cuadros de Velázquez y de Goya. Por la noche cené en un restaurante y probé una tortilla española. El sábado mis padres compraron recuerdos y yo tomé muchas fotos. Terminamos el viaje muy contentos. ¡Me encantó Madrid!&raquo;</p>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; COMPRUEBA &middot; optional</div>
+            <div style="font-size:16px;color:#1a2340;line-height:1.6;">Point to each bold verb and say its ending and subject: <em>viaj&eacute;</em> (yo), <em>visitamos</em> (nosotros), <em>prob&eacute;</em> (yo). Which one could also be present tense? (<em>visitamos</em> / <em>caminamos</em> &mdash; the <em>nosotros</em> trap.)</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; ESPA&Ntilde;A</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Contar el pasado</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Every culture loves a good travel story, and Spanish speakers are no exception &mdash; from a family recounting <em>&laquo;el verano pasado&raquo;</em> to friends comparing weekends over <em>tapas</em>. The preterite is the tense of exactly that: finished events, told after the fact. The more of these verbs you own, the more of other people's stories you'll understand.</p>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; ESPA&Ntilde;A A FONDO</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El horario espa&ntilde;ol</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">One reason Spain's stories often run late into the night: the Spanish clock. Lunch (<em>la comida</em>) is the big meal, often around 2&ndash;3 p.m., and dinner (<em>la cena</em>) can start at 9 or 10 p.m. When our narrator says <em>&laquo;por la noche cen&eacute; en un restaurante,&raquo;</em> &ldquo;night&rdquo; really means night. Daily rhythms like this are part of what makes travel &mdash; and telling about it afterward &mdash; memorable.</p>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">7</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 6.07</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and <strong>Lengua en acci&oacute;n (20 pts)</strong>. Everything on today's page &mdash; the verbs, the time words, and the present-vs-past spiral &mdash; is exactly what those items draw on.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say the same verb in both tenses out loud twice &mdash; <em>hablo / habl&eacute;</em>, <em>como / com&iacute;</em> &mdash; and feel the stress jump to the end in the past.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN REPASO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You heard it, you built it, and you told present from past. That's the retrieval that makes the quiz feel easy &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 4 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 6.06 &middot; Repaso y espiral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — the time word (or the habit) tells you which tense.'
+        : 'Not quite — look for the time clue: a past word (ayer, anoche) points to the preterite.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

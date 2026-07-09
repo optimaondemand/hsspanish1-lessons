@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 1.04</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
+    .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 1</div>
+        <div style="font-size: 12px; color: #666;">&iquest;Qui&eacute;n soy?</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.04 &middot; Day 4 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Aplicaci&oacute;n: ser</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Identity &amp; Origin</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.04</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Aplicaci&oacute;n &mdash; Using <em>ser</em> in Writing &amp; by Ear</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Yesterday you learned to use <em>ser</em>. Today you <em>practice</em> it &mdash; in writing and by ear.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your <strong>second encounter</strong> with <em>ser</em> in full, and it lands a day after the first on purpose &mdash; spacing is how the forms become automatic. There's <strong>no new grammar</strong> today. Instead you'll choose the right form of <em>ser</em> in a short guided writing, then train your ear with a five-sentence dictation. It's all ungraded practice: mistakes here are exactly how the habit gets built.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> complete sentences with the correct form of <em>ser</em> and explain my choice.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> listen to a spoken sentence with <em>ser</em> and write down what I hear.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The forms, in one breath</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before you write anything, say the five forms out loud: <strong>yo soy, t&uacute; eres, &eacute;l/ella es, nosotros somos, ellos son.</strong> Hold them in your head &mdash; you're about to choose among them yourself.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">How comfortable do you feel with the forms of <em>ser</em> right now?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Perfecto! Today's practice will lock it in. Push yourself to explain each choice, not just guess.">Pretty solid</button>
+                <button data-response="Normal &mdash; a day-two wobble is exactly why we practice again today instead of testing. It'll feel natural by the end.">Still shaky</button>
+                <button data-response="That's honest, and fine. Lean on the forms table from Lesson 1.03 for every item; the choice gets automatic with reps.">Kind of lost</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Guided writing -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 2 &middot; ESCRITURA GUIADA <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">You choose the form</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">On paper or in a document, copy each sentence and fill the blank with the correct form of <strong>ser</strong> (<em>soy, eres, es, somos, son</em>). Say <em>why</em> to yourself as you write. Commit to all six before you reveal the key &mdash; no peeking early; the thinking is the practice.</p>
+
+        <div class="contrast" style="margin-bottom:16px;">
+            <div class="col ser">
+                <h4>SER &mdash; the forms</h4>
+                <div style="font-size:15px;line-height:1.6;color:#1a2340;">Match the subject.<br><em>yo soy &middot; t&uacute; eres &middot; &eacute;l/ella/usted es &middot; nosotros somos &middot; ellos/ellas/ustedes son</em></div>
+            </div>
+            <div class="col estar">
+                <h4>SER &mdash; its jobs</h4>
+                <div style="font-size:15px;line-height:1.6;color:#1a2340;">Identity, origin, and lasting traits.<br><em>Soy estudiante &middot; Soy de M&eacute;xico &middot; Es inteligente</em></div>
+            </div>
+        </div>
+
+        <ol style="font-size:17px;color:#1a2340;line-height:1.9;margin:0 0 4px 1.2em;">
+            <li>Yo ______ estudiante.</li>
+            <li>Nosotros ______ de M&eacute;xico.</li>
+            <li>Mi amiga Ana ______ muy amable.</li>
+            <li>T&uacute; ______ inteligente.</li>
+            <li>Ellos ______ mexicanos.</li>
+            <li>&iquest;De d&oacute;nde ______ usted?</li>
+        </ol>
+
+        <div style="margin-top:14px;">
+            <button class="reveal-btn">Reveal the answer key</button>
+            <div class="reveal-body">
+                <strong>1. soy</strong> &mdash; "yo" &rarr; <em>soy</em>. (Yo <strong>soy</strong> estudiante.)<br>
+                <strong>2. somos</strong> &mdash; "nosotros" &rarr; <em>somos</em>. (Nosotros <strong>somos</strong> de M&eacute;xico.)<br>
+                <strong>3. es</strong> &mdash; "ella" &rarr; <em>es</em>. (Mi amiga Ana <strong>es</strong> muy amable.)<br>
+                <strong>4. eres</strong> &mdash; "t&uacute;" &rarr; <em>eres</em>. (T&uacute; <strong>eres</strong> inteligente.)<br>
+                <strong>5. son</strong> &mdash; "ellos" &rarr; <em>son</em>. (Ellos <strong>son</strong> mexicanos.)<br>
+                <strong>6. es</strong> &mdash; "usted" takes the same form as <em>&eacute;l/ella</em> &rarr; <em>es</em>. (&iquest;De d&oacute;nde <strong>es</strong> usted?)
+            </div>
+        </div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Write two more sentences of your own about your real life &mdash; one that says <em>who you are</em> and one that says <em>where you're from</em>, both with <em>ser</em>. Read them aloud.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Dictation -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127911; PART 3 &middot; DICTADO <span class="pill-time">13 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen and write &mdash; five sentences</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">These are the same <em>ser</em> sentences you met earlier &mdash; now the training wheels are off. For each one: click <strong>&#128266;</strong> (play it as many times as you need), write down exactly what you hear, mind your accent marks, then reveal to check. Don't reveal until you've written your best guess.</p>
+
+        <div class="dictrow">
+            <div class="num">1</div>
+            <button class="say" data-audio="grammar/m01-soy.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Yo soy de M&eacute;xico.</strong> (I am from Mexico.) &mdash; <em>ser</em> for origin.</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">2</div>
+            <button class="say" data-audio="grammar/m01-eres.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>&iquest;De d&oacute;nde eres?</strong> (Where are you from?) &mdash; note the opening <em>&iquest;</em> and the accent on <em>d&oacute;nde</em>.</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">3</div>
+            <button class="say" data-audio="grammar/m01-es.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Ella es simp&aacute;tica.</strong> (She is nice.) &mdash; <em>es</em> for "she"; <em>simp&aacute;tica</em> agrees with <em>ella</em>.</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">4</div>
+            <button class="say" data-audio="grammar/m01-somos.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Nosotros somos estudiantes.</strong> (We are students.) &mdash; <em>somos</em> for "we."</div>
+        </div>
+
+        <div class="dictrow">
+            <div class="num">5</div>
+            <button class="say" data-audio="grammar/m01-son.mp3" aria-label="Escuchar">&#128266;</button>
+            <div class="lead">Write what you hear&hellip;</div>
+            <button class="reveal-btn">Reveal</button>
+            <div class="reveal-body" style="flex-basis:100%;"><strong>Ellos son mexicanos.</strong> (They are Mexican.) &mdash; <em>son</em> for "they"; <em>mexicanos</em> agrees with the group.</div>
+        </div>
+
+        <p style="font-size:14px;color:#6b7a99;margin:10px 0 0;">Notice every sentence used <em>ser</em> &mdash; because each one is about identity, origin, or a lasting trait. That's the pattern your ear is learning to expect.</p>
+    </div>
+
+    <!-- PART 4 · Checks -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 4 &middot; &iexcl;A ELEGIR&#33; <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Two to finish on</h3>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 4px;">Same question every time: which subject is doing the "being," and which form of <em>ser</em> matches it?</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; choose the right form</div>
+            <div class="widget-question">"T&uacute; ______ mi amigo." (You ______ my friend.)</div>
+            <div class="widget-options">
+                <button data-correct="true">eres</button>
+                <button data-correct="false">es</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; choose the right form</div>
+            <div class="widget-question">"Mi profesora ______ de Colombia." (My teacher ______ from Colombia.)</div>
+            <div class="widget-options">
+                <button data-correct="false">soy</button>
+                <button data-correct="true">es</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">One to build yourself: how would you say <em>"They are hard-working"</em>? Say it out loud first, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Ellos son trabajadores.</strong> "They" &rarr; <em>son</em>; and <em>trabajador</em> adds endings to agree with the group.</div>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">5</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 1.05</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow you'll meet Daniela in a short reading you can <em>hear</em>, plus a culture spotlight on M&eacute;xico &mdash; your third encounter with <em>ser</em>, this time inside a real story instead of drills. Graded work begins on Day 7; this week is still for building the habit.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, without looking, write one sentence about yourself and one about a friend, both with <em>ser</em> &mdash; check that each form matches its subject.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BIEN HECHO&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You didn't just review the forms today &mdash; you used them, in writing and by ear. Every choice you made is a rep. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.04 &middot; Aplicaci&oacute;n: ser</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' is right — match the subject to its form of ser (yo soy, tú eres, él/ella es, nosotros somos, ellos/ellas son).'
+        : 'Not quite. Match the subject to its form: yo soy, tú eres, él/ella es, nosotros somos, ellos/ellas son.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

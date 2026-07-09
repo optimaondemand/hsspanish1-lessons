@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Vocabulario M&oacute;dulo 8</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:10px 12px; border-bottom:1px solid #D0D9E8; vertical-align:middle; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .gtable .es { font-weight:600; color:#0E1C42; font-size:16px; white-space:nowrap; }
+    .gtable .en { color:#1a2340; font-size:15px; }
+    .gtable .note { color:#6b7a99; font-size:14px; font-style:italic; line-height:1.5; }
+    .gtable .say { min-width:36px; height:30px; font-size:14px; margin-right:10px; vertical-align:middle; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    .tablewrap { overflow-x:auto; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q4 &middot; M&oacute;dulo 8</div>
+        <div style="font-size: 12px; color: #666;">La m&uacute;sica y las fiestas</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Study companion</div>
+        <div style="font-size: 17px; color: #0e1c42;">Vocabulario &middot; Repaso</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">18 palabras &middot; por el o&iacute;do</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Music &amp; Celebration</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">M&oacute;dulo 8 &middot; Vocabulario</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Vocabulario &middot; M&oacute;dulo 8</div>
+        <div style="font-size: 16px; color: #666;">Glossary &middot; tap &#128266; to hear each word, then say it back out loud</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; HOW TO USE THIS PAGE</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Here are all <strong>18 words</strong> of M&oacute;dulo 8 in one place &mdash; the same words you'll meet on the listening-based <em>Vocabulary Check</em> (Day 7). <strong>Set A</strong> is the nouns of music and fiesta; <strong>Set B</strong> is the verbs and the comparison words that power this module's grammar. Tap the <strong>&#128266;</strong> on each row and <em>say the word back out loud</em> before you read the English. Your real goal is to know these <em>by ear</em>: if you can hear the word and picture its meaning without reading, you're ready.</div>
+        <p style="font-size: 14px; color: #6b7a99; margin: 12px 0 0;">Tip: learn every noun glued to its article (<em>la, el, los</em>). The comparison words (<em>m&aacute;s, menos, mejor, peor</em>) are the ones you'll plug into the sentences you build in Lessons 8.05&ndash;8.07.</p>
+    </div>
+
+    <!-- SET A -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#127925; SET A &middot; LA M&Uacute;SICA Y LA FIESTA <span class="pill-time">nouns &middot; Day 1</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">The words of music and celebration</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0 0 6px 0;">Twelve nouns for what you see and hear at a fiesta. Learn each one with its article.</p>
+        <div class="tablewrap"><table class="gtable">
+            <thead><tr><th style="width:34%;">Espa&ntilde;ol</th><th style="width:22%;">English</th><th style="width:44%;">Example / note</th></tr></thead>
+            <tbody>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-la-cancion.mp3" aria-label="Escuchar la canci&oacute;n">&#128266;</button>la canci&oacute;n</td><td class="en">song</td><td class="note">Feminine: <em>la</em>. Accent on the last syllable &mdash; canci<span class="pron">&oacute;</span>n. <em>Mi canci&oacute;n favorita.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-la-celebracion.mp3" aria-label="Escuchar la celebraci&oacute;n">&#128266;</button>la celebraci&oacute;n</td><td class="en">celebration</td><td class="note">The whole event. <em>La celebraci&oacute;n es en la casa de Ana.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-el-baile.mp3" aria-label="Escuchar el baile">&#128266;</button>el baile</td><td class="en">dance</td><td class="note">The dance (the noun). The verb is <em>bailar</em>. <em>El baile empieza a las nueve.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-la-guitarra.mp3" aria-label="Escuchar la guitarra">&#128266;</button>la guitarra</td><td class="en">guitar</td><td class="note">Double <em>rr</em> &mdash; roll it. <em>Ella toca la guitarra.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-el-cantante.mp3" aria-label="Escuchar el cantante">&#128266;</button>el cantante</td><td class="en">singer</td><td class="note">Same form for a woman: <em>la cantante</em>. <em>El cantante est&aacute; cantando.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-el-concierto.mp3" aria-label="Escuchar el concierto">&#128266;</button>el concierto</td><td class="en">concert</td><td class="note"><em>Hay un concierto en el parque esta noche.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-el-ritmo.mp3" aria-label="Escuchar el ritmo">&#128266;</button>el ritmo</td><td class="en">rhythm / beat</td><td class="note"><em>La cumbia tiene un ritmo muy alegre.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-la-cumbia.mp3" aria-label="Escuchar la cumbia">&#128266;</button>la cumbia</td><td class="en">cumbia (music &amp; dance style)</td><td class="note">A Latin-American style born in Colombia, danced across the region.</td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-el-tambor.mp3" aria-label="Escuchar el tambor">&#128266;</button>el tambor</td><td class="en">drum</td><td class="note">Stress the last syllable: tam<span class="pron">bor</span>. <em>El tambor marca el ritmo.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-el-festival.mp3" aria-label="Escuchar el festival">&#128266;</button>el festival</td><td class="en">festival</td><td class="note"><em>El festival dura tres d&iacute;as.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-los-fuegos-artificiales.mp3" aria-label="Escuchar los fuegos artificiales">&#128266;</button>los fuegos artificiales</td><td class="en">fireworks</td><td class="note">Always plural. <em>Los fuegos artificiales son a medianoche.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-el-disfraz.mp3" aria-label="Escuchar el disfraz">&#128266;</button>el disfraz</td><td class="en">costume</td><td class="note">Plural is <em>los disfraces</em>. Worn at Carnaval. <em>Mi disfraz es de le&oacute;n.</em></td></tr>
+            </tbody>
+        </table></div>
+    </div>
+
+    <!-- SET B -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#128170; SET B &middot; VERBOS Y COMPARACIONES <span class="pill-time">verbs &amp; comparing &middot; Day 2</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">The words that make the module move</h3>
+        <p style="font-size: 15px; color: #6b7a99; margin: 0 0 6px 0;">Two action verbs and the four comparison words. These feed straight into this module's grammar: the present progressive and comparatives.</p>
+        <div class="tablewrap"><table class="gtable">
+            <thead><tr><th style="width:34%;">Espa&ntilde;ol</th><th style="width:22%;">English</th><th style="width:44%;">Example / note</th></tr></thead>
+            <tbody>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-celebrar.mp3" aria-label="Escuchar celebrar">&#128266;</button>celebrar</td><td class="en">to celebrate</td><td class="note">Regular <em>-ar</em> verb. Progressive: <em>Estamos celebr<span class="pron">ando</span>.</em> (We are celebrating.)</td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-tocar.mp3" aria-label="Escuchar tocar">&#128266;</button>tocar</td><td class="en">to play (an instrument)</td><td class="note">Use for instruments, not sports. <em>&Eacute;l est&aacute; toc<span class="pron">ando</span> el tambor.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-mas.mp3" aria-label="Escuchar m&aacute;s">&#128266;</button>m&aacute;s</td><td class="en">more</td><td class="note">Comparison: <em>m&aacute;s + adjetivo + que</em>. <em>La cumbia es m&aacute;s r&aacute;pida que la balada.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-menos.mp3" aria-label="Escuchar menos">&#128266;</button>menos</td><td class="en">less / fewer</td><td class="note">Comparison: <em>menos + adjetivo + que</em>. <em>Este concierto es menos caro que ese.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-mejor.mp3" aria-label="Escuchar mejor">&#128266;</button>mejor</td><td class="en">better / best</td><td class="note">Irregular &mdash; do NOT say <em>m&aacute;s bueno</em>. <em>Esta canci&oacute;n es mejor que la otra.</em></td></tr>
+                <tr><td class="es"><button class="say" data-audio="vocab/s2-peor.mp3" aria-label="Escuchar peor">&#128266;</button>peor</td><td class="en">worse / worst</td><td class="note">Irregular &mdash; do NOT say <em>m&aacute;s malo</em>. <em>El clima hoy es peor que ayer.</em></td></tr>
+            </tbody>
+        </table></div>
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Cover the English column. Play the &#128266; on ten rows in random order and say each meaning out loud <em>before</em> you peek &mdash; that's exactly what the listening Vocabulary Check asks. Then build one sentence per comparison word: <em>La cumbia es m&aacute;s alegre que la balada</em>, <em>Este disfraz es mejor que ese</em>.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px; color:#9a7b1e; letter-spacing:0.4px; margin-bottom:6px;">&#127881; CULTURA &middot; M&Uacute;SICA Y FIESTAS PANHISP&Aacute;NICAS</div>
+        <div style="font-size:16px; color:#1a2340; line-height:1.6;">These words open a huge world. <em>La cumbia</em> and <em>la salsa</em> fill dance floors from Colombia to Mexico; <em>el Carnaval</em> brings <em>disfraces</em>, <em>tambores</em>, and <em>fuegos artificiales</em> to streets across the Spanish-speaking world. When you name a <em>ritmo</em> or a <em>baile</em> in Spanish, you're naming something people truly live.</div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, with the English covered, play five &#128266; buttons and say each meaning out loud before peeking &mdash; if you got them by ear, you're ready for the Vocabulary Check.</div>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 4 &middot; Student Study Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Vocabulario &middot; M&oacute;dulo 8 &middot; La m&uacute;sica y las fiestas</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
+        : 'Not quite — try the other option and think about the English meaning.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>

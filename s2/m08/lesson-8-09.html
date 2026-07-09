@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Lesson 8.09</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+    .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
+    .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q4 &middot; M&oacute;dulo 8</div>
+        <div style="font-size: 12px; color: #666;">La m&uacute;sica y las fiestas</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 8.09 &middot; Day 9 of 10</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Mapa musical + VR (ENGAGE)</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Music &amp; Celebration</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 8.09</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El mapa musical &mdash; y un viaje por el mundo hispano</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes &middot; nothing graded today</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A breather between two big days &mdash; explore, don't cram.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Yesterday you recorded (Tarea oral); tomorrow you take the Grammar Quiz. Today sits between them on purpose, and <strong>nothing here is graded</strong>. First you'll travel a <strong>musical map</strong> of the Spanish-speaking world &mdash; matching cumbia, tango, salsa, and mariachi to the countries they come from. Then you'll get your first look at the Semester-2 VR project in ENGAGE, <strong><em>Un viaje por el mundo hispano</em></strong> (&ldquo;A journey through the Hispanic world&rdquo;), where you'll narrate a trip using everything you've learned this semester.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> match major music styles to their countries across the Spanish-speaking world.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain what I'll do in the <em>Un viaje por el mundo hispano</em> VR project.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">6 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Music has a home</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Every style you've met this module was born somewhere: cumbia on Colombia's coast, tango in the R&iacute;o de la Plata, salsa in the Caribbean and New York. Today you'll place them on the map. Warm up first.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">If you could drop into one music scene right now, which would it be?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;A bailar cumbia! You'd say: Estoy bailando cumbia en Colombia. The map's first stop is the Colombian coast.">A cumbia street party in Colombia</button>
+                <button data-response="Qu&eacute; elegante. In Buenos Aires you might say: Estoy escuchando un tango. Argentina is one of today's map stops.">A tango hall in Buenos Aires</button>
+                <button data-response="&iexcl;Salsa! In Cali or San Juan: Estoy bailando salsa. The Caribbean is on today's map too.">A salsa club in the Caribbean</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · Map -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128506;&#65039; PART 2 &middot; EL MAPA MUSICAL DEL MUNDO HISPANO <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Where the rhythms live</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Open the interactive map in a new tab. Switch it to <strong>Explorador</strong> mode and find each country below &mdash; read its card, then use the built-in <strong>quiz</strong> to place capitals. As you click, connect each country to its music.</p>
+        <table class="gtable">
+            <thead><tr><th>Estilo musical</th><th>Pa&iacute;s / regi&oacute;n</th></tr></thead>
+            <tbody>
+                <tr><td>la cumbia</td><td>Colombia (costa caribe&ntilde;a)</td></tr>
+                <tr><td>el tango</td><td>Argentina y Uruguay</td></tr>
+                <tr><td>la salsa</td><td>Cuba &amp; Puerto Rico (el Caribe)</td></tr>
+                <tr><td>el mariachi</td><td>M&eacute;xico</td></tr>
+                <tr><td>la m&uacute;sica andina</td><td>Per&uacute;, Bolivia y Ecuador</td></tr>
+            </tbody>
+        </table>
+        <div style="text-align:center; margin: 16px 0;">
+            <a href="../../mapa-del-mundo-hispano.html" target="_blank" rel="noopener" style="display:inline-block; background:#0E1C42; color:#fff; text-decoration:none; border-radius:8px; padding:14px 26px; font-size:17px; border-bottom:3px solid #55C8E8;">&#128506;&#65039; Abrir el mapa del mundo hispano &rarr;</a>
+            <div style="font-size:13px; color:#6b7a99; margin-top:8px;">Opens in a new tab &middot; use <em>Explorador</em> mode, then the <em>quiz</em></div>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; match the music</div>
+            <div class="widget-question">The <strong>tango</strong> comes from which country?</div>
+            <div class="widget-options">
+                <button data-correct="false">M&eacute;xico</button>
+                <button data-correct="true">Argentina</button>
+                <button data-correct="false">Colombia</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; match the music</div>
+            <div class="widget-question">The <strong>mariachi</strong> is the traditional music of&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="true">M&eacute;xico</button>
+                <button data-correct="false">Per&uacute;</button>
+                <button data-correct="false">Cuba</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Before you check the map: which country gave the world <strong>cumbia</strong>? Say it, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Colombia.</strong> La cumbia naci&oacute; en la costa caribe&ntilde;a de Colombia y hoy se toca en todo el continente.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127925; CULTURA &middot; EL MARIACHI</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>La m&uacute;sica que representa a M&eacute;xico</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">El <strong>mariachi</strong> naci&oacute; en el estado de <strong>Jalisco</strong> y hoy es un s&iacute;mbolo de M&eacute;xico en todo el mundo. Un grupo de mariachi lleva <em>guitarras</em>, violines, trompetas y el <em>guitarr&oacute;n</em> (un bajo grande). En 2011 la UNESCO lo declar&oacute; Patrimonio de la Humanidad. En una fiesta mexicana, cuando el mariachi <em>est&aacute; tocando</em>, todos cantan.</p>
+    </div>
+
+    <!-- PART 3 · VR preview -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129406; PART 3 &middot; VISTA PREVIA DE LA VR &middot; ENGAGE <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;"><em>Un viaje por el mundo hispano</em> &mdash; the Semester-2 VR project</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">For your Semester-2 VR project you'll put on a headset and step into <strong>ENGAGE</strong> for a guided <em>viaje</em> (journey) through several stops in the Spanish-speaking world &mdash; a Colombian plaza during a festival, a Buenos Aires caf&eacute;, an Andean market. At each stop you'll <em>narrate</em>: say what's happening around you, compare two places, and recount where you went before. <strong>You're not performing today</strong> &mdash; this is your preview.</p>
+
+        <div style="background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:16px 20px; margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:10px;">&#127891; WHAT YOU'LL DO ON THE VIAJE</div>
+            <ol style="margin:0 0 0 18px; padding:0; font-size:16px; color:#1a2340; line-height:1.7;">
+                <li><strong>Describir lo que pasa &mdash; say what's happening now.</strong> Present progressive: <em>La gente <strong>est&aacute; bailando</strong>; un m&uacute;sico <strong>est&aacute; tocando</strong> la guitarra.</em></li>
+                <li><strong>Comparar los lugares &mdash; compare your stops.</strong> <em>Esta plaza es <strong>m&aacute;s</strong> animada <strong>que</strong> la otra; la comida aqu&iacute; es <strong>mejor</strong>.</em></li>
+                <li><strong>Contar tu viaje &mdash; recount where you went.</strong> Preterite (M6&ndash;7): <em>Ayer <strong>fui</strong> a un festival y <strong>visit&eacute;</strong> un mercado.</em></li>
+                <li><strong>Reaccionar &mdash; react with feeling.</strong> <em>&iexcl;Qu&eacute; alegre! Me gusta m&aacute;s la cumbia que el tango.</em></li>
+            </ol>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 18px 0 8px 0;">Rehearse one line before you ever step in</h3>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; REHEARSE &middot; no wrong answer &mdash; think it through</div>
+            <div class="widget-question">You arrive at a festival stop and want to narrate the scene. Which line fits best?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Perfecto! Present progressive narrates the live scene: La gente est&aacute; bailando y cantando. That's exactly the VR skill.">&laquo;La gente est&aacute; bailando y cantando.&raquo;</button>
+                <button data-response="That's the preterite &mdash; great for recounting an earlier stop (Ayer fui&hellip;), but for the scene happening now, reach for the progressive.">&laquo;Ayer fui a la fiesta.&raquo;</button>
+                <button data-response="A comparison &mdash; useful when you contrast two stops! For narrating the live scene, though, start with est&aacute; + -ando/-iendo.">&laquo;Esta fiesta es m&aacute;s grande que la otra.&raquo;</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <p style="font-size:16px;color:#1a2340;margin:14px 0 8px;">Now build one line: at the Andean market, how would you say <em>&ldquo;A musician is playing and the market is bigger than the plaza&rdquo;</em>? Say it aloud, then reveal.</p>
+        <button class="reveal-btn">Reveal answer</button>
+        <div class="reveal-body"><strong>Un m&uacute;sico est&aacute; tocando y el mercado es m&aacute;s grande que la plaza.</strong> Present progressive (<em>est&aacute; tocando</em>) for the live action + a comparison (<em>m&aacute;s grande que</em>) &mdash; the two VR skills in one breath.</div>
+
+        <div class="opt-strip">
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Sketch a quick &ldquo;travel script&rdquo;: pick three stops on today's music map and write one line for each &mdash; a progressive (what's happening), a comparison (this vs. that), and a preterite (what you did there). Keep it; you'll walk into the VR project with your lines ready.</div>
+        </div>
+    </div>
+
+    <div class="virtue-box">
+        <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#127760; CULTURA A FONDO &middot; UN CONTINENTE, MUCHOS RITMOS</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Think of the map you just explored as a single song with many verses. The same Spanish language stretches from the accordion-driven <em>vallenato</em> of Colombia to the panpipes of the Andes, from Cuban <em>son</em> to Mexican <em>mariachi</em> &mdash; each shaped by Indigenous, African, and European roots meeting in a different place. A <em>viaje por el mundo hispano</em> is really a journey through that mix. When your VR project takes you from stop to stop, you're not just practicing verbs; you're tracing how one language carries a whole hemisphere of stories.</p>
+    </div>
+
+    <!-- PART 4 · Look ahead -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT <span class="pill-time">6 min</span></div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">10</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 8.10</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow is the last day of M&oacute;dulo 8: a short listening warm-up, then the <strong>Grammar Quiz (present progressive &amp; comparatives, 30 pts, 2 attempts)</strong> and an &ldquo;I can&hellip;&rdquo; close before the capstone module. Spend your last minutes reviewing the two patterns.</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then name one music style and its country out loud &mdash; e.g. <em>La cumbia es de Colombia</em> &mdash; and say one line you'd use on the VR <em>viaje</em>.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;CASI LO LOGRAS&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've mapped the rhythms of a whole continent and previewed the journey you'll take through it. One quiz stands between you and the capstone. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 4 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 8.09 &middot; Mapa musical + VR (ENGAGE)</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! ' + eBtn.textContent + ' — check it against the map to be sure.'
+        : 'Not quite — open the map, click the country, and read its card.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+</body>
+</html>
