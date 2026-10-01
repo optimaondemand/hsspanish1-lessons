@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spanish 1 — S2 Syllabus | 0708340</title>
+<style>
+  :root{
+    --navy:#0E1C42; --cyan:#55C8E8;
+    --rojo:#AA1E2D; --oro:#C79A1E; --tierra:#7A4B1E; --verde:#1E6B4F;
+    --ink:#1A2340; --muted:#6B7A99; --ground:#F0F2F8; --card:#FFFFFF;
+    --rojo-l:#F5E7E8; --oro-l:#F6F0DD; --verde-l:#E4F0EA; --line:#D0D9E8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Segoe UI",Roboto,Helvetica,Arial,sans-serif;background:var(--ground);
+    color:var(--ink);line-height:1.62;font-size:15.5px}
+  h1,h2,h3{font-family:Georgia,'Times New Roman',serif}
+  .wrap{max-width:960px;margin:0 auto;padding:2rem 1.5rem 3rem}
+
+  /* ---------- Optima masthead ---------- */
+  .course-header{background:linear-gradient(120deg,#0E1C42,#1c3270);
+    border-bottom:5px solid var(--cyan);padding:1.7rem 2rem 1.5rem}
+  .ohdr{max-width:960px;margin:0 auto}
+  .obrand{display:flex;align-items:center;gap:.85rem;margin-bottom:1rem}
+  .obrand .owl{width:48px;height:48px;border-radius:50%;background:#fff;display:flex;
+    align-items:center;justify-content:center;flex-shrink:0}
+  .obrand .oname{font-family:Georgia,serif;font-size:1.06rem;color:#fff;line-height:1.2}
+  .obrand .otag{font-size:.7rem;color:var(--cyan);letter-spacing:.3px}
+  .course-header h1{font-size:2rem;color:#fff;line-height:1.15}
+  .sem-label{display:inline-block;background:var(--oro);color:#12203f;font-size:.72rem;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;padding:.22rem .75rem;border-radius:2px;margin-top:.55rem}
+  .subtitle{font-size:.82rem;color:#9fb2d6;margin-top:.65rem}
+  .meta{display:flex;flex-wrap:wrap;gap:1.2rem;margin-top:.7rem;font-size:.76rem;color:#8ea3ca}
+  .flagbar{display:flex;height:6px}
+  .flagbar i{display:block}
+  .flagbar .r{flex:1;background:var(--rojo)}
+  .flagbar .g{flex:2;background:var(--oro)}
+
+  /* ---------- body content ---------- */
+  .section-label{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--rojo);margin-bottom:.4rem}
+  h2{font-size:1.2rem;color:var(--navy);margin:2.2rem 0 .9rem;padding-bottom:.4rem;
+    border-bottom:2px solid var(--rojo)}
+  h3{font-size:1rem;color:var(--tierra);margin:1.2rem 0 .5rem}
+  p{margin-bottom:.75rem;font-size:.95rem}
+  ul{margin:.3rem 0 .9rem 0;list-style:none}
+  .goal-list{display:grid;grid-template-columns:1fr 1fr;gap:.4rem 1.4rem;font-size:.88rem}
+  .goal-list li{padding-left:1.1rem;position:relative;line-height:1.5}
+  .goal-list li::before{content:'';position:absolute;left:0;top:.55rem;width:7px;height:7px;
+    border-radius:50%;background:var(--rojo)}
+  @media(max-width:600px){.goal-list{grid-template-columns:1fr}}
+  .info-box{background:var(--oro-l);border-left:4px solid var(--oro);padding:1rem 1.3rem;
+    margin-bottom:1.1rem;font-size:.885rem;line-height:1.6;border-radius:4px}
+  .info-box.rojo{background:var(--rojo-l);border-left-color:var(--rojo)}
+  .info-box.verde{background:var(--verde-l);border-left-color:var(--verde)}
+  .tablewrap{overflow-x:auto;margin-bottom:1rem}
+  table{width:100%;border-collapse:collapse;font-size:.84rem}
+  th{background:var(--navy);color:#fff;text-align:left;padding:.6rem .85rem;font-size:.76rem;font-weight:600}
+  td{padding:.6rem .85rem;border-bottom:1px solid var(--line);vertical-align:top;line-height:1.45}
+  tr:nth-child(even) td{background:rgba(199,154,30,.07)}
+  .mod-cell{font-weight:700;color:var(--rojo);white-space:nowrap}
+  .gate-row td{background:rgba(170,30,45,.06)!important;border-top:2px solid var(--rojo);
+    border-bottom:2px solid var(--rojo)}
+  .gate-badge{display:inline-block;background:var(--rojo);color:#fff;font-size:.6rem;font-weight:700;
+    letter-spacing:.08em;text-transform:uppercase;padding:.1rem .4rem;border-radius:2px;margin-left:.35rem}
+  .assess-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:.9rem;margin-bottom:1rem}
+  .assess-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--cyan);
+    padding:.85rem;border-radius:4px}
+  .pts{font-size:1.4rem;font-weight:700;color:var(--rojo)}
+  .a-lbl{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;
+    color:var(--tierra);margin-top:.12rem}
+  .a-det{font-size:.78rem;color:var(--muted);margin-top:.3rem;line-height:1.4}
+  .w-row{display:flex;align-items:center;gap:.85rem;margin-bottom:.5rem;font-size:.84rem}
+  .w-label{width:14rem;flex-shrink:0}
+  .w-bg{flex:1;height:7px;background:rgba(26,35,64,.12);border-radius:2px;overflow:hidden}
+  .w-bar{height:100%;background:var(--rojo)}
+  .w-pct{width:3rem;text-align:right;font-weight:700;color:var(--rojo);font-variant-numeric:tabular-nums}
+  .project-box{background:var(--card);border:1px solid var(--line);border-top:4px solid var(--rojo);
+    padding:1.2rem 1.4rem;font-size:.885rem;border-radius:4px}
+  .project-box h3{color:var(--rojo);margin-top:0}
+  .rank-table td:first-child{font-weight:700;color:var(--rojo)}
+  .final-box{background:var(--navy);color:#fff;padding:1.1rem 1.4rem;font-size:.885rem;
+    line-height:1.6;border-radius:4px;border-left:4px solid var(--cyan)}
+  .final-box strong{font-size:1rem;display:block;margin-bottom:.3rem;color:var(--cyan)}
+  .policy-list{font-size:.885rem}
+  .policy-list li{padding:.55rem 0 .55rem 1rem;border-bottom:1px solid var(--line);
+    position:relative;line-height:1.5}
+  .policy-list li::before{content:'\2014';position:absolute;left:0;color:var(--rojo)}
+  .foot{margin-top:2.4rem;padding-top:1rem;border-top:1px solid var(--line);
+    font-size:.78rem;color:var(--muted)}
+</style>
+</head>
+<body>
+
+<header class="course-header">
+  <div class="ohdr">
+    <div class="obrand">
+      <div class="owl"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width:46px;height:37px;object-fit:contain" /></div>
+      <div><div class="oname">Optima Academy Online</div><div class="otag">An Education Experience Company</div></div>
+    </div>
+    <h1>Spanish 1</h1>
+    <span class="sem-label">Semester 2 — Acciones y experiencias</span>
+    <div class="subtitle">Course 0708340 &nbsp;·&nbsp; Full Year &nbsp;·&nbsp; Grades 9–12 &nbsp;·&nbsp; 1 Credit &nbsp;·&nbsp; Asynchronous Online</div>
+    <div class="meta"><span>Standards: WL.K12.NM → WL.K12.NH</span> <span>Building toward: Novice High exit</span> <span>9 modules (M1–M9) + Final</span> </div>
+  </div>
+</header>
+<div class="flagbar"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div class="wrap">
+
+<section>
+  <div class="section-label">About Semester 2</div>
+  <h2>Acciones y experiencias — Actions &amp; Experiences</h2>
+  <p>Semester 2 puts Spanish into motion. You already know how to describe people, places, and feelings in the present. Now you'll say what you're <em>going</em> to do, talk about actions with a wider set of verbs, describe your daily routine, and — the big new step at the end — talk about the <strong>past</strong>: what you <em>did</em>.</p>
+  <p>You'll also travel further across the Spanish-speaking world — Argentina, Chile, deeper into Mexico, Spain, and the Andes — through music, food, cities, and festivals.</p>
+  <div class="info-box"><strong>Building on Semester 1:</strong> Semester 2 assumes you own the S1 grammar — <em>ser, estar, tener, gustar,</em> regular present-tense verbs, and adjective agreement. Module 1 spirals it back in before adding anything new.</div>
+</section>
+
+<section>
+  <div class="section-label">Communicative Goals</div>
+  <h2>What You Will Learn in Semester 2</h2>
+  <ul class="goal-list">
+    <li>Say what you're going to do (<em>ir a</em> + infinitive)</li>
+    <li>Use stem-changing verbs (e→ie, o→ue, e→i)</li>
+    <li>Use common irregular "yo" verbs (hago, pongo, salgo…)</li>
+    <li>Describe your daily routine with reflexive verbs</li>
+    <li>Talk about the city, giving and following directions</li>
+    <li>Use <em>saber</em> and <em>conocer</em>, and object pronouns</li>
+    <li>Talk about the past: the preterite of regular verbs</li>
+    <li>Use the preterite of high-frequency irregular verbs</li>
+    <li>Compare things and describe what's happening right now</li>
+    <li>Narrate a real experience combining present and past</li>
+  </ul>
+
+  <h3 style="margin-top:1.4rem">Grammar You Will Study</h3>
+  <div class="info-box">
+    <strong>More present tense:</strong> <em>ir a</em> + infinitive (near future) · stem-changing verbs · irregular <em>yo</em> forms · reflexive verbs · <em>saber</em> vs. <em>conocer</em> · direct-object pronouns · present progressive (estar + -ando/-iendo) · comparatives<br><br>
+    <strong>The past (a gentle on-ramp):</strong> the <strong>preterite</strong> of regular -ar/-er/-ir verbs, plus the highest-frequency irregular preterites (<em>ser/ir, hacer, tener, estar</em>) — enough to tell simple stories about what you did.
+  </div>
+  <div class="info-box verde"><strong>Note on the past tense:</strong> Spanish 1 introduces the preterite gently — regular verbs first, then a few key irregulars — so you can narrate real experiences. The full past-tense system (all irregulars, the imperfect, and the preterite/imperfect contrast) is the focus of Spanish 2.</div>
+</section>
+
+<section>
+  <div class="section-label">Modules</div>
+  <h2>Semester 2 Module Overview</h2>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Module</th><th>Theme</th><th>Grammar Focus</th><th>Featured Culture</th></tr></thead>
+      <tbody>
+        <tr><td class="mod-cell">M1<br>Weeks 1–2</td><td><strong>El tiempo y los planes</strong><br>Weather &amp; plans</td><td>Spiral S1; <em>ir a</em> + infinitive (near future)</td><td>Argentina</td></tr>
+        <tr><td class="mod-cell">M2<br>Weeks 3–4</td><td><strong>La casa</strong><br>Home &amp; chores</td><td>Stem-changing verbs (e→ie, e→i, o→ue/u→ue)</td><td>Chile</td></tr>
+        <tr><td class="mod-cell">M3<br>Weeks 5–6</td><td><strong>La ciudad</strong><br>City &amp; directions</td><td>Irregular <em>yo</em> verbs (hacer, poner, salir, traer, conocer, ver, dar)</td><td>México (a fondo)</td></tr>
+        <tr><td class="mod-cell">M4<br>Weeks 7–8</td><td><strong>La rutina diaria</strong><br>Daily routine</td><td>Reflexive verbs</td><td>Ecuador / Bolivia</td></tr>
+        <tr><td class="mod-cell">M5<br>Weeks 9–10</td><td><strong>La comida</strong><br>Food &amp; shopping</td><td><em>saber</em> vs. <em>conocer</em>; direct-object pronouns</td><td>España</td></tr>
+        <tr><td class="mod-cell">M6<br>Weeks 11–12</td><td><strong>¿Qué hiciste?</strong><br>The recent past</td><td>Preterite (on-ramp 1): regular -ar / -er / -ir</td><td>España (a fondo)</td></tr>
+        <tr><td class="mod-cell">M7<br>Weeks 13–14</td><td><strong>De viaje</strong><br>Travel &amp; past experiences</td><td>Preterite (on-ramp 2): key irregulars (ser/ir, hacer, tener, estar)</td><td>Los Andes / travel</td></tr>
+        <tr><td class="mod-cell">M8<br>Weeks 15–16</td><td><strong>La música y las fiestas</strong><br>Music &amp; celebration</td><td>Present progressive; comparatives</td><td>Música y fiestas panhispánicas</td></tr>
+        <tr class="gate-row"><td class="mod-cell">M9 <span class="gate-badge">Capstone</span><br>Weeks 17–18</td><td><strong>Mi experiencia</strong><br>Narrate &amp; describe (synthesis)</td><td>Present + preterite + description integrated</td><td>El mundo hispano</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="info-box"><strong>No separate Q3 exam.</strong> Your Quarter 3 grade comes from the M1–M5 module assessments. The Q4 Final Exam is the only cumulative exam for Semester 2.</div>
+</section>
+
+<section>
+  <div class="section-label">Assessment</div>
+  <h2>How You Will Be Assessed</h2>
+  <p>Same structure as Semester 1: <strong>90 graded points</strong> per module across four components, plus ungraded practice.</p>
+  <div class="assess-grid">
+    <div class="assess-card"><div class="pts">30</div><div class="a-lbl">Grammar Quiz</div><div class="a-det">Auto-graded · 2 attempts · listening items · from M6, past-tense listening</div></div>
+    <div class="assess-card"><div class="pts">25</div><div class="a-lbl">Vocabulary Check</div><div class="a-det"><strong>1 attempt.</strong> Listening-based</div></div>
+    <div class="assess-card"><div class="pts">20</div><div class="a-lbl">Lengua en acción</div><div class="a-det">Structured production · from M6, requires correct tense (present vs. preterite)</div></div>
+    <div class="assess-card"><div class="pts">15</div><div class="a-lbl">Tarea oral</div><div class="a-det">Record a spoken response · 3-criteria rubric</div></div>
+  </div>
+  <div class="info-box"><strong>Ungraded practice:</strong> the <em>Mapa del mundo hispano</em> continues (Southern Cone, Spain, the Andes), and the end-of-semester map challenge lets you show how much of the Spanish-speaking world you've learned. The short surveys that open and close each module are ungraded too — they tell your teacher where you need help.</div>
+
+  <h3 style="margin-top:1.5rem">How Modules Combine Into Your Grade</h3>
+  <div class="w-row"><span class="w-label">Grammar Quizzes</span><div class="w-bg"><div class="w-bar" style="width:30%"></div></div><span class="w-pct">30%</span></div>
+  <div class="w-row"><span class="w-label">Vocabulary Checks</span><div class="w-bg"><div class="w-bar" style="width:25%"></div></div><span class="w-pct">25%</span></div>
+  <div class="w-row"><span class="w-label">Lengua en acción</span><div class="w-bg"><div class="w-bar" style="width:20%"></div></div><span class="w-pct">20%</span></div>
+  <div class="w-row"><span class="w-label">Tarea oral (speaking)</span><div class="w-bg"><div class="w-bar" style="width:15%"></div></div><span class="w-pct">15%</span></div>
+  <div class="w-row"><span class="w-label">Semester 2 Final Exam</span><div class="w-bg"><div class="w-bar" style="width:10%"></div></div><span class="w-pct">10%</span></div>
+</section>
+
+
+<section>
+  <div class="section-label">Final Exam</div>
+  <div class="final-box"><strong>Semester 2 Final Exam (end of Quarter 4)</strong>
+  Cumulative across the whole year, with emphasis on Semester 2 (near future, stem-changers, reflexives, object pronouns, and the preterite on-ramp). Includes listening, reading, grammar, and short structured writing. There is no Quarter 3 exam. Worth 10% of your Semester 2 grade.</div>
+</section>
+
+<section>
+  <div class="section-label">Rank System</div>
+  <h2>Your Rank — La progresión</h2>
+  <p style="font-family:system-ui,sans-serif;font-size:.875rem">The same ranks apply both semesters. Finish Spanish 1 as a <strong>Guía</strong> or <strong>Embajador/a</strong>.</p>
+  <div class="tablewrap">
+    <table class="rank-table">
+      <thead><tr><th>Rank</th><th>Average</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>Aprendiz</td><td>0–59</td><td>Foundations need reinforcement</td></tr>
+        <tr><td>Explorador / Exploradora</td><td>60–69</td><td>Building consistency</td></tr>
+        <tr><td>Viajero / Viajera</td><td>70–79</td><td>Growing ease</td></tr>
+        <tr><td>Guía</td><td>80–89</td><td>Strong command of Spanish 1</td></tr>
+        <tr><td>Embajador / Embajadora</td><td>90–100</td><td>Representing the language &amp; culture with excellence</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Policies</div>
+  <h2>Course Policies</h2>
+  <ul class="policy-list">
+    <li><strong>Late work:</strong> up to 70% of points after the module close date; contact your teacher before the deadline.</li>
+    <li><strong>Vocabulary Check:</strong> one attempt only, both semesters. The S2 vocabulary load is heavier — start early.</li>
+    <li><strong>Grammar Quiz:</strong> two attempts; highest score recorded.</li>
+    <li><strong>Accommodations:</strong> contact your teacher at the start of the semester; the async window and optional strips provide flexibility.</li>
+    <li><strong>Academic honesty:</strong> work must be your own. Translation tools may check individual words, not compose or correct responses; AI-composed work receives no credit.</li>
+  </ul>
+</section>
+
+</div>
+
+</body>
+</html>
