@@ -57,6 +57,23 @@
     .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
     .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 240px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 9px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; flex: 1 1 260px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; } .rep-fb.warn { border-left-color: #C7922C; } .rep-fb.no { border-left-color: #C0392B; }
+    .exam-map { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 15px; }
+    .exam-map th { background: #0E1C42; color: #fff; text-align: left; padding: 8px 11px; font-size: 13px; }
+    .exam-map td { border: 1px solid #D0D9E8; padding: 8px 11px; }
+    .exam-map td.here { background: #F2FBF6; color: #1A6B3D; font-weight: 600; }
+    .acc-bank { background:#FFF; border:1.5px dashed #0E1C42; border-radius:8px; padding:12px 14px; margin:10px 0; font-size:26px; line-height:2.1; letter-spacing:.10em; word-spacing:.55em; color:#0E1C42; text-align:center; user-select:text; -webkit-user-select:text; }
 </style>
 </head>
 <body>
@@ -86,7 +103,7 @@
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Proyecto VR + mapa</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Mapa + repaso final</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
@@ -98,14 +115,14 @@
 
     <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 9.09 &middot; Proyecto de la unidad</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Un viaje por el mundo hispano &mdash; The VR Capstone</div>
-        <div style="font-size: 16px; color: #666;">VR project &middot; about 40 minutes &middot; 100-pt unit project</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El repaso final &mdash; y el mapa, una &uacute;ltima vez</div>
+        <div style="font-size: 16px; color: #666;">Repaso &middot; about 40 minutes &middot; nothing graded today</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
-        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Today you don't preview the VR &mdash; you <em>live</em> it. This is the capstone project of the whole course.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">You'll put on a headset, enter <strong>ENGAGE</strong>, and take <em>&laquo;Un viaje por el mundo hispano&raquo;</em> &mdash; a journey through a Latin-American city. You'll <strong>arrive</strong>, <strong>ask and give directions</strong>, <strong>check into lodging</strong>, <strong>order food</strong>, and &mdash; the capstone move &mdash; <strong>recount what you did</strong> (in the preterite) to someone at a festival. First a quick world-map review and a prep step; then you perform; then you reflect.</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">The last teaching day of Semester&nbsp;2 &mdash; and a full rehearsal for the Final Exam.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">First you&rsquo;ll take the map one last time &mdash; all 21 countries. Then you&rsquo;ll work through <strong>one of each part of the Final Exam</strong>: listening, reading, grammar, and writing a given sentence in Spanish. Nothing today is graded; the point is that the exam holds no surprises.</div>
     </div>
 
     <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
@@ -124,7 +141,7 @@
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128506;&#65039; PART 1 &middot; EL MAPA DEL MUNDO HISPANO <span class="pill-time">8 min</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Choose your destination</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Open the interactive map one last time and take a victory lap through the <strong>whole</strong> Spanish-speaking world &mdash; all 21 countries you've explored this year. Pick the city your VR journey will imagine you're visiting; you'll name it in the scene.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Open the interactive map one last time and take a victory lap through the <strong>whole</strong> Spanish-speaking world &mdash; all 21 countries you've explored this year. See how much of the Spanish-speaking world you can name without help.</p>
         <div style="text-align:center; margin: 16px 0;">
             <a href="../../mapa-del-mundo-hispano.html" target="_blank" rel="noopener" style="display:inline-block; background:#0E1C42; color:#fff; text-decoration:none; border-radius:8px; padding:14px 26px; font-size:17px; border-bottom:3px solid #55C8E8;">&#128506;&#65039; Abrir el mapa del mundo hispano &rarr;</a>
             <div style="font-size:13px; color:#6b7a99; margin-top:8px;">Opens in a new tab &middot; explore all 21 countries, then take the capitals quiz</div>
@@ -153,98 +170,125 @@
         </div>
     </div>
 
-    <!-- PART 2 · Prep -->
+    <!-- PART 2 · Repaso final · el examen parte por parte -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129513; PART 2 &middot; PREPARACI&Oacute;N (PARTE 1 DEL PROYECTO) <span class="pill-time">10 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Line up your phrases before you enter</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The VR scene moves fast, so walk in ready. Here are the four moments and the language each one needs. Rehearse them aloud now.</p>
-        <div style="background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:16px 20px; margin:14px 0;">
-            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:10px;">&#127891; WHAT YOU'LL DO IN THE SCENE</div>
-            <ol style="margin:0 0 0 18px; padding:0; font-size:16px; color:#1a2340; line-height:1.8;">
-                <li><strong>Llegar &mdash; arrive &amp; greet.</strong> <em>&laquo;Buenos d&iacute;as. Acabo de llegar a la ciudad.&raquo;</em> Choose <em>usted</em> with an official.</li>
-                <li><strong>Pedir/dar direcciones &mdash; ask &amp; give directions.</strong> <em>&laquo;&iquest;D&oacute;nde est&aacute; el hotel?&raquo; &mdash; &laquo;Siga derecho y doble a la derecha en la esquina.&raquo;</em></li>
-                <li><strong>Registrarse &mdash; check into lodging.</strong> <em>&laquo;Tengo una reservaci&oacute;n. Quisiera una habitaci&oacute;n, por favor.&raquo;</em></li>
-                <li><strong>Pedir comida &mdash; order food.</strong> <em>&laquo;Quisiera el pescado, por favor. &iquest;Cu&aacute;nto cuesta?&raquo;</em></li>
-                <li><strong>Contar &mdash; recount at the festival (in the preterite).</strong> <em>&laquo;Hoy camin&eacute; por el centro, visit&eacute; un museo y com&iacute; en un restaurante. &iexcl;Fue incre&iacute;ble!&raquo;</em></li>
-            </ol>
-        </div>
-        <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-a-la-derecha.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">a la derecha</span><span class="v-en">to the right</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-esquina.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la esquina</span><span class="v-en">the corner</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-hotel.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el hotel</span><span class="v-en">the hotel</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-mercado.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el mercado</span><span class="v-en">the market</span></li>
-        </ul>
-        <div style="margin-top:14px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">At the festival, how would you say <em>"I walked and I ate"</em>? Say it, then reveal.</p>
-            <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Camin&eacute; y com&iacute;.</strong> Two regular preterites &mdash; the exact move the festival character is waiting to hear.</div>
-        </div>
-    </div>
-
-    <!-- PART 3 · Perform -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129406; PART 3 &middot; LA PERFORMANCE EN VR (PARTE 2 DEL PROYECTO) <span class="pill-time">15 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;"><em>&laquo;Un viaje por el mundo hispano&raquo;</em> &mdash; step in and go</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Enter the ENGAGE scenario. Move through all five moments in order. Speak out loud &mdash; the point is to <em>use</em> Spanish in a lived situation, not to be perfect. Your teacher captures a <strong>spatial recording</strong> of the session so it can be scored and shared in a class gallery walk.</p>
-        <div style="background:#FDF7E9; border:1px dashed #C7922C; border-radius:8px; padding:14px 18px; margin:12px 0;">
-            <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127908; THE CAPSTONE MOMENT</div>
-            <div style="font-size:16px;color:#1a2340;line-height:1.6;">At the festival stall, a character asks: <em>&laquo;&iquest;Qu&eacute; hiciste hoy?&raquo;</em> (What did you do today?). Answer with <strong>at least three preterite verbs</strong> about your journey &mdash; this is the heart of the project, where a year of Spanish comes together in one spoken paragraph.</div>
-        </div>
-        <div style="text-align:center; margin: 16px 0 6px;">
-            <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To open the VR project:</strong> return to <strong>Module 9</strong> in Canvas and open the <strong>VR project</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
-            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Join the ENGAGE session, perform, then return here for the reflection.</div>
-        </div>
-    </div>
-
-    <div class="culture-box">
-        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; EL MUNDO HISPANO</div>
-        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Una ciudad, muchas culturas</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">The VR city is a composite of the Spanish-speaking world: a colonial plaza like those in M&eacute;xico or Per&uacute;, a bustling <em>mercado</em> like the Caribbean's, a festival with drums and dancing that could be a Colombian <em>carnaval</em> or a Mexican <em>feria</em>. Wherever you &laquo;travel,&raquo; two courtesies hold everywhere: greet before you ask, and use <em>usted</em> with officials and elders. Courtesy is the passport that works in all 21 countries.</p>
-    </div>
-
-    <!-- PART 4 · Reflection -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 4 &middot; REFLEXI&Oacute;N (PARTE 3 DEL PROYECTO) <span class="pill-time">7 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Recount your journey &mdash; in writing</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">After the session, write a short reflection (submitted with the project): <strong>4&ndash;5 sentences in the preterite</strong> recounting what you did on your VR journey, plus one sentence in English on what felt easiest and hardest. Use the frames if you need them.</p>
-        <div style="margin-top:10px;">
-            <button class="reveal-btn">Reveal sentence-frames</button>
-            <div class="reveal-body">
-                <strong>1.</strong> Hoy <em>llegu&eacute;</em> a ______ (city).<br>
-                <strong>2.</strong> <em>Pregunt&eacute;</em> d&oacute;nde estaba el hotel y <em>camin&eacute;</em> por ______ .<br>
-                <strong>3.</strong> En el restaurante <em>ped&iacute; / com&iacute;</em> ______ .<br>
-                <strong>4.</strong> En el festival <em>habl&eacute;</em> con una persona y <em>bail&eacute;</em>.<br>
-                <strong>5.</strong> &iexcl;<em>Fue</em> una experiencia incre&iacute;ble!
-            </div>
-        </div>
-        <div class="optima-widget ow-reflect">
-            <div class="widget-kicker">&#128173; REFLECT &middot; no wrong answer</div>
-            <div class="widget-question">Which moment of the journey did you feel most confident speaking?</div>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 2 &middot; EL EXAMEN, PARTE POR PARTE <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your Final Exam &mdash; and one of each part</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Semester&nbsp;2 Final Exam has <strong>four parts and 50 points</strong>. Below is one of each kind, so nothing on the exam is a surprise. <strong>None of today is graded</strong> &mdash; the exam itself comes later.</p>
+        <table class="exam-map"><thead><tr><th>Part</th><th>What it asks</th><th>Points</th><th>You practise it&hellip;</th></tr></thead><tbody>
+            <tr><td><b>A &middot; Listening</b></td><td>Listen to a sentence, answer in English</td><td>12</td><td class="here">here, in a moment</td></tr>
+            <tr><td><b>B &middot; Reading</b></td><td>Read a short passage, answer questions</td><td>10</td><td class="here">in Part 3 below</td></tr>
+            <tr><td><b>C &middot; Grammar</b></td><td>Fill in the missing verb form</td><td>20</td><td class="here">in Part 3 below</td></tr>
+            <tr><td><b>D &middot; Writing</b></td><td>Write a given sentence in Spanish</td><td>8</td><td class="here">in Part 4 below</td></tr>
+        </tbody></table>
+        <p style="font-size:15px;color:#41506b;margin:10px 0 4px 0;"><strong>Parte A &mdash; el o&iacute;do.</strong> Press &#128266; to listen. You may listen more than once; on the exam you get two plays.</p>
+        <div class="optima-widget ow-exam">
+            <div class="widget-kicker">&#128266; PARTE A &middot; ITEM 1</div>
+            <div class="widget-question"><button class="say" data-audio="grammar/s2m1-vas.mp3" aria-label="Escuchar">&#128266;</button> What is the speaker asking?</div>
             <div class="widget-options">
-                <button data-response="Greetings and courtesy come first for a reason &mdash; nailing them sets the tone for the whole scene.">Greeting &amp; arriving</button>
-                <button data-response="Directions are tricky and useful &mdash; siga derecho, doble a la derecha. Real-world Spanish, well used.">Asking / giving directions</button>
-                <button data-response="Recounting in the preterite is the capstone skill &mdash; if that felt strong, a year of Spanish paid off.">Recounting at the festival</button>
+                <button data-correct="true" data-ok="Correct &mdash; <em>&iquest;Vas a ir&hellip;?</em> is the near future.">Are you going to the beach?</button>
+                <button data-correct="false" data-no="That would be the preterite: <em>&iquest;Fuiste&hellip;?</em>">Did you go to the beach?</button>
+                <button data-correct="false" data-no="That would be <em>&iquest;Te gusta la playa?</em>">Do you like the beach?</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
         </div>
-        <div class="opt-strip">
-            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">When your class holds the gallery walk of everyone's spatial recordings, watch two classmates' journeys and note one Spanish phrase from each that you'd like to borrow next time.</div>
+        <div class="optima-widget ow-exam">
+            <div class="widget-kicker">&#128266; PARTE A &middot; ITEM 2</div>
+            <div class="widget-question"><button class="say" data-audio="grammar/s2m4-nosduchamos.mp3" aria-label="Escuchar">&#128266;</button> Who showers, and when?</div>
+            <div class="widget-options">
+                <button data-correct="false" data-no="The verb is <em>nos duchamos</em> &mdash; that is <em>we</em>.">I do, at night</button>
+                <button data-correct="true" data-ok="Correct &mdash; <em>nos</em> tells you it is <em>we</em>.">We do, in the morning</button>
+                <button data-correct="false" data-no="That would be <em>se duchan</em>.">They do, in the morning</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <div class="optima-widget ow-exam">
+            <div class="widget-kicker">&#128266; PARTE A &middot; ITEM 3</div>
+            <div class="widget-question"><button class="say" data-audio="grammar/s2m6-visitamos.mp3" aria-label="Escuchar">&#128266;</button> When did this happen?</div>
+            <div class="widget-options">
+                <button data-correct="false" data-no="<em>Ayer</em> puts it in the past.">Right now</button>
+                <button data-correct="false" data-no="<em>Ayer</em> means yesterday.">Tomorrow</button>
+                <button data-correct="true" data-ok="Correct &mdash; <em>ayer</em>, and the verb is preterite.">Yesterday</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <div class="optima-widget ow-exam">
+            <div class="widget-kicker">&#128266; PARTE A &middot; ITEM 4</div>
+            <div class="widget-question"><button class="say" data-audio="grammar/s2m8-comp3.mp3" aria-label="Escuchar">&#128266;</button> What is being compared?</div>
+            <div class="widget-options">
+                <button data-correct="true" data-ok="Correct &mdash; <em>mejor que</em> compares them.">Two guitars</button>
+                <button data-correct="false" data-no="Listen again for <em>guitarra</em>.">Two songs</button>
+                <button data-correct="false" data-no="Listen again for <em>guitarra</em>.">Two festivals</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
         </div>
     </div>
 
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128202; HOW THE PROJECT IS SCORED &middot; 100 pts</div>
-        <table class="gtable">
-            <thead><tr><th>Part</th><th>What it is</th><th>Pts</th></tr></thead>
-            <tbody>
-                <tr><td>Part 1 &middot; Preparaci&oacute;n</td><td>Phrase prep &amp; map choice completed</td><td>20</td></tr>
-                <tr><td>Part 2 &middot; VR performance</td><td>The five moments, spoken in Spanish; captured spatial recording</td><td>60</td></tr>
-                <tr><td>Part 3 &middot; Reflexi&oacute;n</td><td>Written preterite recount + short English reflection</td><td>20</td></tr>
-            </tbody>
-        </table>
-        <p style="font-size:14px;color:#6b7a99;margin:6px 0 0;">This 100-point unit project is separate from the four graded items in the assessment hub. Your teacher will share the full rubric in Canvas.</p>
+    <!-- PART 3 · Reading + grammar -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 3 &middot; PARTES B Y C <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Reading and grammar, the way the exam asks them</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">On the exam, Part&nbsp;B gives you a short passage and asks about it, and Part&nbsp;C asks you to write one missing verb form. Here is one of each.</p>
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:10px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:6px;">&#128214; PARTE B &middot; LA LECTURA</div>
+            <p style="font-size:17px;line-height:1.85;color:#0E1C42;margin:0;">Me llamo Diego. Normalmente me levanto a las siete, pero el s&aacute;bado pasado me levant&eacute; a las diez. Fui al mercado con mi madre y compr&eacute; fruta. Despu&eacute;s caminamos por la plaza y visitamos un museo peque&ntilde;o. Com&iacute; pescado en un restaurante cerca del centro. Fue un d&iacute;a mejor que un d&iacute;a normal.</p>
+        </div>
+        <div class="optima-widget ow-exam">
+            <div class="widget-kicker">&#128214; PARTE B &middot; ITEM 1</div>
+            <div class="widget-question">What did Diego do <strong>last Saturday</strong>?</div>
+            <div class="widget-options">
+                <button data-correct="false" data-no="That is what he does <em>normalmente</em> &mdash; not last Saturday.">He got up at seven and went to school</button>
+                <button data-correct="true" data-ok="Correct &mdash; <em>me levant&eacute; a las diez</em> and <em>fui al mercado</em>.">He got up at ten and went to the market</button>
+                <button data-correct="false" data-no="He went to the market, the plaza and a museum.">He stayed at home all day</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <div class="optima-widget ow-exam">
+            <div class="widget-kicker">&#128214; PARTE B &middot; ITEM 2</div>
+            <div class="widget-question">Why does the passage use <em>me levanto</em> and then <em>me levant&eacute;</em>?</div>
+            <div class="widget-options">
+                <button data-correct="false" data-no="One is present, one is preterite &mdash; that is the whole point.">They mean the same thing</button>
+                <button data-correct="true" data-ok="Correct &mdash; habit in the present, one past event in the preterite.">The first is his habit; the second is that Saturday</button>
+                <button data-correct="false" data-no="It is the other way round.">The first is that Saturday; the second is his habit</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#9998; PARTE C &middot; LA GRAM&Aacute;TICA</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Write the missing verb form. One item from each m&oacute;dulo the exam covers.</p>
+            <div class="rep-row"><span class="rep-cue">Ellos ______ a bailar esta noche. <em>(ir)</em> <span style="color:#9aa7bd;font-size:13px">M1</span></span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="van"></div>
+            <div class="rep-row"><span class="rep-cue">Nosotros ______ ir al parque. <em>(querer)</em> <span style="color:#9aa7bd;font-size:13px">M2</span></span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="queremos"></div>
+            <div class="rep-row"><span class="rep-cue">Yo ______ el dinero en el banco. <em>(poner)</em> <span style="color:#9aa7bd;font-size:13px">M3</span></span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="pongo"></div>
+            <div class="rep-row"><span class="rep-cue">Ellos ______ tarde. <em>(acostarse)</em> <span style="color:#9aa7bd;font-size:13px">M4</span></span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="se acuestan"></div>
+            <div class="rep-row"><span class="rep-cue">Ayer nosotros ______ por el centro. <em>(caminar)</em> <span style="color:#9aa7bd;font-size:13px">M6</span></span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="caminamos"></div>
+            <div class="rep-row"><span class="rep-cue">Ella ______ muchas fotos. <em>(hacer, pret&eacute;rito)</em> <span style="color:#9aa7bd;font-size:13px">M7</span></span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="hizo"></div>
+            <div class="acc-bank">&aacute; &eacute; &iacute; &oacute; &uacute; &uuml; &ntilde; &iquest; &iexcl;<br>&Aacute; &Eacute; &Iacute; &Oacute; &Uacute; Ü &Ntilde;</div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">On the exam, a missing accent never costs you the point &mdash; but the accent is part of the word, so write it if you can.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+    </div>
+
+    <!-- PART 4 · Writing -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 4 &middot; PARTE D <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Writing a given sentence</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Part&nbsp;D gives you an English sentence and asks you to write it in Spanish. It always tells you which structure to use. Two here; there are four on the exam.</p>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div class="rep-row"><span class="rep-cue">Write in Spanish: &ldquo;Yesterday I visited a museum.&rdquo;</span></div>
+            <div class="rep-row"><input class="rep-input" style="width:100%;max-width:420px" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="Ayer visit&eacute; un museo" data-also="ayer visite un museo|visit&eacute; un museo ayer" aria-label="Escribe la frase en espa&ntilde;ol"></div>
+            <div class="rep-row"><span class="rep-cue">Write in Spanish: &ldquo;I am going to travel this summer.&rdquo;</span></div>
+            <div class="rep-row"><input class="rep-input" style="width:100%;max-width:420px" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="Voy a viajar este verano" data-also="voy a viajar en verano|este verano voy a viajar" aria-label="Escribe la frase en espa&ntilde;ol"></div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:6px 0 8px 0;">The checker accepts a different word order if the structure is right. On the exam a person marks this, and they are looking for the structure, not perfection.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
     </div>
 
     <!-- Look ahead -->
@@ -261,7 +305,7 @@
 
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
-        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the VR project</strong> (performance + reflection) &mdash; two separate steps.</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Your <strong>Grammar Quiz</strong> is tomorrow in Lesson&nbsp;9.10, and the <strong>Final Exam</strong> follows at the end of the quarter.</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
@@ -274,7 +318,7 @@
 <div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
 <div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
     <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 4 &middot; Student Lesson Page</div>
-    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 9.09 &middot; Proyecto VR + mapa</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 9.09 &middot; Mapa + repaso final</div>
     <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
 </div>
 
@@ -307,7 +351,7 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — check it against the map to be sure.'
+        ? 'Correct — ' + eBtn.textContent + '. Check it against the map to be sure.'
         : 'Not quite — open the map, click the country, and read its card.';
       efb.classList.add('show');
       return;
@@ -345,6 +389,66 @@
 })();
 </script>
 
+<script>
+(function () {
+  // --- multiple choice for the review items (its own handler: the map widgets on this page
+  //     use hardcoded map feedback, which would be wrong here) ---
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('.ow-exam .widget-options button');
+    if (b) {
+      var w = b.closest('.optima-widget');
+      if (w.dataset.answered === '1') return;
+      w.dataset.answered = '1';
+      var ok = b.dataset.correct === 'true';
+      b.classList.add(ok ? 'correct' : 'incorrect');
+      if (!ok) w.querySelectorAll('.widget-options button').forEach(function (x) {
+        if (x.dataset.correct === 'true') x.classList.add('correct'); });
+      var fb = w.querySelector('.widget-feedback');
+      fb.textContent = ok ? (b.dataset.ok || 'Correct.') : (b.dataset.no || 'Not quite — the correct answer is highlighted.');
+      fb.classList.add('show');
+      return;
+    }
+    var r = ev.target.closest('.ow-exam .widget-reset');
+    if (r) {
+      var rw = r.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (x) { x.classList.remove('correct','incorrect'); });
+      var f = rw.querySelector('.widget-feedback'); f.classList.remove('show'); f.textContent = '';
+      delete rw.dataset.answered;
+    }
+  });
+  // --- typed answers ---
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').replace(/[.]$/,'').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  document.addEventListener('click', function (ev) {
+    var b = ev.target.closest('.rep-check'); if (!b) return;
+    var host = b.closest('.rep-block');
+    var rows = [].slice.call(host.querySelectorAll('.rep-input'));
+    var done = 0, notes = [];
+    rows.forEach(function (inp) {
+      var target = norm(inp.dataset.answer), got = norm(inp.value);
+      var alts = (inp.dataset.also || '').split('|').map(norm).filter(Boolean);
+      var hit = got === target || alts.indexOf(got) > -1;
+      var accentOnly = !hit && deaccKeepEnye(got) === deaccKeepEnye(target);
+      var enye = !hit && !accentOnly && deacc(got) === deacc(target);
+      inp.classList.remove('ok','no');
+      if (hit || accentOnly) { inp.classList.add('ok'); done++; } else inp.classList.add('no');
+      if (accentOnly) notes.push('<strong>' + inp.dataset.answer + '</strong> &mdash; accepted, but the accent is part of the word.');
+      else if (enye) notes.push('<strong>' + inp.dataset.answer + '</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>.');
+      else if (!hit && got) notes.push('<strong>' + inp.dataset.answer + '</strong> &mdash; not yet.');
+    });
+    var fb = host.querySelector('.rep-fb');
+    fb.className = 'rep-fb show ' + (done === rows.length ? 'ok' : (done >= rows.length / 2 ? 'warn' : 'no'));
+    fb.innerHTML = '<strong>' + done + ' of ' + rows.length + ' correct</strong>' +
+      (notes.length ? '<br>' + notes.join('<br>') : ' &mdash; ready for the exam.');
+  });
+  document.addEventListener('keydown', function (ev) {
+    if (ev.key === 'Enter' && ev.target.classList && ev.target.classList.contains('rep-input')) {
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();
+    }
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
 </body>
 </html>

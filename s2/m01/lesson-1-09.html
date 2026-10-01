@@ -54,6 +54,25 @@
     .gualda .r { flex:1; background:#AA1E2D; }
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
+
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
 </style>
 </head>
 <body>
@@ -74,7 +93,7 @@
 <div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 1</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; Module 1</div>
         <div style="font-size: 12px; color: #666;">El tiempo y los planes</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
@@ -83,7 +102,7 @@
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Mapa + VR (ENGAGE)</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Mapa + repaso</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
@@ -95,14 +114,14 @@
 
     <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.09</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El Cono Sur en el mapa &mdash; y un vistazo a la VR</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El Cono Sur en el mapa &mdash; y repaso del m&oacute;dulo</div>
         <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes &middot; nothing graded today</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">A breather between two big days &mdash; explore, don't cram.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Yesterday you spoke (Tarea oral); tomorrow you take the Grammar Quiz. Today sits between them on purpose. <strong>Nothing here is graded.</strong> First you'll travel the <strong>Cono Sur</strong> (Southern Cone) on the interactive map &mdash; Argentina, Chile, Uruguay, and Paraguay. Then you'll get your first look at the <strong>semester VR project in ENGAGE, <em>Un viaje por el mundo hispano</em></strong> &mdash; a trip you'll take later, where you'll arrive in a city during a festival. Today is preview and prep, so you walk in already knowing what to say.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Yesterday you spoke (Tarea oral); tomorrow you take the Grammar Quiz. Today sits between them on purpose. <strong>Nothing here is graded.</strong> First you'll travel the <strong>Cono Sur</strong> (Southern Cone) on the interactive map &mdash; Argentina, Chile, Uruguay, and Paraguay. Then you&rsquo;ll <strong>review the module</strong> &mdash; you&rsquo;ll write this module&rsquo;s key words from memory and complete a verb paradigm, so tomorrow&rsquo;s Grammar Quiz holds no surprises.</div>
     </div>
 
     <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
@@ -113,7 +132,7 @@
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> explain what I'll do in the <em>Un viaje por el mundo hispano</em> VR project.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> write this module&rsquo;s key words with their articles and complete the verb paradigm from memory.</div>
         </div>
     </div>
 
@@ -183,52 +202,44 @@
         <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">El <em>Cono Sur</em> &mdash; Argentina, Chile, Uruguay y Paraguay &mdash; is the southern tip of South America, so far south that Chile's Patagonia nearly touches Antarctica. Because it's below the equator, the whole region runs on flipped seasons: <em>enero</em> is summer, <em>julio</em> is winter. The Andes run down Argentina's western edge, and just across them lies Chile &mdash; a long, thin country pressed between mountains and the Pacific.</p>
     </div>
 
-    <!-- PART 3 · VR preview -->
+    <!-- PART 3 · Repaso -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129406; PART 3 &middot; VISTA PREVIA DE LA VR &middot; ENGAGE <span class="pill-time">14 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;"><em>Un viaje por el mundo hispano</em> &mdash; your semester VR project</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This semester's big VR project puts you inside a trip. You'll put on a headset, step into <strong>ENGAGE</strong>, and <strong>arrive in a Spanish-speaking city during a festival</strong>. Over the quarter you'll ask for <em>directions</em>, find <em>lodging</em>, <em>order food</em>, and &mdash; later &mdash; <strong>recount what you did</strong>. <strong>You're not performing today.</strong> This is your preview, so the moves feel familiar when the session comes.</p>
-
-        <div style="background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:16px 20px; margin:14px 0;">
-            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:10px;">&#127891; WHAT YOU'LL DO ACROSS THE PROJECT</div>
-            <ol style="margin:0 0 0 18px; padding:0; font-size:16px; color:#1a2340; line-height:1.7;">
-                <li><strong>Llegar &mdash; arrive in the city during a festival.</strong> Greet people and take in the scene: <em>&iexcl;Hay una fiesta!</em></li>
-                <li><strong>Pedir direcciones &mdash; ask for directions.</strong> <em>&iquest;D&oacute;nde est&aacute;&hellip;?</em> &middot; <em>&iquest;C&oacute;mo llego a&hellip;?</em></li>
-                <li><strong>Buscar alojamiento &mdash; find a place to stay.</strong> <em>Necesito una habitaci&oacute;n.</em></li>
-                <li><strong>Pedir comida &mdash; order food</strong> at a caf&eacute; or stall. <em>Quiero&hellip; / Me gustar&iacute;a&hellip;</em></li>
-                <li><strong>Contar &mdash; recount what you did</strong> afterward (later this semester).</li>
-            </ol>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 3 &middot; REPASO <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;"><em>Repaso</em> &mdash; write it, then conjugate it</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 4px 0;">Tomorrow is the <strong>Grammar Quiz</strong>. Today you review by <strong>writing</strong>, not by recognising &mdash; nothing is shown to you here, you produce it. <strong>None of this is graded.</strong></p>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#9998; A &middot; VOCABULARIO</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Write each word in Spanish, <strong>with its article</strong> where it has one &mdash; the same way it appears on your flip cards.</p>
+            <div class="rep-row"><span class="rep-cue">it's cold</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="hace fr&iacute;o" aria-label="it's cold"></div>
+            <div class="rep-row"><span class="rep-cue">the season</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la estaci&oacute;n" aria-label="the season"></div>
+            <div class="rep-row"><span class="rep-cue">autumn / fall</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el oto&ntilde;o" aria-label="autumn / fall"></div>
+            <div class="rep-row"><span class="rep-cue">the weather</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el clima" aria-label="the weather"></div>
+            <div class="rep-row"><span class="rep-cue">spring</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la primavera" aria-label="spring"></div>
+            <div class="rep-row"><span class="rep-cue">summer</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el verano" aria-label="summer"></div>
+            <div class="acc-bank">&aacute; &eacute; &iacute; &oacute; &uacute; &uuml; &ntilde; &iquest; &iexcl;<br>&Aacute; &Eacute; &Iacute; &Oacute; &Uacute; Ü &Ntilde;</div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">Accents are part of the word: <em>canci&oacute;n</em> is not <em>cancion</em>. If your keyboard cannot make them, select a character above and copy it.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
         </div>
-
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0 8px;">This module gives you the first tool for that trip: <strong>planning</strong>. Before you travel, you say what you're <em>going to</em> do &mdash; and <em>ir a</em> + a verb is exactly how.</p>
-
-        <h3 style="font-size: 18px; color: #0e1c42; margin: 18px 0 8px 0;">Rehearse one planning line</h3>
-        <div class="optima-widget ow-reflect">
-            <div class="widget-kicker">&#128173; REHEARSE &middot; no wrong answer &mdash; think it through</div>
-            <div class="widget-question">You arrive in the city and there's a festival. What are you going to do first?</div>
-            <div class="widget-options">
-                <button data-response="&iexcl;Buena idea! &laquo;Primero, voy a buscar la fiesta.&raquo; (First, I'm going to look for the festival.) A plan with ir a &mdash; exactly this module.">Find the festival</button>
-                <button data-response="Smart &mdash; &laquo;Voy a buscar un hotel&raquo; or &laquo;una habitaci&oacute;n.&raquo; Lodging first, then fun.">Find a place to stay</button>
-                <button data-response="&laquo;Voy a comer algo t&iacute;pico.&raquo; (I'm going to eat something local.) Whatever you pick, you'll say it with ir a + a verb.">Get some food</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <h3 style="font-size: 18px; color: #0e1c42; margin: 18px 0 8px 0;">Rehearse one line before you ever step in</h3>
-        <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Say <em>"Tomorrow I'm going to visit the city and eat at a restaurant"</em> &mdash; using <em>ir a</em> twice. Say it aloud, then reveal.</p>
-        <button class="reveal-btn">Reveal answer</button>
-        <div class="reveal-body"><strong>Ma&ntilde;ana voy a visitar la ciudad y voy a comer en un restaurante.</strong> Two plans, each <em>voy a</em> + an infinitive &mdash; the exact structure you'll lean on in the VR project.</div>
-
-        <div class="opt-strip">
-            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Sketch a quick "trip plan" for yourself: write four lines, each with <em>ir a</em> + a verb, for what you'll do on day one of the trip &mdash; arrive, find lodging, eat, and explore the festival. Keep it; you'll walk into the VR session with your plan ready.</div>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#128203; B &middot; CONJUGACI&Oacute;N</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Fill in every form. Complete the whole table before you check &mdash; the point is to see the full set at once.</p>
+            <table class="conj-table"><thead><tr><th>Subject</th><th>ir</th></tr></thead><tbody>
+                <tr><td class="subj">yo</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="voy" aria-label="yo"></td></tr>
+                <tr><td class="subj">t&uacute;</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="vas" aria-label="t&uacute;"></td></tr>
+                <tr><td class="subj">usted / &eacute;l / ella</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="va" aria-label="usted / &eacute;l / ella"></td></tr>
+                <tr><td class="subj">nosotros/as</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="vamos" aria-label="nosotros/as"></td></tr>
+                <tr><td class="subj">ustedes / ellos / ellas</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="van" aria-label="ustedes / ellos / ellas"></td></tr>
+            </tbody></table>
+            <p style="font-size:13.5px;color:#6b7a99;margin:6px 0 8px 0;">Remember this module&rsquo;s pattern &mdash; <strong>ir + a + infinitive</strong>: <em>Voy a estudiar.</em> &middot; <em>Vamos a bailar.</em></p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
         </div>
     </div>
 
     <div class="virtue-box">
         <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#127462;&#127479; CULTURA A FONDO &middot; ARGENTINA</div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">If the VR trip lands in Argentina during a festival, it might be <strong>Carnaval</strong> in the northern provinces, the grape-harvest <em>Fiesta de la Vendimia</em> in Mendoza, or a neighborhood <em>pe&ntilde;a</em> with live folk music and dancing. Festivals across the Spanish-speaking world are where a city shows its heart &mdash; and arriving with a few planning phrases (<em>&laquo;Voy a ver el desfile&raquo;</em>, <em>&laquo;Vamos a bailar&raquo;</em>) turns you from a spectator into a participant.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">A festival in Argentina might be <strong>Carnaval</strong> in the northern provinces, the grape-harvest <em>Fiesta de la Vendimia</em> in Mendoza, or a neighborhood <em>pe&ntilde;a</em> with live folk music and dancing. Festivals across the Spanish-speaking world are where a city shows its heart &mdash; and arriving with a few planning phrases (<em>&laquo;Voy a ver el desfile&raquo;</em>, <em>&laquo;Vamos a bailar&raquo;</em>) turns you from a spectator into a participant.</p>
     </div>
 
     <!-- PART 4 · Look ahead -->
@@ -238,19 +249,19 @@
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">10</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 1.10</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow is the last day of the module: a short listening warm-up, then the <strong>Grammar Quiz (ir a + infinitive, 30 pts, 2 attempts)</strong> and an "I can&hellip;" close before M&oacute;dulo 2. Spend your last few minutes now reviewing the five forms of <em>ir</em>.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow is the last day of the module: a short listening warm-up, then the <strong>Grammar Quiz (ir a + infinitive, 30 pts, 2 attempts)</strong> and an "I can&hellip;" close before Module 2. Spend your last few minutes now reviewing the five forms of <em>ir</em>.</div>
             </div>
         </div>
     </div>
 
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
-        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then name each Southern-Cone capital out loud, and say one line you'd use on the VR trip with <em>ir a</em> + a verb.</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then name each Southern-Cone capital out loud, and say one line you&rsquo;d use on a real trip with <em>ir a</em> + a verb.</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;CASI LO LOGRAS&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've seen where this Spanish lives &mdash; the Southern Cone &mdash; and where you'll take it next, into the VR trip. One quiz stands between you and M&oacute;dulo 2. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've seen where this Spanish lives &mdash; the Southern Cone &mdash; and where you'll take it next, into the rest of the semester. One quiz stands between you and Module 2. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
     </div>
 
 </div>
@@ -258,7 +269,7 @@
 <div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
 <div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
     <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
-    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.09 &middot; Mapa + VR (ENGAGE)</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.09 &middot; Mapa + repaso</div>
     <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
 </div>
 
@@ -329,6 +340,45 @@
 })();
 </script>
 
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
 </body>
 </html>
