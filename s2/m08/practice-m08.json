@@ -1,0 +1,506 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 8 — La música y las fiestas",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "la canción",
+   "en": "song",
+   "audio": "vocab/s2-la-cancion.mp3"
+  },
+  {
+   "t": "la celebración",
+   "en": "celebration",
+   "audio": "vocab/s2-la-celebracion.mp3"
+  },
+  {
+   "t": "el baile",
+   "en": "dance",
+   "audio": "vocab/s2-el-baile.mp3"
+  },
+  {
+   "t": "la guitarra",
+   "en": "guitar",
+   "audio": "vocab/s2-la-guitarra.mp3"
+  },
+  {
+   "t": "el cantante",
+   "en": "singer",
+   "audio": "vocab/s2-el-cantante.mp3"
+  },
+  {
+   "t": "el concierto",
+   "en": "concert",
+   "audio": "vocab/s2-el-concierto.mp3"
+  },
+  {
+   "t": "el ritmo",
+   "en": "rhythm / beat",
+   "audio": "vocab/s2-el-ritmo.mp3"
+  },
+  {
+   "t": "la cumbia",
+   "en": "cumbia (music & dance style)",
+   "audio": "vocab/s2-la-cumbia.mp3"
+  },
+  {
+   "t": "el tambor",
+   "en": "drum",
+   "audio": "vocab/s2-el-tambor.mp3"
+  },
+  {
+   "t": "el festival",
+   "en": "festival",
+   "audio": "vocab/s2-el-festival.mp3"
+  },
+  {
+   "t": "los fuegos artificiales",
+   "en": "fireworks",
+   "audio": "vocab/s2-los-fuegos-artificiales.mp3"
+  },
+  {
+   "t": "el disfraz",
+   "en": "costume",
+   "audio": "vocab/s2-el-disfraz.mp3"
+  },
+  {
+   "t": "celebrar",
+   "en": "to celebrate",
+   "audio": "vocab/s2-celebrar.mp3"
+  },
+  {
+   "t": "tocar",
+   "en": "to play (an instrument)",
+   "audio": "vocab/s2-tocar.mp3"
+  },
+  {
+   "t": "más",
+   "en": "more",
+   "audio": "vocab/s2-mas.mp3"
+  },
+  {
+   "t": "menos",
+   "en": "less / fewer",
+   "audio": "vocab/s2-menos.mp3"
+  },
+  {
+   "t": "mejor",
+   "en": "better / best",
+   "audio": "vocab/s2-mejor.mp3"
+  },
+  {
+   "t": "peor",
+   "en": "worse / worst",
+   "audio": "vocab/s2-peor.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "celebrar",
+   "gloss": "to celebrate",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "celebro",
+     "celebras",
+     "celebra",
+     "celebramos",
+     "celebráis",
+     "celebran"
+    ],
+    "preterite": [
+     "celebré",
+     "celebraste",
+     "celebró",
+     "celebramos",
+     "celebrasteis",
+     "celebraron"
+    ]
+   }
+  },
+  {
+   "inf": "tocar",
+   "gloss": "to play (an instrument)",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "toco",
+     "tocas",
+     "toca",
+     "tocamos",
+     "tocáis",
+     "tocan"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form · irregular preterite (fui…)",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ],
+    "preterite": [
+     "fui",
+     "fuiste",
+     "fue",
+     "fuimos",
+     "fuisteis",
+     "fueron"
+    ]
+   }
+  },
+  {
+   "inf": "escuchar",
+   "gloss": "to listen",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "escucho",
+     "escuchas",
+     "escucha",
+     "escuchamos",
+     "escucháis",
+     "escuchan"
+    ],
+    "preterite": [
+     "escuché",
+     "escuchaste",
+     "escuchó",
+     "escuchamos",
+     "escuchasteis",
+     "escucharon"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ],
+    "preterite": [
+     "trabajé",
+     "trabajaste",
+     "trabajó",
+     "trabajamos",
+     "trabajasteis",
+     "trabajaron"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form · irregular preterite (stem estuv-)",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ],
+    "preterite": [
+     "estuve",
+     "estuviste",
+     "estuvo",
+     "estuvimos",
+     "estuvisteis",
+     "estuvieron"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ],
+    "preterite": [
+     "comí",
+     "comiste",
+     "comió",
+     "comimos",
+     "comisteis",
+     "comieron"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "vivir",
+   "gloss": "to live",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "vivo",
+     "vives",
+     "vive",
+     "vivimos",
+     "vivís",
+     "viven"
+    ],
+    "preterite": [
+     "viví",
+     "viviste",
+     "vivió",
+     "vivimos",
+     "vivisteis",
+     "vivieron"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ],
+    "preterite": [
+     "abrí",
+     "abriste",
+     "abrió",
+     "abrimos",
+     "abristeis",
+     "abrieron"
+    ]
+   }
+  },
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form · irregular preterite (fui…)",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ],
+    "preterite": [
+     "fui",
+     "fuiste",
+     "fue",
+     "fuimos",
+     "fuisteis",
+     "fueron"
+    ]
+   }
+  },
+  {
+   "inf": "ver",
+   "gloss": "to see",
+   "tag": "irregular yo (veo)",
+   "forms": {
+    "present": [
+     "veo",
+     "ves",
+     "ve",
+     "vemos",
+     "veis",
+     "ven"
+    ]
+   }
+  },
+  {
+   "inf": "probar",
+   "gloss": "to try / to taste",
+   "tag": "boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "pruebo",
+     "pruebas",
+     "prueba",
+     "probamos",
+     "probáis",
+     "prueban"
+    ],
+    "preterite": [
+     "probé",
+     "probaste",
+     "probó",
+     "probamos",
+     "probasteis",
+     "probaron"
+    ]
+   }
+  },
+  {
+   "inf": "visitar",
+   "gloss": "to visit",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "visito",
+     "visitas",
+     "visita",
+     "visitamos",
+     "visitáis",
+     "visitan"
+    ],
+    "preterite": [
+     "visité",
+     "visitaste",
+     "visitó",
+     "visitamos",
+     "visitasteis",
+     "visitaron"
+    ]
+   }
+  },
+  {
+   "inf": "bailar",
+   "gloss": "to dance",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "bailo",
+     "bailas",
+     "baila",
+     "bailamos",
+     "bailáis",
+     "bailan"
+    ],
+    "preterite": [
+     "bailé",
+     "bailaste",
+     "bailó",
+     "bailamos",
+     "bailasteis",
+     "bailaron"
+    ]
+   }
+  },
+  {
+   "inf": "cantar",
+   "gloss": "to sing",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "canto",
+     "cantas",
+     "canta",
+     "cantamos",
+     "cantáis",
+     "cantan"
+    ],
+    "preterite": [
+     "canté",
+     "cantaste",
+     "cantó",
+     "cantamos",
+     "cantasteis",
+     "cantaron"
+    ]
+   }
+  },
+  {
+   "inf": "terminar",
+   "gloss": "to finish",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "termino",
+     "terminas",
+     "termina",
+     "terminamos",
+     "termináis",
+     "terminan"
+    ],
+    "preterite": [
+     "terminé",
+     "terminaste",
+     "terminó",
+     "terminamos",
+     "terminasteis",
+     "terminaron"
+    ]
+   }
+  },
+  {
+   "inf": "quedarse",
+   "gloss": "to stay",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me quedo",
+     "te quedas",
+     "se queda",
+     "nos quedamos",
+     "os quedáis",
+     "se quedan"
+    ],
+    "preterite": [
+     "me quedé",
+     "te quedaste",
+     "se quedó",
+     "nos quedamos",
+     "os quedasteis",
+     "se quedaron"
+    ]
+   }
+  }
+ ]
+}

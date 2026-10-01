@@ -1,0 +1,627 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 6 — ¿Qué hiciste?",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "ayer",
+   "en": "yesterday",
+   "audio": "vocab/s2-ayer.mp3"
+  },
+  {
+   "t": "anoche",
+   "en": "last night",
+   "audio": "vocab/s2-anoche.mp3"
+  },
+  {
+   "t": "la semana pasada",
+   "en": "last week",
+   "audio": "vocab/s2-la-semana-pasada.mp3"
+  },
+  {
+   "t": "el año pasado",
+   "en": "last year",
+   "audio": "vocab/s2-el-ano-pasado.mp3"
+  },
+  {
+   "t": "el fin de semana pasado",
+   "en": "last weekend",
+   "audio": "vocab/s2-el-fin-de-semana-pasado.mp3"
+  },
+  {
+   "t": "el viaje",
+   "en": "the trip",
+   "audio": "vocab/s2-el-viaje.mp3"
+  },
+  {
+   "t": "el boleto",
+   "en": "the ticket",
+   "audio": "vocab/s2-el-boleto.mp3"
+  },
+  {
+   "t": "la maleta",
+   "en": "the suitcase",
+   "audio": "vocab/s2-la-maleta.mp3"
+  },
+  {
+   "t": "viajar",
+   "en": "to travel",
+   "audio": "vocab/s2-viajar.mp3"
+  },
+  {
+   "t": "visitar",
+   "en": "to visit",
+   "audio": "vocab/s2-visitar.mp3"
+  },
+  {
+   "t": "caminar",
+   "en": "to walk",
+   "audio": "vocab/s2-caminar.mp3"
+  },
+  {
+   "t": "bailar",
+   "en": "to dance",
+   "audio": "vocab/s2-bailar.mp3"
+  },
+  {
+   "t": "cantar",
+   "en": "to sing",
+   "audio": "vocab/s2-cantar.mp3"
+  },
+  {
+   "t": "nadar",
+   "en": "to swim",
+   "audio": "vocab/s2-nadar.mp3"
+  },
+  {
+   "t": "preparar",
+   "en": "to prepare",
+   "audio": "vocab/s2-preparar.mp3"
+  },
+  {
+   "t": "terminar",
+   "en": "to finish",
+   "audio": "vocab/s2-terminar.mp3"
+  },
+  {
+   "t": "pasar",
+   "en": "to spend (time)",
+   "audio": "vocab/s2-pasar.mp3"
+  },
+  {
+   "t": "ganar",
+   "en": "to win / to earn",
+   "audio": "vocab/s2-ganar.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "viajar",
+   "gloss": "to travel",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "viajo",
+     "viajas",
+     "viaja",
+     "viajamos",
+     "viajáis",
+     "viajan"
+    ],
+    "preterite": [
+     "viajé",
+     "viajaste",
+     "viajó",
+     "viajamos",
+     "viajasteis",
+     "viajaron"
+    ]
+   }
+  },
+  {
+   "inf": "visitar",
+   "gloss": "to visit",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "visito",
+     "visitas",
+     "visita",
+     "visitamos",
+     "visitáis",
+     "visitan"
+    ],
+    "preterite": [
+     "visité",
+     "visitaste",
+     "visitó",
+     "visitamos",
+     "visitasteis",
+     "visitaron"
+    ]
+   }
+  },
+  {
+   "inf": "caminar",
+   "gloss": "to walk",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "camino",
+     "caminas",
+     "camina",
+     "caminamos",
+     "camináis",
+     "caminan"
+    ],
+    "preterite": [
+     "caminé",
+     "caminaste",
+     "caminó",
+     "caminamos",
+     "caminasteis",
+     "caminaron"
+    ]
+   }
+  },
+  {
+   "inf": "bailar",
+   "gloss": "to dance",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "bailo",
+     "bailas",
+     "baila",
+     "bailamos",
+     "bailáis",
+     "bailan"
+    ],
+    "preterite": [
+     "bailé",
+     "bailaste",
+     "bailó",
+     "bailamos",
+     "bailasteis",
+     "bailaron"
+    ]
+   }
+  },
+  {
+   "inf": "cantar",
+   "gloss": "to sing",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "canto",
+     "cantas",
+     "canta",
+     "cantamos",
+     "cantáis",
+     "cantan"
+    ],
+    "preterite": [
+     "canté",
+     "cantaste",
+     "cantó",
+     "cantamos",
+     "cantasteis",
+     "cantaron"
+    ]
+   }
+  },
+  {
+   "inf": "nadar",
+   "gloss": "to swim",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "nado",
+     "nadas",
+     "nada",
+     "nadamos",
+     "nadáis",
+     "nadan"
+    ],
+    "preterite": [
+     "nadé",
+     "nadaste",
+     "nadó",
+     "nadamos",
+     "nadasteis",
+     "nadaron"
+    ]
+   }
+  },
+  {
+   "inf": "preparar",
+   "gloss": "to prepare",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "preparo",
+     "preparas",
+     "prepara",
+     "preparamos",
+     "preparáis",
+     "preparan"
+    ],
+    "preterite": [
+     "preparé",
+     "preparaste",
+     "preparó",
+     "preparamos",
+     "preparasteis",
+     "prepararon"
+    ]
+   }
+  },
+  {
+   "inf": "terminar",
+   "gloss": "to finish",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "termino",
+     "terminas",
+     "termina",
+     "terminamos",
+     "termináis",
+     "terminan"
+    ],
+    "preterite": [
+     "terminé",
+     "terminaste",
+     "terminó",
+     "terminamos",
+     "terminasteis",
+     "terminaron"
+    ]
+   }
+  },
+  {
+   "inf": "pasar",
+   "gloss": "to spend (time)",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "paso",
+     "pasas",
+     "pasa",
+     "pasamos",
+     "pasáis",
+     "pasan"
+    ],
+    "preterite": [
+     "pasé",
+     "pasaste",
+     "pasó",
+     "pasamos",
+     "pasasteis",
+     "pasaron"
+    ]
+   }
+  },
+  {
+   "inf": "ganar",
+   "gloss": "to win / to earn",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "gano",
+     "ganas",
+     "gana",
+     "ganamos",
+     "ganáis",
+     "ganan"
+    ],
+    "preterite": [
+     "gané",
+     "ganaste",
+     "ganó",
+     "ganamos",
+     "ganasteis",
+     "ganaron"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "hablar",
+   "gloss": "to speak / talk",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "hablo",
+     "hablas",
+     "habla",
+     "hablamos",
+     "habláis",
+     "hablan"
+    ],
+    "preterite": [
+     "hablé",
+     "hablaste",
+     "habló",
+     "hablamos",
+     "hablasteis",
+     "hablaron"
+    ]
+   }
+  },
+  {
+   "inf": "escuchar",
+   "gloss": "to listen",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "escucho",
+     "escuchas",
+     "escucha",
+     "escuchamos",
+     "escucháis",
+     "escuchan"
+    ],
+    "preterite": [
+     "escuché",
+     "escuchaste",
+     "escuchó",
+     "escuchamos",
+     "escuchasteis",
+     "escucharon"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ],
+    "preterite": [
+     "trabajé",
+     "trabajaste",
+     "trabajó",
+     "trabajamos",
+     "trabajasteis",
+     "trabajaron"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "llegar",
+   "gloss": "to arrive",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "llego",
+     "llegas",
+     "llega",
+     "llegamos",
+     "llegáis",
+     "llegan"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "tener",
+   "gloss": "to have",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "tengo",
+     "tienes",
+     "tiene",
+     "tenemos",
+     "tenéis",
+     "tienen"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ],
+    "preterite": [
+     "comí",
+     "comiste",
+     "comió",
+     "comimos",
+     "comisteis",
+     "comieron"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "escribir",
+   "gloss": "to write",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "escribo",
+     "escribes",
+     "escribe",
+     "escribimos",
+     "escribís",
+     "escriben"
+    ],
+    "preterite": [
+     "escribí",
+     "escribiste",
+     "escribió",
+     "escribimos",
+     "escribisteis",
+     "escribieron"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ],
+    "preterite": [
+     "abrí",
+     "abriste",
+     "abrió",
+     "abrimos",
+     "abristeis",
+     "abrieron"
+    ]
+   }
+  },
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ]
+   }
+  },
+  {
+   "inf": "hacer",
+   "gloss": "to do / make",
+   "tag": "irregular yo (hago)",
+   "forms": {
+    "present": [
+     "hago",
+     "haces",
+     "hace",
+     "hacemos",
+     "hacéis",
+     "hacen"
+    ]
+   }
+  },
+  {
+   "inf": "ver",
+   "gloss": "to see",
+   "tag": "irregular yo (veo)",
+   "forms": {
+    "present": [
+     "veo",
+     "ves",
+     "ve",
+     "vemos",
+     "veis",
+     "ven"
+    ]
+   }
+  },
+  {
+   "inf": "probar",
+   "gloss": "to try / to taste",
+   "tag": "boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "pruebo",
+     "pruebas",
+     "prueba",
+     "probamos",
+     "probáis",
+     "prueban"
+    ],
+    "preterite": [
+     "probé",
+     "probaste",
+     "probó",
+     "probamos",
+     "probasteis",
+     "probaron"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,613 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 7 — De viaje",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "el avión",
+   "en": "the plane / airplane",
+   "audio": "vocab/s2-el-avion.mp3"
+  },
+  {
+   "t": "el aeropuerto",
+   "en": "the airport",
+   "audio": "vocab/s2-el-aeropuerto.mp3"
+  },
+  {
+   "t": "el hotel",
+   "en": "the hotel",
+   "audio": "vocab/s2-el-hotel.mp3"
+  },
+  {
+   "t": "el pasaporte",
+   "en": "the passport",
+   "audio": "vocab/s2-el-pasaporte.mp3"
+  },
+  {
+   "t": "la montaña",
+   "en": "the mountain",
+   "audio": "vocab/s2-la-montana.mp3"
+  },
+  {
+   "t": "el mar",
+   "en": "the sea",
+   "audio": "vocab/s2-el-mar.mp3"
+  },
+  {
+   "t": "el/la turista",
+   "en": "the tourist",
+   "audio": "vocab/s2-el-turista.mp3"
+  },
+  {
+   "t": "el mapa",
+   "en": "the map",
+   "audio": "vocab/s2-el-mapa.mp3"
+  },
+  {
+   "t": "la frontera",
+   "en": "the border",
+   "audio": "vocab/s2-la-frontera.mp3"
+  },
+  {
+   "t": "el pueblo",
+   "en": "the town / village",
+   "audio": "vocab/s2-el-pueblo.mp3"
+  },
+  {
+   "t": "la ruina",
+   "en": "the ruin (often las ruinas )",
+   "audio": "vocab/s2-la-ruina.mp3"
+  },
+  {
+   "t": "el/la guía",
+   "en": "the (tour) guide",
+   "audio": "vocab/s2-el-guia.mp3"
+  },
+  {
+   "t": "la foto",
+   "en": "the photo",
+   "audio": "vocab/s2-la-foto.mp3"
+  },
+  {
+   "t": "el recuerdo",
+   "en": "the souvenir / memory",
+   "audio": "vocab/s2-el-recuerdo.mp3"
+  },
+  {
+   "t": "la excursión",
+   "en": "the excursion / day trip",
+   "audio": "vocab/s2-la-excursion.mp3"
+  },
+  {
+   "t": "explorar",
+   "en": "to explore",
+   "audio": "vocab/s2-explorar.mp3"
+  },
+  {
+   "t": "quedarse",
+   "en": "to stay",
+   "audio": "vocab/s2-quedarse.mp3"
+  },
+  {
+   "t": "la aventura",
+   "en": "the adventure",
+   "audio": "vocab/s2-la-aventura.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "explorar",
+   "gloss": "to explore",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "exploro",
+     "exploras",
+     "explora",
+     "exploramos",
+     "exploráis",
+     "exploran"
+    ],
+    "preterite": [
+     "exploré",
+     "exploraste",
+     "exploró",
+     "exploramos",
+     "explorasteis",
+     "exploraron"
+    ]
+   }
+  },
+  {
+   "inf": "quedarse",
+   "gloss": "to stay",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me quedo",
+     "te quedas",
+     "se queda",
+     "nos quedamos",
+     "os quedáis",
+     "se quedan"
+    ],
+    "preterite": [
+     "me quedé",
+     "te quedaste",
+     "se quedó",
+     "nos quedamos",
+     "os quedasteis",
+     "se quedaron"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form · irregular preterite (fui…)",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ],
+    "preterite": [
+     "fui",
+     "fuiste",
+     "fue",
+     "fuimos",
+     "fuisteis",
+     "fueron"
+    ]
+   }
+  },
+  {
+   "inf": "escuchar",
+   "gloss": "to listen",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "escucho",
+     "escuchas",
+     "escucha",
+     "escuchamos",
+     "escucháis",
+     "escuchan"
+    ],
+    "preterite": [
+     "escuché",
+     "escuchaste",
+     "escuchó",
+     "escuchamos",
+     "escuchasteis",
+     "escucharon"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ],
+    "preterite": [
+     "trabajé",
+     "trabajaste",
+     "trabajó",
+     "trabajamos",
+     "trabajasteis",
+     "trabajaron"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "llegar",
+   "gloss": "to arrive",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "llego",
+     "llegas",
+     "llega",
+     "llegamos",
+     "llegáis",
+     "llegan"
+    ]
+   }
+  },
+  {
+   "inf": "tomar",
+   "gloss": "to take / drink",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "tomo",
+     "tomas",
+     "toma",
+     "tomamos",
+     "tomáis",
+     "toman"
+    ],
+    "preterite": [
+     "tomé",
+     "tomaste",
+     "tomó",
+     "tomamos",
+     "tomasteis",
+     "tomaron"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form · irregular preterite (stem estuv-)",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ],
+    "preterite": [
+     "estuve",
+     "estuviste",
+     "estuvo",
+     "estuvimos",
+     "estuvisteis",
+     "estuvieron"
+    ]
+   }
+  },
+  {
+   "inf": "tener",
+   "gloss": "to have",
+   "tag": "irregular — learn every form · irregular preterite (stem tuv-)",
+   "forms": {
+    "present": [
+     "tengo",
+     "tienes",
+     "tiene",
+     "tenemos",
+     "tenéis",
+     "tienen"
+    ],
+    "preterite": [
+     "tuve",
+     "tuviste",
+     "tuvo",
+     "tuvimos",
+     "tuvisteis",
+     "tuvieron"
+    ]
+   }
+  },
+  {
+   "inf": "cocinar",
+   "gloss": "to cook",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "cocino",
+     "cocinas",
+     "cocina",
+     "cocinamos",
+     "cocináis",
+     "cocinan"
+    ],
+    "preterite": [
+     "cociné",
+     "cocinaste",
+     "cocinó",
+     "cocinamos",
+     "cocinasteis",
+     "cocinaron"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ],
+    "preterite": [
+     "comí",
+     "comiste",
+     "comió",
+     "comimos",
+     "comisteis",
+     "comieron"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "escribir",
+   "gloss": "to write",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "escribo",
+     "escribes",
+     "escribe",
+     "escribimos",
+     "escribís",
+     "escriben"
+    ],
+    "preterite": [
+     "escribí",
+     "escribiste",
+     "escribió",
+     "escribimos",
+     "escribisteis",
+     "escribieron"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ],
+    "preterite": [
+     "abrí",
+     "abriste",
+     "abrió",
+     "abrimos",
+     "abristeis",
+     "abrieron"
+    ]
+   }
+  },
+  {
+   "inf": "compartir",
+   "gloss": "to share",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "comparto",
+     "compartes",
+     "comparte",
+     "compartimos",
+     "compartís",
+     "comparten"
+    ],
+    "preterite": [
+     "compartí",
+     "compartiste",
+     "compartió",
+     "compartimos",
+     "compartisteis",
+     "compartieron"
+    ]
+   }
+  },
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form · irregular preterite (fui…)",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ],
+    "preterite": [
+     "fui",
+     "fuiste",
+     "fue",
+     "fuimos",
+     "fuisteis",
+     "fueron"
+    ]
+   }
+  },
+  {
+   "inf": "hacer",
+   "gloss": "to do / make",
+   "tag": "irregular yo (hago) · irregular preterite (stem hic-)",
+   "forms": {
+    "present": [
+     "hago",
+     "haces",
+     "hace",
+     "hacemos",
+     "hacéis",
+     "hacen"
+    ],
+    "preterite": [
+     "hice",
+     "hiciste",
+     "hizo",
+     "hicimos",
+     "hicisteis",
+     "hicieron"
+    ]
+   }
+  },
+  {
+   "inf": "ver",
+   "gloss": "to see",
+   "tag": "irregular yo (veo)",
+   "forms": {
+    "present": [
+     "veo",
+     "ves",
+     "ve",
+     "vemos",
+     "veis",
+     "ven"
+    ]
+   }
+  },
+  {
+   "inf": "dar",
+   "gloss": "to give / take (a stroll)",
+   "tag": "irregular yo (doy)",
+   "forms": {
+    "present": [
+     "doy",
+     "das",
+     "da",
+     "damos",
+     "dais",
+     "dan"
+    ]
+   }
+  },
+  {
+   "inf": "probar",
+   "gloss": "to try / to taste",
+   "tag": "boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "pruebo",
+     "pruebas",
+     "prueba",
+     "probamos",
+     "probáis",
+     "prueban"
+    ],
+    "preterite": [
+     "probé",
+     "probaste",
+     "probó",
+     "probamos",
+     "probasteis",
+     "probaron"
+    ]
+   }
+  },
+  {
+   "inf": "viajar",
+   "gloss": "to travel",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "viajo",
+     "viajas",
+     "viaja",
+     "viajamos",
+     "viajáis",
+     "viajan"
+    ],
+    "preterite": [
+     "viajé",
+     "viajaste",
+     "viajó",
+     "viajamos",
+     "viajasteis",
+     "viajaron"
+    ]
+   }
+  },
+  {
+   "inf": "terminar",
+   "gloss": "to finish",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "termino",
+     "terminas",
+     "termina",
+     "terminamos",
+     "termináis",
+     "terminan"
+    ],
+    "preterite": [
+     "terminé",
+     "terminaste",
+     "terminó",
+     "terminamos",
+     "terminasteis",
+     "terminaron"
+    ]
+   }
+  },
+  {
+   "inf": "pasar",
+   "gloss": "to spend (time)",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "paso",
+     "pasas",
+     "pasa",
+     "pasamos",
+     "pasáis",
+     "pasan"
+    ],
+    "preterite": [
+     "pasé",
+     "pasaste",
+     "pasó",
+     "pasamos",
+     "pasasteis",
+     "pasaron"
+    ]
+   }
+  }
+ ]
+}

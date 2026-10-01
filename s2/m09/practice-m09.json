@@ -1,0 +1,705 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 9 — Mi experiencia · capstone",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "el viaje",
+   "en": "the trip",
+   "audio": "vocab/s2-el-viaje.mp3"
+  },
+  {
+   "t": "el avión",
+   "en": "the airplane",
+   "audio": "vocab/s2-el-avion.mp3"
+  },
+  {
+   "t": "el aeropuerto",
+   "en": "the airport",
+   "audio": "vocab/s2-el-aeropuerto.mp3"
+  },
+  {
+   "t": "la maleta",
+   "en": "the suitcase",
+   "audio": "vocab/s2-la-maleta.mp3"
+  },
+  {
+   "t": "el hotel",
+   "en": "the hotel",
+   "audio": "vocab/s2-el-hotel.mp3"
+  },
+  {
+   "t": "el mercado",
+   "en": "the market",
+   "audio": "vocab/s2-el-mercado.mp3"
+  },
+  {
+   "t": "la playa",
+   "en": "the beach",
+   "audio": "vocab/s2-la-playa.mp3"
+  },
+  {
+   "t": "el museo",
+   "en": "the museum",
+   "audio": "vocab/s2-el-museo.mp3"
+  },
+  {
+   "t": "el festival",
+   "en": "the festival",
+   "audio": "vocab/s2-el-festival.mp3"
+  },
+  {
+   "t": "viajar",
+   "en": "to travel",
+   "audio": "vocab/s2-viajar.mp3"
+  },
+  {
+   "t": "caminar",
+   "en": "to walk",
+   "audio": "vocab/s2-caminar.mp3"
+  },
+  {
+   "t": "visitar",
+   "en": "to visit",
+   "audio": "vocab/s2-visitar.mp3"
+  },
+  {
+   "t": "explorar",
+   "en": "to explore",
+   "audio": "vocab/s2-explorar.mp3"
+  },
+  {
+   "t": "ayer",
+   "en": "yesterday (→ preterite)",
+   "audio": "vocab/s2-ayer.mp3"
+  },
+  {
+   "t": "anoche",
+   "en": "last night (→ preterite)",
+   "audio": "vocab/s2-anoche.mp3"
+  },
+  {
+   "t": "el año pasado",
+   "en": "last year (→ preterite)",
+   "audio": "vocab/s2-el-ano-pasado.mp3"
+  },
+  {
+   "t": "el verano",
+   "en": "the summer",
+   "audio": "vocab/s2-el-verano.mp3"
+  },
+  {
+   "t": "el presente",
+   "en": "present",
+   "audio": "grammar/s2m9-integra2.mp3"
+  },
+  {
+   "t": "el pretérito",
+   "en": "preterite",
+   "audio": "grammar/s2m7-fui.mp3"
+  },
+  {
+   "t": "los reflexivos",
+   "en": "reflexives",
+   "audio": "grammar/s2m4-melevanto.mp3"
+  },
+  {
+   "t": "ir a + inf.",
+   "en": "near future",
+   "audio": "grammar/s2m1-voy.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "viajar",
+   "gloss": "to travel",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "viajo",
+     "viajas",
+     "viaja",
+     "viajamos",
+     "viajáis",
+     "viajan"
+    ],
+    "preterite": [
+     "viajé",
+     "viajaste",
+     "viajó",
+     "viajamos",
+     "viajasteis",
+     "viajaron"
+    ]
+   }
+  },
+  {
+   "inf": "caminar",
+   "gloss": "to walk",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "camino",
+     "caminas",
+     "camina",
+     "caminamos",
+     "camináis",
+     "caminan"
+    ],
+    "preterite": [
+     "caminé",
+     "caminaste",
+     "caminó",
+     "caminamos",
+     "caminasteis",
+     "caminaron"
+    ]
+   }
+  },
+  {
+   "inf": "visitar",
+   "gloss": "to visit",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "visito",
+     "visitas",
+     "visita",
+     "visitamos",
+     "visitáis",
+     "visitan"
+    ],
+    "preterite": [
+     "visité",
+     "visitaste",
+     "visitó",
+     "visitamos",
+     "visitasteis",
+     "visitaron"
+    ]
+   }
+  },
+  {
+   "inf": "explorar",
+   "gloss": "to explore",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "exploro",
+     "exploras",
+     "explora",
+     "exploramos",
+     "exploráis",
+     "exploran"
+    ],
+    "preterite": [
+     "exploré",
+     "exploraste",
+     "exploró",
+     "exploramos",
+     "explorasteis",
+     "exploraron"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form · irregular preterite (fui…)",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ],
+    "preterite": [
+     "fui",
+     "fuiste",
+     "fue",
+     "fuimos",
+     "fuisteis",
+     "fueron"
+    ]
+   }
+  },
+  {
+   "inf": "estudiar",
+   "gloss": "to study",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "estudio",
+     "estudias",
+     "estudia",
+     "estudiamos",
+     "estudiáis",
+     "estudian"
+    ],
+    "preterite": [
+     "estudié",
+     "estudiaste",
+     "estudió",
+     "estudiamos",
+     "estudiasteis",
+     "estudiaron"
+    ]
+   }
+  },
+  {
+   "inf": "hablar",
+   "gloss": "to speak / talk",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "hablo",
+     "hablas",
+     "habla",
+     "hablamos",
+     "habláis",
+     "hablan"
+    ],
+    "preterite": [
+     "hablé",
+     "hablaste",
+     "habló",
+     "hablamos",
+     "hablasteis",
+     "hablaron"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ],
+    "preterite": [
+     "trabajé",
+     "trabajaste",
+     "trabajó",
+     "trabajamos",
+     "trabajasteis",
+     "trabajaron"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form · irregular preterite (stem estuv-)",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ],
+    "preterite": [
+     "estuve",
+     "estuviste",
+     "estuvo",
+     "estuvimos",
+     "estuvisteis",
+     "estuvieron"
+    ]
+   }
+  },
+  {
+   "inf": "tener",
+   "gloss": "to have",
+   "tag": "irregular — learn every form · irregular preterite (stem tuv-)",
+   "forms": {
+    "present": [
+     "tengo",
+     "tienes",
+     "tiene",
+     "tenemos",
+     "tenéis",
+     "tienen"
+    ],
+    "preterite": [
+     "tuve",
+     "tuviste",
+     "tuvo",
+     "tuvimos",
+     "tuvisteis",
+     "tuvieron"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ],
+    "preterite": [
+     "comí",
+     "comiste",
+     "comió",
+     "comimos",
+     "comisteis",
+     "comieron"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "vivir",
+   "gloss": "to live",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "vivo",
+     "vives",
+     "vive",
+     "vivimos",
+     "vivís",
+     "viven"
+    ],
+    "preterite": [
+     "viví",
+     "viviste",
+     "vivió",
+     "vivimos",
+     "vivisteis",
+     "vivieron"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ],
+    "preterite": [
+     "abrí",
+     "abriste",
+     "abrió",
+     "abrimos",
+     "abristeis",
+     "abrieron"
+    ]
+   }
+  },
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form · irregular preterite (fui…)",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ],
+    "preterite": [
+     "fui",
+     "fuiste",
+     "fue",
+     "fuimos",
+     "fuisteis",
+     "fueron"
+    ]
+   }
+  },
+  {
+   "inf": "hacer",
+   "gloss": "to do / make",
+   "tag": "irregular yo (hago) · irregular preterite (stem hic-)",
+   "forms": {
+    "present": [
+     "hago",
+     "haces",
+     "hace",
+     "hacemos",
+     "hacéis",
+     "hacen"
+    ],
+    "preterite": [
+     "hice",
+     "hiciste",
+     "hizo",
+     "hicimos",
+     "hicisteis",
+     "hicieron"
+    ]
+   }
+  },
+  {
+   "inf": "poner",
+   "gloss": "to put / place",
+   "tag": "irregular yo (pongo)",
+   "forms": {
+    "present": [
+     "pongo",
+     "pones",
+     "pone",
+     "ponemos",
+     "ponéis",
+     "ponen"
+    ]
+   }
+  },
+  {
+   "inf": "conocer",
+   "gloss": "to know (a place/person)",
+   "tag": "irregular yo (conozco)",
+   "forms": {
+    "present": [
+     "conozco",
+     "conoces",
+     "conoce",
+     "conocemos",
+     "conocéis",
+     "conocen"
+    ],
+    "preterite": [
+     "conocí",
+     "conociste",
+     "conoció",
+     "conocimos",
+     "conocisteis",
+     "conocieron"
+    ]
+   }
+  },
+  {
+   "inf": "ver",
+   "gloss": "to see",
+   "tag": "irregular yo (veo)",
+   "forms": {
+    "present": [
+     "veo",
+     "ves",
+     "ve",
+     "vemos",
+     "veis",
+     "ven"
+    ]
+   }
+  },
+  {
+   "inf": "levantarse",
+   "gloss": "to get up",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me levanto",
+     "te levantas",
+     "se levanta",
+     "nos levantamos",
+     "os levantáis",
+     "se levantan"
+    ],
+    "preterite": [
+     "me levanté",
+     "te levantaste",
+     "se levantó",
+     "nos levantamos",
+     "os levantasteis",
+     "se levantaron"
+    ]
+   }
+  },
+  {
+   "inf": "ducharse",
+   "gloss": "to shower",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me ducho",
+     "te duchas",
+     "se ducha",
+     "nos duchamos",
+     "os ducháis",
+     "se duchan"
+    ],
+    "preterite": [
+     "me duché",
+     "te duchaste",
+     "se duchó",
+     "nos duchamos",
+     "os duchasteis",
+     "se ducharon"
+    ]
+   }
+  },
+  {
+   "inf": "vestirse",
+   "gloss": "to get dressed",
+   "tag": "reflexive · boot verb (e → i)",
+   "forms": {
+    "present": [
+     "me visto",
+     "te vistes",
+     "se viste",
+     "nos vestimos",
+     "os vestís",
+     "se visten"
+    ]
+   }
+  },
+  {
+   "inf": "acostarse",
+   "gloss": "to go to bed",
+   "tag": "reflexive · boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "me acuesto",
+     "te acuestas",
+     "se acuesta",
+     "nos acostamos",
+     "os acostáis",
+     "se acuestan"
+    ],
+    "preterite": [
+     "me acosté",
+     "te acostaste",
+     "se acostó",
+     "nos acostamos",
+     "os acostasteis",
+     "se acostaron"
+    ]
+   }
+  },
+  {
+   "inf": "probar",
+   "gloss": "to try / to taste",
+   "tag": "boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "pruebo",
+     "pruebas",
+     "prueba",
+     "probamos",
+     "probáis",
+     "prueban"
+    ],
+    "preterite": [
+     "probé",
+     "probaste",
+     "probó",
+     "probamos",
+     "probasteis",
+     "probaron"
+    ]
+   }
+  },
+  {
+   "inf": "bailar",
+   "gloss": "to dance",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "bailo",
+     "bailas",
+     "baila",
+     "bailamos",
+     "bailáis",
+     "bailan"
+    ],
+    "preterite": [
+     "bailé",
+     "bailaste",
+     "bailó",
+     "bailamos",
+     "bailasteis",
+     "bailaron"
+    ]
+   }
+  },
+  {
+   "inf": "terminar",
+   "gloss": "to finish",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "termino",
+     "terminas",
+     "termina",
+     "terminamos",
+     "termináis",
+     "terminan"
+    ],
+    "preterite": [
+     "terminé",
+     "terminaste",
+     "terminó",
+     "terminamos",
+     "terminasteis",
+     "terminaron"
+    ]
+   }
+  },
+  {
+   "inf": "celebrar",
+   "gloss": "to celebrate",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "celebro",
+     "celebras",
+     "celebra",
+     "celebramos",
+     "celebráis",
+     "celebran"
+    ],
+    "preterite": [
+     "celebré",
+     "celebraste",
+     "celebró",
+     "celebramos",
+     "celebrasteis",
+     "celebraron"
+    ]
+   }
+  }
+ ]
+}

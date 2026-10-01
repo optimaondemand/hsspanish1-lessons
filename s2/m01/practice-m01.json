@@ -1,0 +1,281 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 1 — El tiempo y los planes",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "el clima",
+   "en": "the weather",
+   "audio": "vocab/s2-el-clima.mp3"
+  },
+  {
+   "t": "hace sol",
+   "en": "it's sunny",
+   "audio": "vocab/s2-hace-sol.mp3"
+  },
+  {
+   "t": "hace calor",
+   "en": "it's hot",
+   "audio": "vocab/s2-hace-calor.mp3"
+  },
+  {
+   "t": "hace frío",
+   "en": "it's cold",
+   "audio": "vocab/s2-hace-frio.mp3"
+  },
+  {
+   "t": "hace viento",
+   "en": "it's windy",
+   "audio": "vocab/s2-hace-viento.mp3"
+  },
+  {
+   "t": "llueve",
+   "en": "it rains / it's raining",
+   "audio": "vocab/s2-llueve.mp3"
+  },
+  {
+   "t": "nieva",
+   "en": "it snows / it's snowing",
+   "audio": "vocab/s2-nieva.mp3"
+  },
+  {
+   "t": "nublado",
+   "en": "cloudy",
+   "audio": "vocab/s2-nublado.mp3"
+  },
+  {
+   "t": "la estación",
+   "en": "the season",
+   "audio": "vocab/s2-la-estacion.mp3"
+  },
+  {
+   "t": "la primavera",
+   "en": "spring",
+   "audio": "vocab/s2-la-primavera.mp3"
+  },
+  {
+   "t": "el verano",
+   "en": "summer",
+   "audio": "vocab/s2-el-verano.mp3"
+  },
+  {
+   "t": "el otoño",
+   "en": "autumn / fall",
+   "audio": "vocab/s2-el-otono.mp3"
+  },
+  {
+   "t": "el invierno",
+   "en": "winter",
+   "audio": "vocab/s2-el-invierno.mp3"
+  },
+  {
+   "t": "el plan",
+   "en": "the plan",
+   "audio": "vocab/s2-el-plan.mp3"
+  },
+  {
+   "t": "la playa",
+   "en": "the beach",
+   "audio": "vocab/s2-la-playa.mp3"
+  },
+  {
+   "t": "ir",
+   "en": "to go",
+   "audio": "vocab/s2-ir.mp3"
+  },
+  {
+   "t": "hoy",
+   "en": "today",
+   "audio": "vocab/s2-hoy.mp3"
+  },
+  {
+   "t": "luego",
+   "en": "later / then",
+   "audio": "vocab/s2-luego.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "estudiar",
+   "gloss": "to study",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "estudio",
+     "estudias",
+     "estudia",
+     "estudiamos",
+     "estudiáis",
+     "estudian"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "tomar",
+   "gloss": "to take / drink",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "tomo",
+     "tomas",
+     "toma",
+     "tomamos",
+     "tomáis",
+     "toman"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "tener",
+   "gloss": "to have",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "tengo",
+     "tienes",
+     "tiene",
+     "tenemos",
+     "tenéis",
+     "tienen"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "comprender",
+   "gloss": "to understand",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "comprendo",
+     "comprendes",
+     "comprende",
+     "comprendemos",
+     "comprendéis",
+     "comprenden"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ]
+   }
+  }
+ ]
+}

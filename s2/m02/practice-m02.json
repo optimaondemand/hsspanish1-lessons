@@ -1,0 +1,431 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 2 — La casa",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "la cocina",
+   "en": "kitchen",
+   "audio": "vocab/s2-la-cocina.mp3"
+  },
+  {
+   "t": "el dormitorio",
+   "en": "bedroom",
+   "audio": "vocab/s2-el-dormitorio.mp3"
+  },
+  {
+   "t": "el baño",
+   "en": "bathroom",
+   "audio": "vocab/s2-el-bano.mp3"
+  },
+  {
+   "t": "la sala",
+   "en": "living room",
+   "audio": "vocab/s2-la-sala.mp3"
+  },
+  {
+   "t": "el comedor",
+   "en": "dining room",
+   "audio": "vocab/s2-el-comedor.mp3"
+  },
+  {
+   "t": "el jardín",
+   "en": "garden / yard",
+   "audio": "vocab/s2-el-jardin.mp3"
+  },
+  {
+   "t": "la habitación",
+   "en": "room / bedroom",
+   "audio": "vocab/s2-la-habitacion.mp3"
+  },
+  {
+   "t": "la escalera",
+   "en": "staircase / stairs",
+   "audio": "vocab/s2-la-escalera.mp3"
+  },
+  {
+   "t": "la cama",
+   "en": "bed",
+   "audio": "vocab/s2-la-cama.mp3"
+  },
+  {
+   "t": "la mesa",
+   "en": "table",
+   "audio": "vocab/s2-la-mesa.mp3"
+  },
+  {
+   "t": "la silla",
+   "en": "chair",
+   "audio": "vocab/s2-la-silla.mp3"
+  },
+  {
+   "t": "la puerta",
+   "en": "door",
+   "audio": "vocab/s2-la-puerta.mp3"
+  },
+  {
+   "t": "la ventana",
+   "en": "window",
+   "audio": "vocab/s2-la-ventana.mp3"
+  },
+  {
+   "t": "el mueble",
+   "en": "piece of furniture",
+   "audio": "vocab/s2-el-mueble.mp3"
+  },
+  {
+   "t": "limpiar",
+   "en": "to clean",
+   "audio": "vocab/s2-limpiar.mp3"
+  },
+  {
+   "t": "ordenar",
+   "en": "to tidy up",
+   "audio": "vocab/s2-ordenar.mp3"
+  },
+  {
+   "t": "arriba",
+   "en": "upstairs / up",
+   "audio": "vocab/s2-arriba.mp3"
+  },
+  {
+   "t": "abajo",
+   "en": "downstairs / down",
+   "audio": "vocab/s2-abajo.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "limpiar",
+   "gloss": "to clean",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "limpio",
+     "limpias",
+     "limpia",
+     "limpiamos",
+     "limpiáis",
+     "limpian"
+    ]
+   }
+  },
+  {
+   "inf": "ordenar",
+   "gloss": "to tidy up",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "ordeno",
+     "ordenas",
+     "ordena",
+     "ordenamos",
+     "ordenáis",
+     "ordenan"
+    ]
+   }
+  },
+  {
+   "inf": "querer",
+   "gloss": "to want",
+   "tag": "boot verb (e → ie)",
+   "forms": {
+    "present": [
+     "quiero",
+     "quieres",
+     "quiere",
+     "queremos",
+     "queréis",
+     "quieren"
+    ]
+   }
+  },
+  {
+   "inf": "poder",
+   "gloss": "to be able to",
+   "tag": "boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "puedo",
+     "puedes",
+     "puede",
+     "podemos",
+     "podéis",
+     "pueden"
+    ]
+   }
+  },
+  {
+   "inf": "dormir",
+   "gloss": "to sleep",
+   "tag": "boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "duermo",
+     "duermes",
+     "duerme",
+     "dormimos",
+     "dormís",
+     "duermen"
+    ]
+   }
+  },
+  {
+   "inf": "jugar",
+   "gloss": "to play",
+   "tag": "boot verb (u → ue)",
+   "forms": {
+    "present": [
+     "juego",
+     "juegas",
+     "juega",
+     "jugamos",
+     "jugáis",
+     "juegan"
+    ]
+   }
+  },
+  {
+   "inf": "pedir",
+   "gloss": "to ask for",
+   "tag": "boot verb (e → i)",
+   "forms": {
+    "present": [
+     "pido",
+     "pides",
+     "pide",
+     "pedimos",
+     "pedís",
+     "piden"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "estudiar",
+   "gloss": "to study",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "estudio",
+     "estudias",
+     "estudia",
+     "estudiamos",
+     "estudiáis",
+     "estudian"
+    ]
+   }
+  },
+  {
+   "inf": "hablar",
+   "gloss": "to speak / talk",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "hablo",
+     "hablas",
+     "habla",
+     "hablamos",
+     "habláis",
+     "hablan"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "tomar",
+   "gloss": "to take / drink",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "tomo",
+     "tomas",
+     "toma",
+     "tomamos",
+     "tomáis",
+     "toman"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "tener",
+   "gloss": "to have",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "tengo",
+     "tienes",
+     "tiene",
+     "tenemos",
+     "tenéis",
+     "tienen"
+    ]
+   }
+  },
+  {
+   "inf": "cocinar",
+   "gloss": "to cook",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "cocino",
+     "cocinas",
+     "cocina",
+     "cocinamos",
+     "cocináis",
+     "cocinan"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "comprender",
+   "gloss": "to understand",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "comprendo",
+     "comprendes",
+     "comprende",
+     "comprendemos",
+     "comprendéis",
+     "comprenden"
+    ]
+   }
+  },
+  {
+   "inf": "vivir",
+   "gloss": "to live",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "vivo",
+     "vives",
+     "vive",
+     "vivimos",
+     "vivís",
+     "viven"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ]
+   }
+  },
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ]
+   }
+  }
+ ]
+}

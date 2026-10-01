@@ -1,0 +1,406 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 3 — La ciudad",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "el centro",
+   "en": "downtown",
+   "audio": "vocab/s2-el-centro.mp3"
+  },
+  {
+   "t": "la calle",
+   "en": "the street",
+   "audio": "vocab/s2-la-calle.mp3"
+  },
+  {
+   "t": "la tienda",
+   "en": "the shop / store",
+   "audio": "vocab/s2-la-tienda.mp3"
+  },
+  {
+   "t": "el banco",
+   "en": "the bank",
+   "audio": "vocab/s2-el-banco.mp3"
+  },
+  {
+   "t": "el mercado",
+   "en": "the market",
+   "audio": "vocab/s2-el-mercado.mp3"
+  },
+  {
+   "t": "el restaurante",
+   "en": "the restaurant",
+   "audio": "vocab/s2-el-restaurante.mp3"
+  },
+  {
+   "t": "el museo",
+   "en": "the museum",
+   "audio": "vocab/s2-el-museo.mp3"
+  },
+  {
+   "t": "la plaza",
+   "en": "the square / plaza",
+   "audio": "vocab/s2-la-plaza.mp3"
+  },
+  {
+   "t": "el hospital",
+   "en": "the hospital",
+   "audio": "vocab/s2-el-hospital.mp3"
+  },
+  {
+   "t": "la esquina",
+   "en": "the corner",
+   "audio": "vocab/s2-la-esquina.mp3"
+  },
+  {
+   "t": "el semáforo",
+   "en": "the traffic light",
+   "audio": "vocab/s2-el-semaforo.mp3"
+  },
+  {
+   "t": "a la derecha",
+   "en": "to the right",
+   "audio": "vocab/s2-a-la-derecha.mp3"
+  },
+  {
+   "t": "a la izquierda",
+   "en": "to the left",
+   "audio": "vocab/s2-a-la-izquierda.mp3"
+  },
+  {
+   "t": "derecho",
+   "en": "straight ahead",
+   "audio": "vocab/s2-derecho.mp3"
+  },
+  {
+   "t": "cerca",
+   "en": "near / close",
+   "audio": "vocab/s2-cerca.mp3"
+  },
+  {
+   "t": "lejos",
+   "en": "far",
+   "audio": "vocab/s2-lejos.mp3"
+  },
+  {
+   "t": "la cuadra",
+   "en": "the (city) block",
+   "audio": "vocab/s2-la-cuadra.mp3"
+  },
+  {
+   "t": "doblar",
+   "en": "to turn",
+   "audio": "vocab/s2-doblar.mp3"
+  },
+  {
+   "t": "hago",
+   "en": "I do / make",
+   "audio": "grammar/s2m3-hago.mp3"
+  },
+  {
+   "t": "pongo",
+   "en": "I put / place",
+   "audio": "grammar/s2m3-pongo.mp3"
+  },
+  {
+   "t": "salgo",
+   "en": "I leave / go out",
+   "audio": "grammar/s2m3-salgo.mp3"
+  },
+  {
+   "t": "traigo",
+   "en": "I bring",
+   "audio": "grammar/s2m3-traigo.mp3"
+  },
+  {
+   "t": "conozco",
+   "en": "I know (a place/person)",
+   "audio": "grammar/s2m3-conozco.mp3"
+  },
+  {
+   "t": "veo",
+   "en": "I see",
+   "audio": "grammar/s2m3-veo.mp3"
+  },
+  {
+   "t": "doy",
+   "en": "I give / take (a stroll)",
+   "audio": "grammar/s2m3-doy.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "doblar",
+   "gloss": "to turn",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "doblo",
+     "doblas",
+     "dobla",
+     "doblamos",
+     "dobláis",
+     "doblan"
+    ]
+   }
+  },
+  {
+   "inf": "hacer",
+   "gloss": "to do / make",
+   "tag": "irregular yo (hago)",
+   "forms": {
+    "present": [
+     "hago",
+     "haces",
+     "hace",
+     "hacemos",
+     "hacéis",
+     "hacen"
+    ]
+   }
+  },
+  {
+   "inf": "poner",
+   "gloss": "to put / place",
+   "tag": "irregular yo (pongo)",
+   "forms": {
+    "present": [
+     "pongo",
+     "pones",
+     "pone",
+     "ponemos",
+     "ponéis",
+     "ponen"
+    ]
+   }
+  },
+  {
+   "inf": "salir",
+   "gloss": "to leave / go out",
+   "tag": "irregular yo (salgo)",
+   "forms": {
+    "present": [
+     "salgo",
+     "sales",
+     "sale",
+     "salimos",
+     "salís",
+     "salen"
+    ]
+   }
+  },
+  {
+   "inf": "traer",
+   "gloss": "to bring",
+   "tag": "irregular yo (traigo)",
+   "forms": {
+    "present": [
+     "traigo",
+     "traes",
+     "trae",
+     "traemos",
+     "traéis",
+     "traen"
+    ]
+   }
+  },
+  {
+   "inf": "conocer",
+   "gloss": "to know (a place/person)",
+   "tag": "irregular yo (conozco)",
+   "forms": {
+    "present": [
+     "conozco",
+     "conoces",
+     "conoce",
+     "conocemos",
+     "conocéis",
+     "conocen"
+    ]
+   }
+  },
+  {
+   "inf": "ver",
+   "gloss": "to see",
+   "tag": "irregular yo (veo)",
+   "forms": {
+    "present": [
+     "veo",
+     "ves",
+     "ve",
+     "vemos",
+     "veis",
+     "ven"
+    ]
+   }
+  },
+  {
+   "inf": "dar",
+   "gloss": "to give / take (a stroll)",
+   "tag": "irregular yo (doy)",
+   "forms": {
+    "present": [
+     "doy",
+     "das",
+     "da",
+     "damos",
+     "dais",
+     "dan"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "llegar",
+   "gloss": "to arrive",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "llego",
+     "llegas",
+     "llega",
+     "llegamos",
+     "llegáis",
+     "llegan"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "correr",
+   "gloss": "to run",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "corro",
+     "corres",
+     "corre",
+     "corremos",
+     "corréis",
+     "corren"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ]
+   }
+  },
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,476 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Semester 2",
+ "title": "Module 4 — La rutina diaria",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "despertarse",
+   "en": "to wake up",
+   "audio": "vocab/s2-despertarse.mp3"
+  },
+  {
+   "t": "levantarse",
+   "en": "to get up",
+   "audio": "vocab/s2-levantarse.mp3"
+  },
+  {
+   "t": "ducharse",
+   "en": "to shower",
+   "audio": "vocab/s2-ducharse.mp3"
+  },
+  {
+   "t": "lavarse",
+   "en": "to wash (oneself)",
+   "audio": "vocab/s2-lavarse.mp3"
+  },
+  {
+   "t": "cepillarse",
+   "en": "to brush",
+   "audio": "vocab/s2-cepillarse.mp3"
+  },
+  {
+   "t": "peinarse",
+   "en": "to comb / do one's hair",
+   "audio": "vocab/s2-peinarse.mp3"
+  },
+  {
+   "t": "afeitarse",
+   "en": "to shave",
+   "audio": "vocab/s2-afeitarse.mp3"
+  },
+  {
+   "t": "vestirse",
+   "en": "to get dressed",
+   "audio": "vocab/s2-vestirse.mp3"
+  },
+  {
+   "t": "ponerse",
+   "en": "to put on (clothing)",
+   "audio": "vocab/s2-ponerse.mp3"
+  },
+  {
+   "t": "sentarse",
+   "en": "to sit down",
+   "audio": "vocab/s2-sentarse.mp3"
+  },
+  {
+   "t": "acostarse",
+   "en": "to go to bed",
+   "audio": "vocab/s2-acostarse.mp3"
+  },
+  {
+   "t": "la rutina",
+   "en": "the routine",
+   "audio": "vocab/s2-la-rutina.mp3"
+  },
+  {
+   "t": "el despertador",
+   "en": "the alarm clock",
+   "audio": "vocab/s2-el-despertador.mp3"
+  },
+  {
+   "t": "temprano",
+   "en": "early",
+   "audio": "vocab/s2-temprano.mp3"
+  },
+  {
+   "t": "tarde",
+   "en": "late",
+   "audio": "vocab/s2-tarde.mp3"
+  },
+  {
+   "t": "primero",
+   "en": "first",
+   "audio": "vocab/s2-primero.mp3"
+  },
+  {
+   "t": "antes",
+   "en": "before",
+   "audio": "vocab/s2-antes.mp3"
+  },
+  {
+   "t": "después",
+   "en": "after / afterward",
+   "audio": "vocab/s2-despues.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "despertarse",
+   "gloss": "to wake up",
+   "tag": "reflexive · boot verb (e → ie)",
+   "forms": {
+    "present": [
+     "me despierto",
+     "te despiertas",
+     "se despierta",
+     "nos despertamos",
+     "os despertáis",
+     "se despiertan"
+    ]
+   }
+  },
+  {
+   "inf": "levantarse",
+   "gloss": "to get up",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me levanto",
+     "te levantas",
+     "se levanta",
+     "nos levantamos",
+     "os levantáis",
+     "se levantan"
+    ]
+   }
+  },
+  {
+   "inf": "ducharse",
+   "gloss": "to shower",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me ducho",
+     "te duchas",
+     "se ducha",
+     "nos duchamos",
+     "os ducháis",
+     "se duchan"
+    ]
+   }
+  },
+  {
+   "inf": "lavarse",
+   "gloss": "to wash (oneself)",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me lavo",
+     "te lavas",
+     "se lava",
+     "nos lavamos",
+     "os laváis",
+     "se lavan"
+    ]
+   }
+  },
+  {
+   "inf": "cepillarse",
+   "gloss": "to brush",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me cepillo",
+     "te cepillas",
+     "se cepilla",
+     "nos cepillamos",
+     "os cepilláis",
+     "se cepillan"
+    ]
+   }
+  },
+  {
+   "inf": "peinarse",
+   "gloss": "to comb / do one's hair",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me peino",
+     "te peinas",
+     "se peina",
+     "nos peinamos",
+     "os peináis",
+     "se peinan"
+    ]
+   }
+  },
+  {
+   "inf": "afeitarse",
+   "gloss": "to shave",
+   "tag": "reflexive · regular -ar verb",
+   "forms": {
+    "present": [
+     "me afeito",
+     "te afeitas",
+     "se afeita",
+     "nos afeitamos",
+     "os afeitáis",
+     "se afeitan"
+    ]
+   }
+  },
+  {
+   "inf": "vestirse",
+   "gloss": "to get dressed",
+   "tag": "reflexive · boot verb (e → i)",
+   "forms": {
+    "present": [
+     "me visto",
+     "te vistes",
+     "se viste",
+     "nos vestimos",
+     "os vestís",
+     "se visten"
+    ]
+   }
+  },
+  {
+   "inf": "ponerse",
+   "gloss": "to put on (clothing)",
+   "tag": "reflexive · irregular yo (pongo)",
+   "forms": {
+    "present": [
+     "me pongo",
+     "te pones",
+     "se pone",
+     "nos ponemos",
+     "os ponéis",
+     "se ponen"
+    ]
+   }
+  },
+  {
+   "inf": "sentarse",
+   "gloss": "to sit down",
+   "tag": "reflexive · boot verb (e → ie)",
+   "forms": {
+    "present": [
+     "me siento",
+     "te sientas",
+     "se sienta",
+     "nos sentamos",
+     "os sentáis",
+     "se sientan"
+    ]
+   }
+  },
+  {
+   "inf": "acostarse",
+   "gloss": "to go to bed",
+   "tag": "reflexive · boot verb (o → ue)",
+   "forms": {
+    "present": [
+     "me acuesto",
+     "te acuestas",
+     "se acuesta",
+     "nos acostamos",
+     "os acostáis",
+     "se acuestan"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "estudiar",
+   "gloss": "to study",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "estudio",
+     "estudias",
+     "estudia",
+     "estudiamos",
+     "estudiáis",
+     "estudian"
+    ]
+   }
+  },
+  {
+   "inf": "escuchar",
+   "gloss": "to listen",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "escucho",
+     "escuchas",
+     "escucha",
+     "escuchamos",
+     "escucháis",
+     "escuchan"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ]
+   }
+  },
+  {
+   "inf": "ir",
+   "gloss": "to go",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "voy",
+     "vas",
+     "va",
+     "vamos",
+     "vais",
+     "van"
+    ]
+   }
+  },
+  {
+   "inf": "hacer",
+   "gloss": "to do / make",
+   "tag": "irregular yo (hago)",
+   "forms": {
+    "present": [
+     "hago",
+     "haces",
+     "hace",
+     "hacemos",
+     "hacéis",
+     "hacen"
+    ]
+   }
+  },
+  {
+   "inf": "poner",
+   "gloss": "to put / place",
+   "tag": "irregular yo (pongo)",
+   "forms": {
+    "present": [
+     "pongo",
+     "pones",
+     "pone",
+     "ponemos",
+     "ponéis",
+     "ponen"
+    ]
+   }
+  },
+  {
+   "inf": "conocer",
+   "gloss": "to know (a place/person)",
+   "tag": "irregular yo (conozco)",
+   "forms": {
+    "present": [
+     "conozco",
+     "conoces",
+     "conoce",
+     "conocemos",
+     "conocéis",
+     "conocen"
+    ]
+   }
+  },
+  {
+   "inf": "ver",
+   "gloss": "to see",
+   "tag": "irregular yo (veo)",
+   "forms": {
+    "present": [
+     "veo",
+     "ves",
+     "ve",
+     "vemos",
+     "veis",
+     "ven"
+    ]
+   }
+  }
+ ]
+}
