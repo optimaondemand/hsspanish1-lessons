@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Catch-up Lesson A</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q1 &middot; M&oacute;dulo 2</div>
+        <div style="font-size: 12px; color: #666;">En la escuela</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson A &middot; Catch-up Day 5</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Un, una, unos, unas</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">School &amp; Daily Life</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Catch-up Lesson A</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Un, una, unos, unas &mdash; The Words for &ldquo;A&rdquo; and &ldquo;Some&rdquo;</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 30 minutes</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You already know four words for &ldquo;the&rdquo;. Today you learn the four words for &ldquo;a&rdquo; and &ldquo;some&rdquo; &mdash; and they follow the same two questions.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">In Lesson 0.05 you learned <strong style="color:#0E1C42;">el</strong>, <strong style="color:#AA1E2D;">la</strong>, <strong style="color:#0E1C42;">los</strong>, <strong style="color:#AA1E2D;">las</strong>. When you mean <em>a</em> book instead of <em>the</em> book, Spanish switches to <strong style="color:#0E1C42;">un</strong>, <strong style="color:#AA1E2D;">una</strong>, <strong style="color:#0E1C42;">unos</strong>, <strong style="color:#AA1E2D;">unas</strong>. You choose them exactly the way you choose <em>el</em> or <em>la</em>: is the noun <strong style="color:#0E1C42;">masculine</strong> or <strong style="color:#AA1E2D;">feminine</strong>, and is it <strong>one</strong> or <strong>more than one</strong>? Because you learned every noun glued to its article, you already know which one to pick.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> choose <em>un, una, unos,</em> or <em>unas</em> for a noun and explain why.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> leave out <em>un / una</em> when I say who someone is with <em>ser</em> (<em>Soy estudiante</em>).</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">4 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">&ldquo;The&rdquo; book or &ldquo;a&rdquo; book?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In English you switch between <em>the</em> and <em>a</em> all the time without thinking: &ldquo;I need <em>a</em> backpack&rdquo; (any backpack) versus &ldquo;I need <em>the</em> backpack&rdquo; (one particular backpack). Spanish makes the same switch.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">How do <em>el</em> and <em>la</em> feel to you now?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Excelente! Then today is quick: every el becomes un and every la becomes una. You already know which is which.">Easy &mdash; I know them</button>
+                <button data-response="That's fine. Today will actually help: you'll see el and la side by side with un and una, which makes both stick.">Mostly &mdash; I still mix them up</button>
+                <button data-response="No problem. Keep Lesson 0.05 open in another tab, and look at the table in Part 2 &mdash; the two sets line up row by row.">Not yet</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 2 · un / una -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; UN / UNA <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">&ldquo;A&rdquo; or &ldquo;an&rdquo; &mdash; for one thing</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">If the noun takes <strong style="color:#0E1C42;">el</strong>, &ldquo;a&rdquo; is <strong style="color:#0E1C42;">un</strong>. If it takes <strong style="color:#AA1E2D;">la</strong>, &ldquo;a&rdquo; is <strong style="color:#AA1E2D;">una</strong>. Listen, then say each one out loud.</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="catchup/un-libro.mp3" aria-label="Escuchar un libro">&#128266;</button><span class="v-es"><span style="color:#0E1C42;">un</span> libro</span><span class="v-en">a book &nbsp;(el libro)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/un-examen.mp3" aria-label="Escuchar un examen">&#128266;</button><span class="v-es"><span style="color:#0E1C42;">un</span> examen</span><span class="v-en">a test &nbsp;(el examen)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/una-mochila.mp3" aria-label="Escuchar una mochila">&#128266;</button><span class="v-es"><span style="color:#AA1E2D;">una</span> mochila</span><span class="v-en">a backpack &nbsp;(la mochila)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/una-clase.mp3" aria-label="Escuchar una clase">&#128266;</button><span class="v-es"><span style="color:#AA1E2D;">una</span> clase</span><span class="v-en">a class &nbsp;(la clase)</span></li>
+        </ul>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 14px 0 8px 0;">Now in a sentence with <em>ser</em>: <em>es</em> means &ldquo;it is.&rdquo;</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="catchup/es-un-libro.mp3" aria-label="Escuchar Es un libro">&#128266;</button><span class="v-es">Es <span style="color:#0E1C42;">un</span> libro.</span><span class="v-en">It's a book.</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/es-una-mochila.mp3" aria-label="Escuchar Es una mochila">&#128266;</button><span class="v-es">Es <span style="color:#AA1E2D;">una</span> mochila.</span><span class="v-en">It's a backpack.</span></li>
+        </ul>
+    </div>
+
+    <!-- PART 3 · unos / unas -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 3 &middot; UNOS / UNAS <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">&ldquo;Some&rdquo; &mdash; for more than one</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">For more than one, add <strong>-s</strong>: <strong style="color:#0E1C42;">unos</strong> goes with <strong style="color:#0E1C42;">los</strong> nouns, <strong style="color:#AA1E2D;">unas</strong> with <strong style="color:#AA1E2D;">las</strong> nouns. In English it usually means &ldquo;some.&rdquo; Here is the whole picture, &ldquo;the&rdquo; and &ldquo;a / some&rdquo; side by side:</p>
+        <table class="gtable">
+            <thead><tr><th></th><th style="color:#fff;">Masculine</th><th style="color:#fff;">Feminine</th></tr></thead>
+            <tbody>
+                <tr><td><strong>One &middot; &ldquo;the&rdquo;</strong></td><td><span style="color:#0E1C42;font-weight:700;">el</span> libro</td><td><span style="color:#AA1E2D;font-weight:700;">la</span> mochila</td></tr>
+                <tr><td><strong>One &middot; &ldquo;a&rdquo;</strong></td><td><span style="color:#0E1C42;font-weight:700;">un</span> libro</td><td><span style="color:#AA1E2D;font-weight:700;">una</span> mochila</td></tr>
+                <tr><td><strong>More &middot; &ldquo;the&rdquo;</strong></td><td><span style="color:#0E1C42;font-weight:700;">los</span> libros</td><td><span style="color:#AA1E2D;font-weight:700;">las</span> mochilas</td></tr>
+                <tr><td><strong>More &middot; &ldquo;some&rdquo;</strong></td><td><span style="color:#0E1C42;font-weight:700;">unos</span> libros</td><td><span style="color:#AA1E2D;font-weight:700;">unas</span> mochilas</td></tr>
+            </tbody>
+        </table>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="catchup/unos-libros.mp3" aria-label="Escuchar unos libros">&#128266;</button><span class="v-es"><span style="color:#0E1C42;">unos</span> libros</span><span class="v-en">some books</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/unas-mochilas.mp3" aria-label="Escuchar unas mochilas">&#128266;</button><span class="v-es"><span style="color:#AA1E2D;">unas</span> mochilas</span><span class="v-en">some backpacks</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/unos-amigos.mp3" aria-label="Escuchar unos amigos">&#128266;</button><span class="v-es"><span style="color:#0E1C42;">unos</span> amigos</span><span class="v-en">some friends (boys, or a mixed group)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/unas-amigas.mp3" aria-label="Escuchar unas amigas">&#128266;</button><span class="v-es"><span style="color:#AA1E2D;">unas</span> amigas</span><span class="v-en">some friends (all girls)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/son-unos-libros.mp3" aria-label="Escuchar Son unos libros">&#128266;</button><span class="v-es">Son <span style="color:#0E1C42;">unos</span> libros.</span><span class="v-en">They're some books.</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/son-unas-amigas.mp3" aria-label="Escuchar Son unas amigas">&#128266;</button><span class="v-es">Son <span style="color:#AA1E2D;">unas</span> amigas.</span><span class="v-en">They're some friends.</span></li>
+        </ul>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 12px 0 0;">Notice <em>unos amigos</em>: a group of boys, or a mixed group of boys and girls, takes the masculine form. Only a group of all girls takes <em>unas amigas</em>.</p>
+    </div>
+
+    <!-- PART 4 · when Spanish leaves it out -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128161; PART 4 &middot; CUANDO NO SE USA <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">When Spanish leaves &ldquo;a&rdquo; out</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">English says &ldquo;I am <em>a</em> student.&rdquo; Spanish does not. When you use <em>ser</em> to say <strong>who someone is</strong> &mdash; a role like student or teacher, or a nationality &mdash; there is no <em>un</em> or <em>una</em>. You have already seen this in every lesson since M&oacute;dulo 1:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="catchup/soy-estudiante.mp3" aria-label="Escuchar Soy estudiante">&#128266;</button><span class="v-es">Soy estudiante.</span><span class="v-en">I am a student. (not <em>soy un estudiante</em>)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="catchup/ella-es-maestra.mp3" aria-label="Escuchar Ella es maestra">&#128266;</button><span class="v-es">Ella es maestra.</span><span class="v-en">She is a teacher. (not <em>es una maestra</em>)</span></li>
+        </ul>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 12px 0 0;">For things, keep it: <em>Es un libro.</em> For who a person is, drop it: <em>Soy estudiante.</em></p>
+    </div>
+
+    <!-- PART 5 · practice -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 5 &middot; A PRACTICAR <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your turn</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">For each one, find the &ldquo;the&rdquo; word first (<em>el, la, los, las</em>), then switch it.</p>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; one thing</div>
+            <div class="widget-question">&ldquo;a backpack&rdquo; (<em>la mochila</em>) is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">un mochila</button>
+                <button data-correct="true">una mochila</button>
+                <button data-correct="false">unos mochila</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; more than one</div>
+            <div class="widget-question">&ldquo;some books&rdquo; (<em>los libros</em>) is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="true">unos libros</button>
+                <button data-correct="false">unas libros</button>
+                <button data-correct="false">un libros</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; ends in a consonant</div>
+            <div class="widget-question">&ldquo;a test&rdquo; (<em>el examen</em>) is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">una examen</button>
+                <button data-correct="false">unos examen</button>
+                <button data-correct="true">un examen</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; who someone is</div>
+            <div class="widget-question">&ldquo;I am a student.&rdquo; In Spanish:</div>
+            <div class="widget-options">
+                <button data-correct="true">Soy estudiante.</button>
+                <button data-correct="false">Soy un estudiante.</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#128266; LISTEN &amp; DECIDE <button class="say" data-audio="catchup/unas-amigas.mp3" aria-label="Escuchar">&#128266;</button></div>
+            <div class="widget-question">What did you hear?</div>
+            <div class="widget-options">
+                <button data-correct="false">unos amigos</button>
+                <button data-correct="false">una amiga</button>
+                <button data-correct="true">unas amigas</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; TRY IT &middot; more than one</div>
+            <div class="widget-question">&ldquo;some classes&rdquo; (<em>las clases</em>) is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">unos clases</button>
+                <button data-correct="true">unas clases</button>
+                <button data-correct="false">una clases</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Say these two out loud, then reveal: &ldquo;It's a class.&rdquo; and &ldquo;They're some backpacks.&rdquo;</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Es una clase. Son unas mochilas.</strong> <em>La clase</em> &rarr; <em>una</em>; <em>las mochilas</em> &rarr; <em>unas</em>. One thing takes <em>es</em>, more than one takes <em>son</em>.</div>
+        </div>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then point at three things around you that you can name in Spanish and say each one out loud with <em>un</em> or <em>una</em> &mdash; e.g. <em>un libro</em>, <em>una mochila</em>.</div>
+    </div>
+
+    <!-- What's next -->
+    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+        <div style="display: flex; align-items: flex-start; gap: 14px;">
+            <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
+            <div>
+                <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 2.02</strong></div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Next: the school verbs &mdash; study, speak, listen, work &mdash; and the pattern behind almost all of them, the regular <em>-ar</em> present. You'll use today's words with them right away.</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;MUY BIEN!</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Four words for &ldquo;the,&rdquo; four for &ldquo;a&rdquo; and &ldquo;some,&rdquo; and one rule for when to leave them out. You can now talk about any thing &mdash; or any person &mdash; in Spanish. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    </div>
+
+</div>
+
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 1 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Catch-up Lesson A &middot; Un, una, unos, unas</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+
+</div>
+
+<script>
+(function () {
+  document.addEventListener('click', function (e) {
+    var reset = e.target.closest('.widget-reset');
+    if (reset) {
+      var w = reset.closest('.optima-widget');
+      w.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected','correct','incorrect'); });
+      w.querySelectorAll('.widget-feedback').forEach(function (f) { f.classList.remove('show'); f.textContent = ''; });
+      return;
+    }
+    var rBtn = e.target.closest('.ow-reflect .widget-options button');
+    if (rBtn) {
+      var rw = rBtn.closest('.optima-widget');
+      rw.querySelectorAll('.widget-options button').forEach(function (b) { b.classList.remove('selected'); });
+      rBtn.classList.add('selected');
+      var fb = rw.querySelector('.widget-feedback');
+      fb.textContent = rBtn.dataset.response || '';
+      fb.classList.add('show');
+      return;
+    }
+    var eBtn = e.target.closest('.ow-eval .widget-options button');
+    if (eBtn) {
+      var ew = eBtn.closest('.optima-widget');
+      var correct = eBtn.dataset.correct === 'true';
+      eBtn.classList.add(correct ? 'correct' : 'incorrect');
+      var efb = ew.querySelector('.widget-feedback');
+      efb.textContent = correct
+        ? '¡Correcto! el → un, la → una, los → unos, las → unas — and no un/una when ser says who someone is.'
+        : 'Not quite — find the "the" word first (el, la, los, las), then switch it: un, una, unos, unas.';
+      efb.classList.add('show');
+      return;
+    }
+    var rev = e.target.closest('.reveal-btn');
+    if (rev) {
+      var body = rev.parentElement.querySelector('.reveal-body');
+      if (body) body.classList.toggle('show');
+    }
+  });
+})();
+</script>
+<script>
+(function () {
+  var AUDIO_BASE = '../../audio/';
+  var player = new Audio();
+  var active = null;
+  function clearActive() { if (active) { active.classList.remove('playing'); active = null; } }
+  player.addEventListener('ended', clearActive);
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-audio]');
+    if (!el) return;
+    e.preventDefault();
+    if (active === el && !player.paused) { player.pause(); clearActive(); return; }
+    clearActive();
+    el.classList.remove('err');
+    player.src = AUDIO_BASE + el.getAttribute('data-audio');
+    player.currentTime = 0;
+    var p = player.play();
+    if (p && p.catch) {
+      p.then(function () { el.classList.add('playing'); active = el; })
+       .catch(function () { el.classList.add('err'); });
+    } else { el.classList.add('playing'); active = el; }
+  });
+})();
+</script>
+
+<script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+</body>
+</html>
