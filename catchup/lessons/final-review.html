@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Spanish 1 &mdash; Repaso final</title>
+<style>
+    body { margin: 0; padding: 0; font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background: #f4f6fa; }
+    .canvas-frame { max-width: 1100px; margin: 0 auto; background: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+    .optima-widget { background: linear-gradient(135deg, #E8F6FB 0%, #F4F9FC 100%); border: 1px solid #C5DCE5; border-left: 5px solid #2196D0; border-radius: 8px; padding: 18px 22px; margin: 18px 0; }
+    .widget-kicker { font-size: 11px; color: #1B6A94; margin-bottom: 10px; letter-spacing: 0.4px; }
+    .widget-question { font-size: 17px; color: #0E1C42; margin-bottom: 14px; line-height: 1.55; }
+    .widget-options { display: flex; flex-wrap: wrap; gap: 8px; }
+    .widget-options button { background: #FFFFFF; border: 1.5px solid #D0D9E8; border-radius: 8px; padding: 8px 14px; font-size: 14px; color: #0E1C42; cursor: pointer; transition: all 0.15s; font-family: inherit; }
+    .widget-options button:hover { background: #F4F6FA; border-color: #55C8E8; }
+    .widget-options button.selected { background: #0E1C42; color: #FFFFFF; border-color: #0E1C42; }
+    .widget-options button.correct { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+    .widget-options button.incorrect { background: #C0392B; color: #fff; border-color: #C0392B; }
+    .widget-feedback { background: #FFFFFF; border-left: 3px solid #C7922C; padding: 10px 14px; font-size: 15px; color: #1a2340; line-height: 1.55; margin: 10px 0; display: none; border-radius: 4px; }
+    .widget-feedback.show { display: block; }
+    .widget-reset { background: transparent; border: 1px solid #C7922C; color: #C7922C; border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer; font-family: inherit; margin-top: 6px; }
+    .widget-reset:hover { background: #FDF3E3; }
+    .reveal-btn { background: #0E1C42; color:#fff; border:none; border-radius:6px; padding:8px 14px; font-size:14px; cursor:pointer; font-family:inherit; }
+    .reveal-body { display:none; margin-top:10px; background:#fff; border-left:3px solid #2A9D5C; padding:10px 14px; border-radius:4px; font-size:15px; color:#1a2340; }
+    .reveal-body.show { display:block; }
+    .vocab-list { list-style: none; margin: 14px 0 0 0; padding: 0; }
+    .vocab-item { display: flex; align-items: center; gap: 12px; padding: 10px 14px; background: #F4F9FC; border: 1px solid #D0D9E8; border-radius: 6px; margin-bottom: 8px; }
+    .say { background: #0E1C42; color: #fff; border: none; border-radius: 6px; min-width: 40px; height: 34px; font-size: 16px; cursor: pointer; flex-shrink: 0; transition: background 0.15s; }
+    .say:hover { background: #1B3A6B; }
+    .say.playing { background: #C7922C; }
+    .say.err { background: #C0392B; }
+    .v-es { font-weight: 600; color: #0E1C42; min-width: 150px; font-size: 17px; }
+    .v-en { color: #6b7a99; font-size: 15px; }
+    .pill-time { display: inline-block; background: #C7922C; color: #fff; font-size: 12px; border-radius: 12px; padding: 2px 10px; margin-left: 8px; vertical-align: middle; }
+    .opt-strip { background: #FDF7E9; border: 1px dashed #C7922C; border-radius: 8px; padding: 14px 18px; margin-top: 14px; }
+    .opt-strip .lbl { font-size: 11px; color: #9a7b1e; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .markdone { background: #EAF6EE; border: 1px solid #2A9D5C; border-left: 5px solid #2A9D5C; border-radius: 8px; padding: 16px 20px; margin-bottom: 20px; }
+    .markdone .lbl { font-size: 11px; color: #1A6B3D; letter-spacing: 0.4px; margin-bottom: 6px; }
+    .gtable { width:100%; border-collapse:collapse; font-size:15px; margin:12px 0; }
+    .gtable th { background:#0E1C42; color:#fff; text-align:left; padding:8px 12px; font-size:13px; }
+    .gtable td { padding:8px 12px; border-bottom:1px solid #D0D9E8; }
+    .gtable tr:nth-child(even) td { background:#F4F9FC; }
+    .pron { color:#C7922C; font-weight:700; }
+    .contrast { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin:14px 0; }
+    .contrast .col { border:1px solid #D0D9E8; border-radius:8px; padding:14px 16px; }
+    .contrast .col.ser { border-top:3px solid #AA1E2D; }
+    .contrast .col.estar { border-top:3px solid #1E6B4F; }
+    .contrast h4 { margin:0 0 8px; color:#0E1C42; font-size:16px; }
+    .culture-box { background:#FBF4EE; border:1px solid #E4C9A8; border-left:5px solid #C7922C; border-radius:8px; padding:16px 20px; margin:18px 0; }
+    .virtue-box { background:#F5E7E8; border:1px solid #E0B8BD; border-left:5px solid #AA1E2D; border-radius:8px; padding:14px 18px; margin:18px 0; }
+    @media(max-width:640px){ .contrast{grid-template-columns:1fr;} }
+    .gualda { display:flex; height:6px; width:100%; border-bottom:1px solid #D0D9E8; }
+    .gualda i { display:block; }
+    .gualda .r { flex:1; background:#AA1E2D; }
+    .gualda .g { flex:2; background:#C79A1E; }
+    .sol { color:#C79A1E; font-style:normal; }
+</style>
+</head>
+<body>
+<div class="canvas-frame">
+
+<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
+    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
+        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
+        <div>
+            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
+            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
+        </div>
+    </div>
+    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+
+<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
+        <div style="font-size: 17px; color: #0e1c42;">Q2 &middot; M&oacute;dulo 8</div>
+        <div style="font-size: 12px; color: #666;">&iquest;C&oacute;mo somos?</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Day</div>
+        <div style="font-size: 17px; color: #0e1c42;">Final Review &middot; Catch-up Day 36</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Repaso final</div>
+    </div>
+    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
+        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
+        <div style="font-size: 16px; color: #0e1c42;">Capstone &amp; Gate</div>
+    </div>
+</div>
+
+<div style="padding: 24px 34px;">
+<style>
+  .sc{display:inline-flex;flex-direction:column;gap:4px;margin:0 10px 12px 0;font-size:14px;color:#0e1c42}
+  .sc input{width:84px;font-size:18px;padding:6px 8px;border:1px solid #b9c4d8;border-radius:6px}
+  .btn{background:#0E1C42;color:#fff;border:0;border-radius:6px;font-size:16px;padding:10px 18px;cursor:pointer}
+  .btn.light{background:#EEF1F8;color:#0e1c42;border:1px solid #D0D9E8;margin-left:8px}
+  #plan .step{border-left:5px solid #C7922C;background:#FBF7EE;border-radius:6px;padding:12px 16px;margin:10px 0}
+  #plan .ok{border-left-color:#2A9D5C;background:#EAF6EE}
+  .rv{width:100%;border-collapse:collapse;font-size:15px} .rv th{background:#0E1C42;color:#fff;text-align:left;padding:8px}
+  .rv td{border-top:1px solid #E3E8F1;padding:8px;vertical-align:top} .sm{font-size:12px;color:#6b7a99}
+  .rv a, #plan a{color:#1B6A94}
+  .log td{border:1px solid #D0D9E8;height:34px;padding:4px 8px} .log{width:100%;border-collapse:collapse;font-size:15px}
+</style>
+
+    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Repaso final &mdash; Your Personal Review Plan</div>
+        <div style="font-size: 16px; color: #666;">Review day &middot; about 40 minutes &middot; the Final Exam is tomorrow</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Don't review everything. Review <strong>your</strong> weak spots.</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.65;">You have taken nine module checkpoints and the Midpoint Exam. Those scores tell you exactly where tomorrow's points are hiding. Today you look them up, build a plan from them, and spend your time where it counts.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128202; STEP 1 &middot; CHECK YOUR SCORES <span class="pill-time">5 min</span></div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.65;">In Canvas, open <strong>Grades</strong> (in the course menu). For each <strong>Module Checkpoint</strong>, type your percentage below &mdash; your higher attempt is the one that counts. Leave a box empty if you didn't take that checkpoint.</div>
+        <div style="margin-top:14px;"><label class="sc"><span>Module 0</span><input type="number" min="0" max="100" inputmode="numeric" data-m="0" placeholder="%"></label><label class="sc"><span>Module 1</span><input type="number" min="0" max="100" inputmode="numeric" data-m="1" placeholder="%"></label><label class="sc"><span>Module 2</span><input type="number" min="0" max="100" inputmode="numeric" data-m="2" placeholder="%"></label><label class="sc"><span>Module 3</span><input type="number" min="0" max="100" inputmode="numeric" data-m="3" placeholder="%"></label><label class="sc"><span>Module 4</span><input type="number" min="0" max="100" inputmode="numeric" data-m="4" placeholder="%"></label><label class="sc"><span>Module 5</span><input type="number" min="0" max="100" inputmode="numeric" data-m="5" placeholder="%"></label><label class="sc"><span>Module 6</span><input type="number" min="0" max="100" inputmode="numeric" data-m="6" placeholder="%"></label><label class="sc"><span>Module 7</span><input type="number" min="0" max="100" inputmode="numeric" data-m="7" placeholder="%"></label><label class="sc"><span>Module 8</span><input type="number" min="0" max="100" inputmode="numeric" data-m="8" placeholder="%"></label></div>
+        <label class="sc"><span>Midpoint Exam</span><input type="number" min="0" max="100" inputmode="numeric" id="mid" placeholder="%"></label>
+        <div style="margin-top:6px;"><button class="btn" id="build">Build my plan</button><button class="btn light" id="clear">Clear</button></div>
+        <div class="sm" style="margin-top:8px;">Your scores stay on this computer only. Nobody else sees them.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#129517; STEP 2 &middot; YOUR REVIEW PLAN <span class="pill-time">25 min</span></div>
+        <div id="plan"><div style="font-size: 17px; color: #1a2340; line-height: 1.65;">Type your scores in Step 1 and press <strong>Build my plan</strong>. Your plan will appear here, weakest module first.</div></div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#9999;&#65039; STEP 3 &middot; FIX YOUR MISTAKES <span class="pill-time">10 min</span></div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.65;">Open your <strong>two lowest checkpoints</strong> in Canvas. After your last attempt, Canvas shows the correct answers. Find <strong>three questions you got wrong</strong> and write each one down the right way &mdash; then say the Spanish out loud.</div>
+        <table class="log" style="margin-top:12px;"><tr><th style="text-align:left;padding:6px 8px;background:#EEF1F8;width:22%;">Checkpoint</th><th style="text-align:left;padding:6px 8px;background:#EEF1F8;">What I wrote</th><th style="text-align:left;padding:6px 8px;background:#EEF1F8;">The right answer</th></tr>
+        <tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></table>
+        <div class="sm" style="margin-top:8px;">Copy this table into your notebook &mdash; tomorrow, read it once before you start the Final.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128218; EVERY MODULE AT A GLANCE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.65; margin-bottom:10px;">Everything you studied, with links. Lessons open in a new tab; in Canvas you will also find them in their Day modules.</div>
+        <table class="rv"><tr><th>Module</th><th>What it covers</th><th>Lessons</th><th>Study &amp; practice</th></tr><tr><td><b>Module 0</b><div class="sm">Days 1&ndash;5</div></td><td>Sounds, greetings, <em>el / la</em>, numbers, days &amp; months</td><td><a href="lesson-0-01.html" target="_blank" rel="noopener">0.01</a>, <a href="lesson-0-03.html" target="_blank" rel="noopener">0.03</a>, <a href="lesson-0-04.html" target="_blank" rel="noopener">0.04</a>, <a href="lesson-0-05.html" target="_blank" rel="noopener">0.05</a>, <a href="lesson-0-06.html" target="_blank" rel="noopener">0.06</a></td><td><a href="vocabulario-m00.html" target="_blank" rel="noopener">Vocabulario</a></td></tr><tr><td><b>Module 1</b><div class="sm">Days 6&ndash;9</div></td><td>Identity, nationalities, <em>ser</em>, <em>t&uacute; / usted</em></td><td><a href="lesson-1-01.html" target="_blank" rel="noopener">1.01</a>, <a href="lesson-1-02.html" target="_blank" rel="noopener">1.02</a>, <a href="lesson-1-03.html" target="_blank" rel="noopener">1.03</a>, <a href="lesson-1-08.html" target="_blank" rel="noopener">1.08</a></td><td><a href="vocabulario-m01.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m01.json" target="_blank" rel="noopener">Practice Tools</a></td></tr><tr><td><b>Module 2</b><div class="sm">Days 10&ndash;12</div></td><td>School words, <em>un / una / unos / unas</em>, regular <em>-ar</em> verbs</td><td><a href="lesson-2-01.html" target="_blank" rel="noopener">2.01</a>, <a href="catchup-lesson-A-indefinite-articles.html" target="_blank" rel="noopener">Lesson A</a>, <a href="lesson-2-02.html" target="_blank" rel="noopener">2.02</a>, <a href="lesson-2-03.html" target="_blank" rel="noopener">2.03</a></td><td><a href="vocabulario-m02.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m02.json" target="_blank" rel="noopener">Practice Tools</a></td></tr><tr><td><b>Module 3</b><div class="sm">Days 13&ndash;14</div></td><td>Places, feelings, <em>estar</em>, <em>ser</em> vs. <em>estar</em></td><td><a href="lesson-3-01.html" target="_blank" rel="noopener">3.01</a>, <a href="lesson-3-02.html" target="_blank" rel="noopener">3.02</a>, <a href="lesson-3-03.html" target="_blank" rel="noopener">3.03</a></td><td><a href="vocabulario-m03.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m03.json" target="_blank" rel="noopener">Practice Tools</a></td></tr><tr><td><b>Module 4</b><div class="sm">Days 15&ndash;16</div></td><td>Family, <em>tener</em>, ages &amp; possessives</td><td><a href="lesson-4-01.html" target="_blank" rel="noopener">4.01</a>, <a href="lesson-4-02.html" target="_blank" rel="noopener">4.02</a>, <a href="lesson-4-03.html" target="_blank" rel="noopener">4.03</a></td><td><a href="vocabulario-m04.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m04.json" target="_blank" rel="noopener">Practice Tools</a></td></tr><tr><td><b>Module 5</b><div class="sm">Days 18&ndash;21</div></td><td>Food, drinks &amp; <em>gustar</em></td><td><a href="lesson-5-01.html" target="_blank" rel="noopener">5.01</a>, <a href="lesson-5-02.html" target="_blank" rel="noopener">5.02</a>, <a href="lesson-5-03.html" target="_blank" rel="noopener">5.03</a>, <a href="lesson-5-04.html" target="_blank" rel="noopener">5.04</a></td><td><a href="vocabulario-m05.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m05.json" target="_blank" rel="noopener">Practice Tools</a></td></tr><tr><td><b>Module 6</b><div class="sm">Days 22&ndash;25</div></td><td>Free time &amp; regular <em>-er / -ir</em> verbs</td><td><a href="lesson-6-01.html" target="_blank" rel="noopener">6.01</a>, <a href="lesson-6-02.html" target="_blank" rel="noopener">6.02</a>, <a href="lesson-6-03.html" target="_blank" rel="noopener">6.03</a>, <a href="lesson-6-04.html" target="_blank" rel="noopener">6.04</a></td><td><a href="vocabulario-m06.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m06.json" target="_blank" rel="noopener">Practice Tools</a></td></tr><tr><td><b>Module 7</b><div class="sm">Days 26&ndash;29</div></td><td>Describing people &amp; adjective agreement</td><td><a href="lesson-7-01.html" target="_blank" rel="noopener">7.01</a>, <a href="lesson-7-02.html" target="_blank" rel="noopener">7.02</a>, <a href="lesson-7-03.html" target="_blank" rel="noopener">7.03</a>, <a href="lesson-7-04.html" target="_blank" rel="noopener">7.04</a></td><td><a href="vocabulario-m07.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m07.json" target="_blank" rel="noopener">Practice Tools</a></td></tr><tr><td><b>Module 8</b><div class="sm">Days 30&ndash;35</div></td><td><em>Ser, estar, tener, gustar</em> together &amp; describing a whole person</td><td><a href="lesson-8-01.html" target="_blank" rel="noopener">8.01</a>, <a href="lesson-8-02.html" target="_blank" rel="noopener">8.02</a>, <a href="lesson-8-03.html" target="_blank" rel="noopener">8.03</a>, <a href="lesson-8-04.html" target="_blank" rel="noopener">8.04</a>, <a href="lesson-8-05.html" target="_blank" rel="noopener">8.05</a>, <a href="lesson-8-06.html" target="_blank" rel="noopener">8.06</a></td><td><a href="vocabulario-m08.html" target="_blank" rel="noopener">Vocabulario</a> &middot; <a href="https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m08.json" target="_blank" rel="noopener">Practice Tools</a></td></tr></table>
+    </div>
+
+    <div class="markdone">
+        <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> in Canvas. Tomorrow: the <strong>Final Exam</strong> &mdash; the whole semester, one attempt. Read your three corrected mistakes first.</div>
+    </div>
+
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;MA&Ntilde;ANA, EL EXAMEN FINAL&#33;</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You know where your points are. Go get them. <em>&iexcl;Buena suerte!</em></p>
+    </div>
+</div>
+<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
+<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Catch-up &middot; Student Review Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Day 36 &middot; Repaso final</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+</div>
+</div>
+<script>
+(function () {
+  var MODS = {"0": {"topic": "Sounds, greetings, <em>el / la</em>, numbers, days &amp; months", "days": "Days 1&ndash;5", "key": [["lesson-0-05", "0.05"], ["lesson-0-06", "0.06"]], "vocab": ["vocabulario-m00", "the Module 0 Vocabulario page"], "pt": ""}, "1": {"topic": "Identity, nationalities, <em>ser</em>, <em>t&uacute; / usted</em>", "days": "Days 6&ndash;9", "key": [["lesson-1-02", "1.02"], ["lesson-1-03", "1.03"]], "vocab": ["vocabulario-m01", "the Module 1 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m01.json"}, "2": {"topic": "School words, <em>un / una / unos / unas</em>, regular <em>-ar</em> verbs", "days": "Days 10&ndash;12", "key": [["catchup-lesson-A-indefinite-articles", "Lesson A"], ["lesson-2-02", "2.02"], ["lesson-2-03", "2.03"]], "vocab": ["vocabulario-m02", "the Module 2 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m02.json"}, "3": {"topic": "Places, feelings, <em>estar</em>, <em>ser</em> vs. <em>estar</em>", "days": "Days 13&ndash;14", "key": [["lesson-3-02", "3.02"], ["lesson-3-03", "3.03"]], "vocab": ["vocabulario-m03", "the Module 3 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m03.json"}, "4": {"topic": "Family, <em>tener</em>, ages &amp; possessives", "days": "Days 15&ndash;16", "key": [["lesson-4-02", "4.02"], ["lesson-4-03", "4.03"]], "vocab": ["vocabulario-m04", "the Module 4 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m04.json"}, "5": {"topic": "Food, drinks &amp; <em>gustar</em>", "days": "Days 18&ndash;21", "key": [["lesson-5-03", "5.03"], ["lesson-5-04", "5.04"]], "vocab": ["vocabulario-m05", "the Module 5 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m05.json"}, "6": {"topic": "Free time &amp; regular <em>-er / -ir</em> verbs", "days": "Days 22&ndash;25", "key": [["lesson-6-03", "6.03"], ["lesson-6-04", "6.04"]], "vocab": ["vocabulario-m06", "the Module 6 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m06.json"}, "7": {"topic": "Describing people &amp; adjective agreement", "days": "Days 26&ndash;29", "key": [["lesson-7-03", "7.03"], ["lesson-7-04", "7.04"]], "vocab": ["vocabulario-m07", "the Module 7 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m07.json"}, "8": {"topic": "<em>Ser, estar, tener, gustar</em> together &amp; describing a whole person", "days": "Days 30&ndash;35", "key": [["lesson-8-02", "8.02"], ["lesson-8-04", "8.04"]], "vocab": ["vocabulario-m08", "the Module 8 Vocabulario page"], "pt": "https://optimaondemand.github.io/wl-widgets/practice.html?data=%2Fhsspanish1-lessons%2Fcatchup%2Fpractice%2Fpractice-m08.json"}};
+  var KEY = 'es1cu_final_review_scores';
+  var ins = Array.prototype.slice.call(document.querySelectorAll('input[data-m]'));
+  var mid = document.getElementById('mid');
+  function a(page, label) { return '<a href="' + page + '.html" target="_blank" rel="noopener">' + label + '</a>'; }
+  function save() { try { var s = {}; ins.forEach(function (i) { s[i.dataset.m] = i.value; }); s.mid = mid.value; localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
+  function load() { try { var s = JSON.parse(localStorage.getItem(KEY) || '{}'); ins.forEach(function (i) { if (s[i.dataset.m] != null) i.value = s[i.dataset.m]; }); if (s.mid != null) mid.value = s.mid; return Object.keys(s).length > 0; } catch (e) { return false; } }
+  function build() {
+    save();
+    var got = ins.filter(function (i) { return i.value !== ''; }).map(function (i) { return { m: +i.dataset.m, s: Math.max(0, Math.min(100, +i.value)) }; });
+    var plan = document.getElementById('plan');
+    if (!got.length) { plan.innerHTML = '<div class="step">Type at least one checkpoint score in Step 1 first.</div>'; return; }
+    var missing = ins.filter(function (i) { return i.value === ''; }).map(function (i) { return +i.dataset.m; });
+    var weak = got.filter(function (g) { return g.s < 80; }).sort(function (x, y) { return x.s - y.s; });
+    var m = mid.value === '' ? null : +mid.value;
+    if (m !== null && m < 80) {
+      var early = got.filter(function (g) { return g.m <= 4 && g.s >= 80; }).sort(function (x, y) { return x.s - y.s; })[0];
+      if (early && !weak.some(function (w) { return w.m === early.m; })) weak.push({ m: early.m, s: early.s, why: 'your Midpoint Exam was under 80%' });
+    }
+    missing.forEach(function (x) { weak.unshift({ m: x, s: null }); });
+    var html = '';
+    if (!weak.length) {
+      html = '<div class="step ok"><strong>Every checkpoint is 80% or higher &mdash; excellent.</strong> Use your time on the whole-semester review: redo ' + a('lesson-8-02', 'Lesson 8.02') +
+             ' (the whole Semester 1 map on one page), then one round of Practice Tools for the module you found hardest.</div>';
+    } else {
+      var top = weak.slice(0, 3);
+      html = '<div style="font-size:16px;color:#1a2340;margin-bottom:6px;">Work through these in order. About <strong>8 minutes each</strong>; if you finish early, start on the next one.</div>';
+      top.forEach(function (w, n) {
+        var d = MODS[w.m];
+        var why = w.s === null ? 'no score entered &mdash; did you take this checkpoint?' : (w.why ? 'scored ' + w.s + '% &mdash; added because ' + w.why : 'you scored ' + w.s + '%');
+        html += '<div class="step"><div style="font-size:17px;color:#0e1c42;margin-bottom:4px;"><strong>' + (n + 1) + '. Module ' + w.m + '</strong> &mdash; ' + d.topic + ' <span class="sm">(' + why + ')</span></div>' +
+                '<div style="font-size:15px;line-height:1.6;">&#9654; Re-read ' + d.key.map(function (k) { return a(k[0], 'Lesson ' + k[1].replace('Lesson ', '')); }).join(' and ') + ' and redo the practice questions.<br>' +
+                '&#9654; Flip ' + a(d.vocab[0], d.vocab[1]) + ' by ear: listen, say the meaning, then check.' +
+                (d.pt ? '<br>&#9654; One round of <a href="' + d.pt + '" target="_blank" rel="noopener">Module ' + w.m + ' Practice Tools</a>.' : '') + '</div></div>';
+      });
+      if (weak.length > 3) html += '<div class="sm">Also under 80%: ' + weak.slice(3).map(function (w) { return 'Module ' + w.m; }).join(', ') + '. If you have time left, review them the same way.</div>';
+    }
+    plan.innerHTML = html;
+  }
+  document.getElementById('build').addEventListener('click', build);
+  document.getElementById('clear').addEventListener('click', function () { ins.forEach(function (i) { i.value = ''; }); mid.value = ''; try { localStorage.removeItem(KEY); } catch (e) {} document.getElementById('plan').innerHTML = '<div style="font-size:17px;">Type your scores in Step 1 and press <strong>Build my plan</strong>.</div>'; });
+  if (load()) build();
+})();
+</script>
+<script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+</body>
+</html>

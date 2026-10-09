@@ -1,0 +1,341 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 6 — El tiempo libre",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "el tiempo libre",
+   "en": "free time",
+   "audio": "vocab/el-tiempo-libre.mp3"
+  },
+  {
+   "t": "el deporte",
+   "en": "sport",
+   "audio": "vocab/el-deporte.mp3"
+  },
+  {
+   "t": "la película",
+   "en": "movie / film",
+   "audio": "vocab/la-pelicula.mp3"
+  },
+  {
+   "t": "el fin de semana",
+   "en": "the weekend",
+   "audio": "vocab/el-fin-de-semana.mp3"
+  },
+  {
+   "t": "el parque",
+   "en": "park",
+   "audio": "vocab/el-parque.mp3"
+  },
+  {
+   "t": "la fiesta",
+   "en": "party",
+   "audio": "vocab/la-fiesta.mp3"
+  },
+  {
+   "t": "comer",
+   "en": "to eat",
+   "audio": "vocab/comer.mp3"
+  },
+  {
+   "t": "beber",
+   "en": "to drink",
+   "audio": "vocab/beber.mp3"
+  },
+  {
+   "t": "leer",
+   "en": "to read",
+   "audio": "vocab/leer.mp3"
+  },
+  {
+   "t": "correr",
+   "en": "to run",
+   "audio": "vocab/correr.mp3"
+  },
+  {
+   "t": "aprender",
+   "en": "to learn",
+   "audio": "vocab/aprender.mp3"
+  },
+  {
+   "t": "comprender",
+   "en": "to understand",
+   "audio": "vocab/comprender.mp3"
+  },
+  {
+   "t": "vivir",
+   "en": "to live",
+   "audio": "vocab/vivir.mp3"
+  },
+  {
+   "t": "escribir",
+   "en": "to write",
+   "audio": "vocab/escribir.mp3"
+  },
+  {
+   "t": "abrir",
+   "en": "to open",
+   "audio": "vocab/abrir.mp3"
+  },
+  {
+   "t": "recibir",
+   "en": "to receive",
+   "audio": "vocab/recibir.mp3"
+  },
+  {
+   "t": "compartir",
+   "en": "to share",
+   "audio": "vocab/compartir.mp3"
+  },
+  {
+   "t": "asistir (a)",
+   "en": "to attend",
+   "audio": "vocab/asistir.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ]
+   }
+  },
+  {
+   "inf": "beber",
+   "gloss": "to drink",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "bebo",
+     "bebes",
+     "bebe",
+     "bebemos",
+     "bebéis",
+     "beben"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "correr",
+   "gloss": "to run",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "corro",
+     "corres",
+     "corre",
+     "corremos",
+     "corréis",
+     "corren"
+    ]
+   }
+  },
+  {
+   "inf": "aprender",
+   "gloss": "to learn",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "aprendo",
+     "aprendes",
+     "aprende",
+     "aprendemos",
+     "aprendéis",
+     "aprenden"
+    ]
+   }
+  },
+  {
+   "inf": "comprender",
+   "gloss": "to understand",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "comprendo",
+     "comprendes",
+     "comprende",
+     "comprendemos",
+     "comprendéis",
+     "comprenden"
+    ]
+   }
+  },
+  {
+   "inf": "vivir",
+   "gloss": "to live",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "vivo",
+     "vives",
+     "vive",
+     "vivimos",
+     "vivís",
+     "viven"
+    ]
+   }
+  },
+  {
+   "inf": "escribir",
+   "gloss": "to write",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "escribo",
+     "escribes",
+     "escribe",
+     "escribimos",
+     "escribís",
+     "escriben"
+    ]
+   }
+  },
+  {
+   "inf": "abrir",
+   "gloss": "to open",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "abro",
+     "abres",
+     "abre",
+     "abrimos",
+     "abrís",
+     "abren"
+    ]
+   }
+  },
+  {
+   "inf": "recibir",
+   "gloss": "to receive",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "recibo",
+     "recibes",
+     "recibe",
+     "recibimos",
+     "recibís",
+     "reciben"
+    ]
+   }
+  },
+  {
+   "inf": "compartir",
+   "gloss": "to share",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "comparto",
+     "compartes",
+     "comparte",
+     "compartimos",
+     "compartís",
+     "comparten"
+    ]
+   }
+  },
+  {
+   "inf": "asistir",
+   "gloss": "to attend",
+   "tag": "regular -ir verb",
+   "forms": {
+    "present": [
+     "asisto",
+     "asistes",
+     "asiste",
+     "asistimos",
+     "asistís",
+     "asisten"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "estudiar",
+   "gloss": "to study",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "estudio",
+     "estudias",
+     "estudia",
+     "estudiamos",
+     "estudiáis",
+     "estudian"
+    ]
+   }
+  },
+  {
+   "inf": "hablar",
+   "gloss": "to speak / talk",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "hablo",
+     "hablas",
+     "habla",
+     "hablamos",
+     "habláis",
+     "hablan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,126 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 1 — ¿Quién soy?",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "el nombre",
+   "en": "name",
+   "audio": "vocab/el-nombre.mp3"
+  },
+  {
+   "t": "el país",
+   "en": "country",
+   "audio": "vocab/el-pais.mp3"
+  },
+  {
+   "t": "la nacionalidad",
+   "en": "nationality",
+   "audio": "vocab/la-nacionalidad.mp3"
+  },
+  {
+   "t": "estudiante",
+   "en": "student",
+   "audio": "vocab/estudiante.mp3"
+  },
+  {
+   "t": "amigo/a",
+   "en": "friend",
+   "audio": "vocab/amigo.mp3"
+  },
+  {
+   "t": "mexicano/a",
+   "en": "Mexican",
+   "audio": "vocab/mexicano.mp3"
+  },
+  {
+   "t": "cubano/a",
+   "en": "Cuban",
+   "audio": "vocab/cubano.mp3"
+  },
+  {
+   "t": "estadounidense",
+   "en": "from the U.S.",
+   "audio": "vocab/estadounidense.mp3"
+  },
+  {
+   "t": "americano/a",
+   "en": "American",
+   "audio": "vocab/americano.mp3"
+  },
+  {
+   "t": "inteligente",
+   "en": "intelligent / smart",
+   "audio": "vocab/inteligente.mp3"
+  },
+  {
+   "t": "simpático/a",
+   "en": "nice / friendly",
+   "audio": "vocab/simpatico.mp3"
+  },
+  {
+   "t": "amable",
+   "en": "kind",
+   "audio": "vocab/amable.mp3"
+  },
+  {
+   "t": "trabajador/a",
+   "en": "hard-working",
+   "audio": "vocab/trabajador.mp3"
+  },
+  {
+   "t": "alto/a",
+   "en": "tall",
+   "audio": "vocab/alto.mp3"
+  },
+  {
+   "t": "bajo/a",
+   "en": "short",
+   "audio": "vocab/bajo.mp3"
+  },
+  {
+   "t": "joven",
+   "en": "young",
+   "audio": "vocab/joven.mp3"
+  },
+  {
+   "t": "grande",
+   "en": "big / great",
+   "audio": "vocab/grande.mp3"
+  },
+  {
+   "t": "también",
+   "en": "also / too",
+   "audio": "vocab/tambien.mp3"
+  },
+  {
+   "t": "muy",
+   "en": "very",
+   "audio": "vocab/muy.mp3"
+  },
+  {
+   "t": "ser",
+   "en": "to be",
+   "audio": "grammar/m01-soy.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  }
+ ]
+}

@@ -1,0 +1,266 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 2 — En la escuela",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "la clase",
+   "en": "class",
+   "audio": "vocab/la-clase.mp3"
+  },
+  {
+   "t": "el libro",
+   "en": "book",
+   "audio": "vocab/el-libro.mp3"
+  },
+  {
+   "t": "el examen",
+   "en": "exam / test",
+   "audio": "vocab/el-examen.mp3"
+  },
+  {
+   "t": "la tarea",
+   "en": "homework",
+   "audio": "vocab/la-tarea.mp3"
+  },
+  {
+   "t": "el maestro / la maestra",
+   "en": "teacher",
+   "audio": "vocab/el-maestro.mp3"
+  },
+  {
+   "t": "la mochila",
+   "en": "backpack",
+   "audio": "vocab/la-mochila.mp3"
+  },
+  {
+   "t": "el horario",
+   "en": "schedule",
+   "audio": "vocab/el-horario.mp3"
+  },
+  {
+   "t": "la nota",
+   "en": "grade / mark",
+   "audio": "vocab/la-nota.mp3"
+  },
+  {
+   "t": "estudiar",
+   "en": "to study",
+   "audio": "vocab/estudiar.mp3"
+  },
+  {
+   "t": "hablar",
+   "en": "to speak / talk",
+   "audio": "vocab/hablar.mp3"
+  },
+  {
+   "t": "escuchar",
+   "en": "to listen",
+   "audio": "vocab/escuchar.mp3"
+  },
+  {
+   "t": "trabajar",
+   "en": "to work",
+   "audio": "vocab/trabajar.mp3"
+  },
+  {
+   "t": "practicar",
+   "en": "to practice",
+   "audio": "vocab/practicar.mp3"
+  },
+  {
+   "t": "llegar",
+   "en": "to arrive",
+   "audio": "vocab/llegar.mp3"
+  },
+  {
+   "t": "enseñar",
+   "en": "to teach",
+   "audio": "vocab/ensenar.mp3"
+  },
+  {
+   "t": "tomar",
+   "en": "to take / drink",
+   "audio": "vocab/tomar.mp3"
+  },
+  {
+   "t": "necesitar",
+   "en": "to need",
+   "audio": "vocab/necesitar.mp3"
+  },
+  {
+   "t": "usar",
+   "en": "to use",
+   "audio": "vocab/usar.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "estudiar",
+   "gloss": "to study",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "estudio",
+     "estudias",
+     "estudia",
+     "estudiamos",
+     "estudiáis",
+     "estudian"
+    ]
+   }
+  },
+  {
+   "inf": "hablar",
+   "gloss": "to speak / talk",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "hablo",
+     "hablas",
+     "habla",
+     "hablamos",
+     "habláis",
+     "hablan"
+    ]
+   }
+  },
+  {
+   "inf": "escuchar",
+   "gloss": "to listen",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "escucho",
+     "escuchas",
+     "escucha",
+     "escuchamos",
+     "escucháis",
+     "escuchan"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "llegar",
+   "gloss": "to arrive",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "llego",
+     "llegas",
+     "llega",
+     "llegamos",
+     "llegáis",
+     "llegan"
+    ]
+   }
+  },
+  {
+   "inf": "enseñar",
+   "gloss": "to teach",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "enseño",
+     "enseñas",
+     "enseña",
+     "enseñamos",
+     "enseñáis",
+     "enseñan"
+    ]
+   }
+  },
+  {
+   "inf": "tomar",
+   "gloss": "to take / drink",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "tomo",
+     "tomas",
+     "toma",
+     "tomamos",
+     "tomáis",
+     "toman"
+    ]
+   }
+  },
+  {
+   "inf": "necesitar",
+   "gloss": "to need",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "necesito",
+     "necesitas",
+     "necesita",
+     "necesitamos",
+     "necesitáis",
+     "necesitan"
+    ]
+   }
+  },
+  {
+   "inf": "usar",
+   "gloss": "to use",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "uso",
+     "usas",
+     "usa",
+     "usamos",
+     "usáis",
+     "usan"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  }
+ ]
+}

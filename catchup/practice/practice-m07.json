@@ -1,0 +1,216 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 7 — ¿Cómo es? (descripciones)",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "guapo/a",
+   "en": "good-looking",
+   "audio": "vocab/guapo.mp3"
+  },
+  {
+   "t": "bonito/a",
+   "en": "pretty",
+   "audio": "vocab/bonito.mp3"
+  },
+  {
+   "t": "feo/a",
+   "en": "plain / ugly",
+   "audio": "vocab/feo.mp3"
+  },
+  {
+   "t": "delgado/a",
+   "en": "thin / slim",
+   "audio": "vocab/delgado.mp3"
+  },
+  {
+   "t": "fuerte",
+   "en": "strong",
+   "audio": "vocab/fuerte.mp3"
+  },
+  {
+   "t": "moreno/a",
+   "en": "dark-haired",
+   "audio": "vocab/moreno.mp3"
+  },
+  {
+   "t": "rubio/a",
+   "en": "blond / fair",
+   "audio": "vocab/rubio.mp3"
+  },
+  {
+   "t": "corto/a",
+   "en": "short (length)",
+   "audio": "vocab/corto.mp3"
+  },
+  {
+   "t": "largo/a",
+   "en": "long",
+   "audio": "vocab/largo.mp3"
+  },
+  {
+   "t": "el pelo",
+   "en": "hair",
+   "audio": "vocab/el-pelo.mp3"
+  },
+  {
+   "t": "los ojos",
+   "en": "eyes",
+   "audio": "vocab/los-ojos.mp3"
+  },
+  {
+   "t": "gracioso/a",
+   "en": "funny",
+   "audio": "vocab/gracioso.mp3"
+  },
+  {
+   "t": "serio/a",
+   "en": "serious",
+   "audio": "vocab/serio.mp3"
+  },
+  {
+   "t": "tímido/a",
+   "en": "shy",
+   "audio": "vocab/timido.mp3"
+  },
+  {
+   "t": "honesto/a",
+   "en": "honest",
+   "audio": "vocab/honesto.mp3"
+  },
+  {
+   "t": "generoso/a",
+   "en": "generous",
+   "audio": "vocab/generoso.mp3"
+  },
+  {
+   "t": "valiente",
+   "en": "brave",
+   "audio": "vocab/valiente.mp3"
+  },
+  {
+   "t": "paciente",
+   "en": "patient",
+   "audio": "vocab/paciente.mp3"
+  },
+  {
+   "t": "alto/a",
+   "en": "tall",
+   "audio": "vocab/alto.mp3"
+  },
+  {
+   "t": "bajo/a",
+   "en": "short (height)",
+   "audio": "vocab/bajo.mp3"
+  },
+  {
+   "t": "inteligente",
+   "en": "intelligent",
+   "audio": "vocab/inteligente.mp3"
+  },
+  {
+   "t": "simpático/a",
+   "en": "nice / friendly",
+   "audio": "vocab/simpatico.mp3"
+  },
+  {
+   "t": "amable",
+   "en": "kind",
+   "audio": "vocab/amable.mp3"
+  },
+  {
+   "t": "trabajador/a",
+   "en": "hard-working",
+   "audio": "vocab/trabajador.mp3"
+  },
+  {
+   "t": "joven",
+   "en": "young",
+   "audio": "vocab/joven.mp3"
+  },
+  {
+   "t": "grande",
+   "en": "big / large",
+   "audio": "vocab/grande.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "escuchar",
+   "gloss": "to listen",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "escucho",
+     "escuchas",
+     "escucha",
+     "escuchamos",
+     "escucháis",
+     "escuchan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ]
+   }
+  }
+ ]
+}

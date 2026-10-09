@@ -1,0 +1,291 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 8 — ¿Cómo somos?",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "ser (soy/es)",
+   "en": "to be",
+   "audio": "grammar/m01-soy.mp3"
+  },
+  {
+   "t": "estudiante",
+   "en": "student",
+   "audio": "vocab/estudiante.mp3"
+  },
+  {
+   "t": "mexicano/a",
+   "en": "Mexican",
+   "audio": "vocab/mexicano.mp3"
+  },
+  {
+   "t": "la nacionalidad",
+   "en": "nationality",
+   "audio": "vocab/la-nacionalidad.mp3"
+  },
+  {
+   "t": "alto/a",
+   "en": "tall",
+   "audio": "vocab/alto.mp3"
+  },
+  {
+   "t": "bajo/a",
+   "en": "short",
+   "audio": "vocab/bajo.mp3"
+  },
+  {
+   "t": "moreno/a",
+   "en": "dark-haired",
+   "audio": "vocab/moreno.mp3"
+  },
+  {
+   "t": "rubio/a",
+   "en": "blond(e)",
+   "audio": "vocab/rubio.mp3"
+  },
+  {
+   "t": "inteligente",
+   "en": "intelligent",
+   "audio": "vocab/inteligente.mp3"
+  },
+  {
+   "t": "simpático/a",
+   "en": "nice / friendly",
+   "audio": "vocab/simpatico.mp3"
+  },
+  {
+   "t": "trabajador(a)",
+   "en": "hard-working",
+   "audio": "vocab/trabajador.mp3"
+  },
+  {
+   "t": "estar (estoy/está)",
+   "en": "to be",
+   "audio": "vocab/estar.mp3"
+  },
+  {
+   "t": "contento/a",
+   "en": "happy",
+   "audio": "vocab/contento.mp3"
+  },
+  {
+   "t": "cansado/a",
+   "en": "tired",
+   "audio": "vocab/cansado.mp3"
+  },
+  {
+   "t": "nervioso/a",
+   "en": "nervous",
+   "audio": "vocab/nervioso.mp3"
+  },
+  {
+   "t": "ocupado/a",
+   "en": "busy",
+   "audio": "vocab/ocupado.mp3"
+  },
+  {
+   "t": "triste",
+   "en": "sad",
+   "audio": "vocab/triste.mp3"
+  },
+  {
+   "t": "enojado/a",
+   "en": "angry",
+   "audio": "vocab/enojado.mp3"
+  },
+  {
+   "t": "tener (tengo/tiene)",
+   "en": "to have",
+   "audio": "vocab/tener.mp3"
+  },
+  {
+   "t": "la familia",
+   "en": "family",
+   "audio": "vocab/la-familia.mp3"
+  },
+  {
+   "t": "el hermano",
+   "en": "brother",
+   "audio": "vocab/el-hermano.mp3"
+  },
+  {
+   "t": "la hermana",
+   "en": "sister",
+   "audio": "vocab/la-hermana.mp3"
+  },
+  {
+   "t": "la madre",
+   "en": "mother",
+   "audio": "vocab/la-madre.mp3"
+  },
+  {
+   "t": "el padre",
+   "en": "father",
+   "audio": "vocab/el-padre.mp3"
+  },
+  {
+   "t": "el pelo",
+   "en": "hair",
+   "audio": "vocab/el-pelo.mp3"
+  },
+  {
+   "t": "los ojos",
+   "en": "eyes",
+   "audio": "vocab/los-ojos.mp3"
+  },
+  {
+   "t": "gustar",
+   "en": "to like",
+   "audio": "vocab/gustar.mp3"
+  },
+  {
+   "t": "encantar",
+   "en": "to love (a thing)",
+   "audio": "vocab/encantar.mp3"
+  },
+  {
+   "t": "el deporte",
+   "en": "sport",
+   "audio": "vocab/el-deporte.mp3"
+  },
+  {
+   "t": "el libro",
+   "en": "book",
+   "audio": "vocab/el-libro.mp3"
+  },
+  {
+   "t": "la película",
+   "en": "movie",
+   "audio": "vocab/la-pelicula.mp3"
+  },
+  {
+   "t": "la comida",
+   "en": "food",
+   "audio": "vocab/la-comida.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "tener",
+   "gloss": "to have",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "tengo",
+     "tienes",
+     "tiene",
+     "tenemos",
+     "tenéis",
+     "tienen"
+    ]
+   }
+  },
+  {
+   "inf": "escuchar",
+   "gloss": "to listen",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "escucho",
+     "escuchas",
+     "escucha",
+     "escuchamos",
+     "escucháis",
+     "escuchan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "comer",
+   "gloss": "to eat",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "como",
+     "comes",
+     "come",
+     "comemos",
+     "coméis",
+     "comen"
+    ]
+   }
+  },
+  {
+   "inf": "leer",
+   "gloss": "to read",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "leo",
+     "lees",
+     "lee",
+     "leemos",
+     "leéis",
+     "leen"
+    ]
+   }
+  },
+  {
+   "inf": "aprender",
+   "gloss": "to learn",
+   "tag": "regular -er verb",
+   "forms": {
+    "present": [
+     "aprendo",
+     "aprendes",
+     "aprende",
+     "aprendemos",
+     "aprendéis",
+     "aprenden"
+    ]
+   }
+  }
+ ]
+}

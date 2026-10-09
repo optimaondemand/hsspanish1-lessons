@@ -1,0 +1,161 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 4 — La familia",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "la familia",
+   "en": "the family",
+   "audio": "vocab/la-familia.mp3"
+  },
+  {
+   "t": "la madre",
+   "en": "mother",
+   "audio": "vocab/la-madre.mp3"
+  },
+  {
+   "t": "el padre",
+   "en": "father",
+   "audio": "vocab/el-padre.mp3"
+  },
+  {
+   "t": "los padres",
+   "en": "parents",
+   "audio": "vocab/los-padres.mp3"
+  },
+  {
+   "t": "el hermano",
+   "en": "brother",
+   "audio": "vocab/el-hermano.mp3"
+  },
+  {
+   "t": "la hermana",
+   "en": "sister",
+   "audio": "vocab/la-hermana.mp3"
+  },
+  {
+   "t": "el abuelo",
+   "en": "grandfather",
+   "audio": "vocab/el-abuelo.mp3"
+  },
+  {
+   "t": "la abuela",
+   "en": "grandmother",
+   "audio": "vocab/la-abuela.mp3"
+  },
+  {
+   "t": "el hijo",
+   "en": "son",
+   "audio": "vocab/el-hijo.mp3"
+  },
+  {
+   "t": "la hija",
+   "en": "daughter",
+   "audio": "vocab/la-hija.mp3"
+  },
+  {
+   "t": "el primo",
+   "en": "cousin",
+   "audio": "vocab/el-primo.mp3"
+  },
+  {
+   "t": "mayor",
+   "en": "older",
+   "audio": "vocab/mayor.mp3"
+  },
+  {
+   "t": "menor",
+   "en": "younger",
+   "audio": "vocab/menor.mp3"
+  },
+  {
+   "t": "mi / mis",
+   "en": "my",
+   "audio": "vocab/mi.mp3"
+  },
+  {
+   "t": "tu / tus",
+   "en": "your (informal)",
+   "audio": "vocab/tu.mp3"
+  },
+  {
+   "t": "su / sus",
+   "en": "his / her / their",
+   "audio": "vocab/su.mp3"
+  },
+  {
+   "t": "nuestro/a",
+   "en": "our",
+   "audio": "vocab/nuestro.mp3"
+  },
+  {
+   "t": "tener",
+   "en": "to have",
+   "audio": "vocab/tener.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "tener",
+   "gloss": "to have",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "tengo",
+     "tienes",
+     "tiene",
+     "tenemos",
+     "tenéis",
+     "tienen"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  },
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  }
+ ]
+}

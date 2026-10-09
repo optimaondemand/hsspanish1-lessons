@@ -1,0 +1,161 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 3 — Lugares y sentimientos",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "contento/a",
+   "en": "happy",
+   "audio": "vocab/contento.mp3"
+  },
+  {
+   "t": "triste",
+   "en": "sad",
+   "audio": "vocab/triste.mp3"
+  },
+  {
+   "t": "cansado/a",
+   "en": "tired",
+   "audio": "vocab/cansado.mp3"
+  },
+  {
+   "t": "nervioso/a",
+   "en": "nervous",
+   "audio": "vocab/nervioso.mp3"
+  },
+  {
+   "t": "ocupado/a",
+   "en": "busy",
+   "audio": "vocab/ocupado.mp3"
+  },
+  {
+   "t": "enfermo/a",
+   "en": "sick",
+   "audio": "vocab/enfermo.mp3"
+  },
+  {
+   "t": "enojado/a",
+   "en": "angry",
+   "audio": "vocab/enojado.mp3"
+  },
+  {
+   "t": "aburrido/a",
+   "en": "bored",
+   "audio": "vocab/aburrido.mp3"
+  },
+  {
+   "t": "preocupado/a",
+   "en": "worried",
+   "audio": "vocab/preocupado.mp3"
+  },
+  {
+   "t": "la casa",
+   "en": "home / house",
+   "audio": "vocab/la-casa.mp3"
+  },
+  {
+   "t": "la escuela",
+   "en": "school",
+   "audio": "vocab/la-escuela.mp3"
+  },
+  {
+   "t": "el trabajo",
+   "en": "work",
+   "audio": "vocab/el-trabajo.mp3"
+  },
+  {
+   "t": "la ciudad",
+   "en": "city",
+   "audio": "vocab/la-ciudad.mp3"
+  },
+  {
+   "t": "aquí",
+   "en": "here",
+   "audio": "vocab/aqui.mp3"
+  },
+  {
+   "t": "allí",
+   "en": "there",
+   "audio": "vocab/alli.mp3"
+  },
+  {
+   "t": "cerca de",
+   "en": "near / close to",
+   "audio": "vocab/cerca-de.mp3"
+  },
+  {
+   "t": "lejos de",
+   "en": "far from",
+   "audio": "vocab/lejos-de.mp3"
+  },
+  {
+   "t": "estar",
+   "en": "to be",
+   "audio": "vocab/estar.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "estar",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "estoy",
+     "estás",
+     "está",
+     "estamos",
+     "estáis",
+     "están"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "trabajar",
+   "gloss": "to work",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "trabajo",
+     "trabajas",
+     "trabaja",
+     "trabajamos",
+     "trabajáis",
+     "trabajan"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  }
+ ]
+}

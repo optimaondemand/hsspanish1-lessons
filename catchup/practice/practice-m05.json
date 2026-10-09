@@ -1,0 +1,146 @@
+{
+ "lang": "es",
+ "course": "Spanish 1 — Catch-up",
+ "title": "Module 5 — La comida y los gustos",
+ "audioBase": "../../audio/",
+ "vosotros": false,
+ "words": [
+  {
+   "t": "la comida",
+   "en": "food / meal",
+   "audio": "vocab/la-comida.mp3"
+  },
+  {
+   "t": "el desayuno",
+   "en": "breakfast",
+   "audio": "vocab/el-desayuno.mp3"
+  },
+  {
+   "t": "el almuerzo",
+   "en": "lunch",
+   "audio": "vocab/el-almuerzo.mp3"
+  },
+  {
+   "t": "la cena",
+   "en": "dinner",
+   "audio": "vocab/la-cena.mp3"
+  },
+  {
+   "t": "el arroz",
+   "en": "rice",
+   "audio": "vocab/el-arroz.mp3"
+  },
+  {
+   "t": "los frijoles",
+   "en": "beans",
+   "audio": "vocab/los-frijoles.mp3"
+  },
+  {
+   "t": "el pollo",
+   "en": "chicken",
+   "audio": "vocab/el-pollo.mp3"
+  },
+  {
+   "t": "la fruta",
+   "en": "fruit",
+   "audio": "vocab/la-fruta.mp3"
+  },
+  {
+   "t": "las verduras",
+   "en": "vegetables",
+   "audio": "vocab/las-verduras.mp3"
+  },
+  {
+   "t": "el pan",
+   "en": "bread",
+   "audio": "vocab/el-pan.mp3"
+  },
+  {
+   "t": "el agua",
+   "en": "water",
+   "audio": "vocab/el-agua.mp3"
+  },
+  {
+   "t": "el jugo",
+   "en": "juice",
+   "audio": "vocab/el-jugo.mp3"
+  },
+  {
+   "t": "la leche",
+   "en": "milk",
+   "audio": "vocab/la-leche.mp3"
+  },
+  {
+   "t": "el café",
+   "en": "coffee",
+   "audio": "vocab/el-cafe.mp3"
+  },
+  {
+   "t": "gustar",
+   "en": "to like",
+   "audio": "vocab/gustar.mp3"
+  },
+  {
+   "t": "encantar",
+   "en": "to love / really like",
+   "audio": "vocab/encantar.mp3"
+  },
+  {
+   "t": "cocinar",
+   "en": "to cook",
+   "audio": "vocab/cocinar.mp3"
+  },
+  {
+   "t": "favorito/a",
+   "en": "favorite",
+   "audio": "vocab/favorito.mp3"
+  }
+ ],
+ "verbs": [
+  {
+   "inf": "cocinar",
+   "gloss": "to cook",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "cocino",
+     "cocinas",
+     "cocina",
+     "cocinamos",
+     "cocináis",
+     "cocinan"
+    ]
+   }
+  },
+  {
+   "inf": "ser",
+   "gloss": "to be",
+   "tag": "irregular — learn every form",
+   "forms": {
+    "present": [
+     "soy",
+     "eres",
+     "es",
+     "somos",
+     "sois",
+     "son"
+    ]
+   }
+  },
+  {
+   "inf": "practicar",
+   "gloss": "to practice",
+   "tag": "regular -ar verb",
+   "forms": {
+    "present": [
+     "practico",
+     "practicas",
+     "practica",
+     "practicamos",
+     "practicáis",
+     "practican"
+    ]
+   }
+  }
+ ]
+}
