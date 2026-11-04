@@ -106,6 +106,13 @@
   .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
   .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
   .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  .sg-info { display: flex; flex-wrap: wrap; margin: 14px 34px 0; background: var(--lime); border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--blue); border-radius: 4px; }
+  .sg-info > div { flex: 1 1 150px; padding: 10px 16px; border-right: 1px solid var(--rule); }
+  .sg-info > div:last-child { border-right: 0; }
+  .sg-il { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 3px; }
+  .sg-iv { display: block; font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--ink); }
+  .sg-is { display: block; font-family: 'IM Fell English', Garamond, Georgia, serif; font-style: italic; font-size: 14px; color: var(--muted); }
+  @media (max-width: 640px) { .sg-info { margin: 12px 12px 0; } }
   /* cards */
   .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
   .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
@@ -205,6 +212,7 @@
     <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
   </div></div>
   <div class="sg-caption">El cuadro del m&oacute;dulo: Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em> (<em>An evening gathering in 1790</em>), lithograph, Paris, 1854</div>
+  <div class="sg-info"><div><span class="sg-il">Quarter / Module</span><span class="sg-iv">Q3 &middot; M&oacute;dulo 2</span><span class="sg-is">La casa</span></div><div><span class="sg-il">Lesson</span><span class="sg-iv">Lesson 2.07 &middot; Day 7 of 8</span></div><div><span class="sg-il">Topic</span><span class="sg-iv">Fon&eacute;tica + Tarea oral</span></div><div><span class="sg-il">Module Theme</span><span class="sg-iv">Home &amp; Chores</span></div></div>
 </div>
 <div style="padding: 24px 34px;">
 
