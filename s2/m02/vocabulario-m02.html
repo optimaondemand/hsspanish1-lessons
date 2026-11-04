@@ -69,59 +69,149 @@
     .flip-front .flip-hint { color:#6b7a99; }
     .flip-back .flip-hint { color:#9fb3d1; }
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m2-hero.jpg) center 30% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-pend l" aria-hidden="true"><img src="../../img/siglo/pendon-castilla.svg" alt=""><img src="../../img/siglo/pendon-leon.svg" alt=""></div><div class="sg-pend r" aria-hidden="true"><img src="../../img/siglo/pendon-aragon.svg" alt=""><img src="../../img/siglo/pendon-navarra.svg" alt=""></div><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 2 &middot; La casa</div>
+    <div class="sg-where">Vocabulario &middot; M&oacute;dulo 2</div>
+    <h1 class="sg-title">Vocabulario &middot; M&oacute;dulo <span class="dg"></span></h1>
+    <div class="sg-sub">Study cards &middot; tap a card to flip, tap &#128266; to hear it</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em> (<em>An evening gathering in 1790</em>), lithograph, Paris, 1854</div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 2</div>
-        <div style="font-size: 12px; color: #666;">La casa</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Study companion</div>
-        <div style="font-size: 17px; color: #0e1c42;">Vocabulario &middot; Repaso</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">18 palabras &middot; por el o&iacute;do</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Home &amp; Chores</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">M&oacute;dulo 2 &middot; Vocabulario</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Vocabulario &middot; M&oacute;dulo 2</div>
-        <div style="font-size: 16px; color: #666;">Study cards &middot; tap a card to flip, tap &#128266; to hear it</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; HOW TO USE THIS PAGE</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">These are the <strong>18 words</strong> of M&oacute;dulo 2 &mdash; the same words you'll meet on the listening-based <em>Vocabulary Check</em> (Day 7). Each card shows the Spanish; <strong>tap the card</strong> to flip it and check the English. But your real goal is to know these <em>by ear</em>: tap the <strong>&#128266;</strong> button and say each word back out loud <em>before</em> you flip. If you can hear the word and picture its meaning without reading, you're ready.</div>
+    <div class="sg-card">
+        <div class="sg-kicker">HOW TO USE THIS PAGE</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">These are the <strong>18 words</strong> of M&oacute;dulo 2 &mdash; the same words you'll meet on the listening-based <em>Vocabulary Check</em> (Day 6). Each card shows the Spanish; <strong>tap the card</strong> to flip it and check the English. But your real goal is to know these <em>by ear</em>: tap the <strong>&#128266;</strong> button and say each word back out loud <em>before</em> you flip. If you can hear the word and picture its meaning without reading, you're ready.</div>
         <p style="font-size: 14px; color: #6b7a99; margin: 12px 0 0;">Tip: nouns are shown with their article (<em>la, el</em>) &mdash; learn each one glued to its article. Remember <em>el dormitorio</em> and <em>la habitaci&oacute;n</em> both mean a bedroom.</p>
     </div>
 
     <!-- SECTION A -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#127968; SECCI&Oacute;N A &middot; LOS CUARTOS <span class="pill-time">rooms</span></div>
+    <div class="sg-card">
+        <div class="sg-kicker">SECCI&Oacute;N A &middot; LOS CUARTOS <span class="pill-time">rooms</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Los cuartos de la casa &mdash; the rooms</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">The spaces of a home. Say each one, then place it: <em>Estoy en la cocina.</em></p>
         <div class="flip-grid">
@@ -177,8 +267,8 @@
     </div>
 
     <!-- SECTION B -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#128715; SECCI&Oacute;N B &middot; LOS MUEBLES <span class="pill-time">furniture</span></div>
+    <div class="sg-card">
+        <div class="sg-kicker">SECCI&Oacute;N B &middot; LOS MUEBLES <span class="pill-time">furniture</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Los muebles &mdash; furniture</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">Things inside the rooms. Try: <em>En el dormitorio hay una cama.</em></p>
         <div class="flip-grid">
@@ -222,8 +312,8 @@
     </div>
 
     <!-- SECTION C -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#129529; SECCI&Oacute;N C &middot; QUEHACERES Y UBICACI&Oacute;N <span class="pill-time">chores &amp; up/down</span></div>
+    <div class="sg-card">
+        <div class="sg-kicker">SECCI&Oacute;N C &middot; QUEHACERES Y UBICACI&Oacute;N <span class="pill-time">chores &amp; up/down</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Quehaceres y ubicaci&oacute;n &mdash; chores &amp; where</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">Two chore verbs plus the words for up and down. Try: <em>Limpio la cocina abajo.</em></p>
         <div class="flip-grid">
@@ -265,11 +355,12 @@
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Study Page</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Study Page</div>
     <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Vocabulario &middot; M&oacute;dulo 2 &middot; La casa</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Pendants: Armorial of the Golden Fleece (c. 1435) and Tumbo A of Santiago Cathedral (13th c.) &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>

@@ -54,59 +54,168 @@
     .gualda .r { flex:1; background:#AA1E2D; }
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m2-hero.jpg) center 30% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
 </style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-pend l" aria-hidden="true"><img src="../../img/siglo/pendon-castilla.svg" alt=""><img src="../../img/siglo/pendon-leon.svg" alt=""></div><div class="sg-pend r" aria-hidden="true"><img src="../../img/siglo/pendon-aragon.svg" alt=""><img src="../../img/siglo/pendon-navarra.svg" alt=""></div><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 2 &middot; La casa</div>
+    <div class="sg-where">Lesson 2.01 &middot; Day 1 of 8</div>
+    <h1 class="sg-title">&iquest;C&oacute;mo es tu casa?</h1>
+    <div class="sg-sub">The Rooms of a Home &middot; about 50 minutes</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em> (<em>An evening gathering in 1790</em>), lithograph, Paris, 1854</div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 2</div>
-        <div style="font-size: 12px; color: #666;">La casa</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.01 &middot; Day 1 of 10</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Los cuartos (rooms)</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Home &amp; Chores</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.01</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> &iquest;C&oacute;mo es tu casa? &mdash; The Rooms of a Home</div>
-        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+    <div class="sg-card">
+        <div class="sg-kicker">TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Welcome to M&oacute;dulo 2. Our big question all module long: <em>&iquest;C&oacute;mo es mi casa, y qu&eacute; hago en ella?</em> &mdash; What is my home like, and what do I do there?</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today we start with the easy half: the <strong>rooms</strong> of a house. You'll learn eight everyday spaces &mdash; kitchen, bedroom, bathroom, and more &mdash; each with its article (<em>la, el</em>). There is <strong>no new grammar today on purpose</strong>: we're stocking up on words so that tomorrow, when the action verbs arrive, you already have places to put them.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today we start with the easy half: the <strong>rooms</strong> of a house. You'll learn eight everyday spaces &mdash; kitchen, bedroom, bathroom, and more &mdash; each with its article (<em>la, el</em>). There is <strong>no new grammar today on purpose</strong>: we're stocking up on words so that tomorrow, when the action verbs arrive, you already have places to put them. Then you'll open the interactive map and explore the <strong>Cono Sur</strong> &mdash; Chile and its neighbors, where this module's reading takes you.</div>
     </div>
 
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+    <div class="sg-card">
+        <div class="sg-kicker">BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> name the main rooms of a house in Spanish.</div>
@@ -115,12 +224,16 @@
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> use the correct article (<em>la / el</em>) with each room.</div>
         </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> locate Chile and the Southern Cone countries on the map and name their capitals.</div>
+        </div>
     </div>
 
     <!-- PART 1 -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">6 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Walk through your home in your head</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">I</span><span>PARA EMPEZAR</span><span class="pill-time">6 min</span></div>
+        <h3 class="sg-h3">Walk through your home in your head</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before any Spanish, picture your home. Where do you sleep? Where does your family eat? Is there an outdoor space? In this module you'll be able to name all of it &mdash; and say what you <em>do</em> in each place. Let's begin with the space you're in right now.</p>
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
@@ -136,9 +249,9 @@
     </div>
 
     <!-- PART 2 · Vocab Set A -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LOS CUARTOS DE LA CASA <span class="pill-time">14 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen, then repeat</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">II</span><span>LOS CUARTOS DE LA CASA</span><span class="pill-time">14 min</span></div>
+        <h3 class="sg-h3">Listen, then repeat</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Click the <strong>&#128266;</strong> and say each room back out loud. Notice the article in front (<em>la, el</em>) &mdash; that's the grammatical gender from Semester 1. Learn each room <em>with</em> its article.</p>
         <ul class="vocab-list">
             <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-cocina.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la cocina</span><span class="v-en">kitchen</span></li>
@@ -158,9 +271,24 @@
     </div>
 
     <!-- PART 3 · Practice -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 3 &middot; A PRACTICAR <span class="pill-time">12 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Match the meaning</h3>
+    <!-- PANEL · En el cuadro (Gay, Una tertulia en 1790) -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num" style="font-size:17px">&#10070;</span><span>En el cuadro &middot; In the painting</span><span class="pill-time">2 min</span></div>
+        <div class="sg-cuadro"><div class="sg-tlabel">&iquest;Qu&eacute; cuarto es?</div>
+        <p>This is Claudio Gay&rsquo;s picture of a home in Santiago de Chile in 1790, the picture at the top of this lesson. Guests are talking, a girl is serving from a tray, and musicians are playing. Which room of the house from Part II is it?</p>
+        <div class="sg-arch wide"><div><img src="img/m2-large.jpg" alt="Claudio Gay, Una tertulia en 1790: guests talking and making music in a large room with a chandelier and tall windows"></div></div><div class="sg-tiles"></div>
+        <div class="sg-q" data-ok="A large room for guests, for talking and music: la sala.">
+          <div class="sg-phrase">Es <span class="sg-blank">&hellip;</span></div>
+          <div class="sg-opts"><button type="button" data-hint="Is anyone cooking? There is no stove and no food being made: the guests are talking and playing music.">la cocina</button><button type="button" data-right>la sala</button><button type="button" data-hint="Is there a bed? Nobody is sleeping here: this room is for guests.">el dormitorio</button></div>
+          <div class="sg-fb"></div>
+          <button class="say" type="button" hidden data-audio="vocab/s2-la-sala.mp3" aria-label="Escuchar: la sala">&#128266;</button>
+        </div>
+        <details class="sg-look"><summary>One more look: find five musical instruments. <span style="font-weight:400;color:#5f554a">(click for a hint)</span></summary><div style="margin-top:6px">On the right: a flute, a keyboard, a violin, a small round-backed instrument like a guitar, and a harp. In colonial Santiago, an evening gathering like this, a <em>tertulia</em>, meant conversation, music and dancing in the family&rsquo;s best room.</div></details>
+        </div>
+    </div>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">III</span><span>A PRACTICAR</span><span class="pill-time">12 min</span></div>
+        <h3 class="sg-h3">Match the meaning</h3>
         <div class="optima-widget ow-eval">
             <div class="widget-kicker">&#9989; TRY IT &middot; which room fits?</div>
             <div class="widget-question">You cook and prepare food in this room. It's:</div>
@@ -194,7 +322,8 @@
         </div>
         <div style="margin-top:16px;">
             <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Your turn: how would you say <em>"the living room"</em> in Spanish? Say it out loud, then reveal.</p>
-            <button class="reveal-btn">Reveal answer</button>
+            <div data-mw-added class="mw-box" style="margin:6px 0"><span class="mw-prompt" style="display:inline-block;min-width:150px;margin-right:8px;font-size:16px;color:#1a2340">“the living room”</span><textarea class="mw-answer" rows="1" lang="es" spellcheck="false" autocapitalize="off" data-mw-gate="l2-01-r1" data-answer="la sala" aria-label="“the living room”" placeholder="Type it, then press Check" style="width:220px;max-width:100%;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;vertical-align:middle;resize:vertical"></textarea></div><div data-mw-added class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Accents are part of the word. Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uuml;</button></div>
+            <button class="reveal-btn" data-mw-gate="l2-01-r1">Reveal answer</button>
             <div class="reveal-body"><strong>la sala.</strong> Feminine, so <em>la</em> &mdash; keep the article glued to the noun as you learn it.</div>
         </div>
     </div>
@@ -202,17 +331,66 @@
     <div class="culture-box">
         <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; CHILE</div>
         <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Bienvenido a Chile</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">This module our featured country is <strong>Chile</strong>, a long, narrow country running down the Pacific side of South America, with the capital <strong>Santiago</strong> tucked against the snow-capped <em>cordillera de los Andes</em>. In many Chilean homes the <strong>cocina</strong> and the <strong>comedor</strong> are where the family gathers &mdash; especially for <em>la once</em>, an afternoon tea with bread, cheese, and tea or coffee. We'll visit Chilean homes and culture all module long.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">This module our featured country is <strong>Chile</strong>, a long, narrow country running down the Pacific side of South America, with the capital <strong>Santiago</strong> tucked against the snow-capped <em>cordillera de los Andes</em> (the Andes mountain range). In many Chilean homes the <strong>cocina</strong> and the <strong>comedor</strong> are where the family gathers &mdash; especially for <em>la once</em>, an afternoon tea with bread, cheese, and tea or coffee. We'll visit Chilean homes and culture all module long.</p>
+    </div>
+
+    <!-- PART 2 · Map -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">IV</span><span>EL MAPA DEL MUNDO HISPANO</span><span class="pill-time">14 min</span></div>
+        <h3 class="sg-h3">Explore the Southern Cone</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Open the interactive map in a new tab. Switch it to <strong>Explorador</strong> mode and click on the Spanish-speaking countries of the <strong>Cono Sur</strong>: <strong>Chile</strong>, <strong>Argentina</strong>, <strong>Uruguay</strong>, and <strong>Paraguay</strong>. Read each country card &mdash; note the capital, then try the map's built-in <strong>quiz</strong> to see how many capitals you can place. It's ungraded; go as many rounds as you like.</p>
+        <div style="text-align:center; margin: 16px 0;">
+            <a href="../../mapa-del-mundo-hispano.html" target="_blank" rel="noopener" style="display:inline-block; background:#0E1C42; color:#fff; text-decoration:none; border-radius:8px; padding:14px 26px; font-size:17px; border-bottom:3px solid #55C8E8;">&#128506;&#65039; Abrir el mapa del mundo hispano &rarr;</a>
+            <div style="font-size:13px; color:#6b7a99; margin-top:8px;">Opens in a new tab &middot; use <em>Explorador</em> mode, then the <em>quiz</em></div>
+        </div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 8px 0 0;">As you click, describe what you see with what you own: <em>Santiago <strong>est&aacute;</strong> en Chile</em> (location), <em>y <strong>es</strong> la capital</em> (identity) &mdash; your Semester-1 <em>ser/estar</em> still at work.</p>
+
+        <div class="optima-widget ow-eval" data-fb-pre="¡Correcto! (Correct!) " data-fb-suf=" — check it against the map to be sure." data-fb-no="Not quite — open the map, click the country, and read its country card.">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; match the capital</div>
+            <div class="widget-question">Which city is the capital of <strong>Chile</strong>?</div>
+            <div class="widget-options">
+                <button data-correct="false">Buenos Aires</button>
+                <button data-correct="true">Santiago</button>
+                <button data-correct="false">Montevideo</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval" data-fb-pre="¡Correcto! " data-fb-suf=" — check it against the map to be sure." data-fb-no="Not quite — open the map, click the country, and read its country card.">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; match the capital</div>
+            <div class="widget-question">And the capital of <strong>Argentina</strong> is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="true">Buenos Aires</button>
+                <button data-correct="false">Asunci&oacute;n</button>
+                <button data-correct="false">Santiago</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Before you check the map: what natural border separates Chile from Argentina? Say it, then reveal.</p>
+            <div data-mw-added class="mw-box" style="margin:6px 0"><span class="mw-prompt" style="display:inline-block;min-width:150px;margin-right:8px;font-size:16px;color:#1a2340">The natural border between Chile and Argentina</span><textarea class="mw-answer" rows="1" lang="es" spellcheck="false" autocapitalize="off" data-mw-gate="l2-01-r2" data-answer="la cordillera de los Andes || los Andes || Andes || la cordillera || cordillera de los Andes" aria-label="The natural border between Chile and Argentina" placeholder="Type it, then press Check" style="width:100%;max-width:520px;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;vertical-align:middle;resize:vertical"></textarea></div><div data-mw-added class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Accents are part of the word. Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uuml;</button></div>
+            <button class="reveal-btn" data-mw-gate="l2-01-r2">Reveal answer</button>
+            <div class="reveal-body"><strong>La cordillera de los Andes.</strong> The Andes run the length of the border &mdash; the same snow-capped <em>cordillera</em> that rises right behind Santiago.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; EL CONO SUR</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Cuatro pa&iacute;ses, una regi&oacute;n</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">The <em>Cono Sur</em> gathers <strong>Chile</strong> (Santiago), <strong>Argentina</strong> (Buenos Aires), <strong>Uruguay</strong> (Montevideo), and <strong>Paraguay</strong> (Asunci&oacute;n). Across the region people share the <em>mate</em> tea habit, a love of <em>asado</em> (barbecue), and, in the far south, the vast wilderness of Patagonia. Remember the seasons are flipped: while the northern hemisphere has summer, the Cono Sur is in winter.</p>
     </div>
 
     <!-- PART 4 · Look ahead -->
-    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 2.02</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow you learn furniture and chore words (bed, table, to clean, to tidy up&hellip;) and meet the module's new grammar: <strong>stem-changing verbs</strong> like <em>querer</em> and <em>poder</em>. Graded work in this module begins on Day 7; this week is for building the habit.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow you learn furniture and chore words (bed, table, to clean, to tidy up&hellip;) and meet the module's new grammar: <strong>stem-changing verbs</strong> like <em>querer</em> (to want) and <em>poder</em> (to be able to). Graded work in this module begins on Day 6; this week is for building the habit.</div>
             </div>
         </div>
     </div>
@@ -222,18 +400,19 @@
         <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then name three rooms out loud in Spanish &mdash; the one you're in now, one where you eat, and one where you sleep.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN COMIENZO&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You have the rooms. Tomorrow you fill them with furniture and start saying what you <em>do</em> there &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em></p>
+    <div class="sg-card">
+        <div class="sg-kicker">&iexcl;BUEN COMIENZO&#33; (Great start!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You have the rooms. Tomorrow you fill them with furniture and start saying what you <em>do</em> there &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em> (See you tomorrow!)</p>
     </div>
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
     <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.01 &middot; Los cuartos de la casa</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Pendants: Armorial of the Golden Fleece (c. 1435) and Tumbo A of Santiago Cathedral (13th c.) &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
@@ -265,8 +444,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
-        : 'Not quite — try the other option and think about the English meaning.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — that’s the one.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — try the other option and think about the English meaning.');
       efb.classList.add('show');
       return;
     }
@@ -302,7 +481,63 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<!-- mywork -->
+<script src="../../my-work.js"></script>
+<script>/* En el cuadro: one right answer, a hint for each wrong one, then hear the word */
+document.addEventListener('click', function (e) {
+  var b = e.target.closest('.sg-opts button'); if (!b) return;
+  var fig = b.closest('.sg-q');
+  if (fig.dataset.mode === 'opinion') { [].forEach.call(fig.querySelectorAll('.sg-opts button'), function (x) { x.classList.remove('right'); }); b.classList.add('right');
+    var bl = fig.querySelector('.sg-blank'); bl.textContent = b.textContent; bl.classList.add('filled');
+    var sy = b.dataset.audio && fig.querySelector('.say[data-audio="' + b.dataset.audio + '"]'); if (sy) sy.click(); return; }
+  if (fig.dataset.done) return;
+  var blank = fig.querySelector('.sg-blank'), fb = fig.querySelector('.sg-fb');
+  if (b.hasAttribute('data-right')) {
+    fig.dataset.done = '1'; b.classList.add('right'); blank.textContent = b.textContent; blank.classList.add('filled');
+    fb.className = 'sg-fb ok'; fb.textContent = '\u2713 \u00a1S\u00ed! ' + (fig.dataset.ok || '');
+    var say = fig.querySelector('.say'); if (say) { say.hidden = false; say.click(); }
+  } else { b.classList.add('wrong'); fb.className = 'sg-fb no'; fb.innerHTML = b.dataset.hint || 'Look again at the painting.'; }
+});
+</script>
 </body>
 </html>

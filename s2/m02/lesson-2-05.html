@@ -55,58 +55,148 @@
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m2-hero.jpg) center 30% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-pend l" aria-hidden="true"><img src="../../img/siglo/pendon-castilla.svg" alt=""><img src="../../img/siglo/pendon-leon.svg" alt=""></div><div class="sg-pend r" aria-hidden="true"><img src="../../img/siglo/pendon-aragon.svg" alt=""><img src="../../img/siglo/pendon-navarra.svg" alt=""></div><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 2 &middot; La casa</div>
+    <div class="sg-where">Lesson 2.05 &middot; Day 5 of 8</div>
+    <h1 class="sg-title">La casa de Catalina</h1>
+    <div class="sg-sub">A Home in Santiago &middot; about 50 minutes</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em> (<em>An evening gathering in 1790</em>), lithograph, Paris, 1854</div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 2</div>
-        <div style="font-size: 12px; color: #666;">La casa</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.05 &middot; Day 5 of 10</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">A leer + cultura de Chile</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Home &amp; Chores</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.05</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> La casa de Catalina &mdash; A Home in Santiago</div>
-        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+    <div class="sg-card">
+        <div class="sg-kicker">TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Your third encounter with the boot verbs &mdash; this time inside a real story about a home in Chile.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today you read (and hear) a short passage: <strong>Catalina</strong> describes her house in <strong>Santiago, Chile</strong> &mdash; the rooms, the chores she does, and what everyone in the family <em>wants</em> and <em>prefers</em>. The vocabulary and the stem-changing verbs you've practiced all week are woven right in. Then a culture spotlight takes you deeper into Chile.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today you read (and hear) a short passage: <strong>Catalina</strong> describes her house in <strong>Santiago, Chile</strong> &mdash; the rooms, the chores she does, and what everyone in the family <em>wants</em> and <em>prefers</em>. The vocabulary and the stem-changing verbs you practiced last week are woven right in. Then a <strong>spiral</strong> lines up two families of verbs &mdash; Semester-1 regular verbs that keep their stem and the new boot verbs that change it &mdash; and a culture spotlight takes you deeper into Chile.</div>
     </div>
 
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+    <div class="sg-card">
+        <div class="sg-kicker">BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> understand a short paragraph describing a home and its chores.</div>
@@ -115,12 +205,16 @@
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> find the stem-changing verbs in a text and explain each one.</div>
         </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> tell a regular verb (no change) from a stem-changing verb (boot change).</div>
+        </div>
     </div>
 
     <!-- PART 1 -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">6 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Before you read</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">I</span><span>PARA EMPEZAR</span><span class="pill-time">6 min</span></div>
+        <h3 class="sg-h3">Before you read</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">You're about to meet Catalina, a student in Santiago. As you read, you'll recognize almost everything: rooms, furniture, chores, and boot verbs like <em>quiere</em> and <em>prefiere</em>. First, a quick thought about your own home.</p>
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
@@ -136,20 +230,20 @@
     </div>
 
     <!-- PART 2 · Reading -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 2 &middot; A LEER <span class="pill-time">12 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen and read along</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">II</span><span>A LEER</span><span class="pill-time">12 min</span></div>
+        <h3 class="sg-h3">Listen and read along</h3>
         <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 8px 0;">Press play, follow the words, then read it again on your own. The stem-changing verbs are in <strong>bold</strong>.</p>
         <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/s2m2-chile.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Play the reading</span></p>
+        <p style="font-size:14px;color:#6b7a99;margin:0 0 6px;">Glossary: <em>tiene</em> = has &middot; <em>grande</em> = big &middot; <em>bonito</em> = pretty &middot; <em>todas las ma&ntilde;anas</em> = every morning &middot; <em>ayudar</em> = to help &middot; <em>prefiere</em> = prefers (<em>preferir</em>, e&rarr;ie) &middot; <em>despu&eacute;s</em> = afterward &middot; <em>nuestra casa</em> = our house. Note: <em>querer</em> a place/person can also mean &ldquo;to love&rdquo; it &mdash; <em>queremos mucho nuestra casa</em> = we love our house.</p>
         <p style="font-size:17px;color:#1a2340;line-height:1.75;">
         &laquo;Me llamo Catalina y vivo en Santiago, Chile. Mi casa tiene una cocina grande, tres dormitorios y un jard&iacute;n bonito. Todas las ma&ntilde;anas ordeno mi habitaci&oacute;n y <strong>quiero</strong> ayudar en casa. Mi hermana <strong>prefiere</strong> dormir, pero despu&eacute;s limpia la sala. Nosotros <strong>queremos</strong> mucho nuestra casa.&raquo;</p>
-        <p style="font-size:14px;color:#6b7a99;margin:6px 0 0;">Glossary: <em>tiene</em> = has &middot; <em>grande</em> = big &middot; <em>bonito</em> = pretty &middot; <em>ayudar</em> = to help &middot; <em>despu&eacute;s</em> = afterward &middot; <em>nuestra casa</em> = our house. Note: <em>querer</em> a place/person can also mean &ldquo;to love&rdquo; it &mdash; <em>queremos mucho nuestra casa</em> = we love our house.</p>
     </div>
 
     <!-- PART 3 · Comprehension -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 3 &middot; &iquest;COMPRENDES? <span class="pill-time">10 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Check your understanding</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">III</span><span>&iquest;COMPRENDES?</span><span class="pill-time">10 min</span></div>
+        <h3 class="sg-h3">Check your understanding</h3>
 
         <div class="optima-widget ow-eval">
             <div class="widget-kicker">&#9989; COMPREHENSION &middot; from the reading</div>
@@ -201,11 +295,12 @@
     </div>
 
     <!-- PART 4 · Verb spotting -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 4 &middot; CAZA DE VERBOS <span class="pill-time">6 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Find the boot verbs</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">IV</span><span>CAZA DE VERBOS</span><span class="pill-time">6 min</span></div>
+        <h3 class="sg-h3">Find the boot verbs</h3>
         <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 8px;">Go back to the passage and point to each stem-changing verb. Say its type out loud, then reveal to check.</p>
-        <button class="reveal-btn">Reveal the boot verbs</button>
+        <textarea data-mw-added class="journal-box" id="mw-l2-05-r1" data-mw-gate="l2-05-r1" lang="es" data-label="The boot verbs in the passage, and their type" data-model="quiero (querer, e→ie) · prefiere (preferir, e→ie) · queremos (querer, nosotros: no change)" rows="2" placeholder="Write each stem-changing verb you find and its type. The answer unlocks once you have written it." style="display:block;width:100%;max-width:560px;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;margin:6px 0 8px"></textarea><div data-mw-added class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Accents are part of the word. Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uuml;</button></div>
+            <button class="reveal-btn" data-mw-gate="l2-05-r1">Reveal the boot verbs</button>
         <div class="reveal-body">
             <strong>quiero</strong> &mdash; querer, e&rarr;ie (yo, boot form).<br>
             <strong>prefiere</strong> &mdash; preferir, e&rarr;ie (&eacute;l/ella, boot form).<br>
@@ -214,6 +309,75 @@
         <div class="opt-strip">
             <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +6 min</div>
             <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Write your own three-sentence &ldquo;<em>Mi casa</em>&rdquo; paragraph, copying Catalina's shape: where you live, what your house has, and one boot verb about a chore (<em>Yo quiero&hellip;</em> / <em>prefiero&hellip;</em>). Read it aloud.</div>
+        </div>
+    </div>
+
+    <!-- PART 3 · Spiral -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">V</span><span>ESPIRAL &middot; &iquest;CAMBIA O NO CAMBIA?</span><span class="pill-time">10 min</span></div>
+        <h3 class="sg-h3">Two families of verbs, side by side</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">In Semester 1 you learned <strong>regular verbs</strong>: the stem never changes, only the ending. This module's <strong>stem-changing verbs</strong> add one twist &mdash; the stem vowel shifts inside the boot. Listen across each row:</p>
+        <table class="gtable">
+            <thead><tr><th>Verb (from)</th><th>Stem?</th><th>Example &middot; listen</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><strong>estudiar</strong> (S1, regular)</td>
+                    <td>no change</td>
+                    <td>Yo <span class="pron">estudio</span> espa&ntilde;ol. <button class="say" data-audio="grammar/m02-estudio.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td><strong>comer</strong> (S1, regular)</td>
+                    <td>no change</td>
+                    <td>Yo <span class="pron">como</span> con mi familia. <button class="say" data-audio="grammar/m06-como.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td><strong>querer</strong> (M2, e&rarr;ie)</td>
+                    <td><span class="pron">changes</span></td>
+                    <td>Yo <span class="pron">quiero</span> una casa con jard&iacute;n. <button class="say" data-audio="grammar/s2m2-quiero.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+                <tr>
+                    <td><strong>dormir</strong> (M2, o&rarr;ue)</td>
+                    <td><span class="pron">changes</span></td>
+                    <td>Mi hermano <span class="pron">duerme</span> mucho. <button class="say" data-audio="grammar/s2m2-duerme.mp3" aria-label="Escuchar">&#128266;</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0 2px;">The trap to avoid: don't &ldquo;fix&rdquo; a regular verb that was never broken. <em>Estudiar</em> stays <em>estudio</em> &mdash; never &ldquo;estuedio.&rdquo; And boot verbs go back to normal for <em>nosotros</em>: <em>queremos, dormimos, comemos, estudiamos</em>.</p>
+
+        <div class="optima-widget ow-eval" data-fb-pre="¡Correcto! (Correct!) " data-fb-suf=" — regular verbs keep the stem; boot verbs change it (except nosotros)." data-fb-no="Not quite. Ask: is this verb regular (no change) or a boot verb (stem changes)? And is it nosotros?">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; does it change?</div>
+            <div class="widget-question">"Yo ___ espa&ntilde;ol todos los d&iacute;as." (I study Spanish every day.) &mdash; <em>estudiar</em> is regular.</div>
+            <div class="widget-options">
+                <button data-correct="true">estudio</button>
+                <button data-correct="false">estuedio</button>
+                <button data-correct="false">estuido</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval" data-fb-pre="¡Correcto! " data-fb-suf=" — regular verbs keep the stem; boot verbs change it (except nosotros)." data-fb-no="Not quite. Ask: is this verb regular (no change) or a boot verb (stem changes)? And is it nosotros?">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; does it change?</div>
+            <div class="widget-question">"Yo ___ una casa grande." (I want a big house.) &mdash; <em>querer</em> is a boot verb.</div>
+            <div class="widget-options">
+                <button data-correct="false">quero</button>
+                <button data-correct="true">quiero</button>
+                <button data-correct="false">queremo</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval" data-fb-pre="¡Correcto! " data-fb-suf=" — regular verbs keep the stem; boot verbs change it (except nosotros)." data-fb-no="Not quite. Ask: is this verb regular (no change) or a boot verb (stem changes)? And is it nosotros?">
+            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; watch the nosotros</div>
+            <div class="widget-question">"Nosotros ___ ocho horas." (We sleep eight hours.) &mdash; <em>dormir</em>, but it's <em>nosotros</em>.</div>
+            <div class="widget-options">
+                <button data-correct="false">duermimos</button>
+                <button data-correct="false">duermemos</button>
+                <button data-correct="true">dormimos</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
         </div>
     </div>
 
@@ -230,13 +394,13 @@
     </div>
 
     <!-- Look ahead -->
-    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 2.06</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Week 2 begins with retrieval: an ear-quiz on the module words, a production round, and a spiral that puts your Semester-1 regular verbs beside these new stem-changers &mdash; exactly what the Day-10 quiz will ask.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and the <strong>Lengua en acci&oacute;n (20 pts)</strong>. Everything you've practiced &mdash; the home words and the change/no-change verbs &mdash; is exactly what those items draw on.</div>
             </div>
         </div>
     </div>
@@ -246,18 +410,19 @@
         <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, without looking, say two things Catalina does at home &mdash; one boot verb, one <em>nosotros</em> verb.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUENA LECTURA&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You read a real paragraph and spotted the grammar inside it &mdash; that's the whole point of learning verbs. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+    <div class="sg-card">
+        <div class="sg-kicker">&iexcl;BUENA LECTURA&#33; (Good reading!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You read a real paragraph and spotted the grammar inside it &mdash; that's the whole point of learning verbs. <em>&iexcl;Hasta ma&ntilde;ana!</em> (See you tomorrow!)</p>
     </div>
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
     <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.05 &middot; La casa de Catalina</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Pendants: Armorial of the Golden Fleece (c. 1435) and Tumbo A of Santiago Cathedral (13th c.) &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
@@ -289,8 +454,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — right from the reading.'
-        : 'Not quite — read the passage again and look for the detail.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — right from the reading.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — read the passage again and look for the detail.');
       efb.classList.add('show');
       return;
     }
@@ -326,7 +491,8 @@
   });
 })();
 </script>
-
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<!-- mywork -->
+<script src="../../my-work.js"></script>
 </body>
 </html>

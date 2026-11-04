@@ -54,191 +54,385 @@
     .gualda .r { flex:1; background:#AA1E2D; }
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m2-hero.jpg) center 30% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
 </style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-pend l" aria-hidden="true"><img src="../../img/siglo/pendon-castilla.svg" alt=""><img src="../../img/siglo/pendon-leon.svg" alt=""></div><div class="sg-pend r" aria-hidden="true"><img src="../../img/siglo/pendon-aragon.svg" alt=""><img src="../../img/siglo/pendon-navarra.svg" alt=""></div><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 2 &middot; La casa</div>
+    <div class="sg-where">Lesson 2.07 &middot; Day 7 of 8</div>
+    <h1 class="sg-title">Fon&eacute;tica</h1>
+    <div class="sg-sub">The Sounds Inside the Boot Verbs &middot; Lesson + graded oral task &middot; about 50 minutes</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em> (<em>An evening gathering in 1790</em>), lithograph, Paris, 1854</div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 2</div>
-        <div style="font-size: 12px; color: #666;">La casa</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 2.07 &middot; Day 7 of 10</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Evaluaciones (assessments)</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Home &amp; Chores</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 2.07</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Centro de evaluaciones &mdash; Show What You Know</div>
-        <div style="font-size: 16px; color: #666;">Assessment hub &middot; about 40 minutes</div>
+    <div class="sg-card">
+        <div class="sg-kicker">TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've written the boot verbs all week. Today you <em>say</em> them &mdash; and you record it.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a <strong>pronunciation clinic</strong> aimed at the sounds this module leans on: the <strong>ie / ue diphthongs</strong> that the stem change creates (<em>qu<strong>ie</strong>ro, p<strong>ue</strong>do, d<strong>ue</strong>rme</em>), the Spanish <strong>j</strong> (<em>jard&iacute;n, jugar</em>), and the two sounds of <strong>c</strong> (<em>cocina</em>). We'll rehearse each one aloud with words you know, then you'll record your graded <strong>Tarea oral</strong> &mdash; describing your home and the chores you do. You'll finish with a short written <strong>repaso</strong> to get ready for tomorrow's Grammar Quiz.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY IS DIFFERENT</div>
-        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've done the learning. Today you <em>show</em> it &mdash; the first graded work of M&oacute;dulo 2 lives here.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a launch page, not a lesson. Week&nbsp;1 (Lessons&nbsp;2.01&ndash;2.06) built the habit: rooms, furniture, chores, and stem-changing verbs, all spaced out and recycled. Now two graded activities let you demonstrate it. Read the briefing below, do the quick readiness check, then open each activity <strong>in Canvas</strong> when you're ready.</div>
-    </div>
-
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; WHAT'S DUE TODAY</div>
+    <div class="sg-card">
+        <div class="sg-kicker">BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Vocabulary Check</strong> &mdash; 25 points, 1 attempt, mostly by ear.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> pronounce the <em>ie / ue</em> diphthongs, the Spanish <em>j</em>, and both sounds of <em>c</em>.</div>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Lengua en acci&oacute;n</strong> &mdash; 20 points, a short structured writing using stem-changing verbs.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> record a short description of my home and chores using stem-changing verbs.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> write this module&rsquo;s key words with their articles and complete the verb paradigm from memory.</div>
         </div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; &iquest;EST&Aacute;S LISTO/A&#63; <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A quick readiness check-in</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before you open anything graded, be honest with yourself. There's no penalty for waiting &mdash; the async window is open, and a little more review now protects your score.</p>
+    <!-- PART 1 -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">I</span><span>PARA EMPEZAR</span><span class="pill-time">5 min</span></div>
+        <h3 class="sg-h3">Why these sounds matter</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The stem change isn't just spelling &mdash; it's a <em>sound</em>. When <em>e</em> becomes <em>ie</em> and <em>o</em> becomes <em>ue</em>, two vowels glide together into one smooth syllable. Say it clean and your boot verbs instantly sound more native. Today we rehearse that glide, then record.</p>
         <div class="optima-widget ow-reflect">
-            <div class="widget-kicker">&#128173; CHECK-IN &middot; no wrong answer &mdash; just a plan</div>
-            <div class="widget-question">How ready do you feel for today's two activities?</div>
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">When you say Spanish out loud, what feels hardest right now?</div>
             <div class="widget-options">
-                <button data-response="&iexcl;Excelente! If you know the home words by ear and can conjugate a boot verb without stopping, go straight to the Vocabulary Check below.">Ready &mdash; let's go</button>
-                <button data-response="Smart instinct. Spend 10 minutes first: run the Vocabulario flip-cards and skim Lesson 2.03 (the boot rule). Then come back &mdash; the activities will still be here.">Almost &mdash; need a quick review</button>
-                <button data-response="No problem, and no rush. The prep list further down points you to exactly what to revisit. Do that first; there's no clock forcing you to submit today.">Not yet &mdash; I'll prepare first</button>
+                <button data-response="Totally normal &mdash; the ie/ue glide is Part 2. Keep both vowels short and let them blend into one syllable: &laquo;kye-ro&raquo;, &laquo;pwe-do&raquo;.">Blending vowels like ie / ue</button>
+                <button data-response="Great to name it. The Spanish j (Part 3) is a breathy sound from the back of the throat &mdash; nothing like the English j.">The j sound (jard&iacute;n)</button>
+                <button data-response="Recording yourself feels strange for everyone at first. You'll rehearse aloud through the whole lesson before the mic ever turns on.">Speaking when no one's there</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
         </div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 2 &middot; EVALUACI&Oacute;N 1: VOCABULARY CHECK <span class="pill-time">13 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Vocabulary Check &middot; 25 points &middot; 1 attempt</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This one is <strong>mostly by ear</strong>. You'll hear a Spanish word &mdash; a room, a piece of furniture, or a chore from this module &mdash; and match it to its meaning or spelling. A few items ask you to recognize the written word instead. Everything comes from Lessons&nbsp;2.01&ndash;2.05.</p>
-        <table class="gtable">
-            <thead><tr><th>Detail</th><th>What to know</th></tr></thead>
-            <tbody>
-                <tr><td>Points</td><td>25</td></tr>
-                <tr><td>Attempts</td><td><strong>1</strong> &mdash; this is a one-shot check, so prepare before you open it.</td></tr>
-                <tr><td>Format</td><td>Listening &amp; matching (turn your sound on); a few reading items.</td></tr>
-                <tr><td>Covers</td><td>Rooms (<em>la cocina, el dormitorio, el ba&ntilde;o, la sala, el comedor, el jard&iacute;n, la habitaci&oacute;n, la escalera</em>), furniture (<em>la cama, la mesa, la silla, la puerta, la ventana, el mueble</em>), chores (<em>limpiar, ordenar</em>), and <em>arriba / abajo</em>.</td></tr>
-            </tbody>
-        </table>
-        <p style="font-size:14px;color:#6b7a99;margin:4px 0 12px;">Tip: use earbuds or headphones if you can, and find a quiet minute &mdash; you get one attempt.</p>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To take the Vocabulary Check:</strong> return to <strong>Module 2</strong> in Canvas and open the <strong>Vocabulary Check</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 3 &middot; EVALUACI&Oacute;N 2: LENGUA EN ACCI&Oacute;N <span class="pill-time">17 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Lengua en acci&oacute;n &middot; 20 points &middot; structured writing</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here you <em>produce</em> the language. You'll write a few short, guided sentences about your home and what you do there &mdash; deliberately using the stem-changing verbs. The prompts tell you exactly what each sentence should do; you supply the Spanish.</p>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">The single idea being graded is the one you've practiced all week:</p>
-        <div class="contrast">
-            <div class="col ser">
-                <h4>INSIDE THE BOOT &mdash; changes</h4>
-                <div style="font-size:15px;line-height:1.6;color:#1a2340;">yo / t&uacute; / &eacute;l&middot;ella / ellos&middot;ellas.<br><br>
-                <em>Yo <strong>quiero</strong> limpiar.</em><br>
-                <em>Mi hermano <strong>duerme</strong> mucho.</em></div>
-            </div>
-            <div class="col estar">
-                <h4>NOSOTROS &mdash; no change</h4>
-                <div style="font-size:15px;line-height:1.6;color:#1a2340;">the &ldquo;we&rdquo; form only.<br><br>
-                <em>Nosotros <strong>queremos</strong>&hellip;</em><br>
-                <em>Nosotros <strong>dormimos</strong>&hellip;</em></div>
-            </div>
-        </div>
-        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:2px 0 12px;"><strong>Before you open it, hear a model one more time.</strong> This is the kind of sentence your writing should echo &mdash; a boot verb doing real work:</p>
+    <!-- PART 2 · Diphthongs -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">II</span><span>LOS DIPTONGOS IE / UE</span><span class="pill-time">11 min</span></div>
+        <h3 class="sg-h3">Two vowels, one smooth syllable</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">A <em>diptongo</em> (diphthong) is two vowels blended into a single glide. In the boot verbs, the stem change creates one: <em>quiero</em> = &ldquo;kye-ro&rdquo;, <em>puedo</em> = &ldquo;pwe-do.&rdquo; Don't say the two vowels separately (&ldquo;ee-eh&rdquo;) &mdash; slide through them. Click <strong>&#128266;</strong> and echo each one:</p>
         <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-quiero.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo quiero&hellip;</span><span class="v-en">&laquo;Yo quiero una casa con jard&iacute;n.&raquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-quiero.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">quiero</span><span class="v-en"><em>ie</em> glide &rarr; &ldquo;KYE-ro&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-puedes.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">puedes</span><span class="v-en"><em>ue</em> glide &rarr; &ldquo;PWE-des&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-duerme.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">duerme</span><span class="v-en"><em>ue</em> glide &rarr; &ldquo;DWER-me&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-empieza.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">empieza</span><span class="v-en"><em>ie</em> glide &rarr; &ldquo;em-PYE-sa&rdquo;</span></li>
         </ul>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To complete Lengua en acci&oacute;n:</strong> return to <strong>Module 2</strong> in Canvas and open the <strong>Lengua en acci&oacute;n</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
+        <p style="font-size:15px;color:#6b7a99;margin:6px 0 0;">Notice: the <em>nosotros</em> forms (<em>queremos, dormimos</em>) have <strong>no</strong> diphthong &mdash; because the stem doesn't change, there's no glide to make.</p>
         <div class="opt-strip">
             <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Warm up before you write: replay Catalina's short reading from Lesson&nbsp;2.05 and count how many verbs change their stem versus stay regular. Then borrow her rhythm in your own sentences. <button class="say" data-audio="passage/s2m2-chile.mp3" aria-label="Escuchar la lectura de Catalina" style="margin-left:6px;">&#128266;</button></div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Say each pair back to back to feel the difference: <em>queremos &rarr; quiero</em>, <em>podemos &rarr; puedo</em>, <em>dormimos &rarr; duermo</em>. Recording yourself on your phone and playing it back is the fastest way to hear whether your glide is smooth.</div>
         </div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129513; PART 4 &middot; C&Oacute;MO PREPARARTE <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Not sure yet? Prepare in five minutes</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">If your readiness check said &ldquo;almost&rdquo; or &ldquo;not yet,&rdquo; do these before you open either activity &mdash; in this order:</p>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Run the flip-cards.</strong> Open the <a href="vocabulario-m02.html" style="color:#1B6A94;font-weight:600;">Vocabulario del M&oacute;dulo 2 study page</a> and go through every room, piece of furniture, and chore until you know each one by ear. (Your best prep for the Vocabulary Check.)</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Re-read the rule.</strong> Skim <a href="lesson-2-03.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;2.03</a> (the boot verbs) and <a href="lesson-2-04.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;2.04</a> (the guided writing you already practiced) &mdash; your best prep for Lengua en acci&oacute;n.</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Need the whole picture?</strong> Lessons&nbsp;<a href="lesson-2-01.html" style="color:#1B6A94;font-weight:600;">2.01</a>, <a href="lesson-2-02.html" style="color:#1B6A94;font-weight:600;">2.02</a>, <a href="lesson-2-05.html" style="color:#1B6A94;font-weight:600;">2.05</a>, and <a href="lesson-2-06.html" style="color:#1B6A94;font-weight:600;">2.06</a> are all still open &mdash; revisit any of them.</div>
-        </div>
+    <!-- PART 3 · The j -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">III</span><span>LA JOTA (J)</span><span class="pill-time">9 min</span></div>
+        <h3 class="sg-h3">A breath from the back of the throat</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">The Spanish <strong>j</strong> (<em>la jota</em>) is nothing like the English &ldquo;j&rdquo; in <em>jam</em>. It's a soft, breathy <em>h</em>-sound made at the back of the throat &mdash; like clearing it gently. You already use it in two module words:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-jardin.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el jard&iacute;n</span><span class="v-en">&ldquo;har-DEEN&rdquo; &mdash; breathy j</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-juega.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">juega</span><span class="v-en">&ldquo;HWE-ga&rdquo; &mdash; j + the ue glide together</span></li>
+        </ul>
+        <p style="font-size:15px;color:#6b7a99;margin:6px 0 0;">The letter <strong>g</strong> before <em>e</em> or <em>i</em> makes the same throat sound (<em>inteli<span class="pron">g</span>ente</em>) &mdash; but before <em>a, o, u</em> it's a hard &ldquo;g&rdquo; (<em>jue<span class="pron">g</span>a, ami<span class="pron">g</span>o</em>).</p>
+    </div>
 
-        <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">One last self-test before you commit. Fill the blank aloud: <em>&ldquo;Yo&nbsp;___&nbsp;ordenar mi habitaci&oacute;n, pero nosotros&nbsp;___&nbsp;dormir primero.&rdquo;</em> (querer&hellip;) Then reveal.</p>
-            <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Yo <em>quiero</em> ordenar mi habitaci&oacute;n, pero nosotros <em>queremos</em> dormir primero.</strong> <em>Yo</em> &rarr; boot form <em>quiero</em>; <em>nosotros</em> &rarr; <em>queremos</em> (no change). If that came easily, you're ready.</div>
+    <!-- PART 4 · The c -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">IV</span><span>LAS DOS &ldquo;C&rdquo;</span><span class="pill-time">5 min</span></div>
+        <h3 class="sg-h3">One letter, two sounds</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">The word <strong>cocina</strong> shows both sounds of <em>c</em> in one word. Before <em>a, o, u</em> the <em>c</em> is a hard &ldquo;k&rdquo;; before <em>e, i</em> it softens to &ldquo;s&rdquo; (in Latin America).</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-cocina.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la cocina</span><span class="v-en">&ldquo;ko&rdquo; (hard) + &ldquo;see&rdquo; (soft) &rarr; ko-SEE-na</span></li>
+        </ul>
+        <div style="margin-top:12px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">How would you say the <em>c</em> in <strong>cama</strong> (bed) &mdash; hard or soft? Decide, then reveal.</p>
+            <button class="reveal-btn" data-mw-open>Reveal answer</button>
+            <div class="reveal-body"><strong>Hard &ldquo;k&rdquo;</strong> &mdash; <em>c</em> before <em>a</em> is always hard: &ldquo;KA-ma.&rdquo; The <em>c</em> only softens before <em>e</em> or <em>i</em> (as in <em>co-<span class="pron">ci</span>-na</em>).</div>
         </div>
     </div>
 
     <div class="culture-box">
-        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127956; CULTURA A FONDO &middot; CHILE</div>
-        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Las empanadas y el asado</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Ask a Chilean about home cooking and two things come up fast: the <strong>empanada de pino</strong> &mdash; a baked pastry filled with beef, onion, a slice of egg, and an olive &mdash; and the weekend <strong>asado</strong>, a family barbecue in the patio or garden. Food anchors life in <em>la casa</em>: someone <em>quiere</em> cook, someone <em>puede</em> help, and everyone <em>pide</em> a second empanada. Good preparation for a graded day &mdash; do the work, then reward yourself. <em>&iexcl;Buen provecho!</em></p>
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; CHILE</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Hablar r&aacute;pido, hablar claro</strong> (Speaking fast, speaking clearly)</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Chileans are famous for speaking quickly and dropping the final <em>s</em> in casual speech (<em>&iquest;c&oacute;mo est&aacute;i?</em> for <em>&iquest;c&oacute;mo est&aacute;s?</em>). As a learner you should do the opposite &mdash; speak a little slowly and pronounce every sound. Clear, unhurried Spanish is understood everywhere, and it's exactly what earns full marks on today's recording.</p>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127956; CULTURA A FONDO &middot; CHILE</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Gabriela Mistral, la voz del sur</strong> (Gabriela Mistral, the voice of the South)</div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Chile has produced two Nobel Prize-winning poets. The first was <strong>Gabriela Mistral</strong>, a rural schoolteacher from the Elqui Valley who in 1945 became the first Latin American woman to win the Nobel Prize in Literature. Her poems about children, home, and the land are read across the Spanish-speaking world &mdash; a reminder that a clear, honest voice, carefully used, can reach very far. Speak yours with care today.</p>
+    </div>
+
+    <!-- PART 5 · Tarea oral -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">V</span><span>TAREA ORAL</span><span class="pill-time">10 min</span></div>
+        <h3 class="sg-h3">Your graded recording (15 points)</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Record yourself <strong>describing your home and the chores you do</strong>. Say what rooms your home has, and use <strong>at least two stem-changing verbs</strong> (for example <em>querer, poder, preferir, jugar</em>) to say what you and your family want, can, or prefer to do. Aim for 30&ndash;45 seconds.</p>
+
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px 0;">
+            <div style="font-size:13px;color:#1B6A94;letter-spacing:.3px;margin-bottom:8px;">&#128221; A MODEL (yours must be true for you)</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.7;margin:0;">
+            &laquo;Hola. En mi casa hay una cocina, una sala y dos dormitorios. Todos los d&iacute;as yo <strong>quiero</strong> ordenar mi habitaci&oacute;n. Los s&aacute;bados nosotros <strong>limpiamos</strong> juntos, y yo <strong>prefiero</strong> limpiar la cocina.&raquo;<br>
+            <span style="font-size:14px;color:#6b7a99;">(That's a home description plus two boot verbs &mdash; <em>quiero</em> and <em>prefiero</em> &mdash; and a <em>nosotros</em> chore.)</span></p>
+        </div>
+
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Need to hear the target verbs once more before recording? Replay these models:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-quiero.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo quiero&hellip;</span><span class="v-en">querer &mdash; e&rarr;ie</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-puedes.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">&iquest;Puedes&hellip;?</span><span class="v-en">poder &mdash; o&rarr;ue</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m2-juega.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Ella juega&hellip;</span><span class="v-en">jugar &mdash; u&rarr;ue</span></li>
+        </ul>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ONE LAST CHECK &middot; before you record</div>
+            <div class="widget-question">In your recording, "we clean together" should be&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="true">nosotros limpiamos juntos</button>
+                <button data-correct="false">nosotros limpiemos juntos</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="background:#FBF6EA;border:1px solid #E3D3A8;border-left:5px solid #C7922C;border-radius:8px;padding:14px 18px;margin:14px 0 12px 0;">
+            <div style="font-size:13px;color:#8a6a12;letter-spacing:.3px;margin-bottom:8px;">&#128161; CONSEJO &middot; plan before you record</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">If it helps you, <strong>write out your sentences first</strong> and read them aloud a couple of times before you record. Many students sound calmer and clearer once they&rsquo;ve drafted a quick script &mdash; reading from your notes is completely fine. Just aim to sound <em>natural</em>, not rushed.</p>
+        </div>
+        <div style="text-align:center;margin:18px 0 8px;">
+            <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To record your Tarea oral:</strong> return to <strong>Module 2</strong> in Canvas and open the <strong>Tarea oral</strong> &mdash; it is in the module&rsquo;s item list, below the eight lessons.</div>
+            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Record directly in Canvas (or upload an audio/video file). 15 points.</div>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 20px 0 8px 0;">How it's scored &mdash; the rubric</h3>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Three criteria, 5 points each, 15 total. Read it <em>before</em> you record so you know what earns full marks.</p>
+        <table class="gtable">
+            <thead><tr><th>Criterion</th><th>What earns 5 / 5</th><th>Pts</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Task Completion</strong></td><td>Describes the home (rooms) <em>and</em> chores, and uses at least two stem-changing verbs; true about you.</td><td>5</td></tr>
+                <tr><td><strong>Language Accuracy</strong></td><td>Correct stem changes (and the <em>nosotros</em> exception), correct forms and vocabulary.</td><td>5</td></tr>
+                <tr><td><strong>Pronunciation &amp; Fluency</strong></td><td>Clean <em>ie/ue</em> glides, a proper Spanish <em>j</em>, steady pace, understandable throughout.</td><td>5</td></tr>
+            </tbody>
+        </table>
+
+        <div style="background:#EAF6EE;border:1px solid #2A9D5C;border-left:5px solid #2A9D5C;border-radius:8px;padding:14px 18px;margin:14px 0 0;">
+            <div style="font-size:11px;color:#1A6B3D;letter-spacing:.4px;margin-bottom:8px;">&#9989; SELF-REVIEW &middot; check these before you submit</div>
+            <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 0 1.2rem;">
+                <li>Did I name at least two <strong>rooms</strong> of my home?</li>
+                <li>Did I use at least <strong>two stem-changing verbs</strong> (<em>quiero, puedo, prefiero, juego&hellip;</em>)?</li>
+                <li>If I used <em>nosotros</em>, did I keep the stem <strong>unchanged</strong> (<em>queremos, limpiamos</em>)?</li>
+                <li>Are my <strong>ie / ue glides</strong> smooth, and my <strong>j</strong> breathy?</li>
+                <li>Did I <strong>play my recording back once</strong> and re-record if needed before submitting?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PART 3 · Repaso -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">VI</span><span>REPASO</span><span class="pill-time">14 min</span></div>
+        <h3 class="sg-h3"><em>Repaso</em> &mdash; write it, then conjugate it</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 4px 0;">Tomorrow is the <strong>Grammar Quiz</strong>. Today you review by <strong>writing</strong>, not by recognising &mdash; nothing is shown to you here, you produce it. <strong>None of this is graded.</strong></p>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#9998; A &middot; VOCABULARIO</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Write each word in Spanish, <strong>with its article</strong> where it has one &mdash; the same way it appears on your flip cards.</p>
+            <div class="rep-row"><span class="rep-cue">bathroom</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el ba&ntilde;o" aria-label="bathroom"></div>
+            <div class="rep-row"><span class="rep-cue">garden / yard</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el jard&iacute;n" aria-label="garden / yard"></div>
+            <div class="rep-row"><span class="rep-cue">room / bedroom</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la habitaci&oacute;n" aria-label="room / bedroom"></div>
+            <div class="rep-row"><span class="rep-cue">kitchen</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la cocina" aria-label="kitchen"></div>
+            <div class="rep-row"><span class="rep-cue">bedroom</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el dormitorio" aria-label="bedroom"></div>
+            <div class="rep-row"><span class="rep-cue">living room</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la sala" aria-label="living room"></div>
+            <div class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">Ü</button></div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">Accents are part of the word: <em>jard&iacute;n</em> is not <em>jardin</em>. Click a letter above to add it where your cursor is.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#128203; B &middot; CONJUGACI&Oacute;N</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Fill in every form. Complete the whole table before you check &mdash; the point is to see the full set at once.</p>
+            <table class="conj-table"><thead><tr><th>Subject</th><th>querer</th></tr></thead><tbody>
+                <tr><td class="subj">yo</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="quiero" aria-label="yo"></td></tr>
+                <tr><td class="subj">t&uacute;</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="quieres" aria-label="t&uacute;"></td></tr>
+                <tr><td class="subj">usted / &eacute;l / ella</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="quiere" aria-label="usted / &eacute;l / ella"></td></tr>
+                <tr><td class="subj">nosotros/as</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="queremos" aria-label="nosotros/as"></td></tr>
+                <tr><td class="subj">ustedes / ellos / ellas</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="quieren" aria-label="ustedes / ellos / ellas"></td></tr>
+            </tbody></table>
+            <p style="font-size:13.5px;color:#6b7a99;margin:6px 0 8px 0;">A stem-changer: <strong>e&rarr;ie</strong> in every form except <em>nosotros</em>. That is the whole pattern.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">8</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 2.08</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Next is a <em>fon&eacute;tica</em> clinic and your <strong>Tarea oral</strong> (15 pts) &mdash; you'll <em>speak</em> about your home and chores, not just write. Finish today's two activities first; you can always come back to prepare more before you submit.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">The last day of M&oacute;dulo 2: a short listening warm-up, then the <strong>Grammar Quiz</strong> (stem-changing verbs, 30 pts, 2 attempts) and an &ldquo;I can&hellip;&rdquo; close before M&oacute;dulo 3. You've had four encounters with the boot verbs &mdash; trust them.</div>
             </div>
         </div>
     </div>
 
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
-        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas once you've <em>opened</em> both activities. (Marking this page done records that you reached the assessment hub &mdash; your grades come from the two activities themselves, submitted separately in Canvas.)</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the Tarea oral</strong> &mdash; the page being marked done and the recording being turned in are two separate steps.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;T&Uacute; PUEDES&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Six days of spaced practice were building to exactly this. Trust the work you've done &mdash; the home words and the boot verbs &mdash; and show it. <em>&iexcl;Mucha suerte!</em></p>
+    <div class="sg-card">
+        <div class="sg-kicker">&iexcl;LO LOGRASTE&#33; (You did it!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just described your home on the record &mdash; smooth glides, a real Spanish <em>j</em>, and boot verbs doing their work. That's a bigger step than it feels like. <em>&iexcl;Buen trabajo, y hasta ma&ntilde;ana!</em> (Good work, and see you tomorrow!)</p>
     </div>
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
-    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.07 &middot; Centro de evaluaciones</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 2.07 &middot; Fon&eacute;tica + Tarea oral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Pendants: Armorial of the Golden Fleece (c. 1435) and Tumbo A of Santiago Cathedral (13th c.) &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
@@ -270,8 +464,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — you’re ready.'
-        : 'Not quite — review the boot rule once more before you open the graded item.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! (Correct!) ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — nosotros keeps the stem, no change.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — nosotros does not change the stem: limpiamos, not limpiemos.');
       efb.classList.add('show');
       return;
     }
@@ -307,7 +501,47 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<!-- mywork -->
+<script src="../../my-work.js"></script>
 </body>
 </html>
