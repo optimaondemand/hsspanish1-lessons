@@ -9,3 +9,6 @@ Paintings and manuscript images (all public domain, via Wikimedia Commons):
 - Pendants (img/siglo/pendon-*.svg): the kings as mounted knights from the *Grand Armorial équestre de la Toison d'or*, Flanders, c. 1435 (Bibliothèque de l'Arsenal, ms 4790; Castile, Aragón: public domain; Navarre: CC0 photograph) and the *Tumbo A* of Santiago de Compostela Cathedral, 13th century (León: public domain). Pendant frame, rod and tassels drawn for this course.
 
 Drawn for this course (Optima Academy Online): artesonado ceiling band, azulejo tiles, bell, cross of Santiago, arches, title lettering (IM Fell English, SIL Open Font License).
+
+Vocabulario flashcard paintings (added 2026-11-04; one per word, on the card back with its credit):
+- s2/m01/img/vocab/*.jpg (15) and s2/m02/img/vocab/*.jpg (18): public-domain paintings and prints via Wikimedia Commons; one exception, Joaquín Sorolla, *Jardín de la Casa Sorolla* (photo: Museo Sorolla, CC BY-SA 4.0) — s2/m02/img/vocab/el-jardin.jpg. Full list with sources: each Vocabulario page, "Las pinturas".

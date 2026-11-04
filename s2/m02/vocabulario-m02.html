@@ -147,7 +147,19 @@
   .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
   .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
   .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
-  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; }
+  /* flashcards with a painting on the back (Vocabulario) */
+  .flip-grid.has-art { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+  .flip-grid.has-art .flip-inner { min-height: 300px; }
+  .flip-grid.has-art .flip-back { justify-content: flex-start; gap: 6px; padding: 10px 10px 8px; }
+  .flip-grid.has-art .flip-back:not(:has(.flip-pic)) { justify-content: center; }
+  .flip-pic { position: relative; display: block; width: 100%; }
+  .flip-art { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 3px solid #d7ad4c; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+  .flip-arrow { position: absolute; top: 8px; right: 8px; width: 38px; height: 38px; border-radius: 50%; background: var(--gold); color: #fff; font-size: 26px; font-weight: 700;
+      line-height: 38px; text-align: center; box-shadow: 0 0 0 2px #fff, 0 2px 6px rgba(0,0,0,.4); }
+  .flip-credit { font-size: 11.5px; line-height: 1.3; color: #f3dfd9; font-style: italic; }
+  .flip-credit em { font-style: normal; }
+  .sg-credits { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink); } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
   .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
   .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
   .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
@@ -222,53 +234,53 @@
         <div class="sg-kicker">SECCI&Oacute;N A &middot; LOS CUARTOS <span class="pill-time">rooms</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Los cuartos de la casa &mdash; the rooms</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">The spaces of a home. Say each one, then place it: <em>Estoy en la cocina.</em></p>
-        <div class="flip-grid">
+        <div class="flip-grid has-art">
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la cocina, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-cocina.mp3" aria-label="Escuchar la cocina">&#128266;</button><span class="flip-es">la cocina</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">kitchen</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-cocina.jpg" alt="A kitchen: a young cook at a table with a mortar, fish and eggs" loading="lazy"></span><span class="flip-en">kitchen</span><span class="flip-credit">Diego Vel&aacute;zquez, <em>Kitchen Scene with Christ in the House of Martha and Mary</em>, c. 1618</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el dormitorio, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-dormitorio.mp3" aria-label="Escuchar el dormitorio">&#128266;</button><span class="flip-es">el dormitorio</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">bedroom</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-dormitorio.jpg" alt="A bedroom with a wooden bed, two chairs, a small table and a window" loading="lazy"></span><span class="flip-en">bedroom</span><span class="flip-credit">Vincent van Gogh, <em>The Bedroom</em>, 1889</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el ba&ntilde;o, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-bano.mp3" aria-label="Escuchar el ba&ntilde;o">&#128266;</button><span class="flip-es">el ba&ntilde;o</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">bathroom</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-bano.jpg" alt="A washstand with a basin, a jug and a towel" loading="lazy"></span><span class="flip-en">bathroom</span><span class="flip-credit">Harold Gilman, <em>Interior with a Washstand</em>, c. 1914</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la sala, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-sala.mp3" aria-label="Escuchar la sala">&#128266;</button><span class="flip-es">la sala</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">living room</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-sala.jpg" alt="A large sitting room where guests talk and play music" loading="lazy"></span><span class="flip-en">living room</span><span class="flip-credit">Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em>, 1854</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el comedor, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-comedor.mp3" aria-label="Escuchar el comedor">&#128266;</button><span class="flip-es">el comedor</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">dining room</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-comedor.jpg" alt="A dining room: a family at a table laid for lunch" loading="lazy"></span><span class="flip-en">dining room</span><span class="flip-credit">Claude Monet, <em>The Luncheon</em>, 1868</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el jard&iacute;n, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-jardin.mp3" aria-label="Escuchar el jard&iacute;n">&#128266;</button><span class="flip-es">el jard&iacute;n</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">garden / yard</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-jardin.jpg" alt="A garden with flowers, hedges and a fountain" loading="lazy"></span><span class="flip-en">garden / yard</span><span class="flip-credit">Joaqu&iacute;n Sorolla, <em>Jard&iacute;n de la Casa Sorolla</em>, 1918&ndash;19 (photo: Museo Sorolla, CC BY-SA 4.0)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la habitaci&oacute;n, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-habitacion.mp3" aria-label="Escuchar la habitaci&oacute;n">&#128266;</button><span class="flip-es">la habitaci&oacute;n</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">room / bedroom</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-habitacion.jpg" alt="A room with an open door into the next room" loading="lazy"></span><span class="flip-en">room / bedroom</span><span class="flip-credit">Vilhelm Hammersh&oslash;i, <em>Interior, Strandgade 30</em>, 1901</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la escalera, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-escalera.mp3" aria-label="Escuchar la escalera">&#128266;</button><span class="flip-es">la escalera</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">staircase / stairs</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-escalera.jpg" alt="A woman walking down a staircase" loading="lazy"></span><span class="flip-en">staircase / stairs</span><span class="flip-credit">Willem Linnig the Elder, <em>A Woman Descending a Staircase</em>, 1859</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
         </div>
@@ -279,41 +291,41 @@
         <div class="sg-kicker">SECCI&Oacute;N B &middot; LOS MUEBLES <span class="pill-time">furniture</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Los muebles &mdash; furniture</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">Things inside the rooms. Try: <em>En el dormitorio hay una cama.</em></p>
-        <div class="flip-grid">
+        <div class="flip-grid has-art">
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la cama, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-cama.mp3" aria-label="Escuchar la cama">&#128266;</button><span class="flip-es">la cama</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">bed</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-cama.jpg" alt="A bed with a red cover, someone asleep in it" loading="lazy"></span><span class="flip-en">bed</span><span class="flip-credit">Vittore Carpaccio, <em>The Dream of Saint Ursula</em>, 1495</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la mesa, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-mesa.mp3" aria-label="Escuchar la mesa">&#128266;</button><span class="flip-es">la mesa</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">table</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-mesa.jpg" alt="A table with a white cloth, bread, fruit and a melon" loading="lazy"></span><span class="flip-en">table</span><span class="flip-credit">Juan van der Hamen, <em>Serving Table</em>, 1631</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la silla, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-silla.mp3" aria-label="Escuchar la silla">&#128266;</button><span class="flip-es">la silla</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">chair</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-silla.jpg" alt="A wooden chair with a straw seat" loading="lazy"></span><span class="flip-en">chair</span><span class="flip-credit">Vincent van Gogh, <em>Van Gogh&rsquo;s Chair</em>, 1888</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la puerta, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-puerta.mp3" aria-label="Escuchar la puerta">&#128266;</button><span class="flip-es">la puerta</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">door</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-puerta.jpg" alt="Two white doors standing open" loading="lazy"></span><span class="flip-en">door</span><span class="flip-credit">Vilhelm Hammersh&oslash;i, <em>White Doors, Strandgade 25</em>, 1913</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la ventana, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-ventana.mp3" aria-label="Escuchar la ventana">&#128266;</button><span class="flip-es">la ventana</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">window</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-ventana.jpg" alt="A woman looking out of an open window" loading="lazy"></span><span class="flip-en">window</span><span class="flip-credit">Caspar David Friedrich, <em>Woman at a Window</em>, 1822</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el mueble, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-mueble.mp3" aria-label="Escuchar el mueble">&#128266;</button><span class="flip-es">el mueble</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">piece of furniture</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-mueble.jpg" alt="Furniture: a chest of drawers and a chair" loading="lazy"></span><span class="flip-en">piece of furniture</span><span class="flip-credit">Vilhelm Hammersh&oslash;i, <em>Interior with a Bust</em>, c. 1900</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
         </div>
@@ -324,29 +336,29 @@
         <div class="sg-kicker">SECCI&Oacute;N C &middot; QUEHACERES Y UBICACI&Oacute;N <span class="pill-time">chores &amp; up/down</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Quehaceres y ubicaci&oacute;n &mdash; chores &amp; where</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">Two chore verbs plus the words for up and down. Try: <em>Limpio la cocina abajo.</em></p>
-        <div class="flip-grid">
+        <div class="flip-grid has-art">
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: limpiar, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-limpiar.mp3" aria-label="Escuchar limpiar">&#128266;</button><span class="flip-es">limpiar</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">to clean</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/limpiar.jpg" alt="A woman sweeping the floor with a broom" loading="lazy"></span><span class="flip-en">to clean</span><span class="flip-credit">&Eacute;douard Vuillard, <em>Woman Sweeping</em>, 1899&ndash;1900</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: ordenar, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-ordenar.mp3" aria-label="Escuchar ordenar">&#128266;</button><span class="flip-es">ordenar</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">to tidy up</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/ordenar.jpg" alt="Two women putting folded linen away in a cupboard" loading="lazy"></span><span class="flip-en">to tidy up</span><span class="flip-credit">Pieter de Hooch, <em>Interior with Women beside a Linen Cupboard</em>, 1663</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: arriba, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-arriba.mp3" aria-label="Escuchar arriba">&#128266;</button><span class="flip-es">arriba</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">upstairs / up</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/arriba.jpg" alt="A staircase going up, with an arrow pointing up" loading="lazy"><span class="flip-arrow" aria-hidden="true">&uarr;</span></span><span class="flip-en">upstairs / up</span><span class="flip-credit">Marcus Gr&oslash;nvold, <em>Staircase in the Rosendal Manor</em>, 1903</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: abajo, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-abajo.mp3" aria-label="Escuchar abajo">&#128266;</button><span class="flip-es">abajo</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">downstairs / down</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/abajo.jpg" alt="The bottom of a staircase, where a cat sits, with an arrow pointing down" loading="lazy"><span class="flip-arrow" aria-hidden="true">&darr;</span></span><span class="flip-en">downstairs / down</span><span class="flip-credit">Marcus Gr&oslash;nvold, <em>Staircase in the Rosendal Manor</em>, 1903</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
         </div>
@@ -356,6 +368,7 @@
         </div>
     </div>
 
+    <div class="sg-card"><div class="sg-kicker">Las pinturas &middot; The paintings on the cards</div><p style="font-size:15px;color:#5f554a;margin:0 0 8px">Each card shows its word in a painting. Flip a card, look at the picture, and say the word again: a word tied to a picture is easier to remember.</p><ul class="sg-credits"><li>Diego Vel&aacute;zquez, <em>Kitchen Scene with Christ in the House of Martha and Mary</em>, c. 1618</li><li>Vincent van Gogh, <em>The Bedroom</em>, 1889</li><li>Harold Gilman, <em>Interior with a Washstand</em>, c. 1914</li><li>Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em>, 1854</li><li>Claude Monet, <em>The Luncheon</em>, 1868</li><li>Joaqu&iacute;n Sorolla, <em>Jard&iacute;n de la Casa Sorolla</em>, 1918&ndash;19 (photo: Museo Sorolla, CC BY-SA 4.0)</li><li>Vilhelm Hammersh&oslash;i, <em>Interior, Strandgade 30</em>, 1901</li><li>Willem Linnig the Elder, <em>A Woman Descending a Staircase</em>, 1859</li><li>Vittore Carpaccio, <em>The Dream of Saint Ursula</em>, 1495</li><li>Juan van der Hamen, <em>Serving Table</em>, 1631</li><li>Vincent van Gogh, <em>Van Gogh&rsquo;s Chair</em>, 1888</li><li>Vilhelm Hammersh&oslash;i, <em>White Doors, Strandgade 25</em>, 1913</li><li>Caspar David Friedrich, <em>Woman at a Window</em>, 1822</li><li>Vilhelm Hammersh&oslash;i, <em>Interior with a Bust</em>, c. 1900</li><li>&Eacute;douard Vuillard, <em>Woman Sweeping</em>, 1899&ndash;1900</li><li>Pieter de Hooch, <em>Interior with Women beside a Linen Cupboard</em>, 1663</li><li>Marcus Gr&oslash;nvold, <em>Staircase in the Rosendal Manor</em>, 1903</li></ul><p style="font-size:12.5px;color:#857a68;margin:8px 0 0">All public domain, via Wikimedia Commons, except where a credit names a photo licence (CC BY-SA).</p></div>
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
         <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, with the English covered, play five &#128266; buttons and say each meaning out loud before flipping &mdash; if you got them by ear, you're ready for the Vocabulary Check.</div>
