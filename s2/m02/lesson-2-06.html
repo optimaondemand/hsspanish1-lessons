@@ -105,6 +105,7 @@
   .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
   .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
   .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
+  .v-pic { flex: 0 0 auto; width: 88px; height: 66px; object-fit: cover; border-radius: 3px; border: 2px solid #d7ad4c; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
   .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
   .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
   .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
@@ -133,7 +134,19 @@
   .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
   .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
   .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
-  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; }
+  /* flashcards with a painting on the back (Vocabulario) */
+  .flip-grid.has-art { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+  .flip-grid.has-art .flip-inner { min-height: 300px; }
+  .flip-grid.has-art .flip-back { justify-content: flex-start; gap: 6px; padding: 10px 10px 8px; }
+  .flip-grid.has-art .flip-back:not(:has(.flip-pic)) { justify-content: center; }
+  .flip-pic { position: relative; display: block; width: 100%; }
+  .flip-art { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 3px solid #d7ad4c; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+  .flip-arrow { position: absolute; top: 8px; right: 8px; width: 38px; height: 38px; border-radius: 50%; background: var(--gold); color: #fff; font-size: 26px; font-weight: 700;
+      line-height: 38px; text-align: center; box-shadow: 0 0 0 2px #fff, 0 2px 6px rgba(0,0,0,.4); }
+  .flip-credit { font-size: 11.5px; line-height: 1.3; color: #f3dfd9; font-style: italic; }
+  .flip-credit em { font-style: normal; }
+  .sg-credits { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink); } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
   .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
   .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
   .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
