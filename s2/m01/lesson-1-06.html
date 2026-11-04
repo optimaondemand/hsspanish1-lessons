@@ -55,296 +55,270 @@
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m1-hero.jpg) center 50% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-pend l" aria-hidden="true"><img src="../../img/siglo/pendon-castilla.svg" alt=""><img src="../../img/siglo/pendon-leon.svg" alt=""></div><div class="sg-pend r" aria-hidden="true"><img src="../../img/siglo/pendon-aragon.svg" alt=""><img src="../../img/siglo/pendon-navarra.svg" alt=""></div><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 1 &middot; El tiempo y los planes</div>
+    <div class="sg-where">Lesson 1.06 &middot; Day 6 of 8</div>
+    <h1 class="sg-title">Centro de evaluaciones</h1>
+    <div class="sg-sub">Show What You Know &middot; Assessment hub &middot; about 50 minutes</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Emeric Essex Vidal, <em>Frente a la Aduana, Buenos Aires</em> (<em>The Custom-House at Buenos Ayres</em>), 1817</div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 1</div>
-        <div style="font-size: 12px; color: #666;">El tiempo y los planes</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.06 &middot; Day 6 of 10</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Repaso y espiral</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Weather &amp; Plans</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.06 &middot; Week 2 begins</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Repaso y espiral &mdash; Retrieval Before the Quiz</div>
-        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+    <div class="sg-card">
+        <div class="sg-kicker">TODAY IS DIFFERENT</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've done the learning. Today you <em>show</em> it &mdash; the first graded work of the module lives here.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a launch page, not a lesson. Lessons&nbsp;1.01&ndash;1.05 built the habit: weather, seasons, the verb <em>ir</em>, and <em>ir a</em> + a verb, all spaced out and recycled with your Semester-1 tools. Now two graded activities let you demonstrate it. Read the briefing, do the readiness check, then open each activity <strong>in Canvas</strong> when you're ready.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
-        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>pulling it back out of your head</em>, where real learning happens.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your fourth meeting with <em>ir a</em>, and the first day of Week 2. Today you <strong>retrieve</strong>: an ear-quiz on the weather and seasons, a short production round, and a big <strong>spiral</strong> that lines up your Semester-1 verbs &mdash; <em>ser, estar, tener, gustar</em> &mdash; next to this week's <em>ir a</em> + verb. Choosing the right tool from all of them is exactly what the Day-10 quiz will ask.</div>
-    </div>
-
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT'S DUE TODAY</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> recognize spoken weather and season words and match them to meaning.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Vocabulary Check</strong> &mdash; 25 points, 1 attempt, mostly by ear.</div>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> choose among <em>ser, estar, tener, gustar,</em> and <em>ir a</em> depending on the job the sentence does.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Lengua en acci&oacute;n</strong> &mdash; 20 points, a short structured writing using <em>ir a</em> + a verb.</div>
         </div>
     </div>
 
-    <!-- PART 1 -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Warm up your ear</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the ear-quiz, remind your brain what these sound like. Click each <strong>&#128266;</strong>, say it back, and picture its meaning &mdash; no reading the English until after you've guessed.</p>
-        <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-hace-sol.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">hace sol</span><span class="v-en">it's sunny</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-primavera.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la primavera</span><span class="v-en">spring</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-invierno.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el invierno</span><span class="v-en">winter</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-playa.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la playa</span><span class="v-en">the beach</span></li>
-        </ul>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">I</span><span>&iquest;EST&Aacute;S LISTO/A&#63;</span><span class="pill-time">5 min</span></div>
+        <h3 class="sg-h3">A quick readiness check-in</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before you open anything graded, be honest with yourself. There's no penalty for waiting &mdash; the async window is open, and a little more review now protects your score.</p>
         <div class="optima-widget ow-reflect">
-            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
-            <div class="widget-question">Honestly &mdash; which still feels shakiest right now?</div>
+            <div class="widget-kicker">&#128173; CHECK-IN &middot; no wrong answer &mdash; just a plan</div>
+            <div class="widget-question">How ready do you feel for today's two activities?</div>
             <div class="widget-options">
-                <button data-response="Good to know. The hace + noun weather expressions come straight back in Part 2's ear-quiz &mdash; give them extra attention.">The weather expressions</button>
-                <button data-response="Makes sense &mdash; four seasons, and Argentina flips them. Watch for the season words in the ear-quiz below.">The seasons</button>
-                <button data-response="That's the big one, and today's spiral is built for it. Part 3 lines up ser, estar, tener, gustar, and ir a side by side.">Choosing the right verb</button>
+                <button data-response="&iexcl;Excelente! (Excellent!) If you can hear a weather or season word and know it, and build ir a + a verb without stopping to think, you're ready. Go to the Vocabulary Check below.">Ready &mdash; let's go</button>
+                <button data-response="Smart instinct. Spend 10 minutes: reopen the Vocabulario study page and skim Lesson 1.03 (the ir a formula). Then come back &mdash; the activities will still be here.">Almost &mdash; need a quick review</button>
+                <button data-response="No problem, and no rush. The prep list further down points you to exactly what to revisit. Do that first; there's no clock forcing you to submit today.">Not yet &mdash; I'll prepare first</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
         </div>
     </div>
 
-    <!-- PART 2 · Ear-quiz -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127911; PART 2 &middot; PRUEBA DE O&Iacute;DO <span class="pill-time">12 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Ear-quiz: what did you hear?</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Press <strong>&#128266;</strong> to hear a word (replay as often as you like), then pick its meaning. This is the interpretive-listening skill the Day-10 quiz tests &mdash; train it now.</p>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
-            <div class="widget-question"><button class="say" data-audio="vocab/s2-hace-frio.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What's the weather?</div>
-            <div class="widget-options">
-                <button data-correct="true">it's cold</button>
-                <button data-correct="false">it's hot</button>
-                <button data-correct="false">it's windy</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
-            <div class="widget-question"><button class="say" data-audio="vocab/s2-nieva.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this mean?</div>
-            <div class="widget-options">
-                <button data-correct="false">it rains</button>
-                <button data-correct="false">it's cloudy</button>
-                <button data-correct="true">it snows</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
-            <div class="widget-question"><button class="say" data-audio="vocab/s2-el-verano.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;Which season did you hear?</div>
-            <div class="widget-options">
-                <button data-correct="false">autumn</button>
-                <button data-correct="true">summer</button>
-                <button data-correct="false">spring</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
-            <div class="widget-question"><button class="say" data-audio="vocab/s2-nublado.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What does this mean?</div>
-            <div class="widget-options">
-                <button data-correct="false">sunny</button>
-                <button data-correct="true">cloudy</button>
-                <button data-correct="false">windy</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#127911; LISTEN &middot; then choose the meaning</div>
-            <div class="widget-question"><button class="say" data-audio="vocab/s2-la-playa.mp3" aria-label="Escuchar">&#128266;</button> &nbsp;What place did you hear?</div>
-            <div class="widget-options">
-                <button data-correct="false">the city</button>
-                <button data-correct="false">the park</button>
-                <button data-correct="true">the beach</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <div class="opt-strip">
-            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Replay each clip once more, but this time say a full sentence: <em>Hace fr&iacute;o, entonces voy a leer en casa. En el verano voy a ir a la playa.</em> Hearing the word and immediately producing a plan is the strongest practice.</div>
-        </div>
-    </div>
-
-    <!-- PART 3 · Spiral -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; ESPIRAL &middot; CINCO HERRAMIENTAS <span class="pill-time">10 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Five tools, five jobs</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Here's your whole toolkit so far. They are <em>not</em> interchangeable &mdash; each does a different job. Listen and read across the rows:</p>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">II</span><span>EVALUACI&Oacute;N 1: VOCABULARY CHECK</span><span class="pill-time">13 min</span></div>
+        <h3 class="sg-h3">Vocabulary Check &middot; 25 points &middot; 1 attempt</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This one is <strong>mostly by ear</strong>. You'll hear a Spanish word &mdash; a weather expression, a season, or a "plans" word from this module &mdash; and match it to its meaning or spelling. A few items ask you to recognize the written word. Everything comes from Lessons&nbsp;1.01&ndash;1.05.</p>
         <table class="gtable">
-            <thead><tr><th>Tool (from)</th><th>Its job</th><th>Example &middot; listen</th></tr></thead>
+            <thead><tr><th>Detail</th><th>What to know</th></tr></thead>
             <tbody>
-                <tr><td><strong>ser</strong> (S1)</td><td>who / what someone is &middot; origin</td><td>Yo <span class="pron">soy</span> de aqu&iacute;. <button class="say" data-audio="grammar/m01-soy.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
-                <tr><td><strong>estar</strong> (S1)</td><td>location &middot; how they feel now</td><td>Yo <span class="pron">estoy</span> en casa. <button class="say" data-audio="grammar/m03-estoy.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
-                <tr><td><strong>tener</strong> (S1)</td><td>what someone has &middot; age</td><td>Yo <span class="pron">tengo</span> quince a&ntilde;os. <button class="say" data-audio="grammar/m04-tengo.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
-                <tr><td><strong>gustar</strong> (S1)</td><td>what someone likes</td><td>Me <span class="pron">gusta</span> el verano. <button class="say" data-audio="grammar/m05-megusta.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
-                <tr><td><strong>ir a</strong> + verb (this module)</td><td>what someone is going to do</td><td>Yo <span class="pron">voy a</span> nadar. <button class="say" data-audio="grammar/s2m1-voy.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
+                <tr><td>Points</td><td>25</td></tr>
+                <tr><td>Attempts</td><td><strong>1</strong> &mdash; a one-shot check, so prepare before you open it.</td></tr>
+                <tr><td>Format</td><td>Listening &amp; matching (turn your sound on); a few reading items.</td></tr>
+                <tr><td>Covers</td><td>Weather (<em>hace sol / calor / fr&iacute;o / viento, llueve, nieva, nublado</em>), seasons (<em>la primavera, el verano, el oto&ntilde;o, el invierno, la estaci&oacute;n</em>), and plans (<em>el plan, la playa, ir, hoy, luego</em>).</td></tr>
             </tbody>
         </table>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; which tool?</div>
-            <div class="widget-question">"Ma&ntilde;ana nosotros ___ viajar a Buenos Aires." (Tomorrow we're going to travel to Buenos Aires.)</div>
-            <div class="widget-options">
-                <button data-correct="false">somos</button>
-                <button data-correct="false">tenemos</button>
-                <button data-correct="true">vamos a</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; which tool?</div>
-            <div class="widget-question">"A m&iacute; me ___ mucho el invierno." (I really like winter.)</div>
-            <div class="widget-options">
-                <button data-correct="true">gusta</button>
-                <button data-correct="false">estoy</button>
-                <button data-correct="false">voy a</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
-
-        <div class="optima-widget ow-eval">
-            <div class="widget-kicker">&#9989; SPIRAL CHECK &middot; which tool?</div>
-            <div class="widget-question">"Hoy hace calor y yo ___ un poco cansado." (Today it's hot and I'm a bit tired.) &mdash; a feeling right now.</div>
-            <div class="widget-options">
-                <button data-correct="false">soy</button>
-                <button data-correct="true">estoy</button>
-                <button data-correct="false">tengo</button>
-            </div>
-            <div class="widget-feedback"></div>
-            <button class="widget-reset">Reset</button>
-        </div>
+        <p style="font-size:14px;color:#6b7a99;margin:4px 0 12px;">Tip: use earbuds if you can, and find a quiet minute &mdash; you get one attempt.</p>
+        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To take the Vocabulary Check:</strong> return to <strong>Module 1</strong> in Canvas and open the <strong>Vocabulary Check</strong> &mdash; it is in the module&rsquo;s item list, below the eight lessons.</div>
     </div>
 
-    <!-- PART 4 · Production -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 4 &middot; A PRODUCIR <span class="pill-time">8 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Build it yourself, then check</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; commit before you peek. Then reveal to check your verb choice and spelling.</p>
-
-        <div style="margin-top:14px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;Today it's sunny, so I'm going to go to the park.&rdquo;</em></p>
-            <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Hoy hace sol, entonces voy a ir al parque.</strong> Weather (<em>hace sol</em>) then a plan (<em>voy a ir</em>). Note <em>al</em> = a + el.</div>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">III</span><span>EVALUACI&Oacute;N 2: LENGUA EN ACCI&Oacute;N</span><span class="pill-time">17 min</span></div>
+        <h3 class="sg-h3">Lengua en acci&oacute;n &middot; 20 points &middot; structured writing</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here you <em>produce</em> the language. You'll write a few short, guided sentences about your plans &mdash; what you're going to do this weekend and in different weather &mdash; deliberately using <em>ir a</em> + a verb. The prompts tell you exactly what each sentence should do; you supply the Spanish.</p>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">The single idea being graded is the structure you've practiced all week:</p>
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px;text-align:center;">
+            <span style="font-size:17px;color:#0e1c42;"><span class="pron">voy a &middot; vas a &middot; va a &middot; vamos a &middot; van a</span> &nbsp;+&nbsp; <em>infinitive</em></span>
         </div>
-
-        <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;It's cold and my family is going to eat at home.&rdquo;</em></p>
-            <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Hace fr&iacute;o y mi familia va a comer en casa.</strong> "Mi familia" (ella) &rarr; <em>va a</em> + <em>comer</em>.</div>
-        </div>
-
-        <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;I'm from the U.S., I like summer, and this weekend I'm going to swim.&rdquo;</em></p>
-            <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Soy de los Estados Unidos, me gusta el verano, y este fin de semana voy a nadar.</strong> Three tools in one breath: <em>ser</em> (origin), <em>gustar</em> (what I like), <em>ir a</em> (plan).</div>
-        </div>
-    </div>
-
-    <!-- PART 5 · Reading recycle -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 5 &middot; A LEER OTRA VEZ <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Valentina returns &mdash; listen and read</h3>
-        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 8px 0;">You met this on Day 5. Press play, follow along, and this time count the future plans (<em>ir a</em> + verb).</p>
-        <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/s2m1-argentina.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Play the reading</span></p>
-        <p style="font-size:17px;color:#1a2340;line-height:1.75;">
-        &laquo;¡Hola! Me llamo Valentina y soy de Buenos Aires, la capital de Argentina. Aquí las estaciones están al revés: en julio hace frío porque es invierno, y en enero hace calor porque es verano. Hoy hace sol y no hay clases. Estoy muy contenta. Este fin de semana mi familia y yo vamos a ir a la playa en Mar del Plata. Mi hermano va a nadar y mis padres van a descansar. Yo voy a leer y luego voy a comer un helado. ¡Me gusta mucho el verano en Argentina!&raquo;</p>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:2px 0 12px;"><strong>Before you open it, hear the target one more time.</strong> This is the model rhythm your writing should echo &mdash; weather first, then a plan:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m1-clima.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Hoy hace sol&hellip;</span><span class="v-en">&laquo;Hoy hace sol, pero ma&ntilde;ana va a llover.&raquo;</span></li>
+        </ul>
+        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To complete Lengua en acci&oacute;n:</strong> return to <strong>Module 1</strong> in Canvas and open the <strong>Lengua en acci&oacute;n</strong> &mdash; it is in the module&rsquo;s item list, below the eight lessons.</div>
         <div class="opt-strip">
-            <div class="lbl">&#11088; COMPRUEBA &middot; optional</div>
-            <div style="font-size:16px;color:#1a2340;line-height:1.6;">How many <em>ir a</em> + verb plans can you find? (Three: <em>vamos a ir, voy a leer, voy a comer</em>.) Could you add one more plan for Valentina? (Hint: <em>Va a nadar en el mar.</em>)</div>
+            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Warm up before you write: replay Valentina's reading from Lesson 1.05 and count how many <em>ir a</em> plans she makes. Then borrow her rhythm in your own sentences. <button class="say" data-audio="passage/s2m1-argentina.mp3" aria-label="Escuchar la lectura de Valentina" style="margin-left:6px;">&#128266;</button></div>
         </div>
     </div>
 
-    <div class="culture-box">
-        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127462;&#127479; CULTURA &middot; MAR DEL PLATA</div>
-        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>La playa de los argentinos</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">When Valentina's family says <em>&laquo;vamos a la playa,&raquo;</em> they likely mean <strong>Mar del Plata</strong>, Argentina's most famous beach city, about five hours south of Buenos Aires. In January &mdash; the peak of summer &mdash; millions of <em>porte&ntilde;os</em> head there for sun and sea. It's the southern-hemisphere version of a July beach trip in the U.S.</p>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">IV</span><span>C&Oacute;MO PREPARARTE</span><span class="pill-time">5 min</span></div>
+        <h3 class="sg-h3">Not sure yet? Prepare in five minutes</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">If your readiness check said &ldquo;almost&rdquo; or &ldquo;not yet,&rdquo; do these before you open either activity &mdash; in this order:</p>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
+            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Run the flip-cards.</strong> Open the <a href="vocabulario-m01.html" style="color:#1B6A94;font-weight:600;">Vocabulario del M&oacute;dulo 1 study page</a> and go through every weather word, season, and plan word until you know each by ear. (Your best prep for the Vocabulary Check.)</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
+            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Re-read the formula.</strong> Skim <a href="lesson-1-03.html" style="color:#1B6A94;font-weight:600;">Lesson 1.03</a> (<em>ir a</em> + infinitive) and <a href="lesson-1-04.html" style="color:#1B6A94;font-weight:600;">Lesson 1.04</a> (the guided writing) &mdash; your best prep for Lengua en acci&oacute;n.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Need the whole picture?</strong> Lessons&nbsp;<a href="lesson-1-01.html" style="color:#1B6A94;font-weight:600;">1.01</a>, <a href="lesson-1-02.html" style="color:#1B6A94;font-weight:600;">1.02</a>, and <a href="lesson-1-05.html" style="color:#1B6A94;font-weight:600;">1.05</a> are all still open &mdash; revisit any of them.</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">One last self-test before you commit. Fill the blanks aloud: <em>&ldquo;Hoy hace fr&iacute;o, entonces yo&nbsp;___&nbsp;leer en casa, pero ma&ntilde;ana&nbsp;___&nbsp;hacer sol.&rdquo;</em> Then reveal.</p>
+            <div data-mw-added class="mw-box" style="margin:6px 0"><span class="mw-prompt" style="display:inline-block;min-width:150px;margin-right:8px;font-size:16px;color:#1a2340">First blank (yo)</span><textarea class="mw-answer" rows="1" lang="es" spellcheck="false" autocapitalize="off" data-mw-gate="l1-06-r1" data-answer="voy a" aria-label="First blank (yo)" placeholder="Type it, then press Check" style="width:220px;max-width:100%;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;vertical-align:middle;resize:vertical"></textarea></div><div data-mw-added class="mw-box" style="margin:6px 0"><span class="mw-prompt" style="display:inline-block;min-width:150px;margin-right:8px;font-size:16px;color:#1a2340">Second blank (weather)</span><textarea class="mw-answer" rows="1" lang="es" spellcheck="false" autocapitalize="off" data-mw-gate="l1-06-r1" data-answer="va a" aria-label="Second blank (weather)" placeholder="Type it, then press Check" style="width:220px;max-width:100%;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;vertical-align:middle;resize:vertical"></textarea></div><div data-mw-added class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Accents are part of the word. Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uuml;</button></div>
+            <button class="reveal-btn" data-mw-gate="l1-06-r1">Reveal answer</button>
+            <div class="reveal-body"><strong>Hoy hace fr&iacute;o, entonces yo <em>voy a</em> leer en casa, pero ma&ntilde;ana <em>va a</em> hacer sol.</strong> "Yo" &rarr; <em>voy a</em>; weather in the future &rarr; <em>va a hacer sol</em>. If that came easily, you're ready.</div>
+        </div>
     </div>
 
     <div class="virtue-box">
         <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#127462;&#127479; CULTURA A FONDO &middot; ARGENTINA</div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Argentina gave the world the <strong>tango</strong>, born in the neighborhoods of Buenos Aires over a century ago and now danced everywhere. It's more than a dance &mdash; it's a whole style of music and poetry, and UNESCO lists it as part of humanity's cultural heritage. When you plan a trip in Spanish, a <em>milonga</em> (a tango dance hall) is one of the Buenos Aires places you might visit.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">A word you'll see on Argentine weather forecasts: <em>el pron&oacute;stico</em> (the forecast). Argentines follow it closely because the country's climate is so varied &mdash; a single day can be beach weather in the north and snow in Patagonia. When you make plans with <em>ir a</em>, checking <em>el pron&oacute;stico</em> first is exactly what a family in Buenos Aires would do: <em>&laquo;Ma&ntilde;ana va a llover, entonces vamos a ir al museo.&raquo;</em> (Tomorrow it's going to rain, so we're going to go to the museum.)</p>
     </div>
 
-    <!-- Look ahead -->
-    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">7</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 1.07</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and the <strong>Lengua en acci&oacute;n (20 pts)</strong> launch page. Everything on today's page &mdash; the weather, the seasons, and the five-tool spiral &mdash; is exactly what those items draw on.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Next is a <em>fon&eacute;tica</em> clinic and your <strong>Tarea oral</strong> (15 pts) &mdash; you'll <em>speak</em> your plans, not just write them. Finish today's two activities first; you can always come back to prepare more before you submit.</div>
             </div>
         </div>
     </div>
 
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
-        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then say three sentences about your week &mdash; one with <em>ser</em> or <em>estar</em>, one with <em>gustar</em>, and one with <em>ir a</em> + a verb.</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas once you've <em>opened</em> both activities. (Marking this page done records that you reached the assessment hub &mdash; your grades come from the two activities themselves, submitted separately in Canvas.)</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN REPASO&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You heard it, you built it, and you told five tools apart. That's the retrieval that makes the quiz feel easy &mdash; <em>&iexcl;hasta ma&ntilde;ana!</em></p>
+    <div class="sg-card">
+        <div class="sg-kicker">&iexcl;T&Uacute; PUEDES&#33; (You can do it!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Five days of spaced practice were building to exactly this. Trust the work you've done &mdash; weather, seasons, and <em>ir a</em> + a verb &mdash; and show it. <em>&iexcl;Mucha suerte!</em> (Good luck!)</p>
     </div>
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
-    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.06 &middot; Repaso y espiral</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.06 &middot; Centro de evaluaciones</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Pendants: Armorial of the Golden Fleece (c. 1435) and Tumbo A of Santiago Cathedral (13th c.) &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
@@ -376,8 +350,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — right tool for the job.'
-        : 'Not quite — ask what the sentence is doing: identity, feeling, having, liking, or a future plan?';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! (Correct!) ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — that’s the one.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — try again.');
       efb.classList.add('show');
       return;
     }
@@ -413,7 +387,8 @@
   });
 })();
 </script>
-
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<!-- mywork -->
+<script src="../../my-work.js"></script>
 </body>
 </html>

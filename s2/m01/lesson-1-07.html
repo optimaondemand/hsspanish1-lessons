@@ -54,179 +54,384 @@
     .gualda .r { flex:1; background:#AA1E2D; }
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
+</style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m1-hero.jpg) center 50% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
 </style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-pend l" aria-hidden="true"><img src="../../img/siglo/pendon-castilla.svg" alt=""><img src="../../img/siglo/pendon-leon.svg" alt=""></div><div class="sg-pend r" aria-hidden="true"><img src="../../img/siglo/pendon-aragon.svg" alt=""><img src="../../img/siglo/pendon-navarra.svg" alt=""></div><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 1 &middot; El tiempo y los planes</div>
+    <div class="sg-where">Lesson 1.07 &middot; Day 7 of 8</div>
+    <h1 class="sg-title">Fon&eacute;tica</h1>
+    <div class="sg-sub">The Sounds of <em>ir</em> and the Weather &middot; Lesson + graded oral task &middot; about 50 minutes</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Emeric Essex Vidal, <em>Frente a la Aduana, Buenos Aires</em> (<em>The Custom-House at Buenos Ayres</em>), 1817</div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 1</div>
-        <div style="font-size: 12px; color: #666;">El tiempo y los planes</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 1.07 &middot; Day 7 of 10</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Evaluaciones (assessments)</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Weather &amp; Plans</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 1.07</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Centro de evaluaciones &mdash; Show What You Know</div>
-        <div style="font-size: 16px; color: #666;">Assessment hub &middot; about 40 minutes</div>
+    <div class="sg-card">
+        <div class="sg-kicker">TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've written your plans all week. Today you <em>say</em> them &mdash; and record them.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a <strong>pronunciation clinic</strong> aimed at the exact sounds in this module's words. Three habits do most of the work: the Spanish <strong>v</strong> (which sounds like a soft <em>b</em>), the <strong>&laquo;ll&raquo;</strong> sound, and the smooth <strong>diphthongs</strong> in words like <em>viento</em> and <em>llueve</em>. We'll rehearse each aloud, then you'll record your first graded <strong>Tarea oral</strong> &mdash; this week's weather and what you're going to do about it. You'll finish with a short written <strong>repaso</strong> to get ready for tomorrow's Grammar Quiz.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY IS DIFFERENT</div>
-        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've done the learning. Today you <em>show</em> it &mdash; the first graded work of the module lives here.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a launch page, not a lesson. Week&nbsp;1 (Lessons&nbsp;1.01&ndash;1.06) built the habit: weather, seasons, the verb <em>ir</em>, and <em>ir a</em> + a verb, all spaced out and recycled with your Semester-1 tools. Now two graded activities let you demonstrate it. Read the briefing, do the readiness check, then open each activity <strong>in Canvas</strong> when you're ready.</div>
-    </div>
-
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; WHAT'S DUE TODAY</div>
+    <div class="sg-card">
+        <div class="sg-kicker">BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Vocabulary Check</strong> &mdash; 25 points, 1 attempt, mostly by ear.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> pronounce the Spanish <em>v</em>, the <em>&laquo;ll&raquo;</em> sound, and smooth diphthongs.</div>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Lengua en acci&oacute;n</strong> &mdash; 20 points, a short structured writing using <em>ir a</em> + a verb.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> record 3&ndash;4 sentences describing this week's weather and what I'm going to do (<em>ir a</em> + a verb).</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> write this module&rsquo;s key words with their articles and complete the verb paradigm from memory.</div>
         </div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; &iquest;EST&Aacute;S LISTO/A&#63; <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A quick readiness check-in</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before you open anything graded, be honest with yourself. There's no penalty for waiting &mdash; the async window is open, and a little more review now protects your score.</p>
+    <!-- PART 1 -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">I</span><span>PARA EMPEZAR</span><span class="pill-time">5 min</span></div>
+        <h3 class="sg-h3">A surprise about the letter V</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here's something that trips up English speakers: in Spanish, the letter <strong>v</strong> is <em>not</em> the buzzy English "v." It sounds almost exactly like a soft <strong>b</strong>. So <em>voy</em> sounds like "boy," and <em>verano</em> starts like "beh-." Once you know that, half of this module's key words sound right instantly.</p>
         <div class="optima-widget ow-reflect">
-            <div class="widget-kicker">&#128173; CHECK-IN &middot; no wrong answer &mdash; just a plan</div>
-            <div class="widget-question">How ready do you feel for today's two activities?</div>
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">When you say Spanish out loud, what feels hardest so far?</div>
             <div class="widget-options">
-                <button data-response="&iexcl;Excelente! If you can hear a weather or season word and know it, and build ir a + a verb without stopping to think, you're ready. Go to the Vocabulary Check below.">Ready &mdash; let's go</button>
-                <button data-response="Smart instinct. Spend 10 minutes: reopen the Vocabulario study page and skim Lesson 1.03 (the ir a formula). Then come back &mdash; the activities will still be here.">Almost &mdash; need a quick review</button>
-                <button data-response="No problem, and no rush. The prep list further down points you to exactly what to revisit. Do that first; there's no clock forcing you to submit today.">Not yet &mdash; I'll prepare first</button>
+                <button data-response="Totally normal. Today's V drill and ll drill target exactly the sounds in this module's words &mdash; you'll feel the difference fast.">The new sounds</button>
+                <button data-response="Great instinct to name it. Diphthongs (two vowels gliding together, like ie in viento) are Part 4 &mdash; keep them smooth and connected.">Vowels running together</button>
+                <button data-response="Recording yourself feels strange for everyone at first. You'll rehearse aloud through the whole lesson before the mic ever turns on.">Speaking with no one there</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
         </div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 2 &middot; EVALUACI&Oacute;N 1: VOCABULARY CHECK <span class="pill-time">13 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Vocabulary Check &middot; 25 points &middot; 1 attempt</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This one is <strong>mostly by ear</strong>. You'll hear a Spanish word &mdash; a weather expression, a season, or a "plans" word from this module &mdash; and match it to its meaning or spelling. A few items ask you to recognize the written word. Everything comes from Lessons&nbsp;1.01&ndash;1.05.</p>
-        <table class="gtable">
-            <thead><tr><th>Detail</th><th>What to know</th></tr></thead>
-            <tbody>
-                <tr><td>Points</td><td>25</td></tr>
-                <tr><td>Attempts</td><td><strong>1</strong> &mdash; a one-shot check, so prepare before you open it.</td></tr>
-                <tr><td>Format</td><td>Listening &amp; matching (turn your sound on); a few reading items.</td></tr>
-                <tr><td>Covers</td><td>Weather (<em>hace sol / calor / fr&iacute;o / viento, llueve, nieva, nublado</em>), seasons (<em>la primavera, el verano, el oto&ntilde;o, el invierno, la estaci&oacute;n</em>), and plans (<em>el plan, la playa, ir, hoy, luego</em>).</td></tr>
-            </tbody>
-        </table>
-        <p style="font-size:14px;color:#6b7a99;margin:4px 0 12px;">Tip: use earbuds if you can, and find a quiet minute &mdash; you get one attempt.</p>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To take the Vocabulary Check:</strong> return to <strong>Module 1</strong> in Canvas and open the <strong>Vocabulary Check</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 3 &middot; EVALUACI&Oacute;N 2: LENGUA EN ACCI&Oacute;N <span class="pill-time">17 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Lengua en acci&oacute;n &middot; 20 points &middot; structured writing</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here you <em>produce</em> the language. You'll write a few short, guided sentences about your plans &mdash; what you're going to do this weekend and in different weather &mdash; deliberately using <em>ir a</em> + a verb. The prompts tell you exactly what each sentence should do; you supply the Spanish.</p>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">The single idea being graded is the structure you've practiced all week:</p>
-        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px;text-align:center;">
-            <span style="font-size:17px;color:#0e1c42;"><span class="pron">voy a &middot; vas a &middot; va a &middot; vamos a &middot; van a</span> &nbsp;+&nbsp; <em>infinitive</em></span>
-        </div>
-        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:2px 0 12px;"><strong>Before you open it, hear the target one more time.</strong> This is the model rhythm your writing should echo &mdash; weather first, then a plan:</p>
+    <!-- PART 2 · V -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">II</span><span>LA LETRA V (= B)</span><span class="pill-time">10 min</span></div>
+        <h3 class="sg-h3">V sounds like a soft B</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Don't press your top teeth to your lip the way you do in English "victory." Just barely touch your lips together, like a gentle <em>b</em>. Listen, then echo &mdash; every one of these is a word you know:</p>
         <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="grammar/s2m1-clima.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Hoy hace sol&hellip;</span><span class="v-en">&laquo;Hoy hace sol, pero ma&ntilde;ana va a llover.&raquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m1-voy.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">voy</span><span class="v-en">"boy" &mdash; soft b, not buzzy v</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m1-vas.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">vas</span><span class="v-en">"bahs" &mdash; same soft b</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-verano.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el verano</span><span class="v-en">beh-<em>RA</em>-no</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-hace-viento.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">hace viento</span><span class="v-en"><em>v</em>iento starts like a soft b</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-invierno.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el invierno</span><span class="v-en">in-<em>BYER</em>-no</span></li>
         </ul>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To complete Lengua en acci&oacute;n:</strong> return to <strong>Module 1</strong> in Canvas and open the <strong>Lengua en acci&oacute;n</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
-        <div class="opt-strip">
-            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Warm up before you write: replay Valentina's reading from Lesson&nbsp;1.05 and count how many <em>ir a</em> plans she makes. Then borrow her rhythm in your own sentences. <button class="say" data-audio="passage/s2m1-argentina.mp3" aria-label="Escuchar la lectura de Valentina" style="margin-left:6px;">&#128266;</button></div>
+    </div>
+
+    <!-- PART 3 · ll -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">III</span><span>EL SONIDO &laquo;LL&raquo;</span><span class="pill-time">9 min</span></div>
+        <h3 class="sg-h3">Double L makes a "y" sound</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">In most of Latin America, <strong>ll</strong> sounds like the English <em>y</em> in "yes." (In much of Argentina you'll actually hear it closer to "sh" &mdash; a regional signature &mdash; but "y" is understood everywhere.) Listen and echo:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-llueve.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">llueve</span><span class="v-en">"YWEH-veh" &mdash; ll = y</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-playa.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la playa</span><span class="v-en"><em>PLA</em>-ya &mdash; ll = y</span></li>
+        </ul>
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">The word <em>luego</em> starts with a single <em>l</em> &mdash; a plain "l," not a "y." Say <em>llueve</em> and <em>luego</em> back to back and hear the difference, then reveal a tip.</p>
+            <button class="reveal-btn" data-mw-open>Reveal tip</button>
+            <div class="reveal-body">One <em>l</em> = an English "l" (<em>luego</em> = "LWEH-go"). Double <em>ll</em> = a "y" (<em>llueve</em>). The doubled letter is its own sound &mdash; not just a louder "l."</div>
         </div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129513; PART 4 &middot; C&Oacute;MO PREPARARTE <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Not sure yet? Prepare in five minutes</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">If your readiness check said &ldquo;almost&rdquo; or &ldquo;not yet,&rdquo; do these before you open either activity &mdash; in this order:</p>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Run the flip-cards.</strong> Open the <a href="vocabulario-m01.html" style="color:#1B6A94;font-weight:600;">Vocabulario del M&oacute;dulo 1 study page</a> and go through every weather word, season, and plan word until you know each by ear. (Your best prep for the Vocabulary Check.)</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Re-read the formula.</strong> Skim <a href="lesson-1-03.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;1.03</a> (<em>ir a</em> + infinitive) and <a href="lesson-1-04.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;1.04</a> (the guided writing) &mdash; your best prep for Lengua en acci&oacute;n.</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Need the whole picture?</strong> Lessons&nbsp;<a href="lesson-1-01.html" style="color:#1B6A94;font-weight:600;">1.01</a>, <a href="lesson-1-02.html" style="color:#1B6A94;font-weight:600;">1.02</a>, <a href="lesson-1-05.html" style="color:#1B6A94;font-weight:600;">1.05</a>, and <a href="lesson-1-06.html" style="color:#1B6A94;font-weight:600;">1.06</a> are all still open &mdash; revisit any of them.</div>
-        </div>
+    <!-- PART 4 · Diphthongs -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">IV</span><span>LOS DIPTONGOS</span><span class="pill-time">6 min</span></div>
+        <h3 class="sg-h3">Two vowels, one smooth glide</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">When two vowels sit together &mdash; like <em>ie</em> or <em>ue</em> &mdash; glide smoothly from one to the other in a single syllable. Don't chop them apart. Listen:</p>
+        <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 6px 1.2rem;">
+            <li><em>v<strong>ie</strong>nto</em> &rarr; "BYEN-to" (ie glides together)</li>
+            <li><em>inv<strong>ie</strong>rno</em> &rarr; "in-BYER-no"</li>
+            <li><em>ll<strong>ue</strong>ve</em> &rarr; "YWEH-veh" (ue glides together)</li>
+            <li><em>n<strong>ie</strong>va</em> &rarr; "NYEH-va"</li>
+        </ul>
+        <p style="font-size:15px;color:#6b7a99;line-height:1.6;margin:0;">Tip: say them a little fast at first &mdash; the speed forces the glide, then slow down while keeping it smooth.</p>
+    </div>
 
-        <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">One last self-test before you commit. Fill the blanks aloud: <em>&ldquo;Hoy hace fr&iacute;o, entonces yo&nbsp;___&nbsp;leer en casa, pero ma&ntilde;ana&nbsp;___&nbsp;hacer sol.&rdquo;</em> Then reveal.</p>
-            <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Hoy hace fr&iacute;o, entonces yo <em>voy a</em> leer en casa, pero ma&ntilde;ana <em>va a</em> hacer sol.</strong> "Yo" &rarr; <em>voy a</em>; weather in the future &rarr; <em>va a hacer sol</em>. If that came easily, you're ready.</div>
-        </div>
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127462;&#127479; CULTURA &middot; EL ACENTO ARGENTINO</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El &laquo;sheismo&raquo; porte&ntilde;o</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Listen to someone from Buenos Aires say <em>playa</em> or <em>llueve</em> and you may hear "SHA-sha" and "SHU-eh-veh" &mdash; the <em>ll</em> and <em>y</em> pronounced like the English "sh." This <em>&laquo;sheísmo&raquo;</em> is one of the most recognizable features of Argentine Spanish. You don't need to copy it &mdash; the standard "y" is understood everywhere &mdash; but now you'll recognize it as the sound of the R&iacute;o de la Plata.</p>
     </div>
 
     <div class="virtue-box">
         <div style="font-size:11px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;">&#127462;&#127479; CULTURA A FONDO &middot; ARGENTINA</div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">A word you'll see on Argentine weather forecasts: <em>el pron&oacute;stico</em> (the forecast). Argentines follow it closely because the country's climate is so varied &mdash; a single day can be beach weather in the north and snow in Patagonia. When you make plans with <em>ir a</em>, checking <em>el pron&oacute;stico</em> first is exactly what a family in Buenos Aires would do: <em>&laquo;Ma&ntilde;ana va a llover, entonces vamos a ir al museo.&raquo;</em></p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Recording yourself in a new language can feel awkward &mdash; and that feeling is universal. Argentine actors, singers, and football commentators all started with a first shaky take. Everyone's early recordings feel strange; that's not a sign you're doing it wrong, it's a sign you're doing it at all. Rehearse, breathe, and press record. <em>&iexcl;Vos pod&eacute;s!</em> (You can do it!)</p>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+    <!-- PART 5 · Tarea oral -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">V</span><span>TAREA ORAL</span><span class="pill-time">10 min</span></div>
+        <h3 class="sg-h3">Your first graded recording (15 points)</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Record yourself giving <strong>this week's weather and your plans</strong>. Include: <strong>one sentence about the weather</strong> (<em>Hoy hace&hellip;</em>) and <strong>two or three sentences about what you're going to do</strong> using <em>ir a</em> + a verb. Aim for 20&ndash;40 seconds total.</p>
+
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px 0;">
+            <div style="font-size:13px;color:#1B6A94;letter-spacing:.3px;margin-bottom:8px;">&#128221; A MODEL (yours must be true for you this week)</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.7;margin:0;">
+            &laquo;Hola. Esta semana <strong>hace sol</strong> y <strong>hace calor</strong>. Hoy <strong>voy a</strong> estudiar espa&ntilde;ol. Ma&ntilde;ana mi familia y yo <strong>vamos a</strong> ir a la playa. El domingo <strong>voy a</strong> descansar en casa.&raquo;<br>
+            <span style="font-size:14px;color:#6b7a99;">(One weather sentence, then plans with <em>ir a</em> + a verb.)</span></p>
+        </div>
+
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Need to hear the target rhythm once more before you record? Replay these:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m1-clima.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Hoy hace sol&hellip;</span><span class="v-en">weather &rarr; future</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m1-voy.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Voy a estudiar ma&ntilde;ana.</span><span class="v-en"><em>ir a</em> + a verb</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m1-vamos.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Vamos a practicar espa&ntilde;ol.</span><span class="v-en">"we" plan</span></li>
+        </ul>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ONE LAST CHECK &middot; before you record</div>
+            <div class="widget-question">"Tomorrow I'm going to swim" should be&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">Ma&ntilde;ana voy nadar.</button>
+                <button data-correct="true">Ma&ntilde;ana voy a nadar.</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="background:#FBF6EA;border:1px solid #E3D3A8;border-left:5px solid #C7922C;border-radius:8px;padding:14px 18px;margin:14px 0 12px 0;">
+            <div style="font-size:13px;color:#8a6a12;letter-spacing:.3px;margin-bottom:8px;">&#128161; CONSEJO &middot; plan before you record</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">If it helps you, <strong>write out your sentences first</strong> and read them aloud a couple of times before you record. Many students sound calmer and clearer once they&rsquo;ve drafted a quick script &mdash; reading from your notes is completely fine. Just aim to sound <em>natural</em>, not rushed.</p>
+        </div>
+        <div style="text-align:center;margin:18px 0 8px;">
+            <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To record your Tarea oral:</strong> return to <strong>Module 1</strong> in Canvas and open the <strong>Tarea oral</strong> &mdash; it is in the module&rsquo;s item list, below the eight lessons.</div>
+            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Record directly in Canvas (or upload an audio/video file). 15 points.</div>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 20px 0 8px 0;">How it's scored &mdash; the rubric</h3>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Three criteria, 5 points each, 15 total. Read it <em>before</em> you record so you know what earns full marks.</p>
+        <table class="gtable">
+            <thead><tr><th>Criterion</th><th>What earns 5 / 5</th><th>Pts</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Task Completion</strong></td><td>A weather sentence plus at least two plans with <em>ir a</em> + a verb &mdash; and each is true about your week.</td><td>5</td></tr>
+                <tr><td><strong>Language Accuracy</strong></td><td>Correct form of <em>ir</em> for each subject, the little <em>a</em> present, and the second verb kept as an infinitive.</td><td>5</td></tr>
+                <tr><td><strong>Pronunciation &amp; Fluency</strong></td><td>Soft Spanish <em>v</em>, "y"-sound <em>ll</em>, smooth diphthongs; steady pace, understandable throughout.</td><td>5</td></tr>
+            </tbody>
+        </table>
+
+        <div style="background:#EAF6EE;border:1px solid #2A9D5C;border-left:5px solid #2A9D5C;border-radius:8px;padding:14px 18px;margin:14px 0 0;">
+            <div style="font-size:11px;color:#1A6B3D;letter-spacing:.4px;margin-bottom:8px;">&#9989; SELF-REVIEW &middot; check these before you submit</div>
+            <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 0 1.2rem;">
+                <li>Did I include <strong>one weather</strong> sentence (<em>Hoy hace&hellip;</em>)?</li>
+                <li>Did I include <strong>at least two plans</strong> with <em>ir a</em> + a verb?</li>
+                <li>Is the little <strong>a</strong> in every plan (<em>voy <strong>a</strong> nadar</em>)?</li>
+                <li>Did I keep each second verb as an <strong>infinitive</strong> (not conjugated)?</li>
+                <li>Did I say the <strong>v</strong> like a soft <em>b</em> and the <strong>ll</strong> like a <em>y</em>?</li>
+                <li>Did I <strong>play my recording back once</strong> and re-record if needed before submitting?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PART 3 · Repaso -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">VI</span><span>REPASO</span><span class="pill-time">14 min</span></div>
+        <h3 class="sg-h3"><em>Repaso</em> &mdash; write it, then conjugate it</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 4px 0;">Tomorrow is the <strong>Grammar Quiz</strong>. Today you review by <strong>writing</strong>, not by recognising &mdash; nothing is shown to you here, you produce it. <strong>None of this is graded.</strong></p>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#9998; A &middot; VOCABULARIO</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Write each word in Spanish, <strong>with its article</strong> where it has one &mdash; the same way it appears on your flip cards.</p>
+            <div class="rep-row"><span class="rep-cue">it's cold</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="hace fr&iacute;o" aria-label="it's cold"></div>
+            <div class="rep-row"><span class="rep-cue">the season</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la estaci&oacute;n" aria-label="the season"></div>
+            <div class="rep-row"><span class="rep-cue">autumn / fall</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el oto&ntilde;o" aria-label="autumn / fall"></div>
+            <div class="rep-row"><span class="rep-cue">the weather</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el clima" aria-label="the weather"></div>
+            <div class="rep-row"><span class="rep-cue">spring</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la primavera" aria-label="spring"></div>
+            <div class="rep-row"><span class="rep-cue">summer</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el verano" aria-label="summer"></div>
+            <div class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">Ü</button></div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">Accents are part of the word: <em>estaci&oacute;n</em> is not <em>estacion</em>. Click a letter above to add it where your cursor is.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#128203; B &middot; CONJUGACI&Oacute;N</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Fill in every form. Complete the whole table before you check &mdash; the point is to see the full set at once.</p>
+            <table class="conj-table"><thead><tr><th>Subject</th><th>ir</th></tr></thead><tbody>
+                <tr><td class="subj">yo</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="voy" aria-label="yo"></td></tr>
+                <tr><td class="subj">t&uacute;</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="vas" aria-label="t&uacute;"></td></tr>
+                <tr><td class="subj">usted / &eacute;l / ella</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="va" aria-label="usted / &eacute;l / ella"></td></tr>
+                <tr><td class="subj">nosotros/as</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="vamos" aria-label="nosotros/as"></td></tr>
+                <tr><td class="subj">ustedes / ellos / ellas</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="van" aria-label="ustedes / ellos / ellas"></td></tr>
+            </tbody></table>
+            <p style="font-size:13.5px;color:#6b7a99;margin:6px 0 8px 0;">Remember this module&rsquo;s pattern &mdash; <strong>ir + a + infinitive</strong>: <em>Voy a estudiar.</em> &middot; <em>Vamos a bailar.</em></p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">8</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 1.08</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Next is a <em>fon&eacute;tica</em> clinic and your <strong>Tarea oral</strong> (15 pts) &mdash; you'll <em>speak</em> your plans, not just write them. Finish today's two activities first; you can always come back to prepare more before you submit.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">The last day of M&oacute;dulo 1: a short listening warm-up, then the <strong>Grammar Quiz</strong> (<em>ir a</em> + infinitive, 30 pts, 2 attempts) and an &ldquo;I can&hellip;&rdquo; close before M&oacute;dulo 2. Spend a few minutes before then reviewing the five forms of <em>ir</em>.</div>
             </div>
         </div>
     </div>
 
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
-        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas once you've <em>opened</em> both activities. (Marking this page done records that you reached the assessment hub &mdash; your grades come from the two activities themselves, submitted separately in Canvas.)</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the Tarea oral</strong> &mdash; the page being marked done and the recording being turned in are two separate steps.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;T&Uacute; PUEDES&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Six days of spaced practice were building to exactly this. Trust the work you've done &mdash; weather, seasons, and <em>ir a</em> + a verb &mdash; and show it. <em>&iexcl;Mucha suerte!</em></p>
+    <div class="sg-card">
+        <div class="sg-kicker">&iexcl;LO LOGRASTE&#33; (You did it!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just spoke Spanish on the record &mdash; a soft <em>v</em>, a "y"-sound <em>ll</em>, and your real plans in <em>ir a</em>. Bigger step than it feels. <em>&iexcl;Buen trabajo, y hasta ma&ntilde;ana!</em> (Good work, and see you tomorrow!)</p>
     </div>
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
-    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.07 &middot; Centro de evaluaciones</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 1.07 &middot; Fon&eacute;tica + Tarea oral</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Pendants: Armorial of the Golden Fleece (c. 1435) and Tumbo A of Santiago Cathedral (13th c.) &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
@@ -258,8 +463,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
-        : 'Not quite — try again.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! (Correct!) ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — the little "a" makes it work.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — remember the "a": voy a + the infinitive.');
       efb.classList.add('show');
       return;
     }
@@ -295,7 +500,47 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<!-- mywork -->
+<script src="../../my-work.js"></script>
 </body>
 </html>

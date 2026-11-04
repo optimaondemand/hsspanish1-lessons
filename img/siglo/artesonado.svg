@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 48" width="80" height="48">
+  <!-- carved, gilded Mudejar ceiling band (artesonado / lacería) — our own drawing -->
+  <defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f0d68a"/><stop offset=".5" stop-color="#c3922f"/><stop offset="1" stop-color="#8a6119"/></linearGradient>
+  <linearGradient id="w" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a2c17"/><stop offset="1" stop-color="#2e1a0d"/></linearGradient></defs>
+  <rect width="80" height="48" fill="url(#w)"/>
+  <rect y="0" width="80" height="3" fill="url(#g)"/><rect y="45" width="80" height="3" fill="url(#g)"/>
+  <g fill="none" stroke="url(#g)" stroke-width="2">
+    <path d="M40 8 L45.7 18.3 L56 24 L45.7 29.7 L40 40 L34.3 29.7 L24 24 L34.3 18.3 Z"/>
+    <rect x="30" y="14" width="20" height="20" transform="rotate(45 40 24)"/>
+    <path d="M0 24 L10 14 M0 24 L10 34 M80 24 L70 14 M80 24 L70 34"/>
+    <path d="M10 14 L24 24 L10 34 M70 14 L56 24 L70 34"/>
+  </g>
+  <circle cx="40" cy="24" r="4" fill="url(#g)"/><circle cx="40" cy="24" r="1.6" fill="#9b1b30"/>
+  <circle cx="0" cy="24" r="2.5" fill="url(#g)"/><circle cx="80" cy="24" r="2.5" fill="url(#g)"/>
+</svg>
