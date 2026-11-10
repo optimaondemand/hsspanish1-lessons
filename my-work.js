@@ -122,14 +122,28 @@
       inp.insertAdjacentElement('afterend', fb); inp.insertAdjacentElement('afterend', chk);
       var show = function () {
         var it = state.items[id]; if (!it || !it.checks) { fb.textContent = ''; return; }
-        if (it.gotIt) { fb.style.color = '#1e8a3c'; fb.style.fontWeight = '800'; fb.style.fontSize = '16px'; fb.textContent = '✓ Correct!'; }   // green and bold (David 2026-10-26)
+        var pn = punctNote(inp.value);   // ¿ ? ¡ ! missing: never marked wrong, but always mentioned (David 2026-11-10)
+        if (it.gotIt) { fb.style.color = '#1e8a3c'; fb.style.fontWeight = '800'; fb.style.fontSize = '16px'; fb.textContent = '✓ Correct!';   // green and bold (David 2026-10-26)
+          if (pn) { var ps = document.createElement('span'); ps.setAttribute('style', 'font-weight:600;font-size:14px;color:#7a5300;margin-left:6px'); ps.textContent = pn; fb.appendChild(ps); } }
         else { fb.style.fontWeight = '400'; fb.style.fontSize = '14px'; fb.style.color = '#b3382c'; var aw = accentWords(inp.value); fb.textContent = it.accentOnly
             ? (aw && /\s/.test(norm(inp.value))   // a sentence: name the words to look at (David 2026-11-10)
                ? (it.checks >= 2 ? '✗ So close — only the accents were off. Look again at: ' + aw + '. You can reveal the answer now.' : '✗ So close — the words are right, but look again at: ' + aw + ' (1 of 2).')
                : (it.checks >= 2 ? '✗ So close — only the accents were off. Don’t forget them! You can reveal the answer now.' : '✗ So close — the words are right, but check your accents! Accents are part of the word (1 of 2).'))
             : (hintFor(inp.value) ? '✗ ' + hintFor(inp.value) + (it.checks >= 2 ? ' You can reveal the answer now.' : ' Try again (1 of 2).')
             : (it.checks >= 2 ? '✗ Not yet — you can reveal the answer now.' : '✗ Not yet — check your spelling and accents, then try again (1 of 2).')
-              + (aw && /\s/.test(norm(inp.value)) ? ' Also look again at: ' + aw + '.' : '')); }
+              + (aw && /\s/.test(norm(inp.value)) ? ' Also look again at: ' + aw + '.' : ''));
+          if (pn) fb.textContent += ' ' + pn; }
+      };
+      var punctNote = function (v) {
+        var k = key.split(' || ')[0], n = [];
+        var pair = function (open, close, what) {
+          var o = k.indexOf(open) >= 0 && v.indexOf(open) < 0, c = k.indexOf(close) >= 0 && v.indexOf(close) < 0;
+          if (o && c) n.push('Remember: ' + what + ' needs ' + open + ' at the start and ' + close + ' at the end.');
+          else if (o) n.push('Remember the opening ' + open + ' at the start of the ' + what.replace(/^an? /, '') + '.');
+          else if (c) n.push('Remember the closing ' + close + ' at the end of the ' + what.replace(/^an? /, '') + '.');
+        };
+        pair('¿', '?', 'a question'); pair('¡', '!', 'an exclamation');
+        return n.join(' ');
       };
       // the student's words that match a word of the key except for accents / ñ, e.g. “dia”, “jardin” (or an accent added in error)
       var accentWords = function (v) {
