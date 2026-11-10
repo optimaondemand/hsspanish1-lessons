@@ -104,8 +104,8 @@
   .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
   .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
   .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
-  .v-es { color: var(--ink); font-size: 20px; font-weight: 400; } .v-en { color: var(--muted); }
-  .v-pic { flex: 0 0 auto; width: 88px; height: 66px; object-fit: cover; border-radius: 3px; border: 2px solid #d7ad4c; box-shadow: 0 1px 3px rgba(0,0,0,.25); }
+  .v-es { color: var(--ink); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 23px; font-weight: 700; line-height: 1.25; min-width: 200px; } .v-en { color: #1a2340; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 600; line-height: 1.35; }
+  .v-pic { flex: 0 0 auto; width: 240px; height: 180px; object-fit: cover; border-radius: 2px; border: 3px solid #c7922c; outline: 1px solid #e9d39a; outline-offset: -5px; background: #3b2a1a; box-shadow: 0 2px 6px rgba(0,0,0,.25); } .vocab-item:has(.v-pic) { gap: 16px; padding: 12px 16px; } @media (max-width: 640px) { .vocab-item:has(.v-pic) { flex-wrap: wrap; } .vocab-item .v-pic { width: 100%; height: auto; aspect-ratio: 4 / 3; } }
   .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
   .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
   .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
@@ -202,7 +202,7 @@
     <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 2 &middot; La casa</div>
     <div class="sg-where">Lesson 2.03 &middot; Day 3 of 8</div>
     <h1 class="sg-title">Verbos de cambio radical</h1>
-    <div class="sg-sub">The Verb "Boot" &middot; about 50 minutes</div>
+    <div class="sg-sub">The Verb "Boot" &middot; about 60 minutes</div>
     <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
   </div></div>
   <div class="sg-caption">El cuadro del m&oacute;dulo: Claudio Gay, <em>Una tertulia en 1790 (Santiago)</em> (<em>An evening gathering in 1790</em>), lithograph, Paris, 1854</div>
@@ -232,6 +232,17 @@
         </div>
     </div>
 
+    <!-- OPENER · Los molinos de viento (molinos.js, 2026-11-09) -->
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num" style="font-size:17px">&#9876;</span><span>Para empezar &middot; Los molinos de viento</span><span class="pill-time">8 min</span></div>
+        <h3 class="sg-h3">Giant or windmill? Look closely before you charge</h3>
+        <p style="font-size:17px;color:#1a2340;line-height:1.65;margin:0 0 8px;">In 1605 Miguel de Cervantes published <em>Don Quijote de la Mancha</em>. Its hero, a gentleman of about fifty who has read too many books about knights, rides out in his great-grandfather&rsquo;s old armour on a thin old horse, Rocinante, with a farmer, Sancho Panza, as his squire.</p>
+        <p style="font-size:17px;color:#1a2340;line-height:1.65;margin:0 0 8px;">On the plain of La Mancha he sees thirty or forty windmills and is certain they are <strong>giants</strong>. Sancho warns him: <em lang="es">&ldquo;no son gigantes, sino molinos de viento&rdquo;</em> (they are not giants, but windmills). Don Quijote charges anyway. A sail catches his lance and throws him and Rocinante across the field. He saw an enemy that was not there, and his mistake cost him dearly.</p>
+        <p style="font-size:17px;color:#1a2340;line-height:1.65;margin:0 0 12px;">A wrong verb form can fool you the same way: <em lang="es">quero</em> looks almost like <em lang="es">quiero</em>. Each shape on the plain carries a banner with a verb form. <strong>Wrong form?</strong> It is only a windmill: <strong>turn away</strong>, and Don Quijote earns a new, shinier piece of armour. <strong>Right form?</strong> It is a real giant: <strong>charge!</strong></p>
+        <div class="molinos" data-molinos="{&quot;items&quot;: [{&quot;who&quot;: &quot;yo&quot;, &quot;form&quot;: &quot;quero&quot;, &quot;inf&quot;: &quot;querer&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;quiero&quot;, &quot;why&quot;: &quot;&lt;em&gt;Yo&lt;/em&gt; is inside the boot, so the &lt;strong&gt;e&lt;/strong&gt; of querer becomes &lt;strong&gt;ie&lt;/strong&gt;.&quot;}, {&quot;who&quot;: &quot;yo&quot;, &quot;form&quot;: &quot;dormo&quot;, &quot;inf&quot;: &quot;dormir&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;duermo&quot;, &quot;why&quot;: &quot;&lt;em&gt;dormir&lt;/em&gt; is a boot verb (o &amp;rarr; ue), and &lt;em&gt;yo&lt;/em&gt; is inside the boot.&quot;}, {&quot;who&quot;: &quot;yo&quot;, &quot;form&quot;: &quot;teno&quot;, &quot;inf&quot;: &quot;tener&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;tengo&quot;, &quot;why&quot;: &quot;&lt;em&gt;Tener&lt;/em&gt; has its own special &lt;em&gt;yo&lt;/em&gt; form: &lt;strong&gt;tengo&lt;/strong&gt;. (The other boot forms change e &amp;rarr; ie: tienes, tiene.)&quot;}, {&quot;who&quot;: &quot;tú&quot;, &quot;form&quot;: &quot;podes&quot;, &quot;inf&quot;: &quot;poder&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;puedes&quot;, &quot;why&quot;: &quot;&lt;em&gt;poder&lt;/em&gt; changes o &amp;rarr; ue, and &lt;em&gt;tú&lt;/em&gt; is inside the boot.&quot;}, {&quot;who&quot;: &quot;nosotros&quot;, &quot;form&quot;: &quot;quieremos&quot;, &quot;inf&quot;: &quot;querer&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;queremos&quot;, &quot;why&quot;: &quot;&lt;em&gt;Nosotros&lt;/em&gt; sits outside the boot, so querer keeps its &lt;strong&gt;e&lt;/strong&gt;.&quot;}, {&quot;who&quot;: &quot;nosotros&quot;, &quot;form&quot;: &quot;puedemos&quot;, &quot;inf&quot;: &quot;poder&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;podemos&quot;, &quot;why&quot;: &quot;&lt;em&gt;Nosotros&lt;/em&gt; sits outside the boot, so poder keeps its &lt;strong&gt;o&lt;/strong&gt;.&quot;}, {&quot;who&quot;: &quot;ella&quot;, &quot;form&quot;: &quot;dorme&quot;, &quot;inf&quot;: &quot;dormir&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;duerme&quot;, &quot;why&quot;: &quot;&lt;em&gt;Ella&lt;/em&gt; is inside the boot: o &amp;rarr; ue.&quot;}, {&quot;who&quot;: &quot;ellos&quot;, &quot;form&quot;: &quot;queren&quot;, &quot;inf&quot;: &quot;querer&quot;, &quot;ok&quot;: false, &quot;fix&quot;: &quot;quieren&quot;, &quot;why&quot;: &quot;&lt;em&gt;Ellos&lt;/em&gt; is inside the boot: e &amp;rarr; ie.&quot;}, {&quot;who&quot;: &quot;yo&quot;, &quot;form&quot;: &quot;quiero&quot;, &quot;inf&quot;: &quot;querer&quot;, &quot;ok&quot;: true, &quot;fix&quot;: &quot;quiero&quot;, &quot;why&quot;: &quot;&lt;em&gt;Yo&lt;/em&gt; is inside the boot (e &amp;rarr; ie), with the regular ending &lt;em&gt;-o&lt;/em&gt;.&quot;}, {&quot;who&quot;: &quot;tú&quot;, &quot;form&quot;: &quot;puedes&quot;, &quot;inf&quot;: &quot;poder&quot;, &quot;ok&quot;: true, &quot;fix&quot;: &quot;puedes&quot;, &quot;why&quot;: &quot;&lt;em&gt;Tú&lt;/em&gt; is inside the boot (o &amp;rarr; ue), with the regular ending &lt;em&gt;-es&lt;/em&gt;.&quot;}, {&quot;who&quot;: &quot;nosotros&quot;, &quot;form&quot;: &quot;dormimos&quot;, &quot;inf&quot;: &quot;dormir&quot;, &quot;ok&quot;: true, &quot;fix&quot;: &quot;dormimos&quot;, &quot;why&quot;: &quot;&lt;em&gt;Nosotros&lt;/em&gt; sits outside the boot, so dormir keeps its &lt;strong&gt;o&lt;/strong&gt;.&quot;}, {&quot;who&quot;: &quot;él&quot;, &quot;form&quot;: &quot;tiene&quot;, &quot;inf&quot;: &quot;tener&quot;, &quot;ok&quot;: true, &quot;fix&quot;: &quot;tiene&quot;, &quot;why&quot;: &quot;For &lt;em&gt;él&lt;/em&gt;, tener changes e &amp;rarr; ie: &lt;strong&gt;tiene&lt;/strong&gt;.&quot;}, {&quot;who&quot;: &quot;nosotros&quot;, &quot;form&quot;: &quot;queremos&quot;, &quot;inf&quot;: &quot;querer&quot;, &quot;ok&quot;: true, &quot;fix&quot;: &quot;queremos&quot;, &quot;why&quot;: &quot;&lt;em&gt;Nosotros&lt;/em&gt; sits outside the boot: no change.&quot;}, {&quot;who&quot;: &quot;ustedes&quot;, &quot;form&quot;: &quot;pueden&quot;, &quot;inf&quot;: &quot;poder&quot;, &quot;ok&quot;: true, &quot;fix&quot;: &quot;pueden&quot;, &quot;why&quot;: &quot;&lt;em&gt;Ustedes&lt;/em&gt; is inside the boot: o &amp;rarr; ue.&quot;}]}"></div>
+        <p style="font-size:13px;color:#5f554a;margin:10px 0 0;">Practice game, not graded. Story: Miguel de Cervantes, <em>Don Quijote de la Mancha</em>, Part I, chapter 8 (1605). Music: <em>Cantiga de Santa María</em> 100, &ldquo;Santa Mar&iacute;a, strela do d&iacute;a&rdquo; (court of Alfonso X, 13th century), melody read from the Escorial &ldquo;musicians&rsquo; codex&rdquo; (Real Biblioteca de El Escorial, MS b.I.2, ff. 110r&ndash;110v), with thanks to Andrew Casson&rsquo;s <em>Cantigas de Santa Maria for Singers</em> for help with doubtful readings; rhythm and arrangement original to this course. Art is original to this course.</p>
+    </div>
+    <script src="../../molinos.js"></script>
     <!-- PART 1 -->
     <div class="sg-card">
         <div class="sg-part"><span class="sg-num">I</span><span>PARA EMPEZAR</span><span class="pill-time">7 min</span></div>
@@ -259,7 +270,7 @@
             <tbody>
                 <tr><td><span class="pron">e &rarr; ie</span></td><td>querer (to want) &rarr; qu<span class="pron">ie</span>ro</td><td>Yo quiero una casa con jard&iacute;n. <button class="say" data-audio="grammar/s2m2-quiero.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
                 <tr><td><span class="pron">e &rarr; ie</span></td><td>empezar (to begin) &rarr; emp<span class="pron">ie</span>za</td><td>El d&iacute;a empieza en la cocina. <button class="say" data-audio="grammar/s2m2-empieza.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
-                <tr><td><span class="pron">e &rarr; ie</span></td><td>preferir (to prefer) &rarr; pref<span class="pron">ie</span>ro</td><td>Yo prefiero limpiar la cocina.</td></tr>
+                <tr><td><span class="pron">e &rarr; ie</span></td><td>preferir (to prefer) &rarr; pref<span class="pron">ie</span>ro</td><td>Yo prefiero limpiar la cocina. <button class="say" data-audio="grammar/s2m2-prefiero.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
                 <tr><td><span class="pron">o &rarr; ue</span></td><td>poder (to be able to) &rarr; p<span class="pron">ue</span>des</td><td>&iquest;Puedes limpiar la cocina? <button class="say" data-audio="grammar/s2m2-puedes.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
                 <tr><td><span class="pron">o &rarr; ue</span></td><td>dormir (to sleep) &rarr; d<span class="pron">ue</span>rme</td><td>Mi hermano duerme mucho. <button class="say" data-audio="grammar/s2m2-duerme.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
                 <tr><td><span class="pron">u &rarr; ue</span></td><td>jugar (to play) &rarr; j<span class="pron">ue</span>ga</td><td>Ella juega en el jard&iacute;n. <button class="say" data-audio="grammar/s2m2-juega.mp3" aria-label="Escuchar">&#128266;</button></td></tr>
@@ -270,20 +281,33 @@
     </div>
 
     <!-- PART 3 · The boot -->
+    <style>
+.boot-grid{border-collapse:separate;border-spacing:0;margin:10px 0 6px;font-size:16px;min-width:300px}
+.boot-grid td{padding:9px 14px;vertical-align:top;line-height:1.35;border:1px solid #cdbf9f;min-width:150px}
+.boot-grid .who{display:block;font-size:12px;color:#5b6672;letter-spacing:.2px}
+.boot-grid th{font-weight:700;color:#0e1c42;padding:8px 14px;line-height:1.25}
+.boot-grid th.col{text-align:center;font-size:15px;border-bottom:2px solid #c7922c !important}
+.boot-grid th.row{text-align:right;font-size:14px;white-space:nowrap;border-right:2px solid #c7922c !important}
+.boot-grid th .who{font-weight:400}
+.boot-grid .in{background:#f3e2b3}
+.boot-grid .out{background:#fff;border:2px dashed #9aa6b2}
+.boot-grid .none{background:#faf7f0;color:#9aa6b2;text-align:center;vertical-align:middle}
+.boot-grid .b-t{border-top:3px solid #3a2414}.boot-grid .b-b{border-bottom:3px solid #3a2414}
+.boot-grid .b-l{border-left:3px solid #3a2414}.boot-grid .b-r{border-right:3px solid #3a2414}
+.boot-key{font-size:15.5px;color:#1a2340;margin:0 0 8px}
+.boot-key i{display:inline-block;width:14px;height:12px;vertical-align:-1px;margin-right:4px;background:#f3e2b3;border:2px solid #3a2414}
+</style>
     <div class="sg-card">
         <div class="sg-part"><span class="sg-num">III</span><span>LA BOTA &middot; EL VERBO COMPLETO</span><span class="pill-time">8 min</span></div>
         <h3 class="sg-h3">Where the change happens &mdash; and where it doesn't</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Here is <strong>querer</strong> (e&rarr;ie) in full. The stem changes in every form <strong>except nosotros</strong>. Those changed forms are shaded &mdash; they draw the shape of a boot:</p>
-        <table class="gtable">
-            <thead><tr><th>Subject</th><th>querer (to want)</th><th>Changed?</th></tr></thead>
-            <tbody>
-                <tr><td>yo</td><td><span class="pron">quiero</span></td><td>&#9989; e&rarr;ie</td></tr>
-                <tr><td>t&uacute;</td><td><span class="pron">quieres</span></td><td>&#9989; e&rarr;ie</td></tr>
-                <tr><td>usted / &eacute;l / ella</td><td><span class="pron">quiere</span></td><td>&#9989; e&rarr;ie</td></tr>
-                <tr><td><strong>nosotros/as</strong></td><td><strong>queremos</strong></td><td><strong>&#10060; no change</strong></td></tr>
-                <tr><td>ustedes / ellos / ellas</td><td><span class="pron">quieren</span></td><td>&#9989; e&rarr;ie</td></tr>
-            </tbody>
-        </table>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Here is <strong>querer (ie)</strong> in full again, now that you know all four patterns. The stem changes in every form <strong>except nosotros</strong>. Those changed forms are shaded &mdash; they draw the shape of a boot. The same boot fits every pattern: <em>poder (ue)</em>, <em>jugar (ue)</em>, <em>pedir (i)</em>.</p>
+        <div style="overflow-x:auto"><table class="boot-grid" aria-label="querer: the boot">
+            <tr><th class="corner"></th><th class="col">Singular<span class="who">one person</span></th><th class="col">Plural<span class="who">more than one</span></th></tr>
+            <tr><th class="row">1st person<span class="who">I / we</span></th><td class="in b-t b-l b-r"><span class="who">yo</span><strong>quiero <button class="say" data-audio="grammar/s2m2-w-quiero.mp3" aria-label="Escuchar">&#128266;</button></strong></td><td class="out"><span class="who">nosotros/as &middot; outside the boot</span><strong>queremos <button class="say" data-audio="grammar/s2m2-w-queremos.mp3" aria-label="Escuchar">&#128266;</button></strong></td></tr>
+            <tr><th class="row">2nd person<span class="who">you</span></th><td class="in b-l b-r"><span class="who">t&uacute;</span><strong>quieres <button class="say" data-audio="grammar/s2m2-w-quieres.mp3" aria-label="Escuchar">&#128266;</button></strong></td><td class="none">&mdash;</td></tr>
+            <tr><th class="row">3rd person<span class="who">he, she, they; usted(es)</span></th><td class="in b-l b-b"><span class="who">usted / &eacute;l / ella</span><strong>quiere <button class="say" data-audio="grammar/s2m2-w-quiere.mp3" aria-label="Escuchar">&#128266;</button></strong></td><td class="in b-t b-r b-b"><span class="who">ustedes / ellos / ellas</span><strong>quieren <button class="say" data-audio="grammar/s2m2-w-quieren.mp3" aria-label="Escuchar">&#128266;</button></strong></td></tr>
+        </table></div>
+        <p class="boot-key"><i></i>shaded = inside the boot: the stem changes (e&rarr;ie). Dashed = <em>nosotros</em>, outside the boot: no change.</p>
         <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:6px 0;">Hear the exception out loud: <em>Nosotros <strong>queremos</strong> ordenar la sala.</em> <button class="say" data-audio="grammar/s2m2-queremos.mp3" aria-label="Escuchar">&#128266;</button> &mdash; <strong>queremos</strong>, not &ldquo;quieremos.&rdquo; The <em>nosotros</em> form always keeps the original infinitive stem: <em>dormir &rarr; dormimos</em>, <em>poder &rarr; podemos</em>, <em>jugar &rarr; jugamos</em>, <em>pedir &rarr; pedimos</em>.</p>
         <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:12px 16px;">
             <div style="font-size:13px;color:#1B6A94;letter-spacing:.3px;margin-bottom:6px;">&#128161; THE MEMORY HOOK</div>
@@ -300,9 +324,9 @@
             <div class="widget-kicker">&#9989; TRY IT &middot; pick the correct form</div>
             <div class="widget-question">"Yo ___ dormir ocho horas." (I want to sleep eight hours.) &mdash; from <em>querer</em>.</div>
             <div class="widget-options">
-                <button data-correct="false">quero</button>
-                <button data-correct="true">quiero</button>
-                <button data-correct="false">queremos</button>
+                <button data-correct="false" data-why="&lt;strong&gt;Not quite.&lt;/strong&gt; &lt;em&gt;Quero&lt;/em&gt; keeps the plain &lt;strong&gt;e&lt;/strong&gt; of querer. But &lt;em&gt;yo&lt;/em&gt; is inside the boot, so that e changes to &lt;strong&gt;ie&lt;/strong&gt;: &lt;strong&gt;quiero&lt;/strong&gt;.">quero</button>
+                <button data-correct="true" data-why="&lt;strong&gt;¡Correcto!&lt;/strong&gt; &lt;em&gt;Yo&lt;/em&gt; is inside the boot, so the e of querer becomes &lt;strong&gt;ie&lt;/strong&gt;: &lt;strong&gt;quiero&lt;/strong&gt;, with the regular yo ending &lt;em&gt;-o&lt;/em&gt;.">quiero</button>
+                <button data-correct="false" data-why="&lt;strong&gt;Not quite.&lt;/strong&gt; &lt;em&gt;Queremos&lt;/em&gt; is the &lt;em&gt;nosotros&lt;/em&gt; form (“we want”), but the subject here is &lt;em&gt;yo&lt;/em&gt;. Yo is inside the boot: &lt;strong&gt;quiero&lt;/strong&gt;.">queremos</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
@@ -312,9 +336,9 @@
             <div class="widget-kicker">&#9989; WATCH THE &laquo;NOSOTROS&raquo; TRAP</div>
             <div class="widget-question">"Nosotros ___ ordenar la sala." (We want to tidy the living room.) &mdash; from <em>querer</em>.</div>
             <div class="widget-options">
-                <button data-correct="true">queremos</button>
-                <button data-correct="false">quieremos</button>
-                <button data-correct="false">quieren</button>
+                <button data-correct="true" data-why="&lt;strong&gt;¡Correcto!&lt;/strong&gt; &lt;em&gt;Nosotros&lt;/em&gt; sits outside the boot, so querer keeps its &lt;strong&gt;e&lt;/strong&gt;: &lt;strong&gt;queremos&lt;/strong&gt;.">queremos</button>
+                <button data-correct="false" data-why="&lt;strong&gt;Not quite.&lt;/strong&gt; That is the nosotros trap: &lt;em&gt;nosotros&lt;/em&gt; sits &lt;strong&gt;outside&lt;/strong&gt; the boot, so the stem does not change. Keep the e: &lt;strong&gt;queremos&lt;/strong&gt;.">quieremos</button>
+                <button data-correct="false" data-why="&lt;strong&gt;Not quite.&lt;/strong&gt; &lt;em&gt;Quieren&lt;/em&gt; is the &lt;em&gt;ellos / ellas / ustedes&lt;/em&gt; form (“they want”). The subject is &lt;em&gt;nosotros&lt;/em&gt;, which is outside the boot: &lt;strong&gt;queremos&lt;/strong&gt;.">quieren</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
@@ -324,8 +348,8 @@
             <div class="widget-kicker">&#9989; TRY IT &middot; which pattern is it?</div>
             <div class="widget-question">"Ella ___ en el jard&iacute;n." (She plays in the garden.) &mdash; from <em>jugar</em>.</div>
             <div class="widget-options">
-                <button data-correct="false">juga</button>
-                <button data-correct="true">juega</button>
+                <button data-correct="false" data-why="&lt;strong&gt;Not quite.&lt;/strong&gt; &lt;em&gt;Jugar&lt;/em&gt; is the one common &lt;strong&gt;u&amp;nbsp;&amp;rarr;&amp;nbsp;ue&lt;/strong&gt; verb, and &lt;em&gt;ella&lt;/em&gt; is inside the boot, so the u becomes ue: &lt;strong&gt;juega&lt;/strong&gt;.">juga</button>
+                <button data-correct="true" data-why="&lt;strong&gt;¡Correcto!&lt;/strong&gt; &lt;em&gt;Ella&lt;/em&gt; is inside the boot, and jugar changes &lt;strong&gt;u&amp;nbsp;&amp;rarr;&amp;nbsp;ue&lt;/strong&gt;: &lt;strong&gt;juega&lt;/strong&gt;.">juega</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
@@ -342,14 +366,9 @@
     <!-- PART 1 -->
     <div class="sg-card">
         <div class="sg-part"><span class="sg-num">V</span><span>REPASO DE O&Iacute;DO</span><span class="pill-time">5 min</span></div>
-        <h3 class="sg-h3">Warm up your ear</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the ear-quiz, remind your brain what these sound like. Click each <strong>&#128266;</strong>, say it back, and picture its meaning &mdash; no reading the English until after you've guessed.</p>
-        <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-cocina.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/la-cocina.jpg" alt="" loading="lazy"><span class="v-es">la cocina</span><span class="v-en">kitchen</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-bano.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/el-bano.jpg" alt="" loading="lazy"><span class="v-es">el ba&ntilde;o</span><span class="v-en">bathroom</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-arriba.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/arriba.jpg" alt="" loading="lazy"><span class="v-es">arriba</span><span class="v-en">upstairs</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-ordenar.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/ordenar.jpg" alt="" loading="lazy"><span class="v-es">ordenar</span><span class="v-en">to tidy up</span></li>
-        </ul>
+        <h3 class="sg-h3">&iexcl;Rompe la pi&ntilde;ata! &middot; Warm up your ear</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before the ear-quiz, wake up the home words from Days 1 and 2. Break the pi&ntilde;ata, then match each candy (a Spanish word) to its English meaning. Tap a candy to hear it and say it back. The first round has no clock; then try to beat 60 seconds.</p>
+        <div class="pinata-game" data-count="8" data-seconds="60" data-words="[{&quot;es&quot;: &quot;la cocina&quot;, &quot;en&quot;: &quot;kitchen&quot;, &quot;audio&quot;: &quot;vocab/s2-la-cocina.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;el dormitorio&quot;, &quot;en&quot;: &quot;bedroom&quot;, &quot;audio&quot;: &quot;vocab/s2-el-dormitorio.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;el baño&quot;, &quot;en&quot;: &quot;bathroom&quot;, &quot;audio&quot;: &quot;vocab/s2-el-bano.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;la sala&quot;, &quot;en&quot;: &quot;living room&quot;, &quot;audio&quot;: &quot;vocab/s2-la-sala.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;el comedor&quot;, &quot;en&quot;: &quot;dining room&quot;, &quot;audio&quot;: &quot;vocab/s2-el-comedor.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;el jardín&quot;, &quot;en&quot;: &quot;garden / yard&quot;, &quot;audio&quot;: &quot;vocab/s2-el-jardin.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;la habitación&quot;, &quot;en&quot;: &quot;room&quot;, &quot;audio&quot;: &quot;vocab/s2-la-habitacion.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;la escalera&quot;, &quot;en&quot;: &quot;staircase / stairs&quot;, &quot;audio&quot;: &quot;vocab/s2-la-escalera.mp3&quot;, &quot;from&quot;: &quot;2-01&quot;}, {&quot;es&quot;: &quot;la cama&quot;, &quot;en&quot;: &quot;bed&quot;, &quot;audio&quot;: &quot;vocab/s2-la-cama.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;la mesa&quot;, &quot;en&quot;: &quot;table&quot;, &quot;audio&quot;: &quot;vocab/s2-la-mesa.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;la silla&quot;, &quot;en&quot;: &quot;chair&quot;, &quot;audio&quot;: &quot;vocab/s2-la-silla.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;la puerta&quot;, &quot;en&quot;: &quot;door&quot;, &quot;audio&quot;: &quot;vocab/s2-la-puerta.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;la ventana&quot;, &quot;en&quot;: &quot;window&quot;, &quot;audio&quot;: &quot;vocab/s2-la-ventana.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;el mueble&quot;, &quot;en&quot;: &quot;piece of furniture&quot;, &quot;audio&quot;: &quot;vocab/s2-el-mueble.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;limpiar&quot;, &quot;en&quot;: &quot;to clean&quot;, &quot;audio&quot;: &quot;vocab/s2-limpiar.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;ordenar&quot;, &quot;en&quot;: &quot;to tidy up / put in order&quot;, &quot;audio&quot;: &quot;vocab/s2-ordenar.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;arriba&quot;, &quot;en&quot;: &quot;upstairs / up&quot;, &quot;audio&quot;: &quot;vocab/s2-arriba.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}, {&quot;es&quot;: &quot;abajo&quot;, &quot;en&quot;: &quot;downstairs / down&quot;, &quot;audio&quot;: &quot;vocab/s2-abajo.mp3&quot;, &quot;from&quot;: &quot;2-02&quot;}]"></div>
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
             <div class="widget-question">Honestly &mdash; which still feels the shakiest right now?</div>
@@ -507,6 +526,7 @@
       var correct = eBtn.dataset.correct === 'true';
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
+      if (eBtn.dataset.why) { efb.innerHTML = eBtn.dataset.why; efb.classList.add('show'); return; }   // per-choice: what is wrong + why
       efb.textContent = correct
         ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — inside the boot it changes; nosotros stays regular.')
         : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite. Ask: is this nosotros (no change) or a boot form (stem vowel changes)?');
@@ -546,7 +566,16 @@
 })();
 </script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<script src="../../pinata.js"></script>
 <!-- mywork -->
 <script src="../../my-work.js"></script>
+<style id="big-tables">/* bigger tables for visibility, 2026-11-10 */
+.gtable, .conj-table, .exam-map { font-size:18px; }
+.gtable th, .conj-table th, .exam-map th { font-size:18px; padding:11px 14px; }
+.gtable td, .conj-table td, .exam-map td { padding:11px 14px; line-height:1.45; }
+.gtable .es { font-size:19px; } .gtable .en { font-size:18px; } .gtable .note { font-size:16px; }
+.gtable.big th { font-size:23px; } .gtable.big td { font-size:20px; } .gtable.big .pron { font-size:21px; }
+.boot-grid td { font-size:18px; } .boot-grid .who { font-size:14px; }
+</style>
 </body>
 </html>
