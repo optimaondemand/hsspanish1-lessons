@@ -75,7 +75,15 @@
     if (curtain) { [[x - 9, 1], [x + w + 1, -1]].forEach(function (cdef) { var cx = cdef[0]; P.poly([[cx, y - 6], [cx + 8, y - 6], [cx + 8 - cdef[1] * 2, y + h + 6], [cx, y + h + 6]], [curtain, '#7a1e2e']); for (var f = 1; f < 4; f++) P.line(cx + f * 2, y - 5, cx + f * 2 - cdef[1], y + h + 5, 'rgba(0,0,0,.15)', .5); }); P.rect(x - 11, y - 8, w + 22, 2.4, '#6b4423', null, 1); }
   }
   function frame(P, x, y, w, h) { P.rect(x - 2.5, y - 2.5, w + 5, h + 5, ['#d4a640', '#9a7420'], ['#6b4f15', .5], .6); P.rect(x, y, w, h, ['#7fb0d6', '#c7dfee']); P.poly([[x, y + h], [x + w * .35, y + h * .45], [x + w * .6, y + h * .7], [x + w * .8, y + h * .5], [x + w, y + h * .75], [x + w, y + h]], '#4f8f43'); P.ell(x + w * .78, y + h * .25, 3, 3, '#ffe28a'); }
-  function plant(P, x, y, s) { s = s || 1; P.shadow(x, y, 7 * s); P.poly([[x - 6 * s, y - 12 * s], [x + 6 * s, y - 12 * s], [x + 4.5 * s, y], [x - 4.5 * s, y]], ['#c26a3a', '#8e4a26'], ['#6b3a1c', .4]); for (var i = 0; i < 7; i++) { var a = -2.6 + i * .35; P.ell(x + Math.cos(a) * 9 * s, y - 14 * s + Math.sin(a) * 10 * s, 5 * s, 2.2 * s, i % 2 ? '#3f8f4a' : '#2f7a3c'); } }
+  function plant(P, x, y, s) {   // leaves on stems that grow out of the soil
+    s = s || 1; P.shadow(x, y, 7 * s);
+    var top = y - 12 * s;
+    for (var i = 0; i < 7; i++) { var a = -2.6 + i * .35, lx = x + Math.cos(a) * 9 * s, ly = y - 14 * s + Math.sin(a) * 10 * s;
+      P.curve([x + (i - 3) * .6 * s, top + 1, x + (lx - x) * .3, top - 4 * s, lx, ly], '#2f6a34', .7 * s); }
+    for (var k = 0; k < 7; k++) { var b = -2.6 + k * .35; P.ell(x + Math.cos(b) * 9 * s, y - 14 * s + Math.sin(b) * 10 * s, 5 * s, 2.2 * s, k % 2 ? '#3f8f4a' : '#2f7a3c'); }
+    P.poly([[x - 6 * s, top], [x + 6 * s, top], [x + 4.5 * s, y], [x - 4.5 * s, y]], ['#c26a3a', '#8e4a26'], ['#6b3a1c', .4]);
+    P.rect(x - 6.6 * s, top - 1.6 * s, 13.2 * s, 2.6 * s, ['#d27a48', '#a85a30'], null, .6); P.ell(x, top - .4 * s, 5.4 * s, 1 * s, '#5a3b1c');
+  }
 
   // ------------------------------------------------------------------ the rooms
   var ROOMS = {
@@ -137,28 +145,28 @@
     },
     sala: function (P, T) {
       walls(P, '#f6e8cb', '#ecd8b0'); woodFloor(P, '#a87448', '#8a5a33'); baseboard(P, '#e8dcc8');
-      frame(P, 168, 22, 36, 26); windowView(P, 286, 20, 26, 40, '#3f7d5f');
-      // bookshelf
-      P.shadow(146, FLOOR_Y, 12); P.rect(134, 60, 24, FLOOR_Y - 60, ['#8a5a2b', '#5a3b1c'], null, 1);
-      for (var s = 0; s < 4; s++) { var y = 66 + s * 18; P.rect(136, y + 14, 20, 1.6, '#4a2f18'); for (var b = 0; b < 5; b++) P.rect(137 + b * 4, y + 2 + (b % 2) * 2, 3.2, 12 - (b % 2) * 2, ['#c0392b', '#2b5aa0', '#f2c14e', '#3f7d5f', '#8e44ad'][(b + s) % 5]); }
-      // TV on a stand
-      P.shadow(232, FLOOR_Y, 26); P.rect(208, 112, 48, 26, ['#8a5a2b', '#5a3b1c'], null, 1.5); P.rect(212, 118, 18, 14, null, ['rgba(255,255,255,.25)', .5], 1); P.rect(234, 118, 18, 14, null, ['rgba(255,255,255,.25)', .5], 1);
-      P.rect(212, 70, 40, 26, ['#222', '#0d0d0d'], ['#000', .6], 1.5); var glow = 0.6 + 0.2 * Math.sin(T * 2.4);
-      P.rect(214, 72, 36, 22, ['rgba(110,180,230,' + glow + ')', 'rgba(40,90,140,' + glow + ')']); P.poly([[214, 94], [222, 84], [230, 90], [240, 80], [250, 88], [250, 94]], 'rgba(100,170,90,.8)'); P.ell(243, 77, 2.4, 2.4, 'rgba(255,230,140,.9)');
-      P.rect(228, 96, 8, 3, '#222'); P.rect(222, 99, 20, 2, '#222', null, 1);
-      // sofa (left of the TV, facing it)
-      P.shadow(178, FLOOR_Y + 1, 30);
-      P.rect(150, 100, 56, 22, ['#3f8a68', '#2a6a4e'], ['#1f4f3a', .5], 5); P.rect(152, 112, 52, 18, ['#4a9a76', '#2f7356'], ['#1f4f3a', .5], 4);
-      P.rect(146, 106, 9, 26, ['#3f8a68', '#2a6a4e'], ['#1f4f3a', .5], 4); P.rect(201, 106, 9, 26, ['#3f8a68', '#2a6a4e'], ['#1f4f3a', .5], 4);
-      P.rect(158, 104, 14, 11, ['#f2c14e', '#d9a32e'], null, 3); P.rect(184, 104, 14, 11, ['#e05a6a', '#b8404e'], null, 3);
-      P.rect(154, 130, 3, 8, '#4a2f18'); P.rect(199, 130, 3, 8, '#4a2f18');
-      // rug + coffee table with a book and a cup
-      P.ell(200, FLOOR_Y + 9, 56, 6.5, ['#b8404e', '#8e1b2c']); P.ell(200, FLOOR_Y + 9, 48, 4.8, null, ['rgba(242,193,78,.7)', .6]);
-      P.shadow(200, FLOOR_Y + 12, 22); P.rect(180, 136, 40, 4, ['#b8875c', '#8a5a33'], ['#5a3b1c', .4], 1.5); P.rect(183, 140, 3, 9, '#6b4423'); P.rect(214, 140, 3, 9, '#6b4423');
-      P.rect(186, 132.5, 12, 3.5, '#2b5aa0', null, .6); P.rect(187, 131.5, 10, 1.4, '#fbf3dc'); P.rect(205, 131, 5, 5, ['#ffffff', '#dcdcdc'], null, 1); P.curve([210, 132, 212.5, 133.5, 210, 135], '#cfcfcf', .7);
-      for (var st = 0; st < 2; st++) { var q = (T * 6 + st * 4) % 8; P.alpha(.5 - q / 16, function () { P.ell(207.5, 129 - q, 1.4, 1.2, '#fff'); }); }
-      plant(P, 272, FLOOR_Y, 1.1);
-      P.line(304, 64, 304, FLOOR_Y, '#55331a', .9); P.poly([[297, 58], [311, 58], [308, 68], [300, 68]], ['#f6d77a', '#e0b54a'], ['#8a6a20', .4]); P.ell(304, 66, 12, 8, 'rgba(255,226,140,' + (0.22 + 0.06 * Math.sin(T * 3)) + ')');
+      frame(P, 150, 26, 34, 24);
+      // bookshelf, against the right wall
+      P.shadow(305, FLOOR_Y, 12); P.rect(292, 56, 26, FLOOR_Y - 56, ['#8a5a2b', '#5a3b1c'], ['#4a2f18', .4], 1);
+      for (var s = 0; s < 4; s++) { var y = 60 + s * 19; P.rect(294, y + 16, 22, 1.8, '#4a2f18'); for (var b = 0; b < 5; b++) P.rect(295 + b * 4.2, y + 3 + (b % 2) * 2, 3.4, 13 - (b % 2) * 2, ['#c0392b', '#2b5aa0', '#f2c14e', '#3f7d5f', '#8e44ad'][(b + s) % 5]); }
+      // TV standing on its cabinet
+      P.shadow(250, FLOOR_Y, 24); P.rect(228, 110, 44, 28, ['#8a5a2b', '#5a3b1c'], ['#4a2f18', .4], 1.5);
+      P.rect(231, 116, 18, 18, null, ['rgba(255,255,255,.25)', .5], 1); P.rect(251, 116, 18, 18, null, ['rgba(255,255,255,.25)', .5], 1); P.ell(247, 125, .8, .8, '#e0c27a'); P.ell(253, 125, .8, .8, '#e0c27a');
+      P.rect(240, 106, 20, 4, '#1a1a1a', null, 1); P.rect(247, 102, 6, 5, '#1a1a1a');          // TV foot on the cabinet top
+      P.rect(230, 76, 40, 27, ['#222', '#0d0d0d'], ['#000', .6], 1.5); var glow = 0.6 + 0.2 * Math.sin(T * 2.4);
+      P.rect(232, 78, 36, 23, ['rgba(110,180,230,' + glow + ')', 'rgba(40,90,140,' + glow + ')']); P.poly([[232, 101], [240, 91], [248, 97], [258, 87], [268, 95], [268, 101]], 'rgba(100,170,90,.8)'); P.ell(261, 83, 2.4, 2.4, 'rgba(255,230,140,.9)');
+      // sofa, facing the TV
+      P.shadow(170, FLOOR_Y + 1, 32);
+      P.rect(142, 98, 58, 22, ['#3f8a68', '#2a6a4e'], ['#1f4f3a', .5], 5); P.rect(144, 110, 54, 19, ['#4a9a76', '#2f7356'], ['#1f4f3a', .5], 4);
+      P.rect(137, 104, 10, 28, ['#3f8a68', '#2a6a4e'], ['#1f4f3a', .5], 4); P.rect(195, 104, 10, 28, ['#3f8a68', '#2a6a4e'], ['#1f4f3a', .5], 4);
+      P.rect(150, 102, 15, 11, ['#f2c14e', '#d9a32e'], null, 3); P.rect(177, 102, 15, 11, ['#e05a6a', '#b8404e'], null, 3);
+      P.rect(146, 129, 3, 9, '#4a2f18'); P.rect(193, 129, 3, 9, '#4a2f18');
+      // rug + coffee table with a book and a cup, in front
+      P.ell(206, FLOOR_Y + 10, 58, 6.5, ['#b8404e', '#8e1b2c']); P.ell(206, FLOOR_Y + 10, 50, 4.8, null, ['rgba(242,193,78,.7)', .6]);
+      P.shadow(206, FLOOR_Y + 14, 22); P.rect(186, 138, 40, 4, ['#b8875c', '#8a5a33'], ['#5a3b1c', .4], 1.5); P.rect(189, 142, 3, 9, '#6b4423'); P.rect(220, 142, 3, 9, '#6b4423');
+      P.rect(192, 134.5, 12, 3.5, '#2b5aa0', null, .6); P.rect(193, 133.5, 10, 1.4, '#fbf3dc'); P.rect(211, 133, 5, 5, ['#ffffff', '#dcdcdc'], null, 1); P.curve([216, 134, 218.5, 135.5, 216, 137], '#cfcfcf', .7);
+      for (var st = 0; st < 2; st++) { var q = (T * 6 + st * 4) % 8; P.alpha(.5 - q / 16, function () { P.ell(213.5, 131 - q, 1.4, 1.2, '#fff'); }); }
+      plant(P, 282, FLOOR_Y, 1);
     },
     comedor: function (P, T) {
       walls(P, '#f3e4c6', '#e6d2ac'); wainscot(P, 92, '#d9c09a'); woodFloor(P, '#a87448', '#8a5a33'); baseboard(P, '#7a4f2e');
@@ -239,16 +247,23 @@
     P.poly([[x + 20, y - 46], [x + 30, y - 48], [x + 33, y - 88], [x + 23, y - 88]], cream, line);       // neck
     for (var n = 0; n < 6; n++) P.curve([x + 23 + n * .4, y - 52 - n * 6, x + 26 + n * .4, y - 54 - n * 6, x + 29 + n * .4, y - 52 - n * 6], 'rgba(150,120,80,.3)', .45);
     var hx = x + 29 + shake, hy = y - 92;
-    P.ell(hx, hy, 9, 7.5, cream, line); P.rect(hx + 3, hy - 3, 11, 9, cream, line, 4); P.ell(hx + 13, hy + 1.5, 1, 1.1, '#5a3b1c');   // head + muzzle
-    P.poly([[hx - 6, hy - 5], [hx - 8, hy - 16], [hx - 3, hy - 7]], cream, line); P.poly([[hx + 1, hy - 6], [hx + 1, hy - 17], [hx + 5, hy - 7]], cream, line);   // ears
-    P.ell(hx - 7.5, hy - 17, 2.6, 2.6, ['#ff6b6b', '#c0392b']); P.ell(hx + 1.5, hy - 18, 2.6, 2.6, ['#5b8ff0', '#2b5aa0']);   // pompoms
-    var blink = (Math.floor(T * 10) % 31) === 0;
-    if (mood === 'happy') P.curve([hx + 1, hy - 1.5, hx + 3.5, hy - 4.5, hx + 6, hy - 1.5], '#3a2a1c', 1);
-    else if (blink) P.line(hx + 1.5, hy - 2, hx + 5.5, hy - 2, '#3a2a1c', .8);
-    else { P.ell(hx + 3.5, hy - 2, 2.2, 2.6, '#3a2a1c'); P.ell(hx + 4.2, hy - 2.9, .8, .8, '#ffffff'); }
-    P.curve([hx + 1, hy - 5.5, hx + 3.5, hy - 7, hx + 6, hy - 5.8], 'rgba(90,60,30,.6)', .5);
-    if (mood === 'happy') P.curve([hx + 8, hy + 4, hx + 10.5, hy + 6.5, hx + 13, hy + 4.5], '#8e1b2c', .9); else P.line(hx + 9, hy + 4.5, hx + 12.5, hy + 4.5, '#7a5a3a', .6);
-    P.ell(hx + 8, hy + 1, 1.6, 1.1, 'rgba(240,150,150,.5)');
+    P.poly([[hx - 7, hy - 4], [hx - 10, hy - 15], [hx - 2, hy - 7]], cream, line); P.poly([[hx + 2, hy - 7], [hx + 4, hy - 17], [hx + 8, hy - 6]], cream, line);   // ears
+    P.poly([[hx - 7.6, hy - 6], [hx - 9, hy - 12.5], [hx - 4, hy - 7.5]], '#f3c9c0'); P.poly([[hx + 3.4, hy - 7.5], [hx + 4.4, hy - 14], [hx + 6.8, hy - 7]], '#f3c9c0');
+    P.ell(hx - 9.6, hy - 15.6, 2.8, 2.8, ['#ff7b7b', '#d0404a']); P.ell(hx + 4.2, hy - 17.6, 2.8, 2.8, ['#6b9ff5', '#2b5aa0']);   // pompoms
+    P.ell(hx + 1, hy, 11, 9.5, cream, line);                                                                  // round head
+    for (var tf = 0; tf < 5; tf++) P.ell(hx - 3 + tf * 2.2, hy - 9 + Math.abs(tf - 2) * .7, 2.2, 2, '#fffaf0');   // fluffy topknot
+    P.ell(hx + 8.5, hy + 3.5, 6, 4.6, ['#fffaf0', '#efe3cc'], line);                                          // soft snout
+    P.poly([[hx + 9.4, hy + 1.6], [hx + 12, hy + 1.6], [hx + 10.7, hy + 3.2]], '#7a5a4a');                   // little nose
+    var blink = (Math.floor(T * 10) % 37) === 0;
+    if (mood === 'happy') { P.curve([hx - 1, hy - 1, hx + 2, hy - 4.5, hx + 5, hy - 1], '#3a2a1c', 1.1); }
+    else if (blink) { P.curve([hx - 1, hy - 2, hx + 2, hy - .5, hx + 5, hy - 2], '#3a2a1c', .9); }
+    else {
+      P.ell(hx + 2, hy - 2, 3.3, 3.9, '#2a1d14');                                                            // big shiny eye
+      P.ell(hx + 3.1, hy - 3.6, 1.3, 1.3, '#ffffff'); P.ell(hx + 1, hy - .6, .6, .6, '#ffffff');
+      P.line(hx - .6, hy - 5.4, hx - 1.8, hy - 6.6, '#3a2a1c', .5); P.line(hx + 1.4, hy - 5.9, hx + 1, hy - 7.4, '#3a2a1c', .5);   // lashes
+    }
+    P.ell(hx + 2.6, hy + 4.2, 2.6, 1.6, 'rgba(255,140,150,.55)');                                             // rosy cheek
+    P.curve([hx + 7.6, hy + 5.4, hx + 9.6, hy + (mood === 'happy' ? 8.4 : 7), hx + 11.6, hy + 5.4], '#7a4a3a', .8);   // smile
     c.restore();
   }
   function bubble(P, x, y, txt) {
