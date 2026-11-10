@@ -54,6 +54,25 @@
     .gualda .r { flex:1; background:#AA1E2D; }
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
 </style>
 </head>
 <body>
@@ -79,11 +98,11 @@
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.07 &middot; Day 7 of 10</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.07 &middot; Day 7 of 8</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Evaluaciones (assessments)</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Fon&eacute;tica + Tarea oral</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
@@ -95,137 +114,220 @@
 
     <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.07</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Centro de evaluaciones &mdash; Show What You Know</div>
-        <div style="font-size: 16px; color: #666;">Assessment hub &middot; about 40 minutes</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Fon&eacute;tica &mdash; Telling Your Trip Out Loud</div>
+        <div style="font-size: 16px; color: #666;">Lesson + graded oral task &middot; about 50 minutes</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY IS DIFFERENT</div>
-        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've done the learning. Today you <em>show</em> it &mdash; the first graded work of M&oacute;dulo 7 lives here.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a launch page, not a lesson. Week&nbsp;1 (Lessons&nbsp;7.01&ndash;7.06) built the habit: travel words, the irregular preterite verbs <em>fui / hice / tuve / estuve</em>, and the regular + irregular spiral, all spaced out and recycled. Now two graded activities let you demonstrate it. Read the briefing, do the readiness check, then open each activity <strong>in Canvas</strong> when you're ready.</div>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've written the preterite all week. Today you <em>say</em> it &mdash; and you record a trip story.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">A quick <strong>pronunciation clinic</strong> tuned to this module's words. Three habits carry a clean travel narration: the <strong>silent <em>h</em></strong> (in <em>hice, hotel, hacer</em>), the <strong>stressed <em>-i&oacute;n</em></strong> ending (<em>avi&oacute;n, excursi&oacute;n</em>), and the tricky truth that the <strong>strong irregular preterites carry no accent</strong> &mdash; so the stress lands on the stem, not the ending. We'll rehearse each aloud, then you'll record your <strong>Tarea oral</strong>: a short trip story in the past tense. You'll finish with a short written <strong>repaso</strong> to get ready for tomorrow's Grammar Quiz.</div>
     </div>
 
     <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; WHAT'S DUE TODAY</div>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Vocabulary Check</strong> &mdash; 25 points, 1 attempt, mostly by ear.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> pronounce the silent <em>h</em>, the stressed <em>-i&oacute;n</em>, and the no-accent preterite stress.</div>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Lengua en acci&oacute;n</strong> &mdash; 20 points, a short structured writing using the irregular preterite.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> record a short spoken story about a trip, using the preterite.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> write this module&rsquo;s key words with their articles and complete the verb paradigm from memory.</div>
         </div>
     </div>
 
+    <!-- PART 1 -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; &iquest;EST&Aacute;S LISTO/A&#63; <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A quick readiness check-in</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before you open anything graded, be honest with yourself. There's no penalty for waiting &mdash; the async window is open, and a little review now protects your score.</p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Why these sounds matter</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Travel words are full of sounds that trip up English speakers: the <em>h</em> you must <em>not</em> say, the <em>-i&oacute;n</em> that pulls the stress to the end, and preterite verbs whose stress sits in a surprising place. Lock these in and your trip story will sound smooth on the recording.</p>
         <div class="optima-widget ow-reflect">
-            <div class="widget-kicker">&#128173; CHECK-IN &middot; no wrong answer &mdash; just a plan</div>
-            <div class="widget-question">How ready do you feel for today's two activities?</div>
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">When you say Spanish out loud, what feels hardest right now?</div>
             <div class="widget-options">
-                <button data-response="&iexcl;Excelente! If you can hear a travel word and know it, and produce fui / hice / tuve / estuve without stopping to think, you're ready. Go to the Vocabulary Check below.">Ready &mdash; let's go</button>
-                <button data-response="Smart instinct. Spend 10 minutes first: reopen the Vocabulario study page and skim Lesson 7.03 (the irregular pattern). Then come back.">Almost &mdash; need a quick review</button>
-                <button data-response="No problem, and no rush. The prep list below points you to exactly what to revisit. Do that first; there's no clock forcing you to submit today.">Not yet &mdash; I'll prepare first</button>
+                <button data-response="Very common &mdash; the silent h in hotel and hice is Part 2. Your instinct to pronounce it is exactly what we'll undo.">Letters that look silent</button>
+                <button data-response="Great to name it. Words ending in -ión punch the last syllable: a-vi-ÓN, ex-cur-si-ÓN. That's Part 3.">Which syllable to stress</button>
+                <button data-response="Recording yourself feels strange at first for everyone. You'll rehearse aloud the whole lesson before the mic turns on.">Speaking with no one there</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
         </div>
     </div>
 
+    <!-- PART 2 · Silent h -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 2 &middot; EVALUACI&Oacute;N 1: VOCABULARY CHECK <span class="pill-time">13 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Vocabulary Check &middot; 25 points &middot; 1 attempt</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This one is <strong>mostly by ear</strong>. You'll hear a Spanish travel word and match it to its meaning or spelling. A few items ask you to recognize the written word instead. Everything comes from Lessons&nbsp;7.01&ndash;7.02.</p>
-        <table class="gtable">
-            <thead><tr><th>Detail</th><th>What to know</th></tr></thead>
-            <tbody>
-                <tr><td>Points</td><td>25</td></tr>
-                <tr><td>Attempts</td><td><strong>1</strong> &mdash; a one-shot check, so prepare before you open it.</td></tr>
-                <tr><td>Format</td><td>Listening &amp; matching (turn your sound on); a few reading items.</td></tr>
-                <tr><td>Covers</td><td>Travel nouns (<em>el avi&oacute;n, el aeropuerto, el hotel, el pasaporte, la monta&ntilde;a, el mar, el/la turista, el mapa, la frontera, el pueblo, la ruina, el/la gu&iacute;a</em>) and experience words (<em>la foto, el recuerdo, la excursi&oacute;n, explorar, quedarse, la aventura</em>).</td></tr>
-            </tbody>
-        </table>
-        <p style="font-size:14px;color:#6b7a99;margin:4px 0 12px;">Tip: use earbuds or headphones if you can, and find a quiet minute &mdash; you get one attempt.</p>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To take the Vocabulary Check:</strong> return to <strong>Module 7</strong> in Canvas and open the <strong>Vocabulary Check</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 3 &middot; EVALUACI&Oacute;N 2: LENGUA EN ACCI&Oacute;N <span class="pill-time">17 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Lengua en acci&oacute;n &middot; 20 points &middot; structured writing</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here you <em>produce</em> the language. You'll write a few short, guided sentences about a real or imagined trip &mdash; where you went, what you did, what you had, where you were &mdash; deliberately using the irregular preterite. The prompts tell you exactly what each sentence should do; you supply the Spanish.</p>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">The single idea being graded is the pattern you've practiced all week:</p>
-        <div class="contrast">
-            <div class="col ser">
-                <h4>THE STEMS</h4>
-                <div style="font-size:15px;line-height:1.6;color:#1a2340;">ir/ser &rarr; <em>fu-</em> &middot; hacer &rarr; <em>hic-</em><br>tener &rarr; <em>tuv-</em> &middot; estar &rarr; <em>estuv-</em></div>
-            </div>
-            <div class="col estar">
-                <h4>THE ENDINGS (no accents!)</h4>
-                <div style="font-size:15px;line-height:1.6;color:#1a2340;">yo <em>-e</em> &middot; t&uacute; <em>-iste</em> &middot; &eacute;l/ella <em>-o</em><br>nosotros <em>-imos</em> &middot; ellos <em>-ieron</em></div>
-            </div>
-        </div>
-        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:2px 0 12px;"><strong>Before you open it, hear the target one more time.</strong> This is the model your writing should echo &mdash; three irregulars in one breath:</p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128264; PART 2 &middot; LA <em>H</em> MUDA (SILENT H) <span class="pill-time">9 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The letter you never say</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">In Spanish the <strong>h</strong> is <em>always silent</em>. <em>hotel</em> sounds like &ldquo;o-TEL,&rdquo; <em>hice</em> like &ldquo;I-se,&rdquo; <em>hacer</em> like &ldquo;a-SER.&rdquo; Don't breathe on it at all. Listen and echo:</p>
         <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="grammar/s2m7-irreg.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Fui a Per&uacute;&hellip;</span><span class="v-en">&laquo;Fui a Per&uacute;, hice una excursi&oacute;n y estuve muy contento.&raquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-hotel.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el hotel</span><span class="v-en">no <em>h</em> sound &rarr; &ldquo;o-TEL&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m7-hice.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">hice</span><span class="v-en">&ldquo;I-se&rdquo; &mdash; the <em>h</em> is invisible to the ear</span></li>
         </ul>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To complete Lengua en acci&oacute;n:</strong> return to <strong>Module 7</strong> in Canvas and open the <strong>Lengua en acci&oacute;n</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
-        <div class="opt-strip">
-            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Warm up before you write: replay Andrea's reading from Lesson&nbsp;7.05 and count the irregular preterite verbs. Then borrow her rhythm in your own sentences. <button class="say" data-audio="passage/s2m7-andes.mp3" aria-label="Escuchar la lectura de Andrea" style="margin-left:6px;">&#128266;</button></div>
+        <p style="font-size:15px;color:#6b7a99;line-height:1.6;margin:6px 0 0;">Bonus: the same silent-<em>h</em> rule makes <em>hacer</em>, <em>hice</em>, and <em>hicieron</em> all start with a clean vowel sound. Write the <em>h</em>, but never say it.</p>
+    </div>
+
+    <!-- PART 3 · -ión stress -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; EL ACENTO EN <em>-I&Oacute;N</em> <span class="pill-time">9 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Words that punch the last syllable</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Words ending in <strong>-i&oacute;n</strong> carry a written accent that lands the stress firmly on that last syllable &mdash; and the <em>i&oacute;</em> glides together as one quick sound. Say them big at the end:</p>
+        <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 8px 1.2rem;">
+            <li><em>avi&oacute;n</em> &rarr; a-vi-<span class="pron">&Oacute;N</span></li>
+            <li><em>excursi&oacute;n</em> &rarr; ex-cur-si-<span class="pron">&Oacute;N</span></li>
+            <li><em>estaci&oacute;n</em> (station) &rarr; es-ta-ci-<span class="pron">&Oacute;N</span></li>
+        </ul>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-avion.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el avi&oacute;n</span><span class="v-en">stress on <em>-&Oacute;N</em></span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-excursion.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la excursi&oacute;n</span><span class="v-en">stress on <em>-&Oacute;N</em></span></li>
+        </ul>
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Where does the stress fall in <em>excursi&oacute;n</em>, and why? Decide, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body">On the last syllable: ex-cur-si-<span class="pron">&Oacute;N</span>. The written accent on the <em>&oacute;</em> overrides the default and pulls the stress to the end.</div>
         </div>
     </div>
 
+    <!-- PART 4 · preterite stress -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129513; PART 4 &middot; C&Oacute;MO PREPARARTE <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Not sure yet? Prepare in five minutes</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">If your readiness check said &ldquo;almost&rdquo; or &ldquo;not yet,&rdquo; do these before you open either activity &mdash; in this order:</p>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Run the flip-cards.</strong> Open the <a href="vocabulario-m07.html" style="color:#1B6A94;font-weight:600;">Vocabulario del M&oacute;dulo 7 study page</a> and go through every travel word until you know each one by ear. (Best prep for the Vocabulary Check.)</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Re-read the pattern.</strong> Skim <a href="lesson-7-03.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;7.03</a> (the irregular stems + endings) and <a href="lesson-7-04.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;7.04</a> (the guided writing you already practiced) &mdash; best prep for Lengua en acci&oacute;n.</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Need the whole picture?</strong> Lessons&nbsp;<a href="lesson-7-01.html" style="color:#1B6A94;font-weight:600;">7.01</a>, <a href="lesson-7-02.html" style="color:#1B6A94;font-weight:600;">7.02</a>, <a href="lesson-7-05.html" style="color:#1B6A94;font-weight:600;">7.05</a>, and <a href="lesson-7-06.html" style="color:#1B6A94;font-weight:600;">7.06</a> are all still open &mdash; revisit any of them.</div>
-        </div>
-
-        <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">One last self-test before you commit. Fill the blanks aloud: <em>&ldquo;El verano pasado&nbsp;___&nbsp;a Per&uacute; y&nbsp;___&nbsp;una excursi&oacute;n.&rdquo;</em> Then reveal.</p>
-            <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>El verano pasado <em>fui</em> a Per&uacute; y <em>hice</em> una excursi&oacute;n.</strong> <em>fui</em> (ir), <em>hice</em> (hacer) &mdash; both irregular, both with no accent. If that came easily, you're ready.</div>
-        </div>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 4 &middot; EL PRET&Eacute;RITO FUERTE (STRONG PRETERITE) <span class="pill-time">7 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">No accent &rarr; stress the stem</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Here's a subtle one. <strong>Regular</strong> preterites stress (and accent) the last syllable: <em>via-<span class="pron">J&Eacute;</span></em>, <em>ex-plo-<span class="pron">R&Eacute;</span></em>. But today's <strong>irregular</strong> ones carry <em>no accent</em> and stress the <strong>stem</strong> instead: <em><span class="pron">HI</span>-ce</em>, <em><span class="pron">TU</span>-ve</em>, <em>es-<span class="pron">TU</span>-ve</em>. Compare and hear the difference:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m7-hice.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">hice</span><span class="v-en">stress on <em>HI-</em>, no accent (vs. regular via-J&Eacute;)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m7-tuve.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">tuve</span><span class="v-en">stress on <em>TU-</em>, no accent</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m7-estuve.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">estuve</span><span class="v-en">stress on <em>-TU-</em>, no accent</span></li>
+        </ul>
+        <p style="font-size:15px;color:#6b7a99;line-height:1.6;margin:6px 0 0;">This is <em>why</em> there's no accent mark: the stress already sits where the default rule puts it (second-to-last syllable). Say them &ldquo;pulled back,&rdquo; not pushed to the end.</p>
     </div>
 
     <div class="culture-box">
-        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; A FONDO &middot; CUSCO</div>
-        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El ombligo del mundo</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">The Inca called their capital <em>Qosqo</em> in quechua &mdash; it means &ldquo;the navel of the world.&rdquo; From Cusco, four royal roads ran out to the four corners of the empire, which the Inca named <em>Tawantinsuyu</em> (&ldquo;the four regions together&rdquo;). Today Cusco is a UNESCO World Heritage city where colonial churches sit on Inca stone foundations &mdash; two histories in one wall, much like <em>fue</em> holds both &ldquo;went&rdquo; and &ldquo;was&rdquo; in one word.</p>
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; A FONDO &middot; EL QUECHUA EN EL ESPA&Ntilde;OL</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Palabras que viajaron</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Many everyday Spanish (and English) words came from <strong>quechua</strong>, the language of the Andes: <em>papa</em> (potato), <em>cancha</em> (field/court), <em>carpa</em> (tent), <em>poncho</em>, and <em>c&oacute;ndor</em>. Notice these are easy to pronounce with pure Spanish vowels &mdash; no silent letters, no glides. When you speak them, you're using words that <em>traveled</em> from the mountains Andrea visited into languages all over the world.</p>
     </div>
 
+    <!-- PART 5 · Tarea oral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127908; PART 5 &middot; TAREA ORAL <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your graded recording (15 points)</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Record yourself telling a short story about a trip &mdash; <strong>real or imagined</strong> &mdash; in the past tense. Say where you went, what you did, and where you were. Use at least <strong>three preterite verbs</strong>, and include at least <strong>one irregular</strong> (<em>fui, hice, tuve,</em> or <em>estuve</em>). Aim for 30&ndash;45 seconds.</p>
+
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px 0;">
+            <div style="font-size:13px;color:#1B6A94;letter-spacing:.3px;margin-bottom:8px;">&#128221; A MODEL (yours can be about any trip)</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.7;margin:0;">
+            &laquo;El verano pasado <strong>fui</strong> a Per&uacute; con mi familia. <strong>Hice</strong> una excursi&oacute;n a Machu Picchu con un gu&iacute;a. <strong>Estuve</strong> en las monta&ntilde;as una semana y <strong>tuve</strong> una aventura incre&iacute;ble.&raquo;<br>
+            <span style="font-size:14px;color:#6b7a99;">(Four irregulars &mdash; fui, hice, estuve, tuve &mdash; and no accents on any of them.)</span></p>
+        </div>
+
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Need to hear the target verbs one more time before you record? Replay these:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m7-fui.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Ayer fui a Machu Picchu.</span><span class="v-en">ir &mdash; I went</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m7-irreg.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Fui&hellip;, hice&hellip;, estuve&hellip;</span><span class="v-en">three irregulars, one breath</span></li>
+        </ul>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ONE LAST CHECK &middot; before you record</div>
+            <div class="widget-question">To say "I did an excursion," the correct irregular preterite is&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">hago una excursi&oacute;n</button>
+                <button data-correct="true">hice una excursi&oacute;n</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="background:#FBF6EA;border:1px solid #E3D3A8;border-left:5px solid #C7922C;border-radius:8px;padding:14px 18px;margin:14px 0 12px 0;">
+            <div style="font-size:13px;color:#8a6a12;letter-spacing:.3px;margin-bottom:8px;">&#128161; CONSEJO &middot; plan before you record</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">If it helps you, <strong>write out your sentences first</strong> and read them aloud a couple of times before you record. Many students sound calmer and clearer once they&rsquo;ve drafted a quick script &mdash; reading from your notes is completely fine. Just aim to sound <em>natural</em>, not rushed.</p>
+        </div>
+        <div style="text-align:center;margin:18px 0 8px;">
+            <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To record your Tarea oral:</strong> return to <strong>Module 7</strong> in Canvas and open the <strong>Tarea oral</strong> &mdash; it is in the module&rsquo;s item list, below the eight lessons.</div>
+            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Record directly in Canvas (or upload an audio/video file). 15 points.</div>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 20px 0 8px 0;">How it's scored &mdash; the rubric</h3>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Three criteria, 5 points each, 15 total. Read it <em>before</em> you record so you know what earns full marks.</p>
+        <table class="gtable">
+            <thead><tr><th>Criterion</th><th>What earns 5 / 5</th><th>Pts</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Task Completion</strong></td><td>A short trip story with at least three preterite verbs, including at least one irregular (<em>fui / hice / tuve / estuve</em>).</td><td>5</td></tr>
+                <tr><td><strong>Language Accuracy</strong></td><td>Correct preterite forms and stems, sensible travel vocabulary, meaning is clear.</td><td>5</td></tr>
+                <tr><td><strong>Pronunciation &amp; Fluency</strong></td><td>Silent <em>h</em>, stressed <em>-i&oacute;n</em>, no-accent preterite stress; steady pace, understandable throughout.</td><td>5</td></tr>
+            </tbody>
+        </table>
+
+        <div style="background:#EAF6EE;border:1px solid #2A9D5C;border-left:5px solid #2A9D5C;border-radius:8px;padding:14px 18px;margin:14px 0 0;">
+            <div style="font-size:11px;color:#1A6B3D;letter-spacing:.4px;margin-bottom:8px;">&#9989; SELF-REVIEW &middot; check these before you submit</div>
+            <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 0 1.2rem;">
+                <li>Did I use <strong>at least three</strong> preterite verbs?</li>
+                <li>Is <strong>at least one</strong> irregular (<em>fui, hice, tuve,</em> or <em>estuve</em>)?</li>
+                <li>Did I keep the <strong>h silent</strong> in <em>hice / hotel</em>?</li>
+                <li>Did I <strong>punch the last syllable</strong> in <em>avi&oacute;n / excursi&oacute;n</em>?</li>
+                <li>Did I <strong>pull the stress back</strong> on <em>hice, tuve, estuve</em> (no accent)?</li>
+                <li>Did I <strong>play it back once</strong> and re-record if needed before submitting?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PART 3 · Repaso -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 6 &middot; REPASO <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;"><em>Repaso</em> &mdash; write it, then conjugate it</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 4px 0;">Tomorrow is the <strong>Grammar Quiz</strong>. Today you review by <strong>writing</strong>, not by recognising &mdash; nothing is shown to you here, you produce it. <strong>None of this is graded.</strong></p>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#9998; A &middot; VOCABULARIO</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Write each word in Spanish, <strong>with its article</strong> where it has one &mdash; the same way it appears on your flip cards.</p>
+            <div class="rep-row"><span class="rep-cue">the plane / airplane</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el avi&oacute;n" aria-label="the plane / airplane"></div>
+            <div class="rep-row"><span class="rep-cue">the mountain</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la monta&ntilde;a" aria-label="the mountain"></div>
+            <div class="rep-row"><span class="rep-cue">the (tour) guide</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el/la gu&iacute;a" aria-label="the (tour) guide"></div>
+            <div class="rep-row"><span class="rep-cue">the excursion / day trip</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la excursi&oacute;n" aria-label="the excursion / day trip"></div>
+            <div class="rep-row"><span class="rep-cue">the airport</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el aeropuerto" aria-label="the airport"></div>
+            <div class="rep-row"><span class="rep-cue">the hotel</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el hotel" aria-label="the hotel"></div>
+            <div class="acc-bank">&aacute; &eacute; &iacute; &ntilde; &oacute; &uacute; &uuml; &iquest; &iexcl;<br>&Aacute; &Eacute; &Iacute; &Ntilde; &Oacute; &Uacute; Ü</div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">Accents are part of the word: <em>excursi&oacute;n</em> is not <em>excursion</em>. If your keyboard cannot make them, select a character above and copy it.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#128203; B &middot; CONJUGACI&Oacute;N</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Fill in every form. Complete the whole table before you check &mdash; the point is to see the full set at once.</p>
+            <table class="conj-table"><thead><tr><th>Subject</th><th>ir / ser <span style="font-weight:400">(pret&eacute;rito)</span></th></tr></thead><tbody>
+                <tr><td class="subj">yo</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="fui" aria-label="yo"></td></tr>
+                <tr><td class="subj">t&uacute;</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="fuiste" aria-label="t&uacute;"></td></tr>
+                <tr><td class="subj">usted / &eacute;l / ella</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="fue" aria-label="usted / &eacute;l / ella"></td></tr>
+                <tr><td class="subj">nosotros/as</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="fuimos" aria-label="nosotros/as"></td></tr>
+                <tr><td class="subj">ustedes / ellos / ellas</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="fueron" aria-label="ustedes / ellos / ellas"></td></tr>
+            </tbody></table>
+            <p style="font-size:13.5px;color:#6b7a99;margin:6px 0 8px 0;"><strong>ir</strong> and <strong>ser</strong> share these forms in the preterite &mdash; context tells you which one is meant.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
     <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">8</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 7.08</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Next is a <em>fon&eacute;tica</em> clinic and your <strong>Tarea oral</strong> (15 pts) &mdash; you'll <em>speak</em> a trip story, not just write it. Finish today's two activities first; you can always come back to prepare more before you submit.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">The last day of M&oacute;dulo 7: a short listening warm-up, then the <strong>Grammar Quiz</strong> (irregular preterite, 30 pts, 2 attempts) and an &ldquo;I can&hellip;&rdquo; close before M&oacute;dulo 8. Trust the four stems &mdash; you've met them all module long.</div>
             </div>
         </div>
     </div>
 
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
-        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas once you've <em>opened</em> both activities. (Marking this page done records that you reached the assessment hub &mdash; your grades come from the two activities themselves, submitted separately in Canvas.)</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the Tarea oral</strong> &mdash; the page being marked done and the recording being turned in are two separate steps.</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;T&Uacute; PUEDES&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Six days of spaced practice were building to exactly this. Trust the work you've done &mdash; <em>fui, hice, tuve, estuve</em> &mdash; and show it. <em>&iexcl;Mucha suerte!</em></p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;LO LOGRASTE&#33; (You did it!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just told a trip story on the record &mdash; silent <em>h</em>, a big <em>-i&oacute;n</em>, and the past tense in your own voice. That's a real milestone. <em>&iexcl;Buen trabajo, y hasta ma&ntilde;ana!</em> (Good work, and see you tomorrow!)</p>
     </div>
 
 </div>
@@ -233,7 +335,7 @@
 <div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
 <div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
     <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 4 &middot; Student Lesson Page</div>
-    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.07 &middot; Centro de evaluaciones</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 7.07 &middot; Fon&eacute;tica + Tarea oral</div>
     <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
 </div>
 
@@ -266,8 +368,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
-        : 'Not quite — think about the stem and the ending, then try again.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! (Correct!) ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — past tense, irregular, no accent.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — that’s the present. For a finished action use the preterite (hice).');
       efb.classList.add('show');
       return;
     }
@@ -303,7 +405,45 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
 <style id="big-tables">/* bigger tables for visibility, 2026-11-10 */
 .gtable, .conj-table, .exam-map { font-size:18px; }

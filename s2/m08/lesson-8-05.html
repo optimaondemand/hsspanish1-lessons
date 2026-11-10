@@ -57,6 +57,25 @@
     .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
     .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
 </style>
 </head>
 <body>
@@ -82,7 +101,7 @@
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 8.05 &middot; Day 5 of 10</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 8.05 &middot; Day 5 of 8</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
@@ -97,15 +116,15 @@
 <div style="padding: 24px 34px;">
 
     <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 8.05</div>
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 8.05 &middot; Week 2 begins</div>
         <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Fiestas del mundo hispano &mdash; A Reading</div>
-        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 50 minutes</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Your third meeting with this module's grammar &mdash; this time inside a real little story about music and celebration.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today you <em>read</em> and <em>listen</em>. A short passage packs in everything you've learned: the present progressive (what's happening now) and comparatives (more, less, as&hellip;as). Then a culture spotlight opens up the world behind the words &mdash; from Colombian cumbia to salsa, and the great <em>Carnaval</em> festivals of the Spanish-speaking world.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Today you <em>read</em> and <em>listen</em>. A short passage packs in everything you've learned: the present progressive (what's happening now) and comparatives (more, less, as&hellip;as). Then a culture spotlight opens up the world behind the words &mdash; from Colombian cumbia to salsa, and the great <em>Carnaval</em> festivals of the Spanish-speaking world. Before the culture boxes, you'll build a few sentences of your own: a fiesta you went to, one happening now, and a comparison.</div>
     </div>
 
     <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
@@ -117,6 +136,10 @@
         <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> describe how music and festivals connect the Spanish-speaking world.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> say what happened (preterite), what's happening now (progressive), and how two things compare.</div>
         </div>
     </div>
 
@@ -143,6 +166,7 @@
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128214; PART 2 &middot; A LEER Y ESCUCHAR <span class="pill-time">14 min</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">La m&uacute;sica y las fiestas</h3>
         <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/s2m8-fiestas.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Press play, then read along</span></p>
+        <p style="font-size:14px;color:#1a2340;line-height:1.6;margin:0 0 8px 0;"><strong>Glosario:</strong> <em>importantes</em> (important) &middot; <em>colombiana</em> (Colombian) &middot; <em>tradicionales</em> (traditional)</p>
         <p style="font-size:17px;color:#1a2340;line-height:1.85;">
         En el mundo hispano, la m&uacute;sica y las fiestas son muy importantes. Ahora mismo <strong>estoy escuchando</strong> cumbia colombiana y mi hermana <strong>est&aacute; bailando</strong>. En los pueblos, las fiestas son <strong>m&aacute;s</strong> tradicionales <strong>que</strong> en la ciudad. Me gusta la salsa <strong>m&aacute;s que</strong> el rock. <strong>Estamos celebrando</strong> toda la noche.</p>
         <div class="opt-strip">
@@ -187,10 +211,54 @@
         </div>
     </div>
 
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 4 &middot; LA M&Uacute;SICA TIENE CASA <span class="pill-time">6 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Music has a home</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Every style you've met this module was born somewhere: cumbia on Colombia's coast, tango in the R&iacute;o de la Plata, salsa in the Caribbean and New York. You placed them on the map on Day 1. Warm up first, then build sentences of your own.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">If you could drop into one music scene right now, which would it be?</div>
+            <div class="widget-options">
+                <button data-response="&iexcl;A bailar cumbia! You'd say: Estoy bailando cumbia en Colombia. That's the music in today's passage, too.">A cumbia street party in Colombia</button>
+                <button data-response="Qu&eacute; elegante. In Buenos Aires you might say: Estoy escuchando un tango. Argentina and Uruguay are its home.">A tango hall in Buenos Aires</button>
+                <button data-response="&iexcl;Salsa! In Cali or San Juan: Estoy bailando salsa. The narrator likes it more than rock, too.">A salsa club in the Caribbean</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 4 · Production -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 5 &middot; A PRODUCIR <span class="pill-time">7 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Build it yourself, then check</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; commit before you peek. Then reveal to check your verb and spelling.</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;Last weekend I went to a festival.&rdquo;</em> (preterite of <em>ir</em>)</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>El fin de semana pasado fui a un festival.</strong> A completed past action &rarr; preterite; &ldquo;I went&rdquo; = <em>fui</em>.</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;Right now the singer is playing the guitar.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Ahora el cantante est&aacute; tocando la guitarra.</strong> Happening now &rarr; present progressive (<em>est&aacute;</em> + <em>tocando</em>).</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;The festival is livelier than the concert.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>El festival es m&aacute;s alegre que el concierto.</strong> Comparing &rarr; <em>m&aacute;s</em> + adjective + <em>que</em>.</div>
+        </div>
+    </div>
+
     <div class="culture-box">
         <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127925; CULTURA &middot; LA SALSA</div>
         <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Un ritmo sin fronteras</strong></div>
         <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">La <strong>salsa</strong> uni&oacute; los ritmos afrocaribe&ntilde;os de <strong>Cuba</strong> y <strong>Puerto Rico</strong> con el sonido de los barrios latinos de <strong>Nueva York</strong> en los a&ntilde;os 60 y 70. Hoy se baila desde <strong>Cali, Colombia</strong> &mdash; que se llama a s&iacute; misma &ldquo;la capital mundial de la salsa&rdquo; &mdash; hasta Jap&oacute;n. Como dice la lectura, para mucha gente la salsa es <em>m&aacute;s</em> alegre <em>que</em> otros estilos: es imposible quedarse quieto.</p>
+        <p style="font-size:14px;color:#1a2340;line-height:1.6;margin:8px 0 0;"><strong>Glosario:</strong> <em>sin fronteras</em> (without borders) &middot; <em>uni&oacute;</em> (joined) &middot; <em>afrocaribe&ntilde;os</em> (Afro-Caribbean) &middot; <em>sonido</em> (sound) &middot; <em>barrios latinos</em> (Latino neighborhoods) &middot; <em>se llama a s&iacute; misma</em> (calls itself) &middot; <em>mundial</em> (world) &middot; <em>desde</em> &hellip; <em>hasta</em> (from &hellip; to) &middot; <em>dice</em> (says) &middot; <em>otros estilos</em> (other styles) &middot; <em>imposible quedarse quieto</em> (impossible to stay still)</p>
     </div>
 
     <div class="virtue-box">
@@ -205,7 +273,7 @@
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 8.06</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Week 2 begins with a retrieval day: an ear-quiz, a production task, and a <strong>spiral</strong> that brings back the <em>preterite</em> (Modules 6&ndash;7) so you can recount a <em>past</em> fiesta and describe one happening <em>now</em>. Graded work begins the day after, on Day 7.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and the <strong>Lengua en acci&oacute;n (20 pts)</strong> launch page. Everything you've practiced &mdash; the music words, the present progressive, and the comparisons &mdash; is exactly what those items draw on.</div>
             </div>
         </div>
     </div>
@@ -216,8 +284,8 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUENA LECTURA&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You read real Spanish and heard the grammar living inside a story about music and celebration. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUENA LECTURA&#33; (Good reading!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You read real Spanish and heard the grammar living inside a story about music and celebration. <em>&iexcl;Hasta ma&ntilde;ana!</em> (See you tomorrow!)</p>
     </div>
 
 </div>
@@ -258,8 +326,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
-        : 'Not quite — try the other option and think about the English meaning.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! (Correct!) ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — that’s the one.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — try the other option and think about the English meaning.');
       efb.classList.add('show');
       return;
     }
@@ -295,7 +363,45 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
 </body>
 </html>

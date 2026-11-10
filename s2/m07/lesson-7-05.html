@@ -54,6 +54,25 @@
     .gualda .r { flex:1; background:#AA1E2D; }
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
 </style>
 </head>
 <body>
@@ -79,7 +98,7 @@
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.05 &middot; Day 5 of 10</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.05 &middot; Day 5 of 8</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
@@ -94,15 +113,15 @@
 <div style="padding: 24px 34px;">
 
     <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.05</div>
+        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.05 &middot; Week 2 begins</div>
         <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> El viaje de Andrea &mdash; A Trip Through los Andes</div>
-        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 50 minutes</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Your third encounter with the irregular preterite &mdash; this time inside a real story.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Grammar sticks best when it's carrying meaning. Today you'll read (and hear) <strong>Andrea</strong> tell the story of her family's trip to <strong>Per&uacute;</strong> &mdash; the airport, the flight to Cusco, the excursion to Machu Picchu. Every past-tense verb you've learned this week is in there, doing its job. Then a culture spotlight takes you deeper into Per&uacute; and its food. <strong>No new grammar</strong> &mdash; just the forms alive in a paragraph.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">Grammar sticks best when it's carrying meaning. Today you'll read (and hear) <strong>Andrea</strong> tell the story of her family's trip to <strong>Per&uacute;</strong> &mdash; the airport, the flight to Cusco, the excursion to Machu Picchu. Every past-tense verb you've learned in this module is in there, doing its job. Then you'll tell a trip of your own in a few past-tense sentences, and a culture spotlight takes you deeper into Per&uacute; and its food. <strong>No new grammar</strong> &mdash; just the forms alive in a paragraph.</div>
     </div>
 
     <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
@@ -115,6 +134,10 @@
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> spot the irregular preterite verbs in context and say what each one means.</div>
         </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> say a short trip story that mixes regular and irregular preterite verbs.</div>
+        </div>
     </div>
 
     <!-- PART 1 -->
@@ -126,8 +149,8 @@
             <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
             <div class="widget-question">What draws you most to a place like Per&uacute;?</div>
             <div class="widget-options">
-                <button data-response="Las ruinas y la historia &mdash; Machu Picchu and the Inca world. Watch for the excursion in Andrea's story.">The ancient ruins</button>
-                <button data-response="Las monta&ntilde;as &mdash; los Andes are unforgettable. Andrea spends a week estuvo in the mountains.">The mountains</button>
+                <button data-response="Las ruinas y la historia (the ruins and the history) &mdash; Machu Picchu and the Inca world. Watch for the excursion in Andrea's story.">The ancient ruins</button>
+                <button data-response="Las monta&ntilde;as &mdash; los Andes are unforgettable. Andrea estuvo (was) in the mountains for a week.">The mountains</button>
                 <button data-response="La comida &mdash; Peruvian food is world-famous. The culture box below has a taste of it.">The food</button>
             </div>
             <div class="widget-feedback"></div>
@@ -141,11 +164,12 @@
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">El viaje de Andrea</h3>
         <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 8px 0;">Press play, follow along, then read it again on your own. The irregular preterite verbs are in <strong>bold</strong>.</p>
         <p style="margin: 0 0 10px 0;"><button class="say" data-audio="passage/s2m7-andes.mp3" aria-label="Escuchar la lectura">&#128266;</button> <span style="font-size:14px;color:#6b7a99;vertical-align:middle;">Play the reading</span></p>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 12px;"><strong>Glosario:</strong> <em>antigua</em> (old / ancient) &middot; <em>impresionantes</em> (impressive) &middot; <em>diferente</em> (different) &middot; <em>peque&ntilde;o</em> (small) &middot; <em>un problema</em> (a problem) &middot; <em>la altura</em> (the altitude) &middot; <em>inolvidable</em> (unforgettable)</p>
         <p style="font-size:17px;color:#1a2340;line-height:1.75;">
-        &laquo;Hola, me llamo Andrea. El verano pasado <strong>fui</strong> a Per&uacute; con mi familia. Primero, llegamos al aeropuerto de Lima con nuestros pasaportes. Despu&eacute;s, tomamos un avi&oacute;n a Cusco, una ciudad antigua en las monta&ntilde;as. Con un gu&iacute;a, <strong>hice</strong> una excursi&oacute;n a Machu Picchu. &iexcl;Las ruinas <strong>fueron</strong> impresionantes! <strong>Estuve</strong> en los Andes una semana. Cada d&iacute;a <strong>hice</strong> muchas fotos y explor&eacute; un pueblo diferente. Mi hermana <strong>tuvo</strong> un peque&ntilde;o problema con la altura, pero <strong>estuvo</strong> bien. Compr&eacute; un recuerdo &mdash; un gorro de lana &mdash; y <strong>tuve</strong> una aventura inolvidable. El viaje <strong>fue</strong> incre&iacute;ble.&raquo;</p>
+        &laquo;Hola, me llamo Andrea. El verano pasado <strong>fui</strong> a Per&uacute; con mi familia. Primero, llegamos al aeropuerto de Lima con nuestros pasaportes. Despu&eacute;s, tomamos un avi&oacute;n a Cusco, una ciudad antigua en las monta&ntilde;as. Con un gu&iacute;a, <strong>hice</strong> una excursi&oacute;n a Machu Picchu. &iexcl;Las ruinas <strong>fueron</strong> impresionantes! <strong>Estuve</strong> en los Andes una semana. Cada d&iacute;a <strong>hice</strong> muchas fotos y explor&eacute; un pueblo diferente. Mi hermana <strong>tuvo</strong> un peque&ntilde;o problema con la altura, pero <strong>estuvo</strong> bien. Compr&eacute; un recuerdo &mdash; un <em>gorro de lana</em> (a wool hat) &mdash; y <strong>tuve</strong> una aventura inolvidable. El viaje <strong>fue</strong> incre&iacute;ble.&raquo;</p>
         <div class="opt-strip">
             <div class="lbl">&#11088; COMPRUEBA &middot; optional</div>
-            <div style="font-size:16px;color:#1a2340;line-height:1.6;">Point to each bold verb and say its infinitive and meaning: <em>fui</em> (ir &mdash; I went), <em>hice</em> (hacer &mdash; I did/made), <em>fueron</em> (ser &mdash; they were), <em>estuve</em> (estar &mdash; I was), <em>tuvo</em> (tener &mdash; she had). Notice not one of them carries an accent mark.</div>
+            <div style="font-size:16px;color:#1a2340;line-height:1.6;">Point to each bold verb and say its infinitive and meaning: <em>fui</em> (ir &mdash; I went), <em>hice</em> (hacer &mdash; I did/made), <em>fueron</em> (ser &mdash; they were), <em>estuve</em> (estar &mdash; I was), <em>tuvo</em> (tener &mdash; she had), <em>estuvo</em> (estar &mdash; she was), <em>tuve</em> (tener &mdash; I had), <em>fue</em> (ser &mdash; it was). (<em>Hice</em> appears twice.) Notice not one of them carries an accent mark.</div>
         </div>
     </div>
 
@@ -193,20 +217,69 @@
         <div style="margin-top:16px;">
             <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">In your own words (in Spanish, out loud): how long was Andrea in the Andes? Say it, then reveal.</p>
             <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Estuvo en los Andes una semana.</strong> (He was in the Andes for a week.) The text says <em>&laquo;Estuve en los Andes una semana&raquo;</em> &mdash; from Andrea's <em>yo</em> to your <em>&eacute;l</em>, <em>estuve</em> becomes <em>estuvo</em>.</div>
+            <div class="reveal-body"><strong>Estuvo en los Andes una semana.</strong> (She was in the Andes for a week.) The text says <em>&laquo;Estuve en los Andes una semana&raquo;</em> &mdash; from Andrea's <em>yo</em> to your <em>ella</em>, <em>estuve</em> becomes <em>estuvo</em>.</div>
+        </div>
+    </div>
+
+    <!-- PART 1 -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 4 &middot; TU VIAJE <span class="pill-time">6 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Where in the world?</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Andrea said <em>&laquo;Fui a Per&uacute;&raquo;</em> and <em>&laquo;Estuve en los Andes.&raquo;</em> You found that country on the map on Day 1. Warm up your ear with a past-tense line before you tell a trip of your own.</p>
+        <div class="optima-widget ow-reflect">
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">Listen, then pick the trip <em>you'd</em> most want to narrate. <button class="say" data-audio="grammar/s2m7-irreg.mp3" aria-label="Escuchar" style="margin-left:6px;">&#128266;</button></div>
+            <div class="widget-options">
+                <button data-response="&iexcl;Los Andes! Say it: Fui a las monta&ntilde;as e hice una excursi&oacute;n. That&rsquo;s your trip narration starting to form.">A mountain adventure like Andrea's</button>
+                <button data-response="El mar y la playa &mdash; a coast trip works too: Fui a la costa y estuve en la playa. Same preterite, different scenery.">A trip to the sea / coast</button>
+                <button data-response="Una ciudad &mdash; a city trip is perfect for a market day: Fui a la ciudad, explor&eacute; el mercado y compr&eacute; recuerdos.">A big-city trip</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+    </div>
+
+    <!-- PART 4 · Production -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 5 &middot; A PRODUCIR <span class="pill-time">8 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Build it yourself, then check</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; commit before you peek. Then reveal to check your verb choice and spelling.</p>
+
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;Last summer I traveled to Peru and I went to the ruins.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>El verano pasado viaj&eacute; a Per&uacute; y fui a las ruinas.</strong> <em>viaj&eacute;</em> = regular (keeps accent); <em>fui</em> = irregular (no accent).</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;We took a lot of photos and we had an adventure.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Hicimos muchas fotos y tuvimos una aventura.</strong> Both irregular: <em>hic- + -imos</em>, <em>tuv- + -imos</em>.</div>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;I explored a town and I was in the mountains.&rdquo;</em></p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Explor&eacute; un pueblo y estuve en las monta&ntilde;as.</strong> <em>explor&eacute;</em> = regular (accent); <em>estuve</em> = irregular (no accent).</div>
         </div>
     </div>
 
     <div class="culture-box">
         <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; PER&Uacute;</div>
         <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Del mar a la monta&ntilde;a</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Per&uacute; es un pa&iacute;s de contrastes: la capital, <strong>Lima</strong>, est&aacute; en la costa del oc&eacute;ano Pac&iacute;fico; <strong>Cusco</strong> y <strong>Machu Picchu</strong> est&aacute;n en los Andes; y al este est&aacute; la selva amaz&oacute;nica. A traveler like Andrea can move from <em>el mar</em> to <em>la monta&ntilde;a</em> in a single trip. Cusco sits at about 3.400 meters &mdash; high enough that visitors sip <em>mate de coca</em> (coca-leaf tea) to ease <em>la altura</em>, the altitude Andrea's sister struggled with.</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Per&uacute; es un pa&iacute;s de <em>contrastes</em> (contrasts): la capital, <strong>Lima</strong>, est&aacute; en la costa del oc&eacute;ano Pac&iacute;fico; <strong>Cusco</strong> y <strong>Machu Picchu</strong> est&aacute;n en los Andes; y <em>al este</em> (to the east) est&aacute; la <em>selva amaz&oacute;nica</em> (the Amazon rainforest). A traveler like Andrea can move from <em>el mar</em> to <em>la monta&ntilde;a</em> in a single trip. Cusco sits at about 3.400 meters &mdash; high enough that visitors sip <em>mate de coca</em> (coca-leaf tea) to ease <em>la altura</em>, the altitude Andrea's sister struggled with.</p>
     </div>
 
     <div class="culture-box">
         <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; A FONDO &middot; LA COCINA PERUANA</div>
-        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Una de las mejores del mundo</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Peruvian food is celebrated worldwide, and it grew from the same meeting of cultures as its language. The star dish is <strong>ceviche</strong> &mdash; fresh fish &ldquo;cooked&rdquo; in lime juice, from the Pacific coast. <strong>Lomo saltado</strong> stir-fries beef with soy sauce, a gift of Chinese-Peruvian (<em>chifa</em>) cooking. And the humble <strong>papa</strong> (potato) was first domesticated in the Peruvian Andes &mdash; Per&uacute; grows over 3,000 varieties. When you order food in a Peruvian restaurant, the <em>mercado</em>, you're tasting centuries of history.</p>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong><em>Una de las mejores del mundo</em> (One of the best in the world)</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Peruvian food is celebrated worldwide, and it grew from the same meeting of cultures as its language. The star dish is <strong>ceviche</strong> &mdash; fresh fish &ldquo;cooked&rdquo; in lime juice, from the Pacific coast. <strong>Lomo saltado</strong> stir-fries beef with soy sauce, a gift of Chinese-Peruvian (<em>chifa</em>) cooking. And the humble <strong>papa</strong> (potato) was first domesticated in the Peruvian Andes &mdash; Per&uacute; grows over 3,000 varieties. When you eat in a Peruvian restaurant or at a <em>mercado</em> (market) stall, you're tasting centuries of history.</p>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; A FONDO &middot; TEXTILES Y LANA</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El recuerdo de Andrea</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Remember the <em>recuerdo</em> Andrea bought &mdash; <em>un gorro de lana</em>, a wool hat? Andean weaving is thousands of years old. The wool comes from the <strong>alpaca</strong> and <strong>llama</strong>, animals the Inca raised high in the mountains, and the bright geometric patterns often encode a weaver's home village. Buying a handwoven <em>recuerdo</em> in a Peruvian <em>mercado</em> supports families keeping that craft alive.</p>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
@@ -215,7 +288,7 @@
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 7.06</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Week 2 begins with retrieval: an ear-quiz on the travel words, a production task, and a <strong>spiral</strong> that combines M&oacute;dulo 6's regular preterite with this module's irregulars to tell a full trip story. It's exactly what the Day-10 quiz will ask of you.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and <strong>Lengua en acci&oacute;n (20 pts)</strong>. Everything you've practiced &mdash; the travel words and the regular + irregular spiral &mdash; is exactly what those items draw on.</div>
             </div>
         </div>
     </div>
@@ -226,8 +299,8 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUENA LECTURA&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just read a whole trip in the past tense and understood it. That's the grammar working for you, not against you. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUENA LECTURA&#33; (Good reading!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just read a whole trip in the past tense and understood it. That's the grammar working for you, not against you. <em>&iexcl;Hasta ma&ntilde;ana!</em> (See you tomorrow!)</p>
     </div>
 
 </div>
@@ -268,8 +341,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — well read.'
-        : 'Not quite — read that part of Andrea’s story again and try once more.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! (Correct!) ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — well read.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — read that part of Andrea’s story again and try once more.');
       efb.classList.add('show');
       return;
     }
@@ -305,7 +378,45 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
 </body>
 </html>

@@ -54,6 +54,25 @@
     .gualda .r { flex:1; background:#AA1E2D; }
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
 </style>
 </head>
 <body>
@@ -79,7 +98,7 @@
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.01 &middot; Day 1 of 10</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 7.01 &middot; Day 1 of 8</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
@@ -96,13 +115,13 @@
     <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 7.01</div>
         <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> De viaje &mdash; Packing Your Travel Words</div>
-        <div style="font-size: 16px; color: #666;">Lesson &middot; about 40 minutes</div>
+        <div style="font-size: 16px; color: #666;">Lesson &middot; about 50 minutes</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">Welcome to M&oacute;dulo 7. This module answers one big question: <em>&ldquo;How do I tell what I did on a trip?&rdquo;</em></div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">In M&oacute;dulo 6 you took the first step into the past with <strong>regular preterite</strong> verbs (<em>viaj&eacute;, visit&eacute;, explor&eacute;</em>). This module you finish the on-ramp with the <strong>irregular</strong> ones &mdash; the handful of verbs you'll actually reach for when you talk about a trip. But first, the words. Today is <strong>all vocabulary, no new grammar on purpose</strong>: you'll stock up on travel nouns so that when the past-tense verbs arrive, you have places to put them. Our journey this module heads to <strong>Per&uacute; and los Andes</strong> &mdash; Cusco, Machu Picchu, and the mountains.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">In M&oacute;dulo 6 you took the first step into the past with <strong>regular preterite</strong> verbs (<em>viaj&eacute;, visit&eacute;, camin&eacute;</em>). This module you finish the on-ramp with the <strong>irregular</strong> ones &mdash; the handful of verbs you'll actually reach for when you talk about a trip. But first, the words. Today is <strong>all vocabulary, no new grammar on purpose</strong>: you'll stock up on travel nouns so that when the past-tense verbs arrive, you have places to put them. Our journey this module heads to <strong>Per&uacute; and los Andes</strong> &mdash; Cusco, Machu Picchu, and the mountains. After the new words, you'll open the interactive map and find <strong>Per&uacute;</strong> and its Andean neighbors.</div>
     </div>
 
     <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
@@ -115,6 +134,10 @@
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> recognize these travel words by ear.</div>
         </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> locate Per&uacute; and the Andes on the map, and name Per&uacute;'s capital.</div>
+        </div>
     </div>
 
     <!-- PART 1 -->
@@ -126,8 +149,8 @@
             <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
             <div class="widget-question">When you travel, what's the part you look forward to most?</div>
             <div class="widget-options">
-                <button data-response="&iexcl;El avi&oacute;n! The plane ride is the start of the aventura. You'll learn el avi&oacute;n and el aeropuerto in a moment.">Getting on the plane</button>
-                <button data-response="La monta&ntilde;a, el mar, las ruinas&hellip; the places are the heart of any viaje &mdash; and you'll name them today.">Seeing new places</button>
+                <button data-response="&iexcl;El avi&oacute;n! (The plane!) The plane ride is the start of the adventure. You'll learn el avi&oacute;n (the plane) and el aeropuerto (the airport) in a moment.">Getting on the plane</button>
+                <button data-response="La monta&ntilde;a (the mountain), el mar (the sea), las ruinas (the ruins)&hellip; the places are the heart of any trip &mdash; and you'll name them today.">Seeing new places</button>
                 <button data-response="Las fotos y los recuerdos &mdash; the photos and souvenirs. You'll meet those words tomorrow in Set B.">Bringing back photos</button>
             </div>
             <div class="widget-feedback"></div>
@@ -204,6 +227,55 @@
         </div>
     </div>
 
+    <!-- PART 2 · Map -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128506;&#65039; PART 4 &middot; EL MAPA DEL MUNDO HISPANO <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Explore Per&uacute; and los Andes</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Open the interactive map in a new tab. Switch it to <strong>Explorador</strong> mode and click on <strong>Per&uacute;</strong>. Read the country card &mdash; note the capital, <strong>Lima</strong> &mdash; then find its Andean neighbors (<strong>Ecuador</strong>, <strong>Bolivia</strong>, <strong>Chile</strong>). Try the map's built-in <strong>quiz</strong> to place capitals. It's ungraded; go as many rounds as you like.</p>
+        <div style="text-align:center; margin: 16px 0;">
+            <a href="../../mapa-del-mundo-hispano.html" target="_blank" rel="noopener" style="display:inline-block; background:#0E1C42; color:#fff; text-decoration:none; border-radius:8px; padding:14px 26px; font-size:17px; border-bottom:3px solid #55C8E8;">&#128506;&#65039; Abrir el mapa del mundo hispano &rarr;</a>
+            <div style="font-size:13px; color:#6b7a99; margin-top:8px;">Opens in a new tab &middot; use <em>Explorador</em> mode, then the <em>quiz</em></div>
+        </div>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 8px 0 0;">As you click, describe each place with verbs you already own: <em>Lima <strong>es</strong> la capital</em> and <em>Machu Picchu <strong>est&aacute;</strong> en los Andes</em> &mdash; the <em>ser/estar</em> pair from Semester 1.</p>
+
+        <div class="optima-widget ow-eval" data-fb-pre="¡Correcto! (Correct!) " data-fb-suf=" — check it against the map to be sure." data-fb-no="Not quite — open the map, click Perú, and read its country card.">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; match the capital</div>
+            <div class="widget-question">What is the capital of <strong>Per&uacute;</strong>?</div>
+            <div class="widget-options">
+                <button data-correct="false">Cusco</button>
+                <button data-correct="true">Lima</button>
+                <button data-correct="false">La Paz</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div class="optima-widget ow-eval" data-fb-pre="¡Correcto! " data-fb-suf=" — check it against the map to be sure." data-fb-no="Not quite — open the map, click Perú, and read its country card.">
+            <div class="widget-kicker">&#9989; ON THE MAP &middot; geography</div>
+            <div class="widget-question">Which mountain range runs down the western side of Per&uacute; and South America?</div>
+            <div class="widget-options">
+                <button data-correct="false">los Pirineos</button>
+                <button data-correct="false">las Rocosas</button>
+                <button data-correct="true">los Andes</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="margin-top:16px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Before you check the map: which famous Inca ruins are in the Peruvian Andes? Say it, then reveal.</p>
+            <button class="reveal-btn">Reveal answer</button>
+            <div class="reveal-body"><strong>Machu Picchu</strong> &mdash; near Cusco, high in los Andes. On Day 5 you'll read about a trip there.</div>
+        </div>
+    </div>
+
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; LOS PA&Iacute;SES ANDINOS</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Una cordillera, muchos pa&iacute;ses</strong></div>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 10px;"><strong>Glosario:</strong> <em>cruzan</em> (cross) &middot; <em>hispanohablantes</em> (Spanish-speaking) &middot; <em>vecinos</em> (neighbors) &middot; <em>la capital m&aacute;s alta del mundo</em> (the highest capital in the world) &middot; <em>metros</em> (meters) &middot; <em>da nombre</em> (gives its name) &middot; <em>andino</em> (Andean) &middot; <em>comparte</em> (shares) &middot; <em>a m&aacute;s de</em> (at more than) &middot; <em>la l&iacute;nea del ecuador</em> (the equator line) &middot; <em>la historia</em> (history) &middot; <em>modernos</em> (modern)</p>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Los Andes cruzan siete pa&iacute;ses hispanohablantes o vecinos: Venezuela, Colombia, Ecuador, Per&uacute;, Bolivia, Chile y Argentina. En Bolivia est&aacute; <strong>La Paz</strong>, la capital m&aacute;s alta del mundo (a m&aacute;s de 3.600 metros); en Ecuador, la l&iacute;nea del ecuador da nombre al pa&iacute;s. Cada pa&iacute;s andino comparte las monta&ntilde;as &mdash; y una historia que empez&oacute; mucho antes de los mapas modernos.</p>
+    </div>
+
     <!-- PART 4 · Look ahead -->
     <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
@@ -211,7 +283,7 @@
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 7.02</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow you add a few experience words (<em>la foto, el recuerdo, la excursi&oacute;n</em>&hellip;) and meet your first irregular past-tense verb &mdash; <strong>ir/ser</strong> in the preterite (<em>fui, fuiste, fue&hellip;</em>). Graded work in this module begins on Day 7; this week is for building the habit.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow you add a few experience words (<em>la foto</em> (the photo), <em>el recuerdo</em> (the souvenir), <em>la excursi&oacute;n</em> (the day trip)&hellip;) and meet your first irregular past-tense verb &mdash; <strong>ir/ser</strong> in the preterite (<em>fui, fuiste, fue&hellip;</em>). Graded work in this module begins on Day 6; this week is for building the habit.</div>
             </div>
         </div>
     </div>
@@ -222,8 +294,8 @@
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN COMIENZO&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've packed your travel words. Tomorrow you get the verbs that put you <em>in motion</em> &mdash; in the past. <em>&iexcl;Hasta ma&ntilde;ana!</em></p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BUEN COMIENZO&#33; (Great start!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You've packed your travel words. Tomorrow you get the verbs that put you <em>in motion</em> &mdash; in the past. <em>&iexcl;Hasta ma&ntilde;ana!</em> (See you tomorrow!)</p>
     </div>
 
 </div>
@@ -264,8 +336,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the travel word.'
-        : 'Not quite — picture the trip and try the other option.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — that’s the travel word.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — picture the trip and try the other option.');
       efb.classList.add('show');
       return;
     }
@@ -301,7 +373,45 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
 </body>
 </html>

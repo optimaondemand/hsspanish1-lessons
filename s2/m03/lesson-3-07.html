@@ -57,6 +57,25 @@
     .dictrow { display:flex; align-items:center; gap:12px; padding:10px 14px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:6px; margin-bottom:10px; flex-wrap:wrap; }
     .dictrow .num { min-width:26px; height:26px; border-radius:50%; background:#0E1C42; color:#fff; font-size:13px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
     .dictrow .lead { font-size:15px; color:#1a2340; flex:1; min-width:120px; }
+    /* merged from folded lessons */
+    .rep-input { font-family: inherit; font-size: 16px; color: #0E1C42; background: #FFF; border: 1.5px solid #D0D9E8; border-radius: 7px; padding: 7px 11px; width: 190px; }
+    .rep-input:focus { outline: none; border-color: #2196D0; box-shadow: 0 0 0 3px rgba(33,150,208,.15); }
+    .rep-input.ok { border-color: #2A9D5C; background: #F2FBF6; }
+    .rep-input.no { border-color: #C0392B; background: #FDF4F3; }
+    .rep-btn { background: #0E1C42; color: #fff; border: none; border-radius: 8px; padding: 9px 18px; font-size: 15px; cursor: pointer; font-family: inherit; }
+    .rep-btn:hover { background: #1B3A6B; }
+    .rep-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+    .rep-cue { font-size: 16px; color: #1a2340; min-width: 190px; }
+    .rep-fb { font-size: 14.5px; line-height: 1.5; color: #1a2340; background: #FFF; border-left: 3px solid #C7922C; border-radius: 4px; padding: 8px 12px; margin: 8px 0 0 0; display: none; }
+    .rep-fb.show { display: block; }
+    .rep-fb.ok { border-left-color: #2A9D5C; }
+    .rep-fb.warn { border-left-color: #C7922C; }
+    .rep-fb.no { border-left-color: #C0392B; }
+    .conj-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 16px; }
+    .conj-table th { background: #F0F4FA; color: #0E1C42; text-align: left; padding: 9px 12px; border: 1px solid #D0D9E8; font-size: 14px; }
+    .conj-table td { padding: 8px 12px; border: 1px solid #D0D9E8; color: #1a2340; }
+    .conj-table td.subj { background: #FAFCFF; width: 34%; }
+    .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
 </style>
 </head>
 <body>
@@ -82,11 +101,11 @@
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.07 &middot; Day 7 of 10</div>
+        <div style="font-size: 17px; color: #0e1c42;">Lesson 3.07 &middot; Day 7 of 8</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Evaluaciones (assessments)</div>
+        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Fon&eacute;tica + Tarea oral</div>
     </div>
     <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
         <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
@@ -98,142 +117,229 @@
 
     <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 3.07</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Centro de evaluaciones &mdash; Show What You Know</div>
-        <div style="font-size: 16px; color: #666;">Assessment hub &middot; about 40 minutes</div>
+        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Fon&eacute;tica &mdash; The Spanish R, and Your Voice on the Record</div>
+        <div style="font-size: 16px; color: #666;">Lesson + graded oral task &middot; about 50 minutes</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY IS DIFFERENT</div>
-        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've done the learning. Today you <em>show</em> it &mdash; the first graded work of M&oacute;dulo 3 lives here.</div>
-        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a launch page, not a lesson. Week&nbsp;1 (Lessons&nbsp;3.01&ndash;3.06) built the habit: city places, directions, and the irregular-<em>yo</em> verbs, all spaced out and recycled. Now two graded activities let you demonstrate it. Read the briefing below, do the quick readiness check, then open each activity <strong>in Canvas</strong> when you're ready.</div>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+        <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've written these words all week. Today you <em>say</em> them &mdash; and you record it.</div>
+        <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a <strong>pronunciation clinic</strong> built around the sounds that fill a set of directions: the Spanish <strong>r</strong> (a soft tap, and a strong trill), and the <strong>c / z / qu</strong> family. You'll rehearse each with words you already know &mdash; <em>derecha, cerca, esquina, izquierda</em> &mdash; then record your first graded <strong>Tarea oral</strong>: give directions to a place in your town, and say what you do downtown. You'll finish with a short written <strong>repaso</strong> to get ready for tomorrow's Grammar Quiz.</div>
     </div>
 
     <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; WHAT'S DUE TODAY</div>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Vocabulary Check</strong> &mdash; 25 points, 1 attempt, mostly by ear.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> pronounce the Spanish tapped and trilled <em>r</em> and the <em>c / z / qu</em> sounds.</div>
         </div>
         <div style="display: flex; align-items: flex-start; gap: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>Lengua en acci&oacute;n</strong> &mdash; 20 points, a short structured writing using the irregular-<em>yo</em> verbs and city words.</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> record directions to a place in my town and describe what I do downtown.</div>
+        </div>
+        <div style="display: flex; align-items: flex-start; gap: 12px; margin-top: 12px;">
+            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
+            <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> write this module&rsquo;s key words with their articles and complete the verb paradigm from memory.</div>
         </div>
     </div>
 
+    <!-- PART 1 -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; &iquest;EST&Aacute;S LISTO/A&#63; <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">A quick readiness check-in</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Before you open anything graded, be honest with yourself. There's no penalty for waiting &mdash; the async window is open, and a little more review now protects your score.</p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Why sound matters for directions</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Directions only work if the listener understands them. The difference between <em>pero</em> and <em>perro</em>, or a clear <em>derecha</em>, can send someone the right way &mdash; or the wrong one. Today we lock in the sounds, then you use them on air.</p>
         <div class="optima-widget ow-reflect">
-            <div class="widget-kicker">&#128173; CHECK-IN &middot; no wrong answer &mdash; just a plan</div>
-            <div class="widget-question">How ready do you feel for today's two activities?</div>
+            <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
+            <div class="widget-question">When you say Spanish out loud, what feels hardest so far?</div>
             <div class="widget-options">
-                <button data-response="&iexcl;Excelente! If you know the city words by ear and can produce the yo forms without stopping to think, go straight to the Vocabulary Check below.">Ready &mdash; let's go</button>
-                <button data-response="Smart instinct. Spend 10 minutes first: reopen the Vocabulario study page and skim Lesson 3.03 (the verb rule). Then come back.">Almost &mdash; need a quick review</button>
-                <button data-response="No problem, and no rush. The prep list further down points you to exactly what to revisit. Do that first; there's no clock forcing you to submit today.">Not yet &mdash; I'll prepare first</button>
+                <button data-response="Totally normal. The r-drill in Part 2 is exactly for this &mdash; start with the soft tap before the trill.">The rolled r</button>
+                <button data-response="Good to name it. The c / z / qu sounds are Part 3 &mdash; conozco and esquina will feel clean by the end.">The c / z / qu sounds</button>
+                <button data-response="Recording yourself feels strange for everyone at first. You'll rehearse aloud through the whole lesson before the mic ever turns on.">Speaking with no one there</button>
             </div>
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
         </div>
     </div>
 
+    <!-- PART 2 · The R -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 2 &middot; EVALUACI&Oacute;N 1: VOCABULARY CHECK <span class="pill-time">13 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Vocabulary Check &middot; 25 points &middot; 1 attempt</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">This one is <strong>mostly by ear</strong>. You'll hear a Spanish word &mdash; a place or a direction from this module &mdash; and match it to its meaning or spelling. A few items ask you to recognize the written word instead. Everything comes from Lessons&nbsp;3.01&ndash;3.06.</p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LA R &mdash; TOQUE Y VIBRACI&Oacute;N <span class="pill-time">11 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">One letter, two jobs</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">The Spanish <strong>r</strong> has two sounds. A <strong>single r</strong> between vowels is a quick <em>tap</em> &mdash; the tongue flicks the roof of the mouth once, like the <em>tt</em> in American English &ldquo;butter.&rdquo; A <strong>double rr</strong>, or an <strong>r</strong> at the start of a word, is a <em>trill</em> &mdash; several taps in a row.</p>
         <table class="gtable">
-            <thead><tr><th>Detail</th><th>What to know</th></tr></thead>
+            <thead><tr><th>Sound</th><th>How</th><th>Words you know</th></tr></thead>
             <tbody>
-                <tr><td>Points</td><td>25</td></tr>
-                <tr><td>Attempts</td><td><strong>1</strong> &mdash; this is a one-shot check, so prepare before you open it.</td></tr>
-                <tr><td>Format</td><td>Listening &amp; matching (turn your sound on); a few reading items.</td></tr>
-                <tr><td>Covers</td><td>City places (<em>el centro, la calle, la tienda, el banco, el mercado, el restaurante, el museo, la plaza, el hospital</em>) and directions (<em>la esquina, el sem&aacute;foro, a la derecha, a la izquierda, derecho, cerca, lejos, la cuadra, doblar</em>).</td></tr>
+                <tr><td><span class="pron">r</span> (tap)</td><td>one quick flick</td><td>de<span class="pron">r</span>echa &middot; ce<span class="pron">r</span>ca &middot; me<span class="pron">r</span>cado &middot; cuad<span class="pron">r</span>a</td></tr>
+                <tr><td><span class="pron">rr / r-</span> (trill)</td><td>several taps</td><td><span class="pron">r</span>estaurante &middot; pe<span class="pron">rr</span>o &middot; co<span class="pron">rr</span>er &middot; abu<span class="pron">rr</span>ido</td></tr>
             </tbody>
         </table>
-        <p style="font-size:14px;color:#6b7a99;margin:4px 0 12px;">Tip: use earbuds or headphones if you can, and find a quiet minute &mdash; you get one attempt.</p>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To take the Vocabulary Check:</strong> return to <strong>Module 3</strong> in Canvas and open the <strong>Vocabulary Check</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 3 &middot; EVALUACI&Oacute;N 2: LENGUA EN ACCI&Oacute;N <span class="pill-time">17 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Lengua en acci&oacute;n &middot; 20 points &middot; structured writing</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Here you <em>produce</em> the language. You'll write a few short, guided sentences about what you do around a city &mdash; deliberately using the irregular-<em>yo</em> verbs and the direction words. The prompts tell you exactly what each sentence should do; you supply the Spanish.</p>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">The idea being graded is the one you've practiced all week: the special <em>yo</em> form for <em>yo</em>, regular forms for everyone else.</p>
-        <div class="contrast">
-            <div class="col ser">
-                <h4>YO &mdash; special form</h4>
-                <div style="font-size:15px;line-height:1.6;color:#1a2340;">What <em>I</em> do.<br><br>
-                <em>Yo <strong>salgo</strong> de casa&hellip;</em><br>
-                <em>Yo <strong>veo</strong> el museo&hellip;</em></div>
-            </div>
-            <div class="col estar">
-                <h4>DIRECCIONES &mdash; getting around</h4>
-                <div style="font-size:15px;line-height:1.6;color:#1a2340;">How to get there.<br><br>
-                <em><strong>Doblo</strong> a la derecha&hellip;</em><br>
-                <em>&hellip;<strong>derecho</strong> dos <strong>cuadras</strong>.</em></div>
-            </div>
-        </div>
-        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:2px 0 12px;"><strong>Before you open it, hear a model one more time.</strong> This is the kind of sentence your writing should echo:</p>
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 16px 0 8px 0;">Listen, then echo</h3>
+        <p style="font-size: 16px; color: #1a2340; line-height: 1.6; margin: 0 0 6px 0;">Click <strong>&#128266;</strong> and say each word back, feeling the tongue tap. These are all direction words you'll use in the Tarea oral.</p>
         <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-hago.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo hago&hellip;</span><span class="v-en">&laquo;Yo hago mis tareas en el centro.&raquo;</span></li>
-            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-salgo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo salgo&hellip;</span><span class="v-en">&laquo;Yo salgo de casa a las ocho.&raquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-a-la-derecha.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">a la derecha</span><span class="v-en">tap the <em>r</em> in de-<strong>r</strong>e-cha</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-derecho.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">derecho</span><span class="v-en">same tap &mdash; but a different meaning (straight)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-cerca.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">cerca</span><span class="v-en">quick tap: <strong>cer</strong>-ca</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-el-semaforo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">el sem&aacute;foro</span><span class="v-en">soft tap: se-m&aacute;-fo-<strong>ro</strong></span></li>
         </ul>
-        <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To complete Lengua en acci&oacute;n:</strong> return to <strong>Module 3</strong> in Canvas and open the <strong>Lengua en acci&oacute;n</strong> &mdash; it is in the module&rsquo;s item list, below the ten lessons.</div>
         <div class="opt-strip">
             <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Warm up before you write: replay Fernanda's short reading from Lesson&nbsp;3.05 and count how many irregular-<em>yo</em> verbs she uses. Then borrow her rhythm in your own sentences. <button class="say" data-audio="passage/s2m3-mexico.mp3" aria-label="Escuchar la lectura de Fernanda" style="margin-left:6px;">&#128266;</button></div>
+            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Say the tongue-twister slowly, then faster: <em>&ldquo;El perro corre por la carretera.&rdquo;</em> (The dog runs along the highway.) Feel the trill in <em>perro</em> and <em>carretera</em> versus the single tap in <em>pero</em>. Recording yourself and playing it back is the fastest way to hear your own r.</div>
         </div>
     </div>
 
+    <!-- PART 3 · C/Z/QU -->
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129513; PART 4 &middot; C&Oacute;MO PREPARARTE <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Not sure yet? Prepare in five minutes</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">If your readiness check said &ldquo;almost&rdquo; or &ldquo;not yet,&rdquo; do these before you open either activity &mdash; in this order:</p>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Run the flip-cards.</strong> Open the <a href="vocabulario-m03.html" style="color:#1B6A94;font-weight:600;">Vocabulario del M&oacute;dulo 3 study page</a> and go through every place and direction until you know each one by ear. (Best prep for the Vocabulary Check.)</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 10px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">2</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Re-read the rule.</strong> Skim <a href="lesson-3-03.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;3.03</a> (the irregular-<em>yo</em> verbs) and <a href="lesson-3-04.html" style="color:#1B6A94;font-weight:600;">Lesson&nbsp;3.04</a> (the guided writing) &mdash; best prep for Lengua en acci&oacute;n.</div>
-        </div>
-        <div style="display: flex; align-items: flex-start; gap: 12px;">
-            <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">3</div>
-            <div style="font-size: 17px; color: #1a2340; line-height: 1.6;"><strong>Need the whole picture?</strong> Lessons&nbsp;<a href="lesson-3-01.html" style="color:#1B6A94;font-weight:600;">3.01</a>, <a href="lesson-3-02.html" style="color:#1B6A94;font-weight:600;">3.02</a>, <a href="lesson-3-05.html" style="color:#1B6A94;font-weight:600;">3.05</a>, and <a href="lesson-3-06.html" style="color:#1B6A94;font-weight:600;">3.06</a> are all still open &mdash; revisit any of them.</div>
-        </div>
-
-        <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">One last self-test before you commit. Fill the blanks aloud: <em>&ldquo;Yo&nbsp;___&nbsp;(salir) de casa y&nbsp;___&nbsp;(dar) un paseo por el centro.&rdquo;</em> Then reveal.</p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; LA C, LA Z Y LA QU <span class="pill-time">9 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">The /k/ and /s/ sounds</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">In Latin American Spanish:</p>
+        <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 10px 1.2rem;">
+            <li><strong>c</strong> before <em>a, o, u</em> &rarr; a hard /k/: <em><span class="pron">c</span>asa, <span class="pron">c</span>uadra, <span class="pron">c</span>onozco</em>.</li>
+            <li><strong>c</strong> before <em>e, i</em> &rarr; an /s/: <em><span class="pron">c</span>entro, <span class="pron">c</span>erca</em>.</li>
+            <li><strong>z</strong> &rarr; also /s/ in Latin America: <em>pla<span class="pron">z</span>a, izquierda</em>.</li>
+            <li><strong>qu</strong> &rarr; a /k/ with a silent <em>u</em>: <em>es<span class="pron">qu</span>ina, iz<span class="pron">qu</span>ierda</em>.</li>
+        </ul>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-esquina.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la esquina</span><span class="v-en">es-<strong>ki</strong>-na (silent u)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-a-la-izquierda.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">a la izquierda</span><span class="v-en">iz-<strong>kier</strong>-da; the z is /s/</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-la-plaza.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la plaza</span><span class="v-en"><strong>pla</strong>-sa in Latin America</span></li>
+        </ul>
+        <div style="margin-top:14px;">
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">The word <em>conozco</em> has both a /s/ and a /k/ in it. Say it slowly, then reveal.</p>
             <button class="reveal-btn">Reveal answer</button>
-            <div class="reveal-body"><strong>Yo <em>salgo</em> de casa y <em>doy</em> un paseo por el centro.</strong> Both subjects are <em>yo</em> &rarr; special forms <em>salgo</em> and <em>doy</em>. If that came easily, you're ready.</div>
+            <div class="reveal-body"><strong>co-<span class="pron">nos</span>-co</strong> &mdash; the <em>z</em> is /s/ and the final <em>c</em> is /k/: <em>co-nos-ko</em>. That's the special <em>yo</em> form of <em>conocer</em>.</div>
         </div>
     </div>
 
     <div class="culture-box">
-        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127474;&#127485; M&Eacute;XICO A FONDO &middot; PEDIR DIRECCIONES</div>
-        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>Con cortes&iacute;a se llega lejos</strong></div>
-        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">In M&eacute;xico, if you're lost, it's completely normal to stop someone and ask: <em>&laquo;Disculpe, &iquest;c&oacute;mo llego a la plaza?&raquo;</em> People are famously willing to help &mdash; often walking you part of the way. A polite <em>disculpe</em> (excuse me) and <em>gracias</em> go a long way. The very words you're being tested on today &mdash; <em>a la derecha, derecho, dos cuadras</em> &mdash; are the ones a stranger will use to point you home. That's the honest test of this module: can you understand the answer?</p>
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127758; CULTURA &middot; EL ACENTO MEXICANO</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>C&oacute;mo suena la CDMX</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Mexican Spanish is famous for being clear and even-paced &mdash; one reason so many films and TV shows are dubbed in M&eacute;xico for all of Latin America. Vowels stay crisp, the <em>r</em> is tapped cleanly, and the <em>z</em> and soft <em>c</em> are pronounced as /s/ (never the &ldquo;th&rdquo; of central Spain). When you keep your vowels short and tap your <em>r</em>, you're already sounding closer to a <em>chilango</em>.</p>
     </div>
 
+    <div class="culture-box">
+        <div style="font-size:11px;color:#9a7b1e;letter-spacing:.4px;margin-bottom:6px;">&#127474;&#127485; M&Eacute;XICO A FONDO &middot; PALABRAS N&Aacute;HUATL</div>
+        <div style="font-size:18px;color:#0e1c42;margin-bottom:6px;"><strong>El espa&ntilde;ol mexicano y el n&aacute;huatl</strong></div>
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">M&eacute;xico's Spanish carries thousands of words from <strong>N&aacute;huatl</strong>, the language of the Aztecs &mdash; and many have traveled into English too: <em>chocolate</em>, <em>tomate</em> (tomato), <em>aguacate</em> (avocado), <em>chile</em>, <em>coyote</em>. In the CDMX you'll walk through neighborhoods with N&aacute;huatl names like <em>Chapultepec</em> (&ldquo;hill of the grasshopper&rdquo;). Speaking Mexican Spanish means speaking a living blend of two great traditions &mdash; something to carry with pride into your recording.</p>
+    </div>
+
+    <!-- PART 5 · Tarea oral -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127908; PART 4 &middot; TAREA ORAL <span class="pill-time">10 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your first graded recording (15 points)</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Record yourself doing <strong>two things</strong>: (1) <strong>give directions</strong> to a real place in your town &mdash; from your home or school, using <em>derecho, a la derecha / izquierda, la esquina, el sem&aacute;foro,</em> and <em>cuadras</em>; and (2) <strong>say what you do downtown</strong> in at least <strong>two sentences using irregular-<em>yo</em> verbs</strong> (<em>salgo, hago, veo, doy, pongo&hellip;</em>). Aim for 30&ndash;45 seconds total.</p>
+
+        <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px 0;">
+            <div style="font-size:13px;color:#1B6A94;letter-spacing:.3px;margin-bottom:8px;">&#128221; A MODEL (yours must be about your own town)</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.7;margin:0;">
+            &laquo;Para llegar al mercado, caminas <strong>derecho</strong> dos <strong>cuadras</strong> y <strong>doblas a la derecha</strong> en el <strong>sem&aacute;foro</strong>. En el centro, yo <strong>salgo</strong> a las ocho, <strong>veo</strong> los museos y <strong>doy</strong> un paseo por la plaza.&raquo;<br>
+            <span style="font-size:14px;color:#6b7a99;">(<em>Para llegar</em> = to get to. That's directions to a place, plus three irregular-<em>yo</em> verbs about what I do downtown.)</span></p>
+        </div>
+
+        <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Need to hear the target verbs one more time before you record? Replay these:</p>
+        <ul class="vocab-list">
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-salgo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo salgo&hellip;</span><span class="v-en"><em>salir</em> &mdash; I leave / go out</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-veo.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo veo&hellip;</span><span class="v-en"><em>ver</em> &mdash; I see</span></li>
+            <li class="vocab-item"><button class="say" data-audio="grammar/s2m3-doy.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Yo doy&hellip;</span><span class="v-en"><em>dar</em> &mdash; I give / take (a stroll)</span></li>
+        </ul>
+
+        <div class="optima-widget ow-eval">
+            <div class="widget-kicker">&#9989; ONE LAST CHECK &middot; before you record</div>
+            <div class="widget-question">To say &ldquo;I take a stroll downtown,&rdquo; you'd use&hellip;</div>
+            <div class="widget-options">
+                <button data-correct="false">da un paseo</button>
+                <button data-correct="true">doy un paseo</button>
+            </div>
+            <div class="widget-feedback"></div>
+            <button class="widget-reset">Reset</button>
+        </div>
+
+        <div style="background:#FBF6EA;border:1px solid #E3D3A8;border-left:5px solid #C7922C;border-radius:8px;padding:14px 18px;margin:14px 0 12px 0;">
+            <div style="font-size:13px;color:#8a6a12;letter-spacing:.3px;margin-bottom:8px;">&#128161; CONSEJO &middot; plan before you record</div>
+            <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">If it helps you, <strong>write out your sentences first</strong> and read them aloud a couple of times before you record. Many students sound calmer and clearer once they&rsquo;ve drafted a quick script &mdash; reading from your notes is completely fine. Just aim to sound <em>natural</em>, not rushed.</p>
+        </div>
+        <div style="text-align:center;margin:18px 0 8px;">
+            <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To record your Tarea oral:</strong> return to <strong>Module 3</strong> in Canvas and open the <strong>Tarea oral</strong> &mdash; it is in the module&rsquo;s item list, below the eight lessons.</div>
+            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Record directly in Canvas (or upload an audio/video file). 15 points.</div>
+        </div>
+
+        <h3 style="font-size: 18px; color: #0e1c42; margin: 20px 0 8px 0;">How it's scored &mdash; the rubric</h3>
+        <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Three criteria, 5 points each, 15 total. Read it <em>before</em> you record so you know what earns full marks.</p>
+        <table class="gtable">
+            <thead><tr><th>Criterion</th><th>What earns 5 / 5</th><th>Pts</th></tr></thead>
+            <tbody>
+                <tr><td><strong>Task Completion</strong></td><td>Clear directions to a place (with turn + landmark) <em>and</em> at least two sentences about what you do downtown using irregular-<em>yo</em> verbs.</td><td>5</td></tr>
+                <tr><td><strong>Language Accuracy</strong></td><td>Correct <em>yo</em> forms (<em>salgo, veo, doy&hellip;</em>), correct direction words, and understandable word order.</td><td>5</td></tr>
+                <tr><td><strong>Pronunciation &amp; Fluency</strong></td><td>Clean tapped <em>r</em>, clear <em>c / z / qu</em> sounds, short vowels, steady pace, understandable throughout.</td><td>5</td></tr>
+            </tbody>
+        </table>
+
+        <div style="background:#EAF6EE;border:1px solid #2A9D5C;border-left:5px solid #2A9D5C;border-radius:8px;padding:14px 18px;margin:14px 0 0;">
+            <div style="font-size:11px;color:#1A6B3D;letter-spacing:.4px;margin-bottom:8px;">&#9989; SELF-REVIEW &middot; check these before you submit</div>
+            <ul style="font-size:16px;color:#1a2340;line-height:1.7;margin:0 0 0 1.2rem;">
+                <li>Did I give directions with a <strong>turn</strong> (<em>doblar a la derecha/izquierda</em> or <em>derecho</em>) and a <strong>landmark</strong> (<em>la esquina, el sem&aacute;foro</em>)?</li>
+                <li>Did I use <strong>at least two</strong> irregular-<em>yo</em> verbs about what I do downtown?</li>
+                <li>Are my <em>yo</em> forms correct (<em>salgo</em>, not <em>salo</em>; <em>doy</em>, not <em>do</em>)?</li>
+                <li>Did I <strong>tap my r</strong> and keep the <em>c / z / qu</em> sounds clean?</li>
+                <li>Did I <strong>play my recording back once</strong> and re-record if needed before submitting?</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PART 3 · Repaso -->
+    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 5 &middot; REPASO <span class="pill-time">14 min</span></div>
+        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;"><em>Repaso</em> &mdash; write it, then conjugate it</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 4px 0;">Tomorrow is the <strong>Grammar Quiz</strong>. Today you review by <strong>writing</strong>, not by recognising &mdash; nothing is shown to you here, you produce it. <strong>None of this is graded.</strong></p>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#9998; A &middot; VOCABULARIO</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Write each word in Spanish, <strong>with its article</strong> where it has one &mdash; the same way it appears on your flip cards.</p>
+            <div class="rep-row"><span class="rep-cue">the traffic light</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el sem&aacute;foro" aria-label="the traffic light"></div>
+            <div class="rep-row"><span class="rep-cue">downtown</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el centro" aria-label="downtown"></div>
+            <div class="rep-row"><span class="rep-cue">the street</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la calle" aria-label="the street"></div>
+            <div class="rep-row"><span class="rep-cue">the shop / store</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="la tienda" aria-label="the shop / store"></div>
+            <div class="rep-row"><span class="rep-cue">the bank</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el banco" aria-label="the bank"></div>
+            <div class="rep-row"><span class="rep-cue">the market</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="el mercado" aria-label="the market"></div>
+            <div class="acc-bank">&aacute; &eacute; &iacute; &ntilde; &oacute; &uacute; &uuml; &iquest; &iexcl;<br>&Aacute; &Eacute; &Iacute; &Ntilde; &Oacute; &Uacute; Ü</div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">Accents are part of the word: <em>sem&aacute;foro</em> is not <em>semaforo</em>. If your keyboard cannot make them, select a character above and copy it.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+        <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
+            <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#128203; B &middot; CONJUGACI&Oacute;N</div>
+            <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Fill in every form. Complete the whole table before you check &mdash; the point is to see the full set at once.</p>
+            <table class="conj-table"><thead><tr><th>Subject</th><th>hacer</th></tr></thead><tbody>
+                <tr><td class="subj">yo</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="hago" aria-label="yo"></td></tr>
+                <tr><td class="subj">t&uacute;</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="haces" aria-label="t&uacute;"></td></tr>
+                <tr><td class="subj">usted / &eacute;l / ella</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="hace" aria-label="usted / &eacute;l / ella"></td></tr>
+                <tr><td class="subj">nosotros/as</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="hacemos" aria-label="nosotros/as"></td></tr>
+                <tr><td class="subj">ustedes / ellos / ellas</td><td><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="hacen" aria-label="ustedes / ellos / ellas"></td></tr>
+            </tbody></table>
+            <p style="font-size:13.5px;color:#6b7a99;margin:6px 0 8px 0;">A yo-irregular: only the <em>yo</em> form is odd &mdash; <strong>hago</strong>. The rest are regular.</p>
+            <button class="rep-btn rep-check">Check</button>
+            <div class="rep-fb"></div>
+        </div>
+    </div>
+
+    <!-- Look ahead -->
     <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
         <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">8</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 3.08</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Next is a <em>fon&eacute;tica</em> clinic and your <strong>Tarea oral</strong> (15 pts) &mdash; you'll <em>speak</em> the language: give directions to a place in your town and say what you do downtown. Finish today's two activities first.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">The last day of M&oacute;dulo 3: a short listening warm-up, then the <strong>Grammar Quiz</strong> (irregular-<em>yo</em> verbs, 30 pts, 2 attempts) and an &ldquo;I can&hellip;&rdquo; close before M&oacute;dulo 4. Spend a few minutes before then reviewing the seven <em>yo</em> forms.</div>
             </div>
         </div>
     </div>
 
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
-        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas once you've <em>opened</em> both activities. (Marking this page done records that you reached the assessment hub &mdash; your grades come from the two activities themselves, submitted separately in Canvas.)</div>
+        <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the Tarea oral</strong> &mdash; the page being marked done and the recording being turned in are two separate steps.</div>
     </div>
 
     <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;T&Uacute; PUEDES&#33;</div>
-        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">Six days of spaced practice were building to exactly this. Trust the work you've done &mdash; the city words and the special <em>yo</em> forms &mdash; and show it. <em>&iexcl;Mucha suerte!</em></p>
+        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;LO LOGRASTE&#33; (You did it!)</div>
+        <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just gave directions in Spanish on the record &mdash; a tapped <em>r</em>, clean sounds, and real <em>yo</em> verbs. That's a bigger step than it feels like. <em>&iexcl;Buen trabajo, y hasta ma&ntilde;ana!</em> (Good work, and see you tomorrow!)</p>
     </div>
 
 </div>
@@ -241,7 +347,7 @@
 <div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
 <div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
     <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
-    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.07 &middot; Centro de evaluaciones</div>
+    <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 3.07 &middot; Fon&eacute;tica + Tarea oral</div>
     <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
 </div>
 
@@ -274,8 +380,8 @@
       eBtn.classList.add(correct ? 'correct' : 'incorrect');
       var efb = ew.querySelector('.widget-feedback');
       efb.textContent = correct
-        ? '¡Correcto! ' + eBtn.textContent + ' — that’s the one.'
-        : 'Not quite — try the other option and think about the meaning.';
+        ? (ew.dataset.fbPre !== undefined ? ew.dataset.fbPre : '¡Correcto! (Correct!) ') + eBtn.textContent + (ew.dataset.fbSuf !== undefined ? ew.dataset.fbSuf : ' — that’s the one.')
+        : (ew.dataset.fbNo !== undefined ? ew.dataset.fbNo : 'Not quite — remember the subject is yo, so use the special form.');
       efb.classList.add('show');
       return;
     }
@@ -311,7 +417,45 @@
   });
 })();
 </script>
-
+<script>
+(function () {
+  function norm(s){return (s||'').normalize('NFC').replace(/\u2019/g,"'").replace(/\s+/g,' ').trim().toLowerCase();}
+  function deacc(s){return s.normalize('NFD').replace(/[\u0300-\u036f]/g,'');}
+  function deaccKeepEnye(s){return s.replace(/ñ/g,'\u0001').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/\u0001/g,'ñ');}
+  var ART=/^(el |la |los |las )/;
+  function fb(host,cls,html){var f=host.querySelector('.rep-fb');f.className='rep-fb show '+cls;f.innerHTML=html;}
+  function judge(got,target){
+    if(!got) return 'empty';
+    if(got===target) return 'ok';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target)) return 'accent';
+    if(deacc(got)===deacc(target)) return 'enye';
+    if(deaccKeepEnye(got)===deaccKeepEnye(target.replace(ART,''))) return 'article';
+    return 'no';
+  }
+  document.addEventListener('click',function(ev){
+    var b=ev.target.closest('.rep-check'); if(!b) return;
+    var host=b.closest('.rep-block');
+    var rows=[].slice.call(host.querySelectorAll('.rep-input'));
+    var done=0, notes=[];
+    rows.forEach(function(inp){
+      var target=norm(inp.dataset.answer), got=norm(inp.value), v=judge(got,target);
+      inp.classList.remove('ok','no');
+      if(v==='ok'||v==='accent'){inp.classList.add('ok');done++;} else inp.classList.add('no');
+      if(v==='accent') notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; accepted, but the accent is part of the word.');
+      if(v==='enye')   notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; <strong>&ntilde;</strong> is a different letter from <strong>n</strong>. <em>a&ntilde;o</em> (year) and <em>ano</em> are not the same word.');
+      if(v==='article')notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; the article is missing. Learn it with the word.');
+      if(v==='no'&&got) notes.push('<strong>'+inp.dataset.answer+'</strong> &mdash; not yet.');
+    });
+    var all=rows.length;
+    fb(host, done===all?'ok':(done>=all/2?'warn':'no'),
+       '<strong>'+done+' of '+all+' correct</strong>'+(notes.length?'<br>'+notes.join('<br>'):' &mdash; every mark in place.'));
+  });
+  document.addEventListener('keydown',function(ev){
+    if(ev.key==='Enter'&&ev.target.classList&&ev.target.classList.contains('rep-input')){
+      ev.preventDefault(); ev.target.closest('.rep-block').querySelector('.rep-check').click();}
+  });
+})();
+</script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
 <style id="big-tables">/* bigger tables for visibility, 2026-11-10 */
 .gtable, .conj-table, .exam-map { font-size:18px; }
