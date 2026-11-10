@@ -12,8 +12,10 @@
   var NS = 'http://www.w3.org/2000/svg', COL = { m: '#2b4c8c', f: '#8c2f39', gold: '#b8892e' };
   var CSS = '\
 .mq{--ink:#1d2a44;--gold:#b8892e;--gold-lt:#e9d39a;--cream:#fbf6ea;--rule:#e2d6bb;--muted:#5e5a52;--ok:#2f6b4f;color:var(--ink)}\
-.mq-steps{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:14px;color:var(--muted);margin:0 0 10px}.mq-steps b{color:var(--ink)}\
-.mq-steps span.on{color:var(--ink);font-weight:600}.mq-steps span.done{color:var(--ok)}\
+.mq-steps{display:flex;flex-direction:column;gap:6px;font-size:17px;line-height:1.4;color:var(--muted);margin:0 0 12px}.mq-steps b{color:var(--ink)}\
+.mq-steps span{display:block;padding:5px 12px;border-left:4px solid var(--rule);border-radius:2px}\
+.mq-steps span.on{color:var(--ink);font-weight:600;background:#fbf3df;border-left-color:var(--gold)}.mq-steps span.done{color:var(--ok);border-left-color:var(--ok)}\
+.mq-steps span.done::after{content:" \\2713";font-weight:700}\
 .mq-page{position:relative;background:#fffdf7;border:1px solid var(--rule);outline:1px solid var(--gold-lt);outline-offset:-7px;border-radius:2px;padding:30px 30px 26px;box-shadow:0 6px 16px rgba(60,40,10,.12)}\
 .mq-p{font-family:"Cormorant Garamond",Garamond,Georgia,serif;font-size:26px;line-height:2.6;margin:0 0 6px;position:relative;z-index:1}\
 .mq-w{cursor:pointer;border-radius:999px;padding:1px 4px;margin:0 -2px;border:2px solid transparent;position:relative;transition:background .15s,border-color .3s}\
@@ -117,6 +119,13 @@
   Marque.prototype.next = function () {
     var self = this; this.k++; if (this.k < this.cfg.steps.length) this.found = []; this.update();
     if (this.k >= this.cfg.steps.length) return this.end();
+    if (this.cfg.keep) {   // marks stay on the page so later steps can work by elimination (David 2026-11-10)
+      setTimeout(function () {
+        if (self.k >= self.cfg.steps.length) return;
+        self.start(); self.say(self.step().intro + ' <em>Your marks from the last step stay on the page.</em>');
+      }, 1600);
+      return;
+    }
     setTimeout(function () { self.svg.style.transition = 'opacity .8s'; self.svg.style.opacity = '0'; self.page.classList.add('mq-wiping'); }, 1600);
     setTimeout(function () {
       if (self.k >= self.cfg.steps.length) return;   // the last step was finished during the pause (2026-10-28)
