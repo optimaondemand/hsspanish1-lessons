@@ -11,6 +11,6 @@ Paintings and manuscript images (all public domain, via Wikimedia Commons):
 Drawn for this course (Optima Academy Online): artesonado ceiling band, azulejo tiles, bell, cross of Santiago, arches, title lettering (IM Fell English, SIL Open Font License).
 
 Vocabulario flashcard paintings (added 2026-11-04; one per word, on the card back with its credit):
-- s2/m01/img/vocab/*.jpg (15) and s2/m02/img/vocab/*.jpg (18): public-domain paintings and prints via Wikimedia Commons; one exception, Joaquín Sorolla, *Jardín de la Casa Sorolla* (photo: Museo Sorolla, CC BY-SA 4.0) — s2/m02/img/vocab/el-jardin.jpg. Full list with sources: each Vocabulario page, "Las pinturas".
+- s2/m01/img/vocab/*.jpg (15) and s2/m02/img/vocab/*.jpg (18; la-cocina.jpg = the Drolling kitchen since 2026-11-10): public-domain paintings and prints via Wikimedia Commons; one exception, Joaquín Sorolla, *Jardín de la Casa Sorolla* (photo: Museo Sorolla, CC BY-SA 4.0) — s2/m02/img/vocab/el-jardin.jpg. Full list with sources: each Vocabulario page, "Las pinturas".
 - Bartolomé Esteban Murillo, *Niños jugando a los dados* (Young Boys Playing Dice), c. 1675, Alte Pinakothek, Munich (Wikimedia Commons "Bartolomé Esteban Perez Murillo - Young Boys Playing Dice - WGA16394.jpg", public domain) — s2/m02/img/vocab/juega.jpg (cropped)
 - Martin Drolling, *Intérieur d'une cuisine*, 1815, Musée du Louvre (Wikimedia Commons "Martin Drolling - Interior of a Kitchen - WGA6678.jpg", public domain) — s2/m02/img/vocab/la-cocina-drolling.jpg (cropped, lightened)
