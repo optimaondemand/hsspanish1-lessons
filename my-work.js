@@ -123,9 +123,38 @@
       var show = function () {
         var it = state.items[id]; if (!it || !it.checks) { fb.textContent = ''; return; }
         if (it.gotIt) { fb.style.color = '#1e8a3c'; fb.style.fontWeight = '800'; fb.style.fontSize = '16px'; fb.textContent = '✓ Correct!'; }   // green and bold (David 2026-10-26)
-        else { fb.style.fontWeight = '400'; fb.style.fontSize = '14px'; fb.style.color = '#b3382c'; fb.textContent = it.accentOnly
-            ? (it.checks >= 2 ? '✗ So close — only the accents were off. Don’t forget them! You can reveal the answer now.' : '✗ So close — the words are right, but check your accents! Accents are part of the word (1 of 2).')
-            : (it.checks >= 2 ? '✗ Not yet — you can reveal the answer now.' : '✗ Not yet — check your spelling and accents, then try again (1 of 2).'); }
+        else { fb.style.fontWeight = '400'; fb.style.fontSize = '14px'; fb.style.color = '#b3382c'; var aw = accentWords(inp.value); fb.textContent = it.accentOnly
+            ? (aw && /\s/.test(norm(inp.value))   // a sentence: name the words to look at (David 2026-11-10)
+               ? (it.checks >= 2 ? '✗ So close — only the accents were off. Look again at: ' + aw + '. You can reveal the answer now.' : '✗ So close — the words are right, but look again at: ' + aw + ' (1 of 2).')
+               : (it.checks >= 2 ? '✗ So close — only the accents were off. Don’t forget them! You can reveal the answer now.' : '✗ So close — the words are right, but check your accents! Accents are part of the word (1 of 2).'))
+            : (hintFor(inp.value) ? '✗ ' + hintFor(inp.value) + (it.checks >= 2 ? ' You can reveal the answer now.' : ' Try again (1 of 2).')
+            : (it.checks >= 2 ? '✗ Not yet — you can reveal the answer now.' : '✗ Not yet — check your spelling and accents, then try again (1 of 2).')
+              + (aw && /\s/.test(norm(inp.value)) ? ' Also look again at: ' + aw + '.' : '')); }
+      };
+      // the student's words that match a word of the key except for accents / ñ, e.g. “dia”, “jardin” (or an accent added in error)
+      var accentWords = function (v) {
+        var mine = norm(v).split(' '), keys = [];
+        key.split(' || ').forEach(function (k) { keys = keys.concat(norm(k).split(' ')); });
+        var marks = function (s) { return (s.normalize('NFD').match(/[̀-ͯ]/g) || []).length; };
+        var bad = mine.filter(function (w, i) {
+          return w && keys.indexOf(w) < 0 && keys.some(function (k) { return bare(k) === bare(w); }) && mine.indexOf(w) === i;
+        });
+        return bad.map(function (w) {      // say WHICH problem: missing mark, ñ, extra accent, or accent in the wrong place
+          var k = keys.filter(function (k) { return bare(k) === bare(w); })[0], why;
+          if (/ñ/.test(k) && !/ñ/.test(w)) why = 'needs ñ';
+          else if (marks(w) < marks(k)) why = 'needs an accent';
+          else if (marks(w) > marks(k)) why = 'has no accent here';
+          else why = 'the accent is on the wrong letter';
+          return '“' + w + '” (' + why + ')';
+        }).join(', ');
+      };
+      // data-hints = [["regex", "message"], ...] tested in order on the normalised answer (accents stripped);
+      // data-hint-else = message for any other wrong answer. Lets a box say WHAT is wrong (David 2026-11-10).
+      var hintFor = function (v) {
+        var h; try { h = JSON.parse(inp.getAttribute('data-hints') || '[]'); } catch (e) { h = []; }
+        var s = bare(norm(v));
+        for (var i = 0; i < h.length; i++) { if (new RegExp(h[i][0]).test(s)) return h[i][1]; }
+        return inp.getAttribute('data-hint-else') || '';
       };
       chk.addEventListener('click', function () {
         if (!inp.value.trim()) { fb.style.fontWeight = '400'; fb.style.fontSize = '14px'; fb.style.color = '#5b6672'; fb.textContent = 'Type your answer first.'; return; }
