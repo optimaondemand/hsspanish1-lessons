@@ -23,3 +23,4 @@ Módulo 3 (added 2026-11-16):
 - viaje.js / viaje-geo.js ("El viaje", 3.05): coastlines and borders from Natural Earth (public domain); the ship, compass and street plan are drawn in code for this course. Audio for the two walking directions (s2m3-vj-1, s2m3-vj-2): course voice (Microsoft, es-ES).
 - origen.js ("¿De dónde viene?", 3.05) and clave.js (word key, 3.04): drawn in code for this course; no outside media.
 - paseo.js ("Un paseo por la ciudad", 3.01): the whole town, its people, signs and statues are drawn in code for this course; title in Pinyon Script and IM Fell English (Google Fonts, SIL Open Font License). Audio: course voices (Microsoft Sabina / Raúl)
+- Virtue strand, Módulo 3 (added 2026-11-19): Miguel Cabrera, *Sor Juana Inés de la Cruz*, c. 1750, Museo Nacional de Historia, Mexico City (Wikimedia Commons "Sor Juana by Miguel Cabrera (cropped).jpg", public domain) — s2/m03/img/virtud/sor-juana.jpg (3.05, 3.06, 3.08)

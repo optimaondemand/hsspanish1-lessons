@@ -69,227 +69,342 @@
     .flip-front .flip-hint { color:#6b7a99; }
     .flip-back .flip-hint { color:#9fb3d1; }
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m3-hero.jpg) center 40% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  .sg-info { display: flex; flex-wrap: wrap; margin: 14px 34px 0; background: var(--lime); border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--blue); border-radius: 4px; }
+  .sg-info > div { flex: 1 1 150px; padding: 10px 16px; border-right: 1px solid var(--rule); }
+  .sg-info > div:last-child { border-right: 0; }
+  .sg-il { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 3px; }
+  .sg-iv { display: block; font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--ink); }
+  .sg-is { display: block; font-family: 'IM Fell English', Garamond, Georgia, serif; font-style: italic; font-size: 14px; color: var(--muted); }
+  @media (max-width: 640px) { .sg-info { margin: 12px 12px 0; } }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 23px; font-weight: 700; line-height: 1.25; min-width: 200px; } .v-en { color: #1a2340; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 600; line-height: 1.35; }
+  .v-pic { flex: 0 0 auto; width: 240px; height: 180px; object-fit: cover; border-radius: 2px; border: 3px solid #c7922c; outline: 1px solid #e9d39a; outline-offset: -5px; background: #3b2a1a; box-shadow: 0 2px 6px rgba(0,0,0,.25); } .vocab-item:has(.v-pic) { gap: 16px; padding: 12px 16px; } @media (max-width: 640px) { .vocab-item:has(.v-pic) { flex-wrap: wrap; } .vocab-item .v-pic { width: 100%; height: auto; aspect-ratio: 4 / 3; } }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.correct, .widget-options button.correct:hover { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+  .widget-options button.incorrect, .widget-options button.incorrect:hover { background: #C0392B; color: #fff; border-color: #C0392B; }
+  .widget-options button.selected:hover { background: var(--ink); color: #fff; }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .gtable.big th { font-size: 22px; letter-spacing: .02em; padding-top: 11px; padding-bottom: 11px; } .gtable.big td { font-size: 18px; padding-top: 12px; padding-bottom: 12px; } .gtable.big .pron { font-size: 19px; }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; }
+  /* flashcards with a painting on the back (Vocabulario) */
+  .flip-grid.has-art { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+  .flip-grid.has-art .flip-inner { min-height: 300px; }
+  .flip-grid.has-art .flip-back { justify-content: flex-start; gap: 6px; padding: 10px 10px 8px; }
+  .flip-grid.has-art .flip-back:not(:has(.flip-pic)) { justify-content: center; }
+  .flip-pic { position: relative; display: block; width: 100%; }
+  .flip-art { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 3px solid #d7ad4c; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+  .flip-arrow { position: absolute; top: 8px; right: 8px; width: 38px; height: 38px; border-radius: 50%; background: var(--gold); color: #fff; font-size: 26px; font-weight: 700;
+      line-height: 38px; text-align: center; box-shadow: 0 0 0 2px #fff, 0 2px 6px rgba(0,0,0,.4); }
+  .flip-credit { font-size: 11.5px; line-height: 1.3; color: #f3dfd9; font-style: italic; }
+  .flip-credit em { font-style: normal; }
+  .sg-credits { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink); } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 3 &middot; La ciudad</div>
+    <div class="sg-where">Vocabulario &middot; M&oacute;dulo 3</div>
+    <h1 class="sg-title">Vocabulario &middot; M&oacute;dulo <span class="dg">3</span></h1>
+    <div class="sg-sub">Study cards &middot; tap a card to flip, tap &#128266; to hear it</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Crist&oacute;bal de Villalpando, <em>Vista de la Plaza Mayor de la Ciudad de M&eacute;xico</em> (<em>View of the Plaza Mayor of Mexico City</em>), 1695</div>
+  <div class="sg-info"><div><span class="sg-il">Quarter / Module</span><span class="sg-iv">Q3 &middot; M&oacute;dulo 3</span><span class="sg-is">La ciudad</span></div><div><span class="sg-il">Study companion</span><span class="sg-iv">Vocabulario &middot; Repaso</span></div><div><span class="sg-il">Topic</span><span class="sg-iv">18 palabras + verbos &middot; por el o&iacute;do</span></div><div><span class="sg-il">Module Theme</span><span class="sg-iv">City &amp; Directions</span></div></div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 3</div>
-        <div style="font-size: 12px; color: #666;">La ciudad</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Study companion</div>
-        <div style="font-size: 17px; color: #0e1c42;">Vocabulario &middot; Repaso</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">18 palabras + verbos &middot; por el o&iacute;do</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">City &amp; Directions</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">M&oacute;dulo 3 &middot; Vocabulario</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Vocabulario &middot; M&oacute;dulo 3</div>
-        <div style="font-size: 16px; color: #666;">Study cards &middot; tap a card to flip, tap &#128266; to hear it</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; HOW TO USE THIS PAGE</div>
+    <div class="sg-card">
+        <div class="sg-kicker">HOW TO USE THIS PAGE</div>
         <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">These are the <strong>18 words</strong> of M&oacute;dulo 3 &mdash; the same words you'll meet on the listening-based <em>Vocabulary Check</em> (Day 6) &mdash; plus the <strong>seven irregular-<em>yo</em> verbs</strong> for review. Each card shows the Spanish; <strong>tap the card</strong> to flip it and check the English. But your real goal is to know these <em>by ear</em>: tap the <strong>&#128266;</strong> button and say each one back out loud <em>before</em> you flip.</div>
         <p style="font-size: 14px; color: #6b7a99; margin: 12px 0 0;">Tip: nouns are shown with their article (<em>el, la</em>) &mdash; learn each one glued to its article. And remember <em>derecho</em> (straight ahead) is <em>not</em> the same as <em>a la derecha</em> (to the right)!</p>
     </div>
 
     <!-- SECTION A -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#127961;&#65039; SECCI&Oacute;N A &middot; LUGARES DE LA CIUDAD <span class="pill-time">city places</span></div>
+    <div class="sg-card">
+        <div class="sg-kicker">SECCI&Oacute;N A &middot; LUGARES DE LA CIUDAD <span class="pill-time">city places</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Lugares &mdash; places around the city</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">Where you go. Try a sentence with each: <em>Voy al mercado</em>, <em>Salgo del banco</em>.</p>
-        <div class="flip-grid">
+        <div class="flip-grid has-art">
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el centro, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-centro.mp3" aria-label="Escuchar el centro">&#128266;</button><span class="flip-es">el centro</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">downtown</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-centro.jpg" alt="The great cathedral in the centre of Mexico City, with carriages and people in the square in front" loading="lazy"></span><span class="flip-en">downtown</span><span class="flip-credit">Casimiro Castro, <em>Catedral de M&eacute;xico</em> (The Cathedral of Mexico), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la calle, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-calle.mp3" aria-label="Escuchar la calle">&#128266;</button><span class="flip-es">la calle</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the street</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-calle.jpg" alt="A long city street with tall stone buildings, carts and people walking" loading="lazy"></span><span class="flip-en">the street</span><span class="flip-credit">Casimiro Castro, <em>Colegio de Miner&iacute;a</em> (The School of Mines), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la tienda, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-tienda.mp3" aria-label="Escuchar la tienda">&#128266;</button><span class="flip-es">la tienda</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the shop / store</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-tienda.jpg" alt="Customers in a shop full of fabrics, ribbons and goods on the shelves" loading="lazy"></span><span class="flip-en">the shop / store</span><span class="flip-credit">Luis Paret y Alc&aacute;zar, <em>La tienda</em> (The Shop), 1772</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el banco, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-banco.mp3" aria-label="Escuchar el banco">&#128266;</button><span class="flip-es">el banco</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the bank</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-banco.jpg" alt="A moneylender weighing coins on a table, with his wife beside him" loading="lazy"></span><span class="flip-en">the bank</span><span class="flip-credit">Quentin Matsys, <em>The Moneylender and his Wife</em>, 1514</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el mercado, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-mercado.mp3" aria-label="Escuchar el mercado">&#128266;</button><span class="flip-es">el mercado</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the market</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-mercado.jpg" alt="People buying and selling at a market stall under a canvas awning" loading="lazy"></span><span class="flip-en">the market</span><span class="flip-credit">Casimiro Castro and J. Campillo, <em>Trajes mexicanos</em> (Mexican Dress), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el restaurante, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-restaurante.mp3" aria-label="Escuchar el restaurante">&#128266;</button><span class="flip-es">el restaurante</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the restaurant</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-restaurante.jpg" alt="A couple at a restaurant table outdoors, with a waiter standing behind them" loading="lazy"></span><span class="flip-en">the restaurant</span><span class="flip-credit">&Eacute;douard Manet, <em>Chez le p&egrave;re Lathuille</em> (At P&egrave;re Lathuille&rsquo;s Restaurant), 1879</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el museo, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-museo.mp3" aria-label="Escuchar el museo">&#128266;</button><span class="flip-es">el museo</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the museum</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-museo.jpg" alt="A long museum gallery hung with paintings and statues, with visitors" loading="lazy"></span><span class="flip-en">the museum</span><span class="flip-credit">Hubert Robert, <em>La Grande Galerie du Louvre</em> (The Grand Gallery of the Louvre), c. 1795</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la plaza, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-plaza.mp3" aria-label="Escuchar la plaza">&#128266;</button><span class="flip-es">la plaza</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the square / plaza</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-plaza.jpg" alt="A huge open square with trees around the edge, a garden in the middle and the city behind" loading="lazy"></span><span class="flip-en">the square / plaza</span><span class="flip-credit">Casimiro Castro, <em>Plaza de Armas de M&eacute;xico</em> (The Main Square of Mexico City), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el hospital, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-hospital.mp3" aria-label="Escuchar el hospital">&#128266;</button><span class="flip-es">el hospital</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the hospital</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-hospital.jpg" alt="A long hospital ward with beds behind curtains, patients sitting by a stove and nurses" loading="lazy"></span><span class="flip-en">the hospital</span><span class="flip-credit">Vincent van Gogh, <em>Dormitory in the Hospital in Arles</em>, 1889</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- SECTION B -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#129517; SECCI&Oacute;N B &middot; DIRECCIONES <span class="pill-time">directions</span></div>
+    <div class="sg-card">
+        <div class="sg-kicker">SECCI&Oacute;N B &middot; DIRECCIONES <span class="pill-time">directions</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Direcciones &mdash; getting around</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">How to point the way. Build a route: <em>derecho dos cuadras y a la derecha en el sem&aacute;foro</em>.</p>
-        <div class="flip-grid">
+        <div class="flip-grid has-art">
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la esquina, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-esquina.mp3" aria-label="Escuchar la esquina">&#128266;</button><span class="flip-es">la esquina</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the corner</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-esquina.jpg" alt="A stone building on a street corner, where two streets meet" loading="lazy"></span><span class="flip-en">the corner</span><span class="flip-credit">Charles Frederick de Brocktorff, <em>The corner of Strada Zecca and Strada Mezzodi, Valletta</em>, 1823</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: el semaforo, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-el-semaforo.mp3" aria-label="Escuchar el sem&aacute;foro">&#128266;</button><span class="flip-es">el sem&aacute;foro</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the traffic light</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/el-semaforo.jpg" alt="A traffic light hanging over the street, showing red" loading="lazy"></span><span class="flip-en">the traffic light</span><span class="flip-credit">Kevin Payravi, <em>LED traffic light on red</em>, photograph, 2009 (CC BY-SA 4.0)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: a la derecha, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-a-la-derecha.mp3" aria-label="Escuchar a la derecha">&#128266;</button><span class="flip-es">a la derecha</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">to the right</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/a-la-derecha.jpg" alt="A dirt road that bends to the right up a hillside; a gold arrow points right" loading="lazy"></span><span class="flip-en">to the right</span><span class="flip-credit">Aureliano de Beruete, <em>Camino de los Cigarrales</em> (A Road near Toledo), 1906</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: a la izquierda, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-a-la-izquierda.mp3" aria-label="Escuchar a la izquierda">&#128266;</button><span class="flip-es">a la izquierda</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">to the left</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/a-la-izquierda.jpg" alt="A village road that bends to the left between trees; a gold arrow points left" loading="lazy"></span><span class="flip-en">to the left</span><span class="flip-credit">Paul C&eacute;zanne, <em>La Route tournante</em> (Turn in the Road), c. 1881</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: derecho, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-derecho.mp3" aria-label="Escuchar derecho">&#128266;</button><span class="flip-es">derecho</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">straight ahead</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/derecho.jpg" alt="A road running straight ahead between two rows of tall trees" loading="lazy"></span><span class="flip-en">straight ahead</span><span class="flip-credit">Meindert Hobbema, <em>De laan van Middelharnis</em> (The Avenue at Middelharnis), 1689</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: cerca, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-cerca.mp3" aria-label="Escuchar cerca">&#128266;</button><span class="flip-es">cerca</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">near / close</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/cerca.jpg" alt="A white lighthouse seen from right below it: very close" loading="lazy"></span><span class="flip-en">near / close</span><span class="flip-credit">Ragnar1904, <em>Lyngvig Fyr</em> (lighthouse, Denmark), photograph, 2015 (CC BY-SA 4.0)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: lejos, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-lejos.mp3" aria-label="Escuchar lejos">&#128266;</button><span class="flip-es">lejos</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">far</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/lejos.jpg" alt="The same white lighthouse, small and far away across the dunes" loading="lazy"></span><span class="flip-en">far</span><span class="flip-credit">Lothar Weber, <em>Lyngvig Fyr</em> from the dunes, photograph, 2014 (CC BY-SA 4.0)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: la cuadra, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-la-cuadra.mp3" aria-label="Escuchar la cuadra">&#128266;</button><span class="flip-es">la cuadra</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">the (city) block</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/la-cuadra.jpg" alt="Mexico City from above: square blocks of houses between straight streets" loading="lazy"></span><span class="flip-en">the (city) block</span><span class="flip-credit">Casimiro Castro, <em>La Ciudad de M&eacute;xico tomada en globo</em> (Mexico City seen from a balloon), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: doblar, tap to flip">
                 <div class="flip-inner">
                     <div class="flip-face flip-front"><button class="say" data-audio="vocab/s2-doblar.mp3" aria-label="Escuchar doblar">&#128266;</button><span class="flip-es">doblar</span><span class="flip-hint">tap to flip</span></div>
-                    <div class="flip-face flip-back"><span class="flip-en">to turn</span><span class="flip-hint">tap to flip back</span></div>
+                    <div class="flip-face flip-back"><span class="flip-pic"><img class="flip-art" src="img/vocab/doblar.jpg" alt="A road sign with an arrow that turns to the right" loading="lazy"></span><span class="flip-en">to turn</span><span class="flip-credit">Mexican road sign SR-12, <em>Vuelta a la derecha</em> (turn right), Government of Mexico (public domain)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- SECTION C -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 6px;">&#129504; SECCI&Oacute;N C &middot; VERBOS CON <em>YO</em> IRREGULAR <span class="pill-time">grammar review</span></div>
+    <div class="sg-card">
+        <div class="sg-kicker">SECCI&Oacute;N C &middot; VERBOS CON <em>YO</em> IRREGULAR <span class="pill-time">grammar review</span></div>
         <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 4px 0;">Los verbos clave &mdash; the special <em>yo</em> forms</h3>
         <p style="font-size: 15px; color: #6b7a99; margin: 0;">These seven verbs are regular everywhere <em>except</em> the <em>yo</em> form. The card shows the <em>yo</em> form; tap &#128266; to hear it in a full sentence.</p>
-        <div class="flip-grid">
+        <div class="flip-grid has-art">
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: hago, tap to flip">
                 <div class="flip-inner">
-                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/s2m3-hago.mp3" aria-label="Escuchar hago">&#128266;</button><span class="flip-es">(yo) hago</span><span class="flip-hint">hacer &middot; tap to flip</span></div>
+                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/lbl-yo-hago.mp3" aria-label="Escuchar hago">&#128266;</button><span class="flip-es">(yo) hago</span><span class="flip-hint">hacer &middot; tap to flip</span></div>
                     <div class="flip-face flip-back"><span class="flip-en">I do / make</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: pongo, tap to flip">
                 <div class="flip-inner">
-                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/s2m3-pongo.mp3" aria-label="Escuchar pongo">&#128266;</button><span class="flip-es">(yo) pongo</span><span class="flip-hint">poner &middot; tap to flip</span></div>
+                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/lbl-yo-pongo.mp3" aria-label="Escuchar pongo">&#128266;</button><span class="flip-es">(yo) pongo</span><span class="flip-hint">poner &middot; tap to flip</span></div>
                     <div class="flip-face flip-back"><span class="flip-en">I put / place</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: salgo, tap to flip">
                 <div class="flip-inner">
-                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/s2m3-salgo.mp3" aria-label="Escuchar salgo">&#128266;</button><span class="flip-es">(yo) salgo</span><span class="flip-hint">salir &middot; tap to flip</span></div>
+                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/lbl-yo-salgo.mp3" aria-label="Escuchar salgo">&#128266;</button><span class="flip-es">(yo) salgo</span><span class="flip-hint">salir &middot; tap to flip</span></div>
                     <div class="flip-face flip-back"><span class="flip-en">I leave / go out</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: traigo, tap to flip">
                 <div class="flip-inner">
-                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/s2m3-traigo.mp3" aria-label="Escuchar traigo">&#128266;</button><span class="flip-es">(yo) traigo</span><span class="flip-hint">traer &middot; tap to flip</span></div>
+                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/lbl-yo-traigo.mp3" aria-label="Escuchar traigo">&#128266;</button><span class="flip-es">(yo) traigo</span><span class="flip-hint">traer &middot; tap to flip</span></div>
                     <div class="flip-face flip-back"><span class="flip-en">I bring</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: conozco, tap to flip">
                 <div class="flip-inner">
-                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/s2m3-conozco.mp3" aria-label="Escuchar conozco">&#128266;</button><span class="flip-es">(yo) conozco</span><span class="flip-hint">conocer &middot; tap to flip</span></div>
+                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/lbl-yo-conozco.mp3" aria-label="Escuchar conozco">&#128266;</button><span class="flip-es">(yo) conozco</span><span class="flip-hint">conocer &middot; tap to flip</span></div>
                     <div class="flip-face flip-back"><span class="flip-en">I know (a place/person)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: veo, tap to flip">
                 <div class="flip-inner">
-                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/s2m3-veo.mp3" aria-label="Escuchar veo">&#128266;</button><span class="flip-es">(yo) veo</span><span class="flip-hint">ver &middot; tap to flip</span></div>
+                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/lbl-yo-veo.mp3" aria-label="Escuchar veo">&#128266;</button><span class="flip-es">(yo) veo</span><span class="flip-hint">ver &middot; tap to flip</span></div>
                     <div class="flip-face flip-back"><span class="flip-en">I see</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
             <div class="flip-card" tabindex="0" role="button" aria-label="Tarjeta: doy, tap to flip">
                 <div class="flip-inner">
-                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/s2m3-doy.mp3" aria-label="Escuchar doy">&#128266;</button><span class="flip-es">(yo) doy</span><span class="flip-hint">dar &middot; tap to flip</span></div>
+                    <div class="flip-face flip-front"><button class="say" data-audio="grammar/lbl-yo-doy.mp3" aria-label="Escuchar doy">&#128266;</button><span class="flip-es">(yo) doy</span><span class="flip-hint">dar &middot; tap to flip</span></div>
                     <div class="flip-face flip-back"><span class="flip-en">I give / take (a stroll)</span><span class="flip-hint">tap to flip back</span></div>
                 </div>
             </div>
@@ -300,6 +415,7 @@
         </div>
     </div>
 
+    <div class="sg-card"><div class="sg-kicker">Las pinturas &middot; The paintings on the cards</div><p style="font-size:15px;color:#5f554a;margin:0 0 8px">Each card shows its word in a painting. Flip a card, look at the picture, and say the word again: a word tied to a picture is easier to remember.</p><ul class="sg-credits"><li>Casimiro Castro, <em>Catedral de M&eacute;xico</em> (The Cathedral of Mexico), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</li><li>Casimiro Castro, <em>Colegio de Miner&iacute;a</em> (The School of Mines), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</li><li>Luis Paret y Alc&aacute;zar, <em>La tienda</em> (The Shop), 1772</li><li>Quentin Matsys, <em>The Moneylender and his Wife</em>, 1514</li><li>Casimiro Castro and J. Campillo, <em>Trajes mexicanos</em> (Mexican Dress), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</li><li>&Eacute;douard Manet, <em>Chez le p&egrave;re Lathuille</em> (At P&egrave;re Lathuille&rsquo;s Restaurant), 1879</li><li>Hubert Robert, <em>La Grande Galerie du Louvre</em> (The Grand Gallery of the Louvre), c. 1795</li><li>Vincent van Gogh, <em>Dormitory in the Hospital in Arles</em>, 1889</li><li>Charles Frederick de Brocktorff, <em>The corner of Strada Zecca and Strada Mezzodi, Valletta</em>, 1823</li><li>Meindert Hobbema, <em>De laan van Middelharnis</em> (The Avenue at Middelharnis), 1689</li><li>Aureliano de Beruete, <em>Camino de los Cigarrales</em> (A Road near Toledo), 1906</li><li>Paul C&eacute;zanne, <em>La Route tournante</em> (Turn in the Road), c. 1881</li><li>Casimiro Castro, <em>La Ciudad de M&eacute;xico tomada en globo</em> (Mexico City seen from a balloon), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</li><li>Casimiro Castro, <em>Plaza de Armas de M&eacute;xico</em> (The Main Square of Mexico City), lithograph from <em>M&eacute;xico y sus alrededores</em> (Mexico City, Decaen)</li><li>Kevin Payravi, <em>LED traffic light on red</em>, photograph, 2009 (CC BY-SA 4.0)</li><li>Ragnar1904, <em>Lyngvig Fyr</em> (lighthouse, Denmark), photograph, 2015 (CC BY-SA 4.0)</li><li>Lothar Weber, <em>Lyngvig Fyr</em> from the dunes, photograph, 2014 (CC BY-SA 4.0)</li><li>Mexican road sign SR-12, <em>Vuelta a la derecha</em> (turn right), Government of Mexico (public domain)</li></ul><p style="font-size:12.5px;color:#857a68;margin:8px 0 0">All public domain, via Wikimedia Commons, except where a credit names a photo licence (CC BY-SA).</p></div>
     <div class="markdone">
         <div class="lbl">&#9989; BEFORE YOU LEAVE</div>
         <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, with the English covered, play five &#128266; buttons and say each meaning out loud before flipping &mdash; if you got them by ear, you're ready for the Vocabulary Check.</div>
@@ -307,11 +423,12 @@
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Study Page</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Study Page</div>
     <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Vocabulario &middot; M&oacute;dulo 3 &middot; La ciudad</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
