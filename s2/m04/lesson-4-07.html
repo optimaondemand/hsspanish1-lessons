@@ -74,58 +74,173 @@
     .conj-table td.subj { background: #FAFCFF; width: 34%; }
     .acc-bank { background: #FFF; border: 1.5px dashed #0E1C42; border-radius: 8px; padding: 12px 14px; margin: 10px 0; font-size: 26px; line-height: 2.1; letter-spacing: .10em; word-spacing: .55em; color: #0E1C42; text-align: center; user-select: text; -webkit-user-select: text; }
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m4-hero.jpg) center 50% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  .sg-info { display: flex; flex-wrap: wrap; margin: 14px 34px 0; background: var(--lime); border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--blue); border-radius: 4px; }
+  .sg-info > div { flex: 1 1 150px; padding: 10px 16px; border-right: 1px solid var(--rule); }
+  .sg-info > div:last-child { border-right: 0; }
+  .sg-il { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 3px; }
+  .sg-iv { display: block; font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--ink); }
+  .sg-is { display: block; font-family: 'IM Fell English', Garamond, Georgia, serif; font-style: italic; font-size: 14px; color: var(--muted); }
+  @media (max-width: 640px) { .sg-info { margin: 12px 12px 0; } }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 23px; font-weight: 700; line-height: 1.25; min-width: 200px; } .v-en { color: #1a2340; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 600; line-height: 1.35; }
+  .v-pic { flex: 0 0 auto; width: 240px; height: 180px; object-fit: cover; border-radius: 2px; border: 3px solid #c7922c; outline: 1px solid #e9d39a; outline-offset: -5px; background: #3b2a1a; box-shadow: 0 2px 6px rgba(0,0,0,.25); } .vocab-item:has(.v-pic) { gap: 16px; padding: 12px 16px; } @media (max-width: 640px) { .vocab-item:has(.v-pic) { flex-wrap: wrap; } .vocab-item .v-pic { width: 100%; height: auto; aspect-ratio: 4 / 3; } }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.correct, .widget-options button.correct:hover { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+  .widget-options button.incorrect, .widget-options button.incorrect:hover { background: #C0392B; color: #fff; border-color: #C0392B; }
+  .widget-options button.selected:hover { background: var(--ink); color: #fff; }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .gtable.big th { font-size: 22px; letter-spacing: .02em; padding-top: 11px; padding-bottom: 11px; } .gtable.big td { font-size: 18px; padding-top: 12px; padding-bottom: 12px; } .gtable.big .pron { font-size: 19px; }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; }
+  /* flashcards with a painting on the back (Vocabulario) */
+  .flip-grid.has-art { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+  .flip-grid.has-art .flip-inner { min-height: 300px; }
+  .flip-grid.has-art .flip-back { justify-content: flex-start; gap: 6px; padding: 10px 10px 8px; }
+  .flip-grid.has-art .flip-back:not(:has(.flip-pic)) { justify-content: center; }
+  .flip-pic { position: relative; display: block; width: 100%; }
+  .flip-art { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 3px solid #d7ad4c; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+  .flip-arrow { position: absolute; top: 8px; right: 8px; width: 38px; height: 38px; border-radius: 50%; background: var(--gold); color: #fff; font-size: 26px; font-weight: 700;
+      line-height: 38px; text-align: center; box-shadow: 0 0 0 2px #fff, 0 2px 6px rgba(0,0,0,.4); }
+  .flip-credit { font-size: 11.5px; line-height: 1.3; color: #f3dfd9; font-style: italic; }
+  .flip-credit em { font-style: normal; }
+  .sg-credits { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink); } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 4 &middot; La rutina diaria</div>
+    <div class="sg-where">Lesson 4.07 &middot; Day 7 of 8</div>
+    <h1 class="sg-title">Fon&eacute;tica</h1>
+    <div class="sg-sub">Saying Your Routine Cleanly &middot; Lesson + graded oral task &middot; about 50 minutes</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Diego Vel&aacute;zquez, <em>Las hilanderas</em> (<em>The Spinners</em>), about 1657</div>
+  <div class="sg-info"><div><span class="sg-il">Quarter / Module</span><span class="sg-iv">Q3 &middot; M&oacute;dulo 4</span><span class="sg-is">La rutina diaria</span></div><div><span class="sg-il">Lesson</span><span class="sg-iv">Lesson 4.07 &middot; Day 7 of 8</span></div><div><span class="sg-il">Topic</span><span class="sg-iv">Fon&eacute;tica + Tarea oral</span></div><div><span class="sg-il">Module Theme</span><span class="sg-iv">Daily Routine</span></div></div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 4</div>
-        <div style="font-size: 12px; color: #666;">La rutina diaria</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 4.07 &middot; Day 7 of 8</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">Fon&eacute;tica + Tarea oral</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Daily Routine</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 4.07</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> Fon&eacute;tica &mdash; Saying Your Routine Cleanly</div>
-        <div style="font-size: 16px; color: #666;">Lesson + graded oral task &middot; about 50 minutes</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+    <div class="sg-card">
+        <div class="sg-kicker">TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">You've written your routine all week. Today you <em>say</em> it &mdash; and you record it.</div>
         <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is a <strong>pronunciation clinic</strong> aimed at the exact sounds in your routine words. Three habits carry most of a clean accent here: the <strong>&ldquo;ch&rdquo;</strong> in <em>ducharse</em> and <em>cepillarse</em>; the soft <strong>Spanish v/b</strong> in <em>levantarse, vestirse, lavarse</em>; and the <strong>stress</strong> on the verb forms (<em>me lev&Aacute;nto, me desp&Iacute;erto</em>). We'll rehearse each one out loud, then you'll record your graded <strong>Tarea oral</strong> &mdash; your morning routine, in order. You'll finish with a short written <strong>repaso</strong> to get ready for tomorrow's Grammar Quiz.</div>
     </div>
 
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+    <div class="sg-card">
+        <div class="sg-kicker">BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> pronounce the Spanish <em>ch</em>, the soft <em>v/b</em>, and place stress correctly on reflexive verb forms.</div>
@@ -141,9 +256,9 @@
     </div>
 
     <!-- PART 1 -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; PARA EMPEZAR <span class="pill-time">5 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Sounds you already make</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">I</span><span>PARA EMPEZAR</span><span class="pill-time">5 min</span></div>
+        <h3 class="sg-h3">Sounds you already make</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Good news: today's sounds are ones your mouth already knows. The Spanish <em>ch</em> is the same <em>ch</em> as English "church." The tricky part is just remembering that Spanish <em>v</em> and <em>b</em> sound almost identical &mdash; both soft. Let's tune those, then use them on the record.</p>
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
@@ -159,38 +274,38 @@
     </div>
 
     <!-- PART 2 · CH sound -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; EL SONIDO CH <span class="pill-time">9 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">One easy sound: <em>ch</em></h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">II</span><span>EL SONIDO CH</span><span class="pill-time">9 min</span></div>
+        <h3 class="sg-h3">One easy sound: <em>ch</em></h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Spanish <strong>ch</strong> is exactly the English <em>ch</em> in &ldquo;cheese.&rdquo; It shows up right in the middle of two of your most-used routine verbs. Click <strong>&#128266;</strong>, then say each one back, landing cleanly on the <em>ch</em>.</p>
         <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-ducharse.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">du<strong>ch</strong>arse</span><span class="v-en">du-CHAR-se &mdash; same <em>ch</em> as &ldquo;church&rdquo;</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-cepillarse.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">cepillarse</span><span class="v-en">note the <em>ll</em>: ce-pi-YAR-se (like a <em>y</em>)</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-ducharse.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/ducharse.jpg" alt="" loading="lazy"><span class="v-es">du<strong>ch</strong>arse</span><span class="v-en">du-CHAR-se &mdash; same <em>ch</em> as &ldquo;church&rdquo;</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-cepillarse.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/cepillarse.jpg" alt="" loading="lazy"><span class="v-es">cepillarse</span><span class="v-en">note the <em>ll</em>: ce-pi-LLAR-se (the <em>ll</em> sounds like the <em>y</em> in <em>yes</em>)</span></li>
         </ul>
         <p style="font-size:15px;color:#6b7a99;line-height:1.6;margin:6px 0 0;">Bonus sound in <em>cepillarse</em>: the double <strong>ll</strong> sounds like a <em>y</em> in most of Latin America &mdash; <em>ce-pi-YAR-se</em>, not &ldquo;ce-pil-lar-se.&rdquo;</p>
     </div>
 
     <!-- PART 3 · v/b -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#129504; PART 3 &middot; LA V Y LA B <span class="pill-time">9 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Spanish <em>v</em> and <em>b</em> are twins</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">III</span><span>LA V Y LA B</span><span class="pill-time">9 min</span></div>
+        <h3 class="sg-h3">Spanish <em>v</em> and <em>b</em> are twins</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Here's the one that trips up English speakers: in Spanish, <strong>v</strong> and <strong>b</strong> sound almost the same &mdash; both a soft <em>b</em> made with the lips barely touching. There's no English &ldquo;vvv&rdquo; buzz. Don't bite your lip for the <em>v</em> in <em>levantarse</em> or <em>vestirse</em>. Listen and echo:</p>
         <ul class="vocab-list">
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-levantarse.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">le<strong>v</strong>antarse</span><span class="v-en">soft <em>v</em> &mdash; like a gentle <em>b</em></span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-vestirse.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es"><strong>v</strong>estirse</span><span class="v-en">soft <em>v</em> at the start</span></li>
-            <li class="vocab-item"><button class="say" data-audio="vocab/s2-lavarse.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">la<strong>v</strong>arse</span><span class="v-en">soft <em>v</em> in the middle</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-levantarse.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/levantarse.jpg" alt="" loading="lazy"><span class="v-es">le<strong>v</strong>antarse</span><span class="v-en">soft <em>v</em> &mdash; like a gentle <em>b</em></span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-vestirse.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/vestirse.jpg" alt="" loading="lazy"><span class="v-es"><strong>v</strong>estirse</span><span class="v-en">soft <em>v</em> at the start</span></li>
+            <li class="vocab-item"><button class="say" data-audio="vocab/s2-lavarse.mp3" aria-label="Escuchar">&#128266;</button><img class="v-pic" src="img/vocab/lavarse.jpg" alt="" loading="lazy"><span class="v-es">la<strong>v</strong>arse</span><span class="v-en">soft <em>v</em> in the middle</span></li>
         </ul>
         <div style="margin-top:14px;">
             <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Try it: say <em>me levanto</em> without biting your lip &mdash; keep the <em>v</em> soft, like a lazy <em>b</em>. Then reveal a tip.</p>
-            <button class="reveal-btn">Reveal tip</button>
+            <button class="reveal-btn" data-mw-open>Reveal tip</button>
             <div class="reveal-body">Put your lips <em>almost</em> together and let a little air through &mdash; that's the Spanish <em>v/b</em>. If it sounds a bit like &ldquo;me le-<em>b</em>anto,&rdquo; you've got it right. That's how a native speaker says it too.</div>
         </div>
     </div>
 
     <!-- PART 4 · Stress -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128264; PART 4 &middot; EL ACENTO EN LOS VERBOS <span class="pill-time">7 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Which syllable do I punch?</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">IV</span><span>EL ACENTO EN LOS VERBOS</span><span class="pill-time">7 min</span></div>
+        <h3 class="sg-h3">Which syllable do I punch?</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 8px 0;">Your reflexive present forms end in a vowel or <em>-s</em>, so the default rule you learned in Semester 1 applies: <strong>stress the second-to-last syllable</strong>. Listen for the punch:</p>
         <ul class="vocab-list">
             <li class="vocab-item"><button class="say" data-audio="grammar/lbl-me-levanto-a-las-seis.mp3" aria-label="Escuchar">&#128266;</button><span class="v-es">Me lev<span class="pron">an</span>to a las seis.</span><span class="v-en">le-V&Aacute;N-to</span></li>
@@ -199,7 +314,7 @@
         </ul>
         <div style="margin-top:14px;">
             <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Say <em>me despierto</em> out loud &mdash; which syllable do you punch? Decide, then reveal.</p>
-            <button class="reveal-btn">Reveal answer</button>
+            <button class="reveal-btn" data-mw-open>Reveal answer</button>
             <div class="reveal-body">Stress the <strong>second-to-last</strong> syllable: me des-<span class="pron">PIER</span>-to. It ends in a vowel, so the default rule applies &mdash; no accent mark needed.</div>
         </div>
     </div>
@@ -218,9 +333,9 @@
     </div>
 
     <!-- PART 5 · Tarea oral -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127908; PART 5 &middot; TAREA ORAL <span class="pill-time">10 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Your graded recording (15 points)</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">V</span><span>TAREA ORAL</span><span class="pill-time">10 min</span></div>
+        <h3 class="sg-h3">Your graded recording (15 points)</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Record yourself <strong>narrating your morning routine in order</strong> &mdash; at least <strong>four steps</strong>, each a reflexive verb, connected with sequence words (<em>primero, despu&eacute;s, luego, y por &uacute;ltimo</em>). Aim for 30&ndash;45 seconds. Use the <em>yo</em> form throughout (<em>me&hellip;</em>).</p>
 
         <div style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:14px 18px;margin:0 0 12px 0;">
@@ -246,15 +361,7 @@
             <div class="widget-feedback"></div>
             <button class="widget-reset">Reset</button>
         </div>
-
-        <div style="background:#FBF6EA;border:1px solid #E3D3A8;border-left:5px solid #C7922C;border-radius:8px;padding:14px 18px;margin:14px 0 12px 0;">
-            <div style="font-size:13px;color:#8a6a12;letter-spacing:.3px;margin-bottom:8px;">&#128161; CONSEJO &middot; plan before you record</div>
-            <p style="font-size:16px;color:#1a2340;line-height:1.65;margin:0;">If it helps you, <strong>write out your sentences first</strong> and read them aloud a couple of times before you record. Many students sound calmer and clearer once they&rsquo;ve drafted a quick script &mdash; reading from your notes is completely fine. Just aim to sound <em>natural</em>, not rushed.</p>
-        </div>
-        <div style="text-align:center;margin:18px 0 8px;">
-            <div style="background:#F0F2F8;border-left:4px solid #0E1C42;border-radius:6px;padding:12px 18px;font-size:15px;color:#1a2340;margin-top:14px;line-height:1.6;"><strong>&#9654; To record your Tarea oral:</strong> return to <strong>Module 4</strong> in Canvas and open the <strong>Tarea oral</strong> &mdash; it is in the module&rsquo;s item list, below the eight lessons.</div>
-            <div style="font-size:13px;color:#6b7a99;margin-top:8px;">Record directly in Canvas (or upload an audio/video file). 15 points.</div>
-        </div>
+        <div class="borrador" data-borrador="{&quot;id&quot;: &quot;l4-07-plan&quot;, &quot;label&quot;: &quot;Tarea oral plan: my morning routine, in order&quot;, &quot;intro&quot;: &quot;Plan your recording here first, then read it aloud a couple of times before you record. Reading from your plan is completely fine; just sound &lt;em&gt;natural&lt;/em&gt;, not rushed.&quot;, &quot;starters&quot;: [&quot;Primero me&#8230;&quot;, &quot;Despu&eacute;s me&#8230;&quot;, &quot;Luego me&#8230;&quot;, &quot;Y por &uacute;ltimo me&#8230;&quot;, &quot;A las siete, me&#8230;&quot;], &quot;require&quot;: [{&quot;re&quot;: &quot;\\bme (despierto|levanto|ducho|lavo|cepillo|peino|afeito|visto|pongo|siento|acuesto)\\b&quot;, &quot;min&quot;: 4, &quot;distinct&quot;: true, &quot;label&quot;: &quot;at least four routine steps, each a reflexive verb with &lt;em&gt;me&lt;/em&gt; (me despierto, me ducho&#8230;)&quot;}, {&quot;re&quot;: &quot;\\b(primero|despu[eé]s|luego|por [uú]ltimo)\\b&quot;, &quot;min&quot;: 2, &quot;distinct&quot;: true, &quot;label&quot;: &quot;sequence words to put them in order (primero, despu&eacute;s, luego, y por &uacute;ltimo)&quot;}], &quot;rules&quot;: [{&quot;re&quot;: &quot;\\bme desperto\\b&quot;, &quot;msg&quot;: &quot;&lt;em&gt;despertarse&lt;/em&gt; jumps e&rarr;ie with &lt;em&gt;yo&lt;/em&gt;: &lt;strong&gt;me despierto&lt;/strong&gt;.&quot;}, {&quot;re&quot;: &quot;\\bme acosto\\b&quot;, &quot;msg&quot;: &quot;&lt;em&gt;acostarse&lt;/em&gt; jumps o&rarr;ue with &lt;em&gt;yo&lt;/em&gt;: &lt;strong&gt;me acuesto&lt;/strong&gt;.&quot;}, {&quot;re&quot;: &quot;\\bme vesto\\b&quot;, &quot;msg&quot;: &quot;&lt;em&gt;vestirse&lt;/em&gt; jumps e&rarr;i with &lt;em&gt;yo&lt;/em&gt;: &lt;strong&gt;me visto&lt;/strong&gt;.&quot;}, {&quot;re&quot;: &quot;\\bme sento\\b&quot;, &quot;msg&quot;: &quot;&lt;em&gt;sentarse&lt;/em&gt; jumps e&rarr;ie with &lt;em&gt;yo&lt;/em&gt;: &lt;strong&gt;me siento&lt;/strong&gt;.&quot;}, {&quot;re&quot;: &quot;\\bme pono\\b&quot;, &quot;msg&quot;: &quot;The &lt;em&gt;yo&lt;/em&gt; form of &lt;em&gt;poner&lt;/em&gt; has a g: &lt;strong&gt;me pongo&lt;/strong&gt;.&quot;}, {&quot;re&quot;: &quot;\\b(te|se|nos) (despierto|levanto|ducho|lavo|cepillo|peino|afeito|visto|pongo|siento|acuesto)\\b&quot;, &quot;msg&quot;: &quot;Talking about yourself? The pronoun for &lt;em&gt;yo&lt;/em&gt; is &lt;strong&gt;me&lt;/strong&gt;: &lt;strong&gt;me levanto&lt;/strong&gt;, &lt;strong&gt;me ducho&lt;/strong&gt;.&quot;}, {&quot;re&quot;: &quot;(^|[.,;]\\s*|\\b(primero|despu[eé]s|luego|[uú]ltimo|y)\\s+)(despierto|levanto|ducho|lavo|cepillo|peino|afeito|visto|acuesto)\\b&quot;, &quot;msg&quot;: &quot;Each routine verb needs its pronoun in front: &lt;strong&gt;me&lt;/strong&gt; levanto, &lt;strong&gt;me&lt;/strong&gt; ducho.&quot;}, {&quot;re&quot;: &quot;\\bmis dientes\\b&quot;, &quot;msg&quot;: &quot;Spanish says &lt;strong&gt;me cepillo los dientes&lt;/strong&gt;: &lt;em&gt;me&lt;/em&gt; already shows they are yours.&quot;}], &quot;ready&quot;: &quot;Your plan has everything the rubric asks for. Read it aloud twice, then record it in Canvas.&quot;}"><aside class="jt-key" aria-label="Word key"><h4>&#128273; WORD KEY</h4><h5>My routine (<em>yo</em>)</h5><ul><li><b>me despierto</b> &mdash; I wake up</li><li><b>me levanto</b> &mdash; I get up</li><li><b>me ducho</b> &mdash; I shower</li><li><b>me lavo la cara</b> &mdash; I wash my face</li><li><b>me cepillo los dientes</b> &mdash; I brush my teeth</li><li><b>me peino</b> &mdash; I comb my hair</li><li><b>me afeito</b> &mdash; I shave</li><li><b>me visto</b> &mdash; I get dressed</li><li><b>me siento</b> &mdash; I sit down</li><li><b>me acuesto</b> &mdash; I go to bed</li></ul><div class="boot">Every step starts with <em>me</em>. The vowel jumps: <em>despierto, visto, siento, acuesto</em>.</div><h5>In order</h5><ul><li><b>primero</b> &mdash; first</li><li><b>despu&eacute;s</b> &mdash; then, after</li><li><b>luego</b> &mdash; then, later</li><li><b>y por &uacute;ltimo</b> &mdash; and finally</li><li><b>antes de</b> &mdash; before</li></ul><h5>Also useful</h5><ul><li><b>temprano</b> &mdash; early</li><li><b>tarde</b> &mdash; late</li><li><b>a las siete</b> &mdash; at seven</li><li><b>por la ma&ntilde;ana</b> &mdash; in the morning</li></ul></aside></div>
 
         <h3 style="font-size: 18px; color: #0e1c42; margin: 20px 0 8px 0;">How it's scored &mdash; the rubric</h3>
         <p style="font-size:15px;color:#1a2340;line-height:1.6;margin:0 0 6px 0;">Three criteria, 5 points each, 15 total. Read it <em>before</em> you record so you know what earns full marks.</p>
@@ -281,10 +388,10 @@
     </div>
 
     <!-- PART 3 · Repaso -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128221; PART 6 &middot; REPASO <span class="pill-time">14 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;"><em>Repaso</em> &mdash; write it, then conjugate it</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 4px 0;">Tomorrow is the <strong>Grammar Quiz</strong>. Today you review by <strong>writing</strong>, not by recognising &mdash; nothing is shown to you here, you produce it. <strong>None of this is graded.</strong></p>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">VI</span><span>REPASO</span><span class="pill-time">14 min</span></div>
+        <h3 class="sg-h3"><em>Repaso</em> &mdash; write it, then conjugate it</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 4px 0;">The <strong>Grammar Quiz</strong> is in Lesson 4.08; you should complete it by the end of the module. Today you review by <strong>writing</strong>, not by recognizing &mdash; nothing is shown to you here, you produce it. <strong>None of this is graded.</strong></p>
         <div class="rep-block" style="background:#F4F9FC;border:1px solid #D0D9E8;border-radius:8px;padding:16px 20px;margin:14px 0;">
             <div style="font-size:11px;color:#1B6A94;letter-spacing:.4px;margin-bottom:4px;">&#9998; A &middot; VOCABULARIO</div>
             <p style="font-size:15px;color:#41506b;margin:0 0 8px 0;">Write each word in Spanish, <strong>with its article</strong> where it has one &mdash; the same way it appears on your flip cards.</p>
@@ -294,8 +401,8 @@
             <div class="rep-row"><span class="rep-cue">to wake up(me despierto)</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="despertarse" aria-label="to wake up(me despierto)"></div>
             <div class="rep-row"><span class="rep-cue">to get up</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="levantarse" aria-label="to get up"></div>
             <div class="rep-row"><span class="rep-cue">to shower</span><input class="rep-input" type="text" spellcheck="false" autocomplete="off" autocapitalize="off" data-answer="ducharse" aria-label="to shower"></div>
-            <div class="acc-bank">&aacute; &eacute; &iacute; &ntilde; &oacute; &uacute; &uuml; &iquest; &iexcl;<br>&Aacute; &Eacute; &Iacute; &Ntilde; &Oacute; &Uacute; Ü</div>
-            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">Accents are part of the word: <em>despu&eacute;s</em> is not <em>despues</em>. If your keyboard cannot make them, select a character above and copy it.</p>
+            <div class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">Ü</button></div>
+            <p style="font-size:13.5px;color:#6b7a99;margin:0 0 8px 0;">Accents are part of the word: <em>despu&eacute;s</em> is not <em>despues</em>. Click a letter above to add it where your cursor is.</p>
             <button class="rep-btn rep-check">Check</button>
             <div class="rep-fb"></div>
         </div>
@@ -316,8 +423,8 @@
     </div>
 
     <!-- Look ahead -->
-    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">8</div>
             <div>
@@ -332,18 +439,19 @@
         <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Make sure you've also <strong>submitted the Tarea oral</strong> &mdash; the page being marked done and the recording being turned in are two separate steps.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;LO LOGRASTE&#33; (You did it!)</div>
+    <div class="sg-card">
+        <div class="sg-kicker">&iexcl;LO LOGRASTE&#33; (You did it!)</div>
         <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just narrated a whole morning on the record &mdash; clean <em>ch</em>, soft <em>v</em>, and the stress in the right place. That's a bigger step than it feels like. <em>&iexcl;Buen trabajo, y hasta ma&ntilde;ana!</em> (Good work, and see you tomorrow!)</p>
     </div>
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
     <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 4.07 &middot; Fon&eacute;tica + Tarea oral</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
@@ -452,6 +560,9 @@
 })();
 </script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<!-- mywork -->
+<script src="../../borrador.js"></script>
+<script src="../../my-work.js"></script>
 <style id="big-tables">/* bigger tables for visibility, 2026-11-10 */
 .gtable, .conj-table, .exam-map { font-size:18px; }
 .gtable th, .conj-table th, .exam-map th { font-size:18px; padding:11px 14px; }

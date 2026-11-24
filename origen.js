@@ -47,7 +47,7 @@
       f.vEls.push(v);
     });
     root.appendChild(el('h4', null, '&#11088; &iquest;De d&oacute;nde viene? &middot; Where does each verb come from?'));
-    root.appendChild(el('p', null, '<strong>Click a bold verb in the reading</strong>, then click the <strong>infinitive</strong> it comes from. Match all six.'));
+    root.appendChild(el('p', null, '<strong>Click a bold verb in the reading</strong>, then click the <strong>infinitive</strong> it comes from. ' + (cfg.matchText || 'Match all six.')));
     this.infs = el('div', 'og-infs'); root.appendChild(this.infs);
     shuffle(cfg.verbs.slice()).forEach(function (v) {
       var b = el('button', null, v.inf); b.type = 'button'; b.lang = 'es';
@@ -74,11 +74,11 @@
     if (this.done === this.cfg.verbs.length) this.retell();
   };
   op.retell = function () {
-    var f = this, R = this.cfg.retell, i = 0;
-    this.fb.className = 'og-fb ok'; this.fb.innerHTML = '&#10003; All six matched. Every one of them is the special <em>yo</em> form.';
+    var f = this, cfg = this.cfg, R = cfg.retell, i = 0;
+    this.fb.className = 'og-fb ok'; this.fb.innerHTML = (cfg.allDone || '&#10003; All six matched. Every one of them is the special <em>yo</em> form.');
     var box = this.step2;
-    box.appendChild(el('h4', null, '<span style="display:block;margin-top:16px">Ahora, Fernanda &middot; Tell it about her</span>'));
-    box.appendChild(el('p', null, 'Now the sentences are about Fernanda: <em>ella</em>. Choose the right form for each one.'));
+    box.appendChild(el('h4', null, '<span style="display:block;margin-top:16px">' + (cfg.retellHead || 'Ahora, Fernanda &middot; Tell it about her') + '</span>'));
+    box.appendChild(el('p', null, (cfg.retellIntro || 'Now the sentences are about Fernanda: <em>ella</em>. Choose the right form for each one.')));
     var line = el('div', 'og-line'), opts = el('div', 'og-opts'), fb = el('div', 'og-fb'), dots = el('div', 'og-dots'), next = el('button', 'og-next', 'Next &rarr;');
     fb.setAttribute('aria-live', 'polite'); next.type = 'button'; next.hidden = true;
     [line, opts, fb, dots, next].forEach(function (n) { box.appendChild(n); });
@@ -99,7 +99,7 @@
             done = true; b.classList.add('ok'); line.querySelector('.og-blank').textContent = o;
             fb.className = 'og-fb ok'; fb.innerHTML = '&#10003; ' + r.why;
             next.hidden = false; next.innerHTML = i < R.length - 1 ? 'Next &rarr;' : 'Finish &rarr;';
-          } else { wrong++; f.wrong++; b.classList.add('no'); shake(b); fb.className = 'og-fb no'; fb.innerHTML = 'Not <strong>' + o + '</strong>: that is the <em>yo</em> form. The special form is only for <em>yo</em>; with <em>ella</em> the verb is regular.'; }
+          } else { wrong++; f.wrong++; b.classList.add('no'); shake(b); fb.className = 'og-fb no'; fb.innerHTML = 'Not <strong>' + o + '</strong>: ' + (cfg.wrongYo || 'that is the <em>yo</em> form. The special form is only for <em>yo</em>; with <em>ella</em> the verb is regular.'); }
         });
         opts.appendChild(b);
       });
@@ -107,8 +107,8 @@
     function finish() {
       line.innerHTML = ''; opts.innerHTML = '';
       fb.className = 'og-fb ok';
-      fb.innerHTML = '&iexcl;Muy bien! Six verbs traced to their infinitives, and Fernanda&rsquo;s story retold with <em>ella</em>.' + (f.wrong ? '' : ' No wrong turns at all.');
-      try { window.dispatchEvent(new CustomEvent('mw-game', { detail: { name: '¿De dónde viene? (3.05)', done: true, summary: 'six verbs matched, story retold with ella; ' + f.wrong + ' wrong tries along the way' } })); } catch (e) {}
+      fb.innerHTML = (f.cfg.finish || '&iexcl;Muy bien! Six verbs traced to their infinitives, and Fernanda&rsquo;s story retold with <em>ella</em>.') + (f.wrong ? '' : ' No wrong turns at all.');
+      try { window.dispatchEvent(new CustomEvent('mw-game', { detail: { name: f.cfg.name || '¿De dónde viene? (3.05)', done: true, summary: (f.cfg.summary || 'six verbs matched, story retold with ella') + '; ' + f.wrong + ' wrong tries along the way' } })); } catch (e) {}
     }
     next.addEventListener('click', function () { i++; show(); });
     show();

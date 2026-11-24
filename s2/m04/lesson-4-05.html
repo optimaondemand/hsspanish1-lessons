@@ -55,58 +55,173 @@
     .gualda .g { flex:2; background:#C79A1E; }
     .sol { color:#C79A1E; font-style:normal; }
 </style>
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  /* ---- Siglo de Oro skin ---- */
+  :root { --ink:#2a1f16; --red:#8e1b2c; --red-dk:#6f1422; --gold:#b8892e; --gold-lt:#e9d39a; --blue:#1d4e8f; --wood:#3a2414;
+          --lime:#f7f1e3; --paper:#efe6d2; --rule:#ddcba4; --muted:#5f554a; --green:#2f6b4f; }
+  body { background: var(--paper) url(../../img/siglo/paper.jpg) repeat; }
+  .canvas-frame { background: #fffdf7; box-shadow: 0 6px 28px rgba(60,40,10,.18); }
+  .sg-fell, .sg-h3, .sg-title, .sg-tlabel, .v-es, .assess-title { font-family: 'IM Fell English', Garamond, Georgia, serif; }
+  /* ceiling + tiles */
+  .sg-ceiling { height: 40px; background: var(--wood) url(../../img/siglo/artesonado.svg) repeat-x; background-size: 67px 40px; }
+  .sg-tiles { height: 30px; background: #f4ecd8 url(../../img/siglo/azulejo.svg) repeat-x; background-size: 30px 30px; border-top: 3px solid var(--blue); border-bottom: 3px solid var(--blue); }
+  /* hero */
+  .sg-hero { position: relative; }
+  .sg-band { height: 340px; background: url(img/m4-hero.jpg) center 50% / cover; position: relative; }
+  .sg-band::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(25,15,8,.55) 0%, rgba(25,15,8,0) 40%, rgba(255,253,247,0) 70%, #fffdf7 100%); }
+  .sg-pend { position: absolute; top: -2px; z-index: 1; display: flex; gap: 8px; } .sg-pend img { width: 150px; height: auto; filter: drop-shadow(0 4px 6px rgba(0,0,0,.35)); }
+  .sg-pend.l { left: 22px; } .sg-pend.r { right: 22px; }
+  .sg-brand { position: absolute; z-index: 1; top: 14px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; color: #fff; font-size: 14px; letter-spacing: .04em; text-shadow: 0 1px 3px rgba(0,0,0,.6); }
+  .sg-brand img { width: 34px; height: 34px; border-radius: 50%; background: #fff; padding: 3px; box-sizing: border-box; }
+  .sg-brand b { font-weight: 600; display: block; } .sg-brand small { display: block; font-size: 11.5px; letter-spacing: .06em; opacity: .92; }
+  .sg-titlecard { position: relative; z-index: 2; max-width: 700px; margin: -130px auto 0; padding: 7px; border-radius: 360px 360px 4px 4px / 150px 150px 4px 4px;
+      background: linear-gradient(135deg,#f3dc93 0%,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4 100%); box-shadow: 0 10px 26px rgba(40,20,5,.3); }
+  .sg-titlein { background: var(--lime) url(../../img/siglo/paper.jpg) repeat; border-radius: 354px 354px 2px 2px / 144px 144px 2px 2px; padding: 42px 30px 16px; text-align: center; }
+  .sg-kick { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-where { display: inline-block; margin: 8px 0 0; padding: 3px 14px; border: 1px solid var(--rule); border-radius: 999px; background: #fffdf7; font-size: 14px; font-weight: 600; letter-spacing: .04em; color: var(--ink); }
+  .sg-title { font-family: 'IM Fell English SC', Garamond, Georgia, serif; font-size: 46px; line-height: 1.08; color: var(--red); margin: 8px 0 2px; font-weight: 400; }
+  .sg-title .sol { color: var(--gold); } .sg-title .dg { font-family: 'IM Fell English', Georgia, serif; }
+  .sg-sub { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-size: 19px; color: var(--muted); }
+  .sg-flourish { display: block; margin: 10px auto 2px; width: 340px; max-width: 80%; height: auto; }
+  .sg-caption { text-align: center; font-size: 13px; color: var(--muted); padding: 10px 16px 0; font-style: italic; }
+  .sg-info { display: flex; flex-wrap: wrap; margin: 14px 34px 0; background: var(--lime); border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-bottom: 3px solid var(--blue); border-radius: 4px; }
+  .sg-info > div { flex: 1 1 150px; padding: 10px 16px; border-right: 1px solid var(--rule); }
+  .sg-info > div:last-child { border-right: 0; }
+  .sg-il { display: block; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--red); font-weight: 700; margin-bottom: 3px; }
+  .sg-iv { display: block; font-size: 16px; font-weight: 600; line-height: 1.3; color: var(--ink); }
+  .sg-is { display: block; font-family: 'IM Fell English', Garamond, Georgia, serif; font-style: italic; font-size: 14px; color: var(--muted); }
+  @media (max-width: 640px) { .sg-info { margin: 12px 12px 0; } }
+  /* cards */
+  .sg-card { position: relative; background: #fffdf7; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 4px; padding: 22px 26px; margin: 0 0 36px; box-shadow: 0 1px 4px rgba(60,40,10,.07); }
+  .sg-card + .sg-card::before { content: ''; position: absolute; top: -32px; left: 50%; width: 22px; height: 26px; transform: translateX(-50%); background: url(../../img/siglo/campana.svg) center / contain no-repeat; }
+  .sg-kicker { font-size: 12.5px; letter-spacing: .2em; text-transform: uppercase; color: var(--red); margin-bottom: 12px; font-weight: 700; }
+  .sg-part { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; font-size: 12.5px; letter-spacing: .18em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+  .sg-num { flex: 0 0 auto; width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-family: 'IM Fell English SC', Georgia, serif;
+      font-size: 21px; letter-spacing: 0; color: var(--red); background: radial-gradient(circle, #fffdf7 58%, transparent 60%), linear-gradient(135deg,#f3dc93,#c99a38 40%,#8a6119 60%,#f6e3a4); }
+  .sg-h3 { font-size: 29px !important; font-weight: 400; color: var(--ink) !important; margin: 4px 0 10px !important; line-height: 1.15; }
+  .pill-time { background: transparent; color: var(--red); border: 1px solid var(--red); letter-spacing: .05em; font-weight: 600; }
+  .vocab-item { background: var(--lime); border-color: var(--rule); border-left: 4px solid var(--blue); }
+  .v-es { color: var(--ink); font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 23px; font-weight: 700; line-height: 1.25; min-width: 200px; } .v-en { color: #1a2340; font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 18px; font-weight: 600; line-height: 1.35; }
+  .v-pic { flex: 0 0 auto; width: 240px; height: 180px; object-fit: cover; border-radius: 2px; border: 3px solid #c7922c; outline: 1px solid #e9d39a; outline-offset: -5px; background: #3b2a1a; box-shadow: 0 2px 6px rgba(0,0,0,.25); } .vocab-item:has(.v-pic) { gap: 16px; padding: 12px 16px; } @media (max-width: 640px) { .vocab-item:has(.v-pic) { flex-wrap: wrap; } .vocab-item .v-pic { width: 100%; height: auto; aspect-ratio: 4 / 3; } }
+  .say { background: var(--blue); border-radius: 50%; min-width: 40px; width: 40px; height: 40px; box-shadow: 0 0 0 2px #fff, 0 0 0 3px var(--gold-lt); }
+  .say:hover { background: #163d70; } .say.playing { background: var(--gold); }
+  .reveal-btn, .rep-btn, .rep-check, .go-btn { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; padding: 9px 20px !important; color: #fff !important; }
+  .reveal-btn:hover, .rep-btn:hover, .rep-check:hover { background: var(--red-dk) !important; }
+  .optima-widget { background: #fffdf7; border: 1px solid var(--rule); border-left: 4px solid var(--blue); border-radius: 4px; }
+  .widget-kicker { color: var(--blue); letter-spacing: .14em; text-transform: uppercase; font-size: 11.5px; font-weight: 700; }
+  .widget-question { color: var(--ink); }
+  .widget-options button { border-color: var(--rule); border-radius: 999px; color: var(--ink); }
+  .widget-options button:hover { background: var(--lime); border-color: var(--gold); }
+  .widget-options button.correct, .widget-options button.correct:hover { background: #2A9D5C; color: #fff; border-color: #2A9D5C; }
+  .widget-options button.incorrect, .widget-options button.incorrect:hover { background: #C0392B; color: #fff; border-color: #C0392B; }
+  .widget-options button.selected:hover { background: var(--ink); color: #fff; }
+  .widget-options button.selected { background: var(--ink); border-color: var(--ink); }
+  .widget-feedback, .rep-fb { border-left-color: var(--gold); background: var(--lime); }
+  .widget-reset { border-color: var(--red); color: var(--red); border-radius: 999px; } .widget-reset:hover { background: #fbf3f2; }
+  .widget-feedback.fb-ok > strong:first-child { color: #1e8a3c; font-weight: 800; font-size: 16px; }
+  .widget-feedback.fb-ok > strong:first-child::before { content: "\2713 "; }
+  .rep-input { border-color: var(--rule); border-bottom: 2px solid var(--gold); border-radius: 4px; font-family: 'IM Fell English', Georgia, serif; font-size: 18px; color: var(--ink); }
+  .gtable th, .conj-table th { background: var(--red); color: #fff; font-family: 'IM Fell English SC', Georgia, serif; font-size: 16px; font-weight: 400; letter-spacing: .03em; }
+  .gtable td, .conj-table td { border-color: var(--rule); }
+  .gtable tr:nth-child(even) td { background: #fbf6ea; } .conj-table td.subj { background: var(--lime); }
+  .gtable.big th { font-size: 22px; letter-spacing: .02em; padding-top: 11px; padding-bottom: 11px; } .gtable.big td { font-size: 18px; padding-top: 12px; padding-bottom: 12px; } .gtable.big .pron { font-size: 19px; }
+  .pron { color: var(--red); }
+  .opt-strip { background: var(--lime); border: 1px dashed var(--gold); }
+  .culture-box { background: #fbf5e8; border-color: var(--rule); border-left: 5px solid var(--blue); }
+  .virtue-box { background: #fbf3f2; border-color: #e5c9c9; border-left: 5px solid var(--red); }
+  .markdone { background: #f1f7f3; border-color: var(--green); border-radius: 4px; }
+  .acc-bank { border-color: var(--gold); background: var(--lime); }
+  .flip-front { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 6px; }
+  .flip-back { background: var(--red) !important; border: 1px solid var(--red-dk) !important; border-radius: 6px; }
+  .flip-es { font-family: 'IM Fell English', Georgia, serif; font-weight: 400 !important; font-size: 25px !important; color: var(--ink) !important; }
+  .flip-en { font-family: 'IM Fell English', Georgia, serif; font-style: italic; font-weight: 400 !important; font-size: 22px !important; color: #fff !important; }
+  .flip-back .flip-hint { color: #f3dfd9 !important; }
+  /* flashcards with a painting on the back (Vocabulario) */
+  .flip-grid.has-art { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
+  .flip-grid.has-art .flip-inner { min-height: 300px; }
+  .flip-grid.has-art .flip-back { justify-content: flex-start; gap: 6px; padding: 10px 10px 8px; }
+  .flip-grid.has-art .flip-back:not(:has(.flip-pic)) { justify-content: center; }
+  .flip-pic { position: relative; display: block; width: 100%; }
+  .flip-art { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 3px; border: 3px solid #d7ad4c; box-shadow: 0 2px 6px rgba(0,0,0,.35); }
+  .flip-arrow { position: absolute; top: 8px; right: 8px; width: 38px; height: 38px; border-radius: 50%; background: var(--gold); color: #fff; font-size: 26px; font-weight: 700;
+      line-height: 38px; text-align: center; box-shadow: 0 0 0 2px #fff, 0 2px 6px rgba(0,0,0,.4); }
+  .flip-credit { font-size: 11.5px; line-height: 1.3; color: #f3dfd9; font-style: italic; }
+  .flip-credit em { font-style: normal; }
+  .sg-credits { margin: 0; padding-left: 20px; font-size: 14.5px; line-height: 1.55; color: var(--ink); } .flip-card:focus-visible .flip-front { box-shadow: 0 0 0 3px var(--gold) !important; }
+  .rep-block { background: var(--lime) !important; border-color: var(--rule) !important; border-left: 4px solid var(--blue) !important; border-radius: 4px !important; }
+  .mw-acc { background: var(--lime) !important; border: 1px dashed var(--gold) !important; }
+  .mw-acc button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink) !important; border: 1px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; background: #fffdf7 !important; border-radius: 6px !important; }
+  .mw-acc button:hover { background: #fff !important; border-color: var(--gold) !important; }
+  .assess-card { background: #fffdf7; border: 1px solid var(--rule); border-top: 4px solid var(--red); border-radius: 4px; }
+  .assess-title { font-size: 27px !important; color: var(--ink); }
+  .mw-check { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* "All Your Work" card: same function, Siglo de Oro look (my-work.js sets inline styles, hence !important) */
+  .mw-save { background: var(--lime) !important; border: 1px solid var(--rule) !important; border-top: 3px solid var(--gold) !important; border-radius: 4px !important;
+      outline: 1px solid var(--gold-lt); outline-offset: -7px; padding: 26px 30px 22px !important; box-shadow: 0 4px 16px rgba(60,40,10,.10) !important; }
+  .mw-save > div[style*="font-size:22px"] { font-family: 'IM Fell English SC', Georgia, serif; font-size: 30px !important; font-weight: 400 !important; color: var(--red) !important; }
+  .mw-save p { color: var(--muted) !important; }
+  .mw-save .mw-name { border: 1.5px solid var(--rule) !important; border-bottom: 2px solid var(--gold) !important; border-radius: 4px !important; background: #fffdf7 !important; font-family: 'IM Fell English', Georgia, serif; font-size: 20px !important; color: var(--ink); }
+  .mw-save .mw-copy { background: #fff !important; color: var(--red) !important; border: 1.5px solid var(--red) !important; border-radius: 999px !important; }
+  .mw-save .mw-pdf { background: var(--red) !important; border-radius: 999px !important; border-bottom: 3px solid var(--gold) !important; }
+  /* En el cuadro */
+  .sg-cuadro { margin: 4px 0 6px; padding: 18px 20px 14px; background: linear-gradient(180deg, var(--lime), #fffdf7); border: 1px solid var(--rule); border-radius: 4px; text-align: center; }
+  .sg-tlabel { font-size: 27px; font-style: italic; color: var(--ink); }
+  .sg-cuadro p { font-size: 17px; color: var(--ink); line-height: 1.6; margin: 8px auto 12px; max-width: 640px; }
+  .sg-arch.wide, .sg-arch.wide > div, .sg-arch.wide img { border-radius: 50% 50% 0 0 / 18% 18% 0 0; } .sg-arch.wide { max-width: 560px; } .sg-arch.wide + .sg-tiles { max-width: 578px; }
+  .sg-arch { max-width: 340px; margin: 0 auto; padding: 8px 8px 0; border-radius: 999px 999px 0 0; background: linear-gradient(180deg,#e3d6b9,#cbb991); border: 1px solid #b9a67c; border-bottom: 0; }
+  .sg-arch > div { padding: 5px; border-radius: 999px 999px 0 0; background: linear-gradient(135deg,#f3dc93,#c99a38 28%,#8a6119 50%,#d7ad4c 72%,#f6e3a4); }
+  .sg-arch img { display: block; width: 100%; border-radius: 999px 999px 0 0; }
+  .sg-arch + .sg-tiles { max-width: 358px; margin: 0 auto 10px; height: 22px; background-size: 22px 22px; }
+  .sg-phrase { font-family: 'IM Fell English', Georgia, serif; font-size: 26px; color: var(--ink); margin-top: 6px; }
+  .sg-blank { display: inline-block; min-width: 120px; border-bottom: 2px dashed var(--gold); color: var(--muted); }
+  .sg-blank.filled { border-bottom-color: transparent; color: var(--red); }
+  .sg-opts { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 8px; }
+  .sg-opts button { font-family: 'IM Fell English', Georgia, serif; font-size: 20px; color: var(--ink); background: #fff; border: 1.5px solid var(--rule); border-radius: 999px; padding: 4px 16px; cursor: pointer; }
+  .sg-opts button:hover { border-color: var(--gold); background: var(--lime); }
+  .sg-opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .sg-opts button.wrong { border-color: var(--red); color: var(--red); text-decoration: line-through; }
+  .sg-fb { min-height: 22px; font-size: 15px; line-height: 1.45; margin-top: 8px; }
+  .sg-fb.ok { color: #1e8a3c; font-weight: 700; } .sg-fb.no { color: var(--red); }
+  .sg-look { margin: 14px auto 2px; max-width: 620px; background: #fff; border: 1px solid var(--rule); border-radius: 4px; padding: 10px 16px; font-size: 16px; color: var(--ink); text-align: left; }
+  .sg-look summary { cursor: pointer; color: var(--blue); font-weight: 600; } .sg-look summary::marker { color: var(--gold); }
+  .sg-foot { background: var(--wood) !important; border-top: 3px solid var(--gold) !important; }
+  .sg-plaza { display: block; width: 100%; height: auto; border-top: 1px solid var(--rule); }
+  @media (max-width: 640px) { .sg-pend { display: none; } .sg-brand { left: 22px; } }
+  @media (max-width: 640px) {
+    .sg-band { height: 200px; } .sg-titlecard { margin: -70px 12px 0; } .sg-titlein { padding: 30px 14px 12px; } .sg-title { font-size: 34px; }
+    .sg-card { padding: 18px 16px; } .sg-h3 { font-size: 24px !important; }
+  }
+</style>
 </head>
 <body>
 <div class="canvas-frame">
 
-<div data-ra-skip style="background: #0E1C42; border-bottom: 5px solid #55C8E8; padding: 22px 34px;">
-    <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 10px;">
-        <div style="width: 52px; height: 52px; border-radius: 50%; background: #FFFFFF; display: flex; align-items: center; justify-content: center; flex-shrink: 0;"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt="Optima Academy" style="width: 50px; height: 40px; object-fit: contain;" /></div>
-        <div>
-            <div style="font-size: 28px; color: #ffffff; line-height: 1.2;">Optima Academy Online</div>
-            <div style="font-size: 12px; color: #55c8e8;">An Education Experience Company</div>
-        </div>
-    </div>
-    <div style="font-size: 36px; color: #ffffff; margin-bottom: 6px;">SPANISH 1 <span style="font-size:22px;">&#127758;</span></div>
+<div class="sg-hero" data-ra-skip>
+  <div class="sg-ceiling"></div>
+  <div class="sg-band"><div class="sg-brand"><img src="https://raw.githubusercontent.com/optimaondemand/optima-assets/eeb0b335630058906d52f478028361d352253a93/images/Optima%20Final%20Circle%20-%20Owl%20Only.png" alt=""><span><b>Optima Academy Online</b><small>An Education Experience Company</small></span></div></div>
+  <div class="sg-titlecard"><div class="sg-titlein">
+    <div class="sg-kick">Spanish 1 &nbsp;&#10070;&nbsp; M&oacute;dulo 4 &middot; La rutina diaria</div>
+    <div class="sg-where">Lesson 4.05 &middot; Day 5 of 8</div>
+    <h1 class="sg-title">A leer</h1>
+    <div class="sg-sub">La rutina de Camila en Quito &middot; about 50 minutes</div>
+    <svg class="sg-flourish" viewBox="0 0 340 30" fill="none" stroke="#b8892e" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M150 15 C 120 15, 92 5, 66 12 C 50 17, 44 25, 34 23 C 25 21, 29 11, 38 13 C 45 15, 42 22, 35 21"/><path d="M190 15 C 220 15, 248 5, 274 12 C 290 17, 296 25, 306 23 C 315 21, 311 11, 302 13 C 295 15, 298 22, 305 21"/><path d="M170 6 L178 15 L170 24 L162 15 Z" fill="#b8892e" stroke="none"/><circle cx="154" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/><circle cx="186" cy="15" r="2.6" fill="#8e1b2c" stroke="none"/></svg>
+  </div></div>
+  <div class="sg-caption">El cuadro del m&oacute;dulo: Diego Vel&aacute;zquez, <em>Las hilanderas</em> (<em>The Spinners</em>), about 1657</div>
+  <div class="sg-info"><div><span class="sg-il">Quarter / Module</span><span class="sg-iv">Q3 &middot; M&oacute;dulo 4</span><span class="sg-is">La rutina diaria</span></div><div><span class="sg-il">Lesson</span><span class="sg-iv">Lesson 4.05 &middot; Day 5 of 8</span></div><div><span class="sg-il">Topic</span><span class="sg-iv">A leer: Camila / Ecuador</span></div><div><span class="sg-il">Module Theme</span><span class="sg-iv">Daily Routine</span></div></div>
 </div>
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-
-<div data-ra-skip style="background: #FFFFFF; border-bottom: 2px solid #D0D9E8; display: flex; flex-wrap: wrap;">
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Quarter / Module</div>
-        <div style="font-size: 17px; color: #0e1c42;">Q3 &middot; M&oacute;dulo 4</div>
-        <div style="font-size: 12px; color: #666;">La rutina diaria</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Lesson</div>
-        <div style="font-size: 17px; color: #0e1c42;">Lesson 4.05 &middot; Day 5 of 8</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px; border-right: 1px solid #D0D9E8;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Topic</div>
-        <div style="font-size: 17px; color: #0e1c42; font-style: italic;">A leer: Camila / Ecuador</div>
-    </div>
-    <div style="flex: 1; min-width: 140px; padding: 12px 16px;">
-        <div style="font-size: 11px; color: #6b7a99; margin-bottom: 4px;">Module Theme</div>
-        <div style="font-size: 16px; color: #0e1c42;">Daily Routine</div>
-    </div>
-</div>
-
 <div style="padding: 24px 34px;">
 
-    <div style="background: #EEF1F8; border-left: 5px solid #0E1C42; border-radius: 7px; padding: 18px 22px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #0e1c42; margin-bottom: 6px;">Lesson 4.05 &middot; Week 2 begins</div>
-        <div style="font-size: 22px; color: #0e1c42; margin-bottom: 4px;"><span class="sol">&#9733;</span> A leer &mdash; La rutina de Camila en Quito</div>
-        <div style="font-size: 16px; color: #666;">Lesson &middot; about 50 minutes</div>
-    </div>
-
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128214; TODAY'S FOCUS</div>
+    <div class="sg-card">
+        <div class="sg-kicker">TODAY'S FOCUS</div>
         <div style="font-size: 20px; color: #0e1c42; font-style: italic; margin-bottom: 10px;">No new grammar today &mdash; just <em>reading</em>. You'll meet Camila and hear reflexive verbs and sequence words working together in a real little story.</div>
         <div style="font-size: 18px; color: #1a2340; line-height: 1.65;">This is your <strong>third encounter</strong> with the reflexive pattern &mdash; and the most relaxed. Instead of conjugating in a drill, you'll simply <em>notice</em> the verbs at work inside meaningful input: a short paragraph about a teenager's day in Quito, Ecuador. Read it, listen to it, and let the pattern settle. Then we'll take a cultural detour to Ecuador, where Camila lives, and you'll finish by narrating your own routine in order &mdash; a first rehearsal for the Tarea oral.</div>
     </div>
 
-    <div style="background: #FFFFFF; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#127919; BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
+    <div class="sg-card">
+        <div class="sg-kicker">BY THE END OF THIS LESSON YOU WILL BE ABLE TO&hellip;</div>
         <div style="display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px;">
             <div style="min-width: 26px; height: 26px; border-radius: 50%; background: #C7922C; color: #fff; font-size: 13px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">1</div>
             <div style="font-size: 18px; color: #1a2340; line-height: 1.65;"><strong>I will be able to</strong> read and understand a short paragraph that narrates a daily routine with reflexive verbs.</div>
@@ -122,9 +237,9 @@
     </div>
 
     <!-- PART 1 -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9200; PART 1 &middot; ANTES DE LEER <span class="pill-time">8 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Before you read</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">I</span><span>ANTES DE LEER</span><span class="pill-time">8 min</span></div>
+        <h3 class="sg-h3">Before you read</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 10px 0;">Good readers guess before they read. Camila is a teenager in <em>Quito</em>, the capital of Ecuador, high in the Andes. As you go into the paragraph, keep one question in mind: what does she do <em>first</em> (<em>primero</em>), and what does she do <em>after</em> (<em>despu&eacute;s</em>)? You're tracking the order of a day.</p>
         <div class="optima-widget ow-reflect">
             <div class="widget-kicker">&#128173; QUICK CHECK-IN &middot; no wrong answer</div>
@@ -140,9 +255,9 @@
     </div>
 
     <!-- PART 2 · The reading -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#128218; PART 2 &middot; LA LECTURA &middot; Camila <span class="pill-time">16 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Listen first, then read</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">II</span><span>LA LECTURA &middot; Camila</span><span class="pill-time">21 min</span></div>
+        <h3 class="sg-h3">Listen first, then read</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">Click <strong>&#128266;</strong> to hear the whole paragraph read aloud by a native speaker. Listen once with your eyes closed, then read along a second time. Don't worry about every word &mdash; you already know the important ones.</p>
 
         <div style="display:flex; align-items:center; gap:12px; background:#F4F9FC; border:1px solid #D0D9E8; border-radius:8px; padding:12px 16px; margin-bottom:14px;">
@@ -151,21 +266,23 @@
         </div>
 
         <p style="font-size:18px;color:#1a2340;line-height:1.85; background:#FBFCFE; border:1px solid #E4EAF2; border-radius:8px; padding:18px 22px; margin:0;">
-        &laquo;Hola, me llamo Camila. Soy de Quito, Ecuador, la ciudad en la mitad del mundo. Entre semana <strong>me despierto</strong> temprano, a las seis, con el despertador. <strong>Primero me levanto</strong> y <strong>me ducho</strong>. <strong>Despu&eacute;s me visto</strong> y <strong>me cepillo</strong> los dientes. Mi hermana <strong>se peina</strong> y <strong>se pone</strong> el uniforme. Desayunamos juntas y vamos a la escuela. Por la noche <strong>me acuesto</strong> tarde porque estudio mucho. Los fines de semana no <strong>me levanto</strong> temprano; &iexcl;<strong>me quedo</strong> en la cama!&raquo;</p>
+        &laquo;Hola, me llamo Camila. Soy de Quito, Ecuador, la ciudad en la mitad del mundo. Entre semana <strong>me despierto</strong> temprano, a las seis, con el despertador. Primero <strong>me levanto</strong> y <strong>me ducho</strong>. Despu&eacute;s <strong>me visto</strong> y <strong>me cepillo</strong> los dientes. Mi hermana <strong>se peina</strong> y <strong>se pone</strong> el uniforme. Desayunamos juntas y vamos a la escuela. Por la noche <strong>me acuesto</strong> tarde porque estudio mucho. Los fines de semana no <strong>me levanto</strong> temprano; &iexcl;<strong>me quedo</strong> en la cama!&raquo;</p>
 
         <div style="margin-top:14px;">
             <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">Not sure of a word? Reveal a mini-glossary &mdash; but try to read without it first.</p>
-            <button class="reveal-btn">Reveal glossary</button>
+            <button class="reveal-btn" data-mw-open>Reveal glossary</button>
             <div class="reveal-body">
                 <em>me llamo</em> = my name is &middot; <em>la mitad del mundo</em> = the middle of the world (the equator) &middot; <em>entre semana</em> = on weekdays &middot; <em>temprano</em> = early &middot; <em>el despertador</em> = the alarm clock &middot; <em>los dientes</em> = teeth &middot; <em>el uniforme</em> = the uniform &middot; <em>desayunamos</em> = we eat breakfast &middot; <em>juntas</em> = together &middot; <em>por la noche</em> = at night &middot; <em>tarde</em> = late &middot; <em>los fines de semana</em> = on weekends &middot; <em>me quedo en la cama</em> = I stay in bed
             </div>
         </div>
+        <!-- ¿De dónde viene? (origen.js; replaces the "whisper who does it" detective strip, 2026-11-20) -->
+        <div class="origen" data-origen='{"verbs": [{"form": "me despierto", "inf": "despertarse", "hint": "desp-ie-rto: the e jumped to ie. Look for the infinitive that starts with desp-."}, {"form": "me ducho", "inf": "ducharse", "hint": "duch-o: look for the infinitive that starts with duch-."}, {"form": "me visto", "inf": "vestirse", "hint": "v-i-sto: the e jumped to i. Look for the infinitive that starts with v-."}, {"form": "me cepillo", "inf": "cepillarse", "hint": "cepill-o: look for the infinitive that starts with cepill-."}, {"form": "se peina", "inf": "peinarse", "hint": "pein-a: look for the infinitive that starts with pein-."}, {"form": "me acuesto", "inf": "acostarse", "hint": "ac-ue-sto: the o jumped to ue. Look for the infinitive that starts with ac-."}], "retell": [{"pre": "Entre semana, Camila", "post": "temprano.", "yo": "me despierto", "ella": "se despierta", "why": "Camila = ella: <strong>se despierta</strong>. The e&rarr;ie jump stays; the pronoun and the ending change."}, {"pre": "Primero Camila", "post": "y se ducha.", "yo": "me levanto", "ella": "se levanta", "why": "Camila = ella: <strong>se levanta</strong>, pronoun <em>se</em>, ending <em>-a</em>."}, {"pre": "Despu&eacute;s Camila", "post": "y se cepilla los dientes.", "yo": "me visto", "ella": "se viste", "why": "Camila = ella: <strong>se viste</strong>. The e&rarr;i jump stays; <em>vestirse</em> is an -ir verb, so the ending is <em>-e</em>."}, {"pre": "Por la noche Camila", "post": "tarde.", "yo": "me acuesto", "ella": "se acuesta", "why": "Camila = ella: <strong>se acuesta</strong>. The o&rarr;ue jump stays."}], "matchText": "Match all six.", "allDone": "&#10003; All six matched. Camila tells her day with <em>me</em>: these are all <em>yo</em> forms.", "retellHead": "Ahora, Camila &middot; Tell it about her", "retellIntro": "Now tell Camila&rsquo;s day about her: <em>ella</em>. Choose the right form for each one.", "wrongYo": "that is the <em>yo</em> form, the way Camila says it herself. About her (<em>ella</em>), the pronoun is <em>se</em>.", "finish": "&iexcl;Muy bien! Six reflexive verbs traced to their infinitives, and Camila&rsquo;s day retold with <em>ella</em>.", "name": "¿De dónde viene? (4.05)", "summary": "six reflexive verbs matched, Camila&#39;s day retold with ella"}'></div>
     </div>
 
     <!-- PART 3 · Comprehension -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9989; PART 3 &middot; &iquest;COMPRENDISTE&#63; <span class="pill-time">16 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Check your understanding</h3>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">III</span><span>&iquest;COMPRENDISTE&#63;</span><span class="pill-time">16 min</span></div>
+        <h3 class="sg-h3">Check your understanding</h3>
         <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 6px 0;">Answer from the paragraph. These are <em>reading</em> questions &mdash; you're showing you understood, not conjugating a verb.</p>
 
         <div class="optima-widget ow-eval">
@@ -205,40 +322,52 @@
         </div>
 
         <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">In your own words: why does Camila <em>se acuesta tarde</em> during the week? Say it out loud, then reveal.</p>
-            <button class="reveal-btn">Reveal answer</button>
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">In your own words: why does Camila <em>se acuesta tarde</em> during the week? Write your answer in English, then reveal.</p>
+            <textarea data-mw-added class="journal-box" id="mw-l4-05-r2" data-mw-gate="l4-05-r2" lang="es" data-label="Why does Camila go to bed late during the week?" data-model="Because she studies a lot (estudia mucho)." rows="2" placeholder="Write it here in English. The answer unlocks once you have written it." style="display:block;width:100%;max-width:560px;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;margin:6px 0 8px"></textarea>
+            <button class="reveal-btn" data-mw-gate="l4-05-r2">Reveal answer</button>
             <div class="reveal-body">Because she <em>estudia mucho</em> &mdash; she studies a lot. So she wakes up early (<em>se despierta temprano</em>) but goes to bed late (<em>se acuesta tarde</em>). Two reflexives, opposite ends of her day.</div>
-        </div>
-
-        <div class="opt-strip">
-            <div class="lbl">&#11088; PARA IR M&Aacute;S LEJOS &middot; optional &middot; +5 min</div>
-            <div style="font-size: 16px; color: #1a2340; line-height: 1.6;">Go back to the paragraph and be a detective. Find <strong>every</strong> reflexive verb (there are many: <em>me despierto, me levanto, me ducho, me visto, me cepillo, se peina, se pone, me acuesto, me quedo</em>). For each one, whisper who does it and whether the vowel jumps. This is the same skill the Day-8 quiz will ask for &mdash; but here it's just noticing.</div>
         </div>
     </div>
 
     <!-- PART 4 · Production + reveal -->
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 14px;">&#9997;&#65039; PART 4 &middot; A PRODUCIR &middot; NARRA TU RUTINA <span class="pill-time">8 min</span></div>
-        <h3 style="font-size: 20px; color: #0e1c42; margin: 6px 0 8px 0;">Tell your day in order, then check</h3>
-        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>say the full Spanish sentence out loud first</strong> &mdash; use the sequence words to put it in order &mdash; then reveal to check. This is a self-test, so being honest with yourself is where the value is. It's also a dress rehearsal for the Day-7 oral task.</p>
+    <div class="sg-card">
+        <div class="sg-part"><span class="sg-num">IV</span><span>A PRODUCIR &middot; NARRA TU RUTINA</span><span class="pill-time">8 min</span></div>
+        <h3 class="sg-h3">Tell your day in order, then check</h3>
+        <p style="font-size: 17px; color: #1a2340; line-height: 1.65; margin: 0 0 12px 0;">For each prompt, <strong>type the full Spanish sentence</strong> &mdash; use the sequence words to put it in order &mdash; then press <strong>Check</strong>. This is a self-test, so being honest with yourself is where the value is. It's also a dress rehearsal for the Day-7 oral task.</p>
+        <p style="font-size:16px;color:#1a2340;margin:0 0 10px">The <strong>word key</strong> on the right has every word you need: click a word to type it into your box. If something is off, the checker tells you what to fix.</p>
+        <div class="jt-grid"><div class="jt-items">
 
         <div style="margin-top:14px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Say: <em>&ldquo;First I wake up, and then I shower.&rdquo;</em></p>
-            <button class="reveal-btn">Reveal answer</button>
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">1. Write: <em>&ldquo;First I wake up, and then I shower.&rdquo;</em></p>
+            <div data-mw-added class="mw-box" style="margin:6px 0"><textarea class="mw-answer" rows="1" lang="es" spellcheck="false" autocapitalize="off" data-mw-gate="l4-05-r3" data-answer="Primero me despierto, y después me ducho || Primero me despierto y después me ducho || Primero me despierto, después me ducho || Primero me despierto y luego me ducho || Primero me despierto, y luego me ducho" data-hints="[[&quot;\\bdesperto\\b&quot;, &quot;despertarse jumps e to ie with yo: me desp-ie-rto.&quot;], [&quot;^(?!primero)&quot;, &quot;Start with the sequence word for \&quot;first\&quot;: primero.&quot;], [&quot;^(?!.*\\bme despierto\\b)&quot;, &quot;Waking yourself up needs the pronoun: me despierto.&quot;], [&quot;^(?!.*\\b(despues|luego)\\b)&quot;, &quot;Add \&quot;and then\&quot;: y después (or y luego).&quot;], [&quot;^(?!.*\\bme ducho\\b)&quot;, &quot;\&quot;I shower\&quot; is me ducho.&quot;]]" data-hint-else="Almost. Primero me despierto, y después me ducho." aria-label="“First I wake up, and then I shower.”" placeholder="Type it, then press Check" style="width:100%;max-width:520px;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;vertical-align:middle;resize:vertical"></textarea></div><div data-mw-added class="mw-acc" data-ra-skip style="margin:6px 0 4px;background:#FFFFFF;border:1px dashed #9FB3CC;border-radius:8px;padding:5px 12px 8px;max-width:560px"><span style="display:block;font-size:12.5px;color:#41506b;font-style:italic">Accents are part of the word. Click in a box, then click a letter to add it.</span><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&uuml;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iquest;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&iexcl;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Aacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Eacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Iacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Ntilde;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Oacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uacute;</button><button type="button" style="min-width:34px;font-size:18px;padding:3px 8px;margin:3px 4px 0 0;border:1px solid #b9c4d8;background:#fff;border-radius:5px;cursor:pointer;color:#0E1C42">&Uuml;</button></div>
+            <button class="reveal-btn" data-mw-gate="l4-05-r3">Reveal answer</button>
             <div class="reveal-body"><strong>Primero me despierto, y despu&eacute;s me ducho.</strong> Sequence words <em>primero / despu&eacute;s</em>; the e&rarr;ie jump in <em>despierto</em>.</div>
         </div>
 
         <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Say: <em>&ldquo;Before school, I brush my teeth and get dressed.&rdquo;</em></p>
-            <button class="reveal-btn">Reveal answer</button>
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">2. Write: <em>&ldquo;Before school, I brush my teeth and get dressed.&rdquo;</em></p>
+            <div data-mw-added class="mw-box" style="margin:6px 0"><textarea class="mw-answer" rows="1" lang="es" spellcheck="false" autocapitalize="off" data-mw-gate="l4-05-r4" data-answer="Antes de la escuela, me cepillo los dientes y me visto || Antes de la escuela me cepillo los dientes y me visto" data-hints="[[&quot;\\bme (vesto|viste|vestir)\\b&quot;, &quot;vestirse jumps e to i with yo: me visto.&quot;], [&quot;\\bmis dientes\\b&quot;, &quot;Spanish says los dientes: the pronoun me already shows they are yours.&quot;], [&quot;^(?!antes de)&quot;, &quot;Start with \&quot;before school\&quot;: antes de la escuela.&quot;], [&quot;^(?!.*\\bme cepillo\\b)&quot;, &quot;\&quot;I brush\&quot; is me cepillo.&quot;], [&quot;^(?!.*\\blos dientes\\b)&quot;, &quot;Add \&quot;my teeth\&quot;: los dientes.&quot;], [&quot;^(?!.*\\bme visto\\b)&quot;, &quot;\&quot;I get dressed\&quot; is me visto.&quot;]]" data-hint-else="Almost. Antes de la escuela + me cepillo los dientes + y me visto." aria-label="“Before school, I brush my teeth and get dressed.”" placeholder="Type it, then press Check" style="width:100%;max-width:520px;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;vertical-align:middle;resize:vertical"></textarea></div>
+            <button class="reveal-btn" data-mw-gate="l4-05-r4">Reveal answer</button>
             <div class="reveal-body"><strong>Antes de la escuela, me cepillo los dientes y me visto.</strong> Note <em>los dientes</em> (the teeth) &mdash; the pronoun <em>me</em> already says they're mine.</div>
         </div>
 
         <div style="margin-top:16px;">
-            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Say: <em>&ldquo;My family and I go to bed late on weekends.&rdquo;</em></p>
-            <button class="reveal-btn">Reveal answer</button>
+            <p style="font-size:16px;color:#1a2340;margin-bottom:8px;">3. Write: <em>&ldquo;My family and I go to bed late on weekends.&rdquo;</em></p>
+            <div data-mw-added class="mw-box" style="margin:6px 0"><textarea class="mw-answer" rows="1" lang="es" spellcheck="false" autocapitalize="off" data-mw-gate="l4-05-r5" data-answer="Mi familia y yo nos acostamos tarde los fines de semana || Los fines de semana mi familia y yo nos acostamos tarde || Los fines de semana, mi familia y yo nos acostamos tarde" data-hints="[[&quot;\\bacuestamos\\b&quot;, &quot;No vowel jump with nosotros: acostamos.&quot;], [&quot;\\b(me acuesto|se acuesta|se acuestan)\\b&quot;, &quot;\&quot;My family and I\&quot; is nosotros: the pronoun is nos and the verb ends in -amos.&quot;], [&quot;^(?!.*\\bnos\\b)&quot;, &quot;With \&quot;my family and I\&quot; (nosotros) the pronoun is nos.&quot;], [&quot;^(?!.*\\btarde\\b)&quot;, &quot;Add \&quot;late\&quot;: tarde.&quot;], [&quot;^(?!.*\\bfines de semana\\b)&quot;, &quot;Add \&quot;on weekends\&quot;: los fines de semana.&quot;]]" data-hint-else="Almost. Mi familia y yo + nos acostamos + tarde + los fines de semana." aria-label="“My family and I go to bed late on weekends.”" placeholder="Type it, then press Check" style="width:100%;max-width:520px;font-size:16px;padding:6px 8px;border:1px solid #9aa6b2;border-radius:4px;font-family:inherit;vertical-align:middle;resize:vertical"></textarea></div>
+            <button class="reveal-btn" data-mw-gate="l4-05-r5">Reveal answer</button>
             <div class="reveal-body"><strong>Mi familia y yo nos acostamos tarde los fines de semana.</strong> "My family and I" = <em>nosotros</em> &rarr; pronoun <em>nos</em>, and NO vowel jump: <em>acostamos</em>.</div>
         </div>
+        </div>
+<style id="jt-key-css">
+.jt-grid{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:22px;align-items:start}
+.jt-key{position:sticky;top:12px;background:#fbf6e9;border:1px solid #c9b58a;border-top:4px solid #8e1b2c;border-radius:8px;padding:12px 14px;font-size:15px;line-height:1.45;color:#1a2340}
+.jt-key h4{margin:0 0 6px;font-size:15px;color:#8e1b2c;letter-spacing:.3px}
+.jt-key h5{margin:10px 0 3px;font-size:13px;color:#0e1c42;text-transform:uppercase;letter-spacing:.4px}
+.jt-key ul{margin:0;padding:0;list-style:none}
+.jt-key li{padding:1px 0}
+.jt-key .boot{margin-top:8px;padding:6px 8px;background:#f3e2b3;border-radius:6px;font-size:14px}
+@media (max-width:720px){.jt-grid{grid-template-columns:1fr}.jt-key{position:static}}
+</style><aside class="jt-key" aria-label="Word key"><h4>&#128273; WORD KEY</h4><h5>Pronouns</h5><ul><li><b>me</b> &mdash; myself (yo)</li><li><b>nos</b> &mdash; ourselves (nosotros)</li></ul><h5>Routine verbs</h5><ul><li><b data-w="despertarse">despertarse (e&rarr;ie)</b> &mdash; to wake up</li><li><b>ducharse</b> &mdash; to shower</li><li><b>cepillarse</b> &mdash; to brush</li><li><b data-w="vestirse">vestirse (e&rarr;i)</b> &mdash; to get dressed</li><li><b data-w="acostarse">acostarse (o&rarr;ue)</b> &mdash; to go to bed</li></ul><div class="boot">Pronoun first, then the verb with its normal ending. The vowel jumps in every form except <em>nosotros</em>.</div><h5>In order</h5><ul><li><b>primero</b> &mdash; first</li><li><b>despu&eacute;s</b> &mdash; then, after</li><li><b>antes de</b> &mdash; before</li><li><b>y</b> &mdash; and</li></ul><h5>Also useful</h5><ul><li><b>la escuela</b> &mdash; school</li><li><b>los dientes</b> &mdash; teeth</li><li><b>tarde</b> &mdash; late</li><li><b>los fines de semana</b> &mdash; on weekends</li><li><b>mi familia y yo</b> &mdash; my family and I</li></ul></aside></div>
     </div>
 
     <!-- Culture spotlight -->
@@ -262,14 +391,30 @@
         <p style="font-size:16px;color:#1a2340;line-height:1.6;margin:0;">Camila's sister <em>se pone el uniforme</em> &mdash; and so do most students across Ecuador and Latin America. School uniforms are the daily norm in both public and private schools, which is why <em>ponerse el uniforme</em> is a real step in a Latin-American teen's morning routine. It's a small cultural difference that changes what "getting dressed for school" actually means.</p>
     </div>
 
+
+    <!-- VIRTUD · Santa Mariana de Jes&uacute;s -->
+    <div class="virtue-box" data-virtud="m04" style="display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap;">
+        <figure style="margin:0;flex:0 0 190px;text-align:center;">
+            <img src="img/virtud/mariana.jpg" alt="Painted portrait of Mariana de Jesús, a young woman in a dark veil, her eyes lowered" style="width:190px;height:auto;display:block;border:4px solid #C79A1E;border-radius:4px;box-shadow:0 2px 6px rgba(0,0,0,.25);">
+            <figcaption style="font-size:12px;color:#5a5a5a;line-height:1.35;margin-top:6px;">Santa Mariana de Jes&uacute;s, detail of a portrait by Antonio Salas, Quito, 1845.</figcaption>
+        </figure>
+        <div style="flex:1 1 280px;">
+            <div style="font-size:13px;color:#AA1E2D;letter-spacing:.4px;margin-bottom:6px;font-weight:700;">&#9733; LA VIRTUD &middot; SELF-GOVERNMENT</div>
+            <div style="font-size:20px;color:#0e1c42;margin-bottom:8px;"><strong>Santa Mariana de Jes&uacute;s</strong> (Ecuador, 1618&ndash;1645)</div>
+            <p style="font-size:17px;color:#1a2340;line-height:1.6;margin:0 0 10px;">Mariana de Jes&uacute;s was born and died in Quito, the city of Camila&rsquo;s reading. She lost her parents as a small child and grew up in her older sister&rsquo;s house. She chose to stay there, in one small room, and to live a very simple, strict life that she planned herself: prayer, quiet work and care for others. She read, sewed, wove and embroidered so that no hour was wasted, and she played the guitar and sang. She taught children their prayers and helped people in need.</p>
+            <p style="font-size:17px;color:#1a2340;line-height:1.6;margin:0 0 10px;">In 1645 earthquakes shook Quito. Mariana offered her life to God for her city, fell ill and died that same year, at 26. In 1945 Ecuador named her a national heroine, and in 1950 she became Ecuador&rsquo;s first saint. People call her <em>la Azucena de Quito</em>, the Lily of Quito. That is <strong>self-government</strong>: being in charge of your own day and your own choices, even when no one is making you.</p>
+            <p style="font-size:18px;color:#1a2340;line-height:1.6;margin:0;"><em>Mariana de Jes&uacute;s <strong>es</strong> de Quito. <strong>Ayuda</strong> a los ni&ntilde;os y a las familias.</em><br><span style="font-size:16px;color:#3a4566;">(Mariana de Jes&uacute;s is from Quito. She helps children and families.)</span></p>
+        </div>
+    </div>
+
     <!-- What's next -->
-    <div style="background: #FFFFFF; border-top: 3px solid #0E1C42; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 16px;">&#10145;&#65039; WHAT YOU'LL DO NEXT</div>
+    <div class="sg-card">
+        <div class="sg-kicker">WHAT YOU'LL DO NEXT</div>
         <div style="display: flex; align-items: flex-start; gap: 14px;">
             <div style="min-width: 34px; height: 34px; border-radius: 50%; background: #0E1C42; color: #fff; font-size: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">6</div>
             <div>
                 <div style="font-size: 18px; color: #0e1c42; margin-bottom: 4px;"><strong>Continue to Lesson 4.06</strong></div>
-                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Graded work begins tomorrow: the <strong>Vocabulary Check (25 pts)</strong> and the <strong>Lengua en acci&oacute;n (20 pts)</strong>. Everything you've practiced &mdash; the verbs, the vowel jumps, and the sequence words &mdash; is exactly what those items draw on.</div>
+                <div style="font-size: 16px; color: #1a2340; line-height: 1.55;">Tomorrow's lesson gives you time for two of the module's graded items: the <strong>Vocabulary Check (25 pts)</strong> and the <strong>Lengua en acci&oacute;n (20 pts)</strong>. Both have been assigned since M&oacute;dulo 4 started; you should complete them while the module is open. Everything you've practiced &mdash; the verbs, the vowel jumps, and the sequence words &mdash; is exactly what those items draw on.</div>
             </div>
         </div>
     </div>
@@ -279,18 +424,19 @@
         <div style="font-size: 17px; color: #1a2340; line-height: 1.6;">Click <strong>&ldquo;Mark as Done&rdquo;</strong> on this page in Canvas so your progress is recorded. Then, like Camila, say two true sentences about your own day: one with <em>primero</em> and one with <em>despu&eacute;s</em>.</div>
     </div>
 
-    <div style="background: #FFFFFF; border-top: 3px solid #C7922C; border: 1px solid #D0D9E8; border-radius: 8px; padding: 20px 24px; margin-bottom: 20px;">
-        <div style="font-size: 11px; color: #c7922c; margin-bottom: 12px;">&#128170; &iexcl;BIEN LE&Iacute;DO&#33; (Well read!)</div>
+    <div class="sg-card">
+        <div class="sg-kicker">&iexcl;BIEN LE&Iacute;DO&#33; (Well read!)</div>
         <p style="font-size: 18px; color: #1a2340; line-height: 1.65; margin: 0;">You just read real Spanish and understood it &mdash; reflexives, sequence words and all. That's what a whole week of practice buys you. <em>&iexcl;Hasta ma&ntilde;ana!</em> (See you tomorrow!)</p>
     </div>
 
 </div>
 
-<div class="gualda" aria-hidden="true"><i class="r"></i><i class="g"></i><i class="r"></i></div>
-<div style="background: #0E1C42; border-top: 3px solid #55C8E8; padding: 18px 34px; text-align: center;">
-    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #55c8e8;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
+<img class="sg-plaza" src="../../img/siglo/plaza-sevilla.jpg" alt="The Plaza de San Francisco in Seville around 1850">
+<div class="sg-tiles"></div>
+<div class="sg-foot" style="padding: 18px 34px; text-align: center;">
+    <div style="font-size: 18px; color: #ffffff; margin-bottom: 6px;"><span style="color: #e9d39a;">Optima Academy Online</span> &middot; SPANISH 1 &#127758; &middot; Quarter 3 &middot; Student Lesson Page</div>
     <div style="font-size: 13px; color: rgba(255,255,255,0.65); margin-bottom: 4px;">Lesson 4.05 &middot; A leer: Camila / Ecuador</div>
-    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company</div>
+    <div style="font-size: 12px; color: rgba(255,255,255,0.4);">&copy; Optima Academy Online &middot; An Education Experience Company &middot; Plaza de San Francisco, Sevilla, c. 1850 (all public domain)</div>
 </div>
 
 </div>
@@ -360,5 +506,9 @@
 })();
 </script>
 <script defer src="../../shared/read-aloud/read-aloud.js?target=es"></script>
+<!-- mywork -->
+<script src="../../my-work.js"></script>
+<script src="../../clave.js"></script>
+<script src="../../origen.js"></script>
 </body>
 </html>
